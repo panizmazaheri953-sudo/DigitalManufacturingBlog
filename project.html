@@ -3,47 +3,283 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Project | Paniz Manufacturing</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>Project — Paniz Manufacturing</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  :root{--navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--cyan:#00e5ff;--cyan2:#00b8cc;--white:#f0f4ff;--muted:#7a8fa8;--border:rgba(0,229,255,0.15);--card:rgba(15,32,64,0.6);--ff:'Space Grotesk',sans-serif;--fm:'Space Mono',monospace;}
-  body{font-family:var(--ff);background:var(--navy);color:var(--white);}
-  nav{position:sticky;top:0;z-index:999;background:rgba(5,13,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;}
-  .logo{font-family:var(--fm);font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);}
-  .nav-links{display:flex;gap:0;list-style:none;}
-  .nav-links a{display:block;padding:0 1.2rem;height:64px;line-height:64px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s,border-bottom .2s;border-bottom:2px solid transparent;}
-  .nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan);}
-  .nav-cta{font-family:var(--fm);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--cyan);color:var(--cyan);padding:.45rem 1.1rem;text-decoration:none;transition:all .2s;}
-  .page-hero{padding:4rem 5% 3rem;text-align:center;border-bottom:1px solid var(--border);}
-  .hero-badge{font-family:var(--fm);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);border:1px solid var(--border);padding:.35rem .9rem;display:inline-block;margin-bottom:1.5rem;}
-  .page-hero h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:700;text-transform:uppercase;letter-spacing:-.01em;}
-  .page-hero h1 span{color:var(--cyan);}
-  section{padding:3rem 5%;max-width:1200px;margin:0 auto;}
-  .sec-label{font-family:var(--fm);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem;}
-  .sec-label::after{content:'';flex:0 0 40px;height:1px;background:var(--cyan);}
-  .sec-title{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;text-transform:uppercase;margin-bottom:1.5rem;}
-  .requirements-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin:2rem 0;}
-  .req-card{background:var(--card);border:1px solid var(--border);padding:1.5rem;transition:all .3s;}
-  .req-card:hover{border-color:var(--cyan);transform:translateY(-4px);}
-  .req-card h3{font-size:1rem;font-weight:600;text-transform:uppercase;margin-bottom:.5rem;color:var(--cyan);}
-  .req-card p{font-size:.85rem;color:var(--muted);line-height:1.6;}
-  .timeline{display:flex;flex-direction:column;gap:.5rem;margin:2rem 0;}
-  .timeline-item{display:flex;align-items:flex-start;gap:1.5rem;padding:1rem;border-left:2px solid var(--border);}
-  .timeline-week{font-family:var(--fm);font-size:.7rem;color:var(--cyan);min-width:70px;}
-  .timeline-desc{font-size:.85rem;color:var(--muted);}
-  footer{background:var(--navy2);border-top:1px solid var(--border);padding:2rem 5%;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;}
-  .f-logo{font-family:var(--fm);font-size:.8rem;letter-spacing:.2em;color:var(--cyan);}
-  .f-links{display:flex;gap:1.5rem;}
-  .f-links a{font-family:var(--fm);font-size:.65rem;color:var(--muted);text-decoration:none;}
-  .f-links a:hover{color:var(--cyan);}
-  @media(max-width:800px){.nav-links{display:none;}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--navy4:#152848;
+  --cyan:#00e5ff;--cyan2:#00b8cc;--cyan3:rgba(0,229,255,0.1);--cyan4:rgba(0,229,255,0.06);
+  --white:#f0f4ff;--muted:#6a7f9a;--border:rgba(0,229,255,0.13);
+  --ff:'DM Sans',sans-serif;--fd:'Bebas Neue',sans-serif;--fm:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--navy);color:var(--white);overflow-x:hidden;cursor:none}
+
+/* CURSOR */
+#cursor{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:screen}
+#cursor-ring{position:fixed;top:0;left:0;width:34px;height:34px;border:1px solid var(--cyan);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.4;transition:opacity .2s}
+
+/* NOISE */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.02;pointer-events:none;z-index:9990}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 4%;height:62px;border-bottom:1px solid var(--border);background:rgba(5,13,26,0.92);backdrop-filter:blur(12px)}
+.logo{font-family:var(--fd);font-size:1.55rem;letter-spacing:.06em;color:var(--white);text-decoration:none}
+.logo span{color:var(--cyan)}
+.nav-links{display:flex;list-style:none}
+.nav-links a{font-family:var(--fm);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.4rem .9rem;transition:color .2s;height:62px;display:flex;align-items:center;border-bottom:2px solid transparent}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan)}
+.nav-pill{font-family:var(--fm);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--cyan);color:var(--cyan);padding:.45rem 1.2rem;text-decoration:none;transition:all .2s;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%)}
+.nav-pill:hover{background:var(--cyan);color:var(--navy)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* MARQUEE */
+.marquee-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:var(--navy3);padding:.55rem 0}
+.marquee-track{display:flex;animation:marquee 30s linear infinite;white-space:nowrap}
+.marquee-track:hover{animation-play-state:paused}
+.m-item{font-family:var(--fd);font-size:1rem;letter-spacing:.06em;color:rgba(0,229,255,0.3);padding:0 2rem;display:flex;align-items:center;gap:1.5rem}
+.m-item span{color:var(--cyan);font-size:.7rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ─── HERO ─── */
+#hero{padding-top:62px;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.hero-left{padding:5rem 4% 4rem;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid var(--border);position:relative;z-index:1}
+.hero-eyebrow{font-family:var(--fm);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);display:inline-flex;align-items:center;gap:.8rem;margin-bottom:2rem}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--cyan)}
+.hero-h1{font-family:var(--fd);font-size:clamp(4.5rem,8vw,8rem);line-height:.88;letter-spacing:.01em;margin-bottom:1.5rem}
+.hero-h1 .hollow{-webkit-text-stroke:2px var(--white);color:transparent}
+.hero-h1 .glow{color:var(--cyan)}
+.hero-sub{max-width:460px;font-size:.9rem;line-height:1.8;color:var(--muted);font-weight:300;margin-bottom:2.5rem}
+.hero-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:3rem}
+.htag{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--border);color:var(--muted);padding:.3rem .75rem}
+.hero-brief-box{border:1px solid var(--border);background:var(--navy2);padding:1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.hb-item{}
+.hb-label{font-family:var(--fm);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem}
+.hb-val{font-family:var(--fd);font-size:1.4rem;color:var(--white);line-height:1}
+.hb-val.cyan{color:var(--cyan)}
+
+/* HERO RIGHT — animated engineering diagram */
+.hero-right{position:relative;overflow:hidden;background:var(--navy2)}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.04) 1px,transparent 1px);background-size:44px 44px}
+.scan-line{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(0,229,255,0.3),transparent);animation:scan 4s linear infinite;top:0}
+@keyframes scan{from{top:0}to{top:100%}}
+.hero-vis{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.process-wheel{position:relative;width:300px;height:300px}
+.pw-ring{position:absolute;inset:0;border:1px solid var(--border);border-radius:50%;animation:rotate 20s linear infinite}
+.pw-ring-inner{position:absolute;inset:24px;border:1px dashed rgba(0,229,255,0.15);border-radius:50%;animation:rotate 12s linear infinite reverse}
+.pw-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center}
+.pw-center-n{font-family:var(--fd);font-size:3.5rem;color:var(--cyan);line-height:1}
+.pw-center-l{font-family:var(--fm);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.pw-dot{position:absolute;width:8px;height:8px;background:var(--cyan);border-radius:50%;box-shadow:0 0 10px var(--cyan)}
+@keyframes rotate{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.pw-node{position:absolute;width:64px;height:64px;border:1px solid var(--border);background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transform:translate(-50%,-50%)}
+.pw-node-num{font-family:var(--fd);font-size:1.2rem;color:var(--cyan);line-height:1}
+.pw-node-lbl{font-family:var(--fm);font-size:.38rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:center;line-height:1.3}
+.hero-stats-bar{position:absolute;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border)}
+.hstat{padding:1rem;text-align:center;border-right:1px solid var(--border)}
+.hstat:last-child{border-right:none}
+.hstat-n{font-family:var(--fd);font-size:2rem;color:var(--cyan);line-height:1}
+.hstat-l{font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
+
+/* ─── BRIEF SECTION ─── */
+#brief{display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border)}
+.label-col{padding:3rem 2.5rem;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;background:var(--navy2)}
+.sec-tag{font-family:var(--fm);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.5rem}
+.sec-big-num{font-family:var(--fd);font-size:5rem;color:var(--navy4);line-height:1;user-select:none}
+.brief-content{padding:3rem}
+.brief-content h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3.5rem);line-height:.93;text-transform:uppercase;margin-bottom:1.5rem}
+.brief-content h2 em{color:var(--cyan);font-style:normal}
+.brief-cols{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-bottom:2rem}
+.brief-cols p{font-size:.88rem;line-height:1.8;color:var(--muted);font-weight:300}
+.brief-cols p strong{color:var(--white);font-weight:500}
+.brief-callout{border-left:2px solid var(--cyan);padding:1rem 1.5rem;background:var(--cyan4);font-size:.82rem;color:var(--muted);line-height:1.7;font-weight:300;font-style:italic}
+.brief-callout strong{color:var(--white);font-style:normal;font-weight:500}
+
+/* ─── PHILOSOPHY STRIP ─── */
+.philosophy-strip{background:var(--navy3);border-bottom:1px solid var(--border);padding:2rem 4%;display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:center}
+.phil-label{font-family:var(--fd);font-size:1.2rem;letter-spacing:.06em;color:rgba(0,229,255,0.3);white-space:nowrap}
+.phil-text{font-size:.82rem;color:var(--muted);line-height:1.7;font-weight:300}
+.phil-text strong{color:var(--cyan);font-weight:500}
+
+/* ─── JOURNEY (TIMELINE) ─── */
+#journey{border-bottom:1px solid var(--border)}
+.journey-head{display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border)}
+.journey-head-label{padding:2.5rem;border-right:1px solid var(--border);background:var(--navy2)}
+.journey-head-content{padding:2.5rem 3rem;display:flex;align-items:flex-end;justify-content:space-between}
+.journey-head-content h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3.5rem);line-height:.93;text-transform:uppercase}
+.journey-head-content h2 em{color:var(--cyan);font-style:normal}
+
+/* JOURNEY STEPS — editorial staggered layout */
+.journey-body{padding:0 4% 3rem}
+.j-step{display:grid;grid-template-columns:100px 3px 1fr;gap:0 2rem;padding:2.5rem 0;border-bottom:1px solid rgba(0,229,255,0.06);position:relative}
+.j-step:last-child{border-bottom:none}
+.j-week{font-family:var(--fd);font-size:3rem;color:var(--navy4);line-height:1;text-align:right;padding-top:.25rem;transition:color .3s}
+.j-step:hover .j-week{color:var(--cyan)}
+.j-spine{position:relative;display:flex;flex-direction:column;align-items:center}
+.j-spine-line{flex:1;width:1px;background:var(--border)}
+.j-spine-dot{width:10px;height:10px;border-radius:50%;background:var(--navy);border:1.5px solid var(--cyan);flex-shrink:0;position:relative;z-index:1;transition:background .3s,box-shadow .3s}
+.j-step:hover .j-spine-dot{background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+.j-content{}
+.j-tag{font-family:var(--fm);font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.5rem}
+.j-title{font-family:var(--fd);font-size:1.8rem;text-transform:uppercase;line-height:.95;margin-bottom:.75rem}
+.j-desc{font-size:.83rem;color:var(--muted);line-height:1.75;font-weight:300;max-width:680px;margin-bottom:1rem}
+.j-desc strong{color:var(--white);font-weight:500}
+.j-pills{display:flex;flex-wrap:wrap;gap:.4rem}
+.j-pill{font-family:var(--fm);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .65rem;border:1px solid var(--border);color:var(--muted)}
+.j-pill.done{border-color:rgba(0,229,255,0.25);color:var(--cyan);background:var(--cyan4)}
+.j-pill.warn{border-color:rgba(255,165,0,0.3);color:#ffa500;background:rgba(255,165,0,0.06)}
+.j-pill.fail{border-color:rgba(255,68,68,0.3);color:#ff6b6b;background:rgba(255,68,68,0.06)}
+
+/* ─── METHODOLOGY GRID ─── */
+#methodology{border-bottom:1px solid var(--border)}
+.meth-head{display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border)}
+.meth-head-label{padding:2.5rem;border-right:1px solid var(--border);background:var(--navy2)}
+.meth-head-content{padding:2.5rem 3rem}
+.meth-head-content h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3.5rem);line-height:.93;text-transform:uppercase}
+.meth-head-content h2 em{color:var(--cyan);font-style:normal}
+.meth-head-content p{font-size:.83rem;color:var(--muted);line-height:1.75;font-weight:300;max-width:640px;margin-top:1rem}
+.meth-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.meth-card{padding:2rem 2rem 2.5rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden;transition:background .25s}
+.meth-card:hover{background:var(--navy2)}
+.meth-card:nth-child(3n){border-right:none}
+.meth-card:nth-last-child(-n+3){border-bottom:none}
+.meth-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--cyan);transition:width .4s}
+.meth-card:hover::after{width:100%}
+.mc-icon{width:32px;height:32px;margin-bottom:1rem}
+.mc-icon svg{width:32px;height:32px;stroke:var(--cyan);fill:none;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+.mc-tag{font-family:var(--fm);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.5rem;opacity:.7}
+.mc-title{font-family:var(--fm);font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--white);margin-bottom:.6rem}
+.mc-desc{font-size:.75rem;color:var(--muted);line-height:1.65;font-weight:300}
+.mc-watermark{position:absolute;bottom:.5rem;right:1rem;font-family:var(--fd);font-size:4rem;opacity:.04;line-height:1;pointer-events:none;text-transform:uppercase;color:var(--cyan)}
+
+/* ─── BUILD MEASURE LEARN ─── */
+#bml{display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border)}
+.bml-content{padding:3rem}
+.bml-content h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3.2rem);line-height:.93;text-transform:uppercase;margin-bottom:.5rem}
+.bml-content h2 em{color:var(--cyan);font-style:normal}
+.bml-sub{font-family:var(--fm);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem}
+.bml-cycle{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:2rem}
+.bml-node{padding:2rem;background:var(--navy);display:flex;flex-direction:column;gap:.75rem;position:relative;overflow:hidden;transition:background .3s}
+.bml-node:hover{background:var(--navy2)}
+.bml-node::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.bml-node:nth-child(1)::before{background:var(--cyan)}
+.bml-node:nth-child(2)::before{background:#ffa500}
+.bml-node:nth-child(3)::before{background:#00ff88}
+.bml-node-n{font-family:var(--fd);font-size:4rem;color:var(--navy3);line-height:1;position:absolute;bottom:.5rem;right:1rem}
+.bml-node-title{font-family:var(--fd);font-size:2rem;text-transform:uppercase;line-height:.95}
+.bml-node:nth-child(1) .bml-node-title{color:var(--cyan)}
+.bml-node:nth-child(2) .bml-node-title{color:#ffa500}
+.bml-node:nth-child(3) .bml-node-title{color:#00ff88}
+.bml-node-sub{font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.bml-node-desc{font-size:.75rem;color:var(--muted);line-height:1.6;font-weight:300}
+.bml-node-desc strong{color:var(--white);font-weight:500}
+.bml-project-map{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.bml-pm-item{padding:1rem;border:1px solid var(--border);background:var(--navy2)}
+.bml-pm-label{font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.bml-pm-val{font-size:.78rem;color:var(--white);font-weight:300;line-height:1.5}
+.bml-pm-val em{color:var(--cyan);font-style:normal}
+
+/* ─── DIGITAL TOOLS ─── */
+#tools{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
+.tool-block{padding:2rem 1.75rem;border-right:1px solid var(--border);position:relative;overflow:hidden;background:var(--navy);transition:background .3s}
+.tool-block:last-child{border-right:none}
+.tool-block:hover{background:var(--navy2)}
+.tool-block::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--cyan);transition:width .5s}
+.tool-block:hover::after{width:100%}
+.tool-logo{font-family:var(--fd);font-size:2.2rem;color:var(--cyan);line-height:1;margin-bottom:.5rem}
+.tool-name{font-family:var(--fm);font-size:.62rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--white);margin-bottom:.4rem}
+.tool-cat{font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}
+.tool-desc{font-size:.72rem;color:var(--muted);line-height:1.6;font-weight:300}
+
+/* ─── KEY OUTCOMES ─── */
+#outcomes{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
+.stat-block{padding:2.5rem 2rem;border-right:1px solid var(--border);position:relative;overflow:hidden;background:var(--navy);transition:background .3s}
+.stat-block:last-child{border-right:none}
+.stat-block:hover{background:var(--navy2)}
+.stat-block::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--cyan);transition:width .5s}
+.stat-block:hover::after{width:100%}
+.stat-n{font-family:var(--fd);font-size:3.8rem;line-height:1;color:var(--white)}
+.stat-n .u{font-size:2rem;color:var(--cyan)}
+.stat-desc{font-family:var(--fm);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.5rem}
+.stat-note{font-size:.72rem;color:var(--muted);margin-top:.3rem;font-weight:300;opacity:.7}
+
+/* ─── FESTO STATIONS ─── */
+#festo{display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border)}
+.festo-content{padding:3rem}
+.festo-content h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3.2rem);line-height:.93;text-transform:uppercase;margin-bottom:.5rem}
+.festo-content h2 em{color:var(--cyan);font-style:normal}
+.festo-sub{font-family:var(--fm);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem}
+.festo-stations{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:1.5rem}
+.festo-st{padding:1.5rem 1rem;background:var(--navy);display:flex;flex-direction:column;gap:.5rem;transition:background .3s;position:relative;overflow:hidden}
+.festo-st:hover{background:var(--navy2)}
+.festo-st.fail{border-top:2px solid #ff4444}
+.festo-st.pass{border-top:2px solid var(--cyan)}
+.fst-num{font-family:var(--fd);font-size:2.5rem;color:var(--navy4);line-height:1}
+.fst-status{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--fm);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase}
+.fst-status .dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.fst-status.pass .dot{background:var(--cyan)}
+.fst-status.fail .dot{background:#ff4444}
+.fst-status.pass{color:var(--cyan)}
+.fst-status.fail{color:#ff4444}
+.fst-title{font-family:var(--fm);font-size:.6rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--white)}
+.fst-desc{font-size:.65rem;color:var(--muted);line-height:1.5;font-weight:300}
+.festo-note{padding:1rem 1.25rem;border:1px solid rgba(255,68,68,0.25);background:rgba(255,68,68,0.05);display:flex;align-items:flex-start;gap:.75rem}
+.festo-note-icon{color:#ff4444;font-size:1rem;flex-shrink:0}
+.festo-note p{font-size:.75rem;color:var(--muted);line-height:1.6;font-weight:300}
+.festo-note p strong{color:var(--white);font-weight:500}
+
+/* ─── TRACEABILITY ─── */
+#traceability{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)}
+.trace-card{padding:3rem;position:relative;overflow:hidden;transition:background .3s}
+.trace-card:first-child{border-right:1px solid var(--border);background:var(--navy2)}
+.trace-card:last-child{background:var(--navy)}
+.trace-card:hover{background:var(--navy3)}
+.trace-tag{font-family:var(--fm);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:1rem}
+.trace-title{font-family:var(--fd);font-size:2.5rem;text-transform:uppercase;line-height:.93;margin-bottom:1rem}
+.trace-desc{font-size:.82rem;color:var(--muted);line-height:1.75;font-weight:300;margin-bottom:1.5rem}
+.trace-desc strong{color:var(--white);font-weight:500}
+.trace-features{display:flex;flex-direction:column;gap:.65rem}
+.trace-feat{display:flex;align-items:center;gap:.75rem;font-size:.78rem;color:var(--muted);font-weight:300}
+.trace-feat::before{content:'→';color:var(--cyan);font-family:var(--fm);font-size:.65rem;flex-shrink:0}
+.trace-wm{position:absolute;bottom:1.5rem;right:2rem;font-family:var(--fd);font-size:5rem;opacity:.04;line-height:1;pointer-events:none;text-transform:uppercase}
+
+/* ─── PORTFOLIO NOTE ─── */
+#portfolio-note{padding:4rem 4%;border-bottom:1px solid var(--border);background:var(--navy2);text-align:center;position:relative;overflow:hidden}
+.pn-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--fd);font-size:14vw;color:rgba(0,229,255,0.025);white-space:nowrap;pointer-events:none;line-height:1}
+.pn-tag{font-family:var(--fm);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:1rem;position:relative;z-index:1}
+.pn-h2{font-family:var(--fd);font-size:clamp(2.5rem,5vw,5rem);line-height:.93;text-transform:uppercase;color:var(--white);margin-bottom:1.5rem;position:relative;z-index:1}
+.pn-h2 em{color:var(--cyan);font-style:normal}
+.pn-body{max-width:700px;margin:0 auto 2.5rem;font-size:.88rem;color:var(--muted);line-height:1.8;font-weight:300;position:relative;z-index:1}
+.pn-body strong{color:var(--white);font-weight:500}
+.pn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);max-width:800px;margin:0 auto;position:relative;z-index:1}
+.pn-item{padding:1.5rem;background:var(--navy);display:flex;flex-direction:column;gap:.4rem}
+.pn-item-n{font-family:var(--fd);font-size:2.5rem;color:var(--cyan);line-height:1}
+.pn-item-l{font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* ─── FOOTER ─── */
+footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem 4%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2rem}
+.f-logo{font-family:var(--fd);font-size:1.3rem;letter-spacing:.06em;color:var(--white)}
+.f-logo span{color:var(--cyan)}
+.f-copy{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center}
+.f-links{display:flex;gap:1.5rem;justify-content:flex-end;flex-wrap:wrap}
+.f-links a{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.f-links a:hover{color:var(--cyan)}
+
+.arr{width:12px;height:12px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg);flex-shrink:0;display:inline-block}
 </style>
 </head>
 <body>
 
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
 <nav>
-  <span class="logo">Paniz Manufacturing</span>
+  <a class="logo" href="index.html">PANIZ<span>.</span></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="project.html" class="active">Project</a></li>
@@ -53,42 +289,663 @@
     <li><a href="quality.html">Quality</a></li>
     <li><a href="simulation.html">Simulation</a></li>
   </ul>
-  <a class="nav-cta" href="simulation.html">50K Capacity</a>
+  <a class="nav-pill" href="#">50K Capacity →</a>
 </nav>
 
-<div class="page-hero">
-  <div class="hero-badge">Phones-R-Us · 2026</div>
-  <h1>Project <span>Overview</span></h1>
-</div>
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-left reveal">
+    <div>
+      <div class="hero-eyebrow">Digital Manufacturing Portfolio — 2026</div>
+      <h1 class="hero-h1">
+        THE<br>
+        <span class="hollow">PROJECT</span><br>
+        <span class="glow">BRIEF.</span>
+      </h1>
+      <p class="hero-sub">A 9-week end-to-end digital manufacturing challenge. Take a real Phones-R-Us product, reverse-engineer it, manufacture it at scale, and prove it works — through simulation, quality control, and live FESTO assembly.</p>
+      <div class="hero-tags">
+        <span class="htag">Additive Manufacturing</span>
+        <span class="htag">Reverse Engineering</span>
+        <span class="htag">FESTO CP Lab</span>
+        <span class="htag">Siemens Tecnomatix</span>
+        <span class="htag">Industry 4.0</span>
+        <span class="htag">IIoT</span>
+        <span class="htag">Lean Start-Up</span>
+        <span class="htag">SPC / Quality</span>
+      </div>
+    </div>
+    <div class="hero-brief-box">
+      <div class="hb-item">
+        <div class="hb-label">Client</div>
+        <div class="hb-val cyan">Phones-R-Us</div>
+      </div>
+      <div class="hb-item">
+        <div class="hb-label">Deliverable</div>
+        <div class="hb-val" style="font-size:1rem">Top + Bottom Casing</div>
+      </div>
+      <div class="hb-item">
+        <div class="hb-label">Annual Target</div>
+        <div class="hb-val cyan">50,000</div>
+      </div>
+      <div class="hb-item">
+        <div class="hb-label">Timeline</div>
+        <div class="hb-val">9 Weeks</div>
+      </div>
+    </div>
+  </div>
 
-<section>
-  <div class="sec-label">01 &mdash; Client Requirement</div>
-  <h2 class="sec-title">The Challenge</h2>
-  <div class="requirements-grid">
-    <div class="req-card"><h3>Bottom Casing</h3><p>Drawing provided by client — must match exactly ±0.1mm tolerance.</p></div>
-    <div class="req-card"><h3>Top Casing</h3><p>Reverse engineer from physical part — drawing had missing dimensions and confusing cross-sections.</p></div>
-    <div class="req-card"><h3>Interchangeability</h3><p>Must fit with existing master casings from another supplier.</p></div>
-    <div class="req-card"><h3>Assembly Line</h3><p>Must flow through FESTO CP Lab without jamming — all 6 stations.</p></div>
-    <div class="req-card"><h3>Production Target</h3><p>50,000 complete phones per year (50,000 top + 50,000 bottom casings).</p></div>
-    <div class="req-card"><h3>Timeline</h3><p>9 weeks to present sample for testing and validation.</p></div>
+  <div class="hero-right">
+    <div class="grid-bg"></div>
+    <div class="scan-line"></div>
+    <div class="hero-vis">
+      <div class="process-wheel">
+        <div class="pw-ring"></div>
+        <div class="pw-ring-inner"></div>
+        <div class="pw-center">
+          <div class="pw-center-n">9</div>
+          <div class="pw-center-l">Weeks</div>
+        </div>
+        <!-- Nodes positioned around circle -->
+        <div class="pw-node" style="top:0%;left:50%;">
+          <div class="pw-node-num">01</div>
+          <div class="pw-node-lbl">CAD<br>Design</div>
+        </div>
+        <div class="pw-node" style="top:25%;left:93%;">
+          <div class="pw-node-num">02</div>
+          <div class="pw-node-lbl">3D<br>Print</div>
+        </div>
+        <div class="pw-node" style="top:75%;left:93%;">
+          <div class="pw-node-num">03</div>
+          <div class="pw-node-lbl">Quality<br>SPC</div>
+        </div>
+        <div class="pw-node" style="top:100%;left:50%;">
+          <div class="pw-node-num">04</div>
+          <div class="pw-node-lbl">FESTO<br>Assembly</div>
+        </div>
+        <div class="pw-node" style="top:75%;left:7%;">
+          <div class="pw-node-num">05</div>
+          <div class="pw-node-lbl">PFMEA<br>Risk</div>
+        </div>
+        <div class="pw-node" style="top:25%;left:7%;">
+          <div class="pw-node-num">06</div>
+          <div class="pw-node-lbl">Simulation<br>Plant</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-stats-bar">
+      <div class="hstat"><div class="hstat-n">6</div><div class="hstat-l">Process Phases</div></div>
+      <div class="hstat"><div class="hstat-n">15+</div><div class="hstat-l">Print Trials</div></div>
+      <div class="hstat"><div class="hstat-n">6</div><div class="hstat-l">FESTO Stations</div></div>
+    </div>
   </div>
 </section>
 
-<section>
-  <div class="sec-label">02 &mdash; Timeline</div>
-  <h2 class="sec-title">9-Week Journey</h2>
-  <div class="timeline">
-    <div class="timeline-item"><div class="timeline-week">Week 1-2</div><div class="timeline-desc">Ultimaker trials — 15 prints, 0 passed FESTO measurement station.</div></div>
-    <div class="timeline-item"><div class="timeline-week">Week 3-4</div><div class="timeline-desc">Failure analysis — identified laser measurement issue (1.18mm vs 1.6-2.2mm spec).</div></div>
-    <div class="timeline-item"><div class="timeline-week">Week 5-6</div><div class="timeline-desc">Switched to Bambu P1S — first prints: 80% success rate, 3 perfect.</div></div>
-    <div class="timeline-item"><div class="timeline-week">Week 7-8</div><div class="timeline-desc">FESTO validation — Bambu prints pass all 6 stations.</div></div>
-    <div class="timeline-item"><div class="timeline-week">Week 9</div><div class="timeline-desc">Final delivery — 50,000/year plan: 25 printers running 24/7.</div></div>
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="m-item">DIGITAL MANUFACTURING PORTFOLIO <span>✦</span></div>
+    <div class="m-item">IT IS ALL ABOUT THE PROCESS <span>✦</span></div>
+    <div class="m-item">REVERSE ENGINEERING → CAD → PRINT → QUALITY → ASSEMBLY <span>✦</span></div>
+    <div class="m-item">INDUSTRY 4.0 <span>✦</span></div>
+    <div class="m-item">LEAN START-UP · BUILD · MEASURE · LEARN <span>✦</span></div>
+    <div class="m-item">FESTO CP LAB · 6 STATIONS <span>✦</span></div>
+    <div class="m-item">SIEMENS TECNOMATIX SIMULATION <span>✦</span></div>
+    <div class="m-item">DIGITAL MANUFACTURING PORTFOLIO <span>✦</span></div>
+    <div class="m-item">IT IS ALL ABOUT THE PROCESS <span>✦</span></div>
+    <div class="m-item">REVERSE ENGINEERING → CAD → PRINT → QUALITY → ASSEMBLY <span>✦</span></div>
+    <div class="m-item">INDUSTRY 4.0 <span>✦</span></div>
+    <div class="m-item">LEAN START-UP · BUILD · MEASURE · LEARN <span>✦</span></div>
+    <div class="m-item">FESTO CP LAB · 6 STATIONS <span>✦</span></div>
+    <div class="m-item">SIEMENS TECNOMATIX SIMULATION <span>✦</span></div>
+  </div>
+</div>
+
+<!-- ─── BRIEF ─── -->
+<section id="brief" class="reveal">
+  <div class="label-col">
+    <div>
+      <div class="sec-tag">01 — The Brief</div>
+      <div class="sec-big-num">01</div>
+    </div>
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Paniz Manufacturing Co.<br>Manchester, UK</div>
+  </div>
+  <div class="brief-content">
+    <h2>The Phones-R-Us<br><em>Challenge.</em></h2>
+    <div class="brief-cols">
+      <div>
+        <p>Paniz Manufacturing was commissioned by <strong>Phones-R-Us</strong> to produce 50,000 interchangeable phone casings per year. The client provided a <strong>2D engineering drawing</strong> for the bottom casing and a physical reference part for the top — both had to be manufactured to tolerance, assembled through a live FESTO CP Lab line, and proven production-viable at annual scale.</p>
+      </div>
+      <div>
+        <p>This wasn't just a prototyping exercise. The brief demanded a <strong>complete digital manufacturing system</strong> — from initial CAD through to capacity simulation, process failure analysis, quality control with statistical evidence, and a working business case. Every decision had to be justified with data. Every failure mode had to be anticipated and controlled.</p>
+      </div>
+    </div>
+    <div class="brief-callout">
+      <strong>The golden rule:</strong> It is all about the process — not the product. This portfolio exists to showcase problem-solving capability, engineering judgement, and hands-on experience with the tools that define modern digital manufacturing. The phone casing is the vehicle. The thinking behind it is what matters.
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY STRIP -->
+<div class="philosophy-strip">
+  <div class="phil-label">PROCESS OVER PRODUCT</div>
+  <div class="phil-text">In <strong>Industry 4.0</strong>, the main driver is data. The more information you have about a manufacturing system, the easier it is to implement, optimise, and scale. This project was designed to simulate the full lifecycle of a real manufacturing company — from brief to business model — using the same tools, frameworks, and constraints you'd face on the factory floor.</div>
+</div>
+
+<!-- ─── JOURNEY ─── -->
+<section id="journey" class="reveal">
+  <div class="journey-head">
+    <div class="journey-head-label">
+      <div class="sec-tag">02 — Process Journey</div>
+    </div>
+    <div class="journey-head-content">
+      <h2>9-Week<br><em>Journey.</em></h2>
+    </div>
+  </div>
+
+  <div class="journey-body">
+
+    <div class="j-step">
+      <div class="j-week">W1</div>
+      <div class="j-spine"><div class="j-spine-dot"></div><div class="j-spine-line"></div></div>
+      <div class="j-content">
+        <div class="j-tag">Phase 01 — Design Input</div>
+        <div class="j-title">Client Brief & 2D Drawing Analysis</div>
+        <div class="j-desc">The project began with the Phones-R-Us client brief and a <strong>2D technical drawing</strong> of the bottom casing. Before any CAD work, this drawing was dissected — every dimension, tolerance, and feature catalogued. The top casing had no drawing: it required <strong>physical reverse engineering</strong> from the client's reference part, using manual measurement and digital calipers to extract every geometry needed for a faithful CAD model.</div>
+        <div class="j-pills">
+          <span class="j-pill done">Client Drawing Reviewed</span>
+          <span class="j-pill done">Reverse Engineering Initiated</span>
+          <span class="j-pill done">Dimensional Audit Complete</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="j-step">
+      <div class="j-week">W2</div>
+      <div class="j-spine"><div class="j-spine-dot"></div><div class="j-spine-line"></div></div>
+      <div class="j-content">
+        <div class="j-tag">Phase 02 — CAD Modelling</div>
+        <div class="j-title">Fusion 360 — Top & Bottom Casing</div>
+        <div class="j-desc">Both casings were modelled in <strong>Autodesk Fusion 360</strong>. The bottom casing was built directly from the technical drawing — every dimension, boss, and port replicated precisely. The top casing was reverse-engineered: a 3D model constructed from physical measurements, cross-referenced against the reference part until every surface matched. Particular attention was paid to the <strong>mating features between top and bottom</strong> — the press-fit geometry that would later be tested at FESTO Station 4.</div>
+        <div class="j-pills">
+          <span class="j-pill done">Bottom Casing — From Drawing</span>
+          <span class="j-pill done">Top Casing — Reverse Engineered</span>
+          <span class="j-pill done">Press-Fit Features Modelled</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="j-step">
+      <div class="j-week">W3–4</div>
+      <div class="j-spine"><div class="j-spine-dot"></div><div class="j-spine-line"></div></div>
+      <div class="j-content">
+        <div class="j-tag">Phase 03 — Initial Print Trials</div>
+        <div class="j-title">Ultimaker S3/S5 — First Attempt</div>
+        <div class="j-desc">With CAD complete, the first prints were run on the <strong>Ultimaker S3 and S5 Extended</strong>. Fifteen prints were produced. The results were deeply unsatisfactory — <strong>10 prints failed outright</strong>, and of the 7 that looked visually acceptable, not a single one passed the FESTO laser measurement station. The critical failure: wall depth measuring <strong>1.18mm</strong> against a required 1.6–2.2mm. Quality was inconsistent, layer shifting was frequent, and support removal was damaging parts. The Ultimaker platform was clearly incapable of holding the dimensional tolerances this job required. A decision was made: change the printer, not the design.</div>
+        <div class="j-pills">
+          <span class="j-pill fail">15 Prints — 10 Failures</span>
+          <span class="j-pill fail">0 / 7 Pass FESTO Laser</span>
+          <span class="j-pill warn">Decision: Switch Platform</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="j-step">
+      <div class="j-week">W4–5</div>
+      <div class="j-spine"><div class="j-spine-dot"></div><div class="j-spine-line"></div></div>
+      <div class="j-content">
+        <div class="j-tag">Phase 04 — Platform Switch</div>
+        <div class="j-title">Bambu Lab P1S — The Right Tool</div>
+        <div class="j-desc">The switch to the <strong>Bambu Lab P1S</strong> was transformative. Five test prints were run. Four were successful — three of those were dimensionally <strong>perfect across all FESTO stations</strong>. The one failure was a USB interruption mid-print (not a quality issue — eliminated immediately by switching to cloud printing). Wall thickness achieved: <strong>1.9mm</strong>, comfortably within specification. The Bambu's closed-chamber environment, AMS auto-calibration, and 500mm/s print speed produced the dimensional consistency the Ultimaker never could. Settings were locked, the slicer profile saved, and the platform selected for full production.</div>
+        <div class="j-pills">
+          <span class="j-pill done">4 / 5 Successful Prints</span>
+          <span class="j-pill done">1.9mm Wall Thickness ✓</span>
+          <span class="j-pill done">Cloud Printing Enabled</span>
+          <span class="j-pill done">Production Settings Locked</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="j-step">
+      <div class="j-week">W3–5</div>
+      <div class="j-spine"><div class="j-spine-dot"></div><div class="j-spine-line"></div></div>
+      <div class="j-content">
+        <div class="j-tag">Phase 05 — Risk Analysis</div>
+        <div class="j-title">PFMEA — Failure Before It Happens</div>
+        <div class="j-desc">Running concurrently with print trials, the <strong>Process Failure Mode and Effects Analysis</strong> was built out across all four process areas: 3D printing (both platforms), FESTO assembly, and 24/7 capacity operation. Twelve failure modes were identified. The highest RPN was <strong>400</strong> — an operator safety risk from sharp casing edges, addressed immediately with chamfered edges and a mandatory deburring station. The Ultimaker's dimensional failure (RPN 288) was already being resolved by the platform switch. PFMEA wasn't retrospective documentation — it was used to drive decisions in real time.</div>
+        <div class="j-pills">
+          <span class="j-pill done">12 Failure Modes Logged</span>
+          <span class="j-pill done">Max RPN 400 → 80</span>
+          <span class="j-pill done">Safety Items Actioned</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="j-step">
+      <div class="j-week">W6</div>
+      <div class="j-spine"><div class="j-spine-dot"></div><div class="j-spine-line"></div></div>
+      <div class="j-content">
+        <div class="j-tag">Phase 06 — Traceability</div>
+        <div class="j-title">Part Identification & Traceability System</div>
+        <div class="j-desc">Every casing produced was given a <strong>unique part identifier</strong> — embedded directly into the print or applied as a label — to enable full manufacturing traceability. This included batch number, printer ID, print date, and slicer settings version. In a 50,000-unit annual production run, traceability isn't optional: it's the mechanism by which defects are traced back to source, SPC data is meaningful, and recalls are manageable. The system was designed to integrate with the broader <strong>Siemens Insights Hub IIoT platform</strong> as the production line scales.</div>
+        <div class="j-pills">
+          <span class="j-pill done">Part IDs Embedded</span>
+          <span class="j-pill done">Batch Tracking Active</span>
+          <span class="j-pill done">IIoT Integration Planned</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="j-step">
+      <div class="j-week">W6–7</div>
+      <div class="j-spine"><div class="j-spine-dot"></div><div class="j-spine-line"></div></div>
+      <div class="j-content">
+        <div class="j-tag">Phase 07 — Quality Control</div>
+        <div class="j-title">SPC Analysis & Machine Qualification</div>
+        <div class="j-desc">With the Bambu P1S confirmed as the production printer, formal <strong>Statistical Process Control</strong> was implemented. Wall thickness and key dimensional measurements were tracked across multiple prints, control charts generated, and the process capability confirmed. The Bambu achieved <strong>±0.1mm dimensional tolerance</strong> against a maximum allowable of ±0.15mm — process capability confirmed. Machine qualification was completed: the Bambu P1S fleet was officially certified as production-ready. The Ultimaker was formally retired from the process.</div>
+        <div class="j-pills">
+          <span class="j-pill done">SPC Charts Generated</span>
+          <span class="j-pill done">±0.1mm Achieved</span>
+          <span class="j-pill done">Bambu P1S Qualified</span>
+          <span class="j-pill done">Ultimaker Retired</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="j-step">
+      <div class="j-week">W7–8</div>
+      <div class="j-spine"><div class="j-spine-dot"></div><div class="j-spine-line"></div></div>
+      <div class="j-content">
+        <div class="j-tag">Phase 08 — Simulation</div>
+        <div class="j-title">Siemens Tecnomatix — Plant Simulation</div>
+        <div class="j-desc">The production system was modelled in <strong>Siemens Tecnomatix Plant Simulation</strong> using Discrete Event Simulation. The full 25-printer Bambu fleet was simulated under 24/7 operating conditions, validating the capacity model against the 50,000-unit annual target. Key outputs included value stream mapping, takt time analysis, process flow diagrams, and a manufacturing sequence chart. <strong>Bottleneck analysis</strong> identified the FESTO Station 2 laser measurement as the rate-limiting step under high throughput — leading to the recommendation for a secondary laser station in the full production build. The Siemens Insights Hub IIoT platform was explored for real-time machine data integration.</div>
+        <div class="j-pills">
+          <span class="j-pill done">DES Model Built</span>
+          <span class="j-pill done">50K/Year Validated</span>
+          <span class="j-pill done">Bottleneck Identified</span>
+          <span class="j-pill done">Value Stream Mapped</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="j-step">
+      <div class="j-week">W9</div>
+      <div class="j-spine"><div class="j-spine-dot"></div></div>
+      <div class="j-content">
+        <div class="j-tag">Phase 09 — Delivery</div>
+        <div class="j-title">Prototype Submission & Full Report</div>
+        <div class="j-desc">Week 9 was delivery. The prototype casings — printed on the Bambu P1S, dimensionally verified, and fully traced — were submitted alongside a <strong>complete digital manufacturing portfolio</strong>: PFMEA register, SPC data, capacity simulation, business model canvas, and this project website. The FESTO CP Lab run was completed, all 6 stations tested, and the assembly process formally verified. The minimum viable product had been built, measured, and learned from — through three distinct build-measure-learn cycles over the 9 weeks.</div>
+        <div class="j-pills">
+          <span class="j-pill done">Prototype Delivered</span>
+          <span class="j-pill done">FESTO Run Complete</span>
+          <span class="j-pill done">Full Portfolio Submitted</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── METHODOLOGY ─── -->
+<section id="methodology" class="reveal">
+  <div class="meth-head">
+    <div class="meth-head-label">
+      <div class="sec-tag">03 — Methodology</div>
+    </div>
+    <div class="meth-head-content">
+      <h2>Digital Mfg.<br><em>Toolkit.</em></h2>
+      <p>Every methodology applied in this project maps to a real Industry 4.0 framework. These aren't academic exercises — they are the tools used to design, de-risk, simulate, and scale a production system from a blank sheet of paper to 50,000 units per year.</p>
+    </div>
+  </div>
+  <div class="meth-grid">
+
+    <div class="meth-card">
+      <div class="mc-icon"><svg viewBox="0 0 32 32"><path d="M4 28V8l12-4 12 4v20"/><path d="M16 4v24"/><path d="M4 16h24"/></svg></div>
+      <div class="mc-tag">Lean Manufacturing</div>
+      <div class="mc-title">Value Stream Mapping</div>
+      <div class="mc-desc">Every step in the production process — from raw filament to shipped casing — was mapped to identify value-adding vs non-value-adding activities. VSM exposed the Ultimaker changeover as pure waste, reinforcing the decision to standardise on the Bambu P1S fleet.</div>
+      <div class="mc-watermark">VSM</div>
+    </div>
+
+    <div class="meth-card">
+      <div class="mc-icon"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="10"/><path d="M16 6v10l6 6"/></svg></div>
+      <div class="mc-tag">Production Planning</div>
+      <div class="mc-title">Takt Time Analysis</div>
+      <div class="mc-desc">With a target of 50,000 casings per year and a 2.5-hour cycle time per set, takt time analysis validated the 25-printer 24/7 configuration. It also revealed that a single 8-hour shift would require 75 printers — a capital cost 3× higher for the same output.</div>
+      <div class="mc-watermark">TAKT</div>
+    </div>
+
+    <div class="meth-card">
+      <div class="mc-icon"><svg viewBox="0 0 32 32"><rect x="3" y="3" width="10" height="10" rx="1"/><rect x="19" y="3" width="10" height="10" rx="1"/><rect x="3" y="19" width="10" height="10" rx="1"/><rect x="19" y="19" width="10" height="10" rx="1"/><path d="M13 8h6M8 13v6M24 13v6M13 24h6"/></svg></div>
+      <div class="mc-tag">Process Design</div>
+      <div class="mc-title">Process Flow Diagram</div>
+      <div class="mc-desc">A structured process flow chart documented every operation from design to dispatch — CAD, slicing, printing, quality inspection, FESTO assembly, and packing. This became the input data for the Siemens Tecnomatix simulation and the PFMEA process function column.</div>
+      <div class="mc-watermark">PFD</div>
+    </div>
+
+    <div class="meth-card">
+      <div class="mc-icon"><svg viewBox="0 0 32 32"><path d="M4 28L4 8"/><path d="M4 8l8 8 8-8 8 8"/><path d="M4 28h24"/></svg></div>
+      <div class="mc-tag">Quality Engineering</div>
+      <div class="mc-title">Statistical Process Control</div>
+      <div class="mc-desc">Wall thickness and dimensional measurements from the Bambu P1S fleet were tracked on control charts. SPC confirmed the process was in control (±0.1mm vs ±0.15mm spec), machine capability was calculated, and the production baseline was locked before scaling to 25 printers.</div>
+      <div class="mc-watermark">SPC</div>
+    </div>
+
+    <div class="meth-card">
+      <div class="mc-icon"><svg viewBox="0 0 32 32"><path d="M16 4l4 8h8l-6 6 2 8-8-4-8 4 2-8-6-6h8z"/></svg></div>
+      <div class="mc-tag">Risk Management</div>
+      <div class="mc-title">PFMEA Analysis</div>
+      <div class="mc-desc">Process Failure Mode and Effects Analysis was applied across all four process areas. Twelve failure modes were identified and scored. Every high-RPN item had a corrective action assigned, a responsible owner, a target date, and a verified post-action RPN — turning risk analysis into a live control document.</div>
+      <div class="mc-watermark">PFMEA</div>
+    </div>
+
+    <div class="meth-card">
+      <div class="mc-icon"><svg viewBox="0 0 32 32"><rect x="4" y="4" width="24" height="24" rx="2"/><path d="M10 4v24M22 4v24M4 16h24"/><circle cx="16" cy="10" r="2" fill="currentColor" stroke="none"/><circle cx="16" cy="22" r="2" fill="currentColor" stroke="none"/></svg></div>
+      <div class="mc-tag">Simulation</div>
+      <div class="mc-title">Discrete Event Simulation</div>
+      <div class="mc-desc">Tecnomatix Plant Simulation was used to model the production system as a series of events — each print cycle, quality check, and FESTO station modelled as a discrete operation with its own process time, failure rate, and resource constraint. The model validated the 50K/year target and pinpointed Station 2 as the throughput bottleneck.</div>
+      <div class="mc-watermark">DES</div>
+    </div>
+
+    <div class="meth-card">
+      <div class="mc-icon"><svg viewBox="0 0 32 32"><circle cx="8" cy="16" r="4"/><circle cx="24" cy="8" r="4"/><circle cx="24" cy="24" r="4"/><path d="M12 14.5l8-5M12 17.5l8 5"/></svg></div>
+      <div class="mc-tag">Industry 4.0</div>
+      <div class="mc-title">IIoT — Siemens Insights Hub</div>
+      <div class="mc-desc">The Industrial Internet of Things layer was explored through the Siemens Insights Hub platform. In a scaled production environment, real-time machine data from the Bambu P1S fleet — temperatures, print progress, failure alerts — feeds directly into a cloud dashboard, enabling predictive maintenance and eliminating unplanned downtime.</div>
+      <div class="mc-watermark">IIoT</div>
+    </div>
+
+    <div class="meth-card">
+      <div class="mc-icon"><svg viewBox="0 0 32 32"><path d="M16 4c0 0-8 4-8 12s8 12 8 12 8-4 8-12-8-12-8-12z"/><path d="M8 16h16"/></svg></div>
+      <div class="mc-tag">Strategy</div>
+      <div class="mc-title">Business Model Canvas</div>
+      <div class="mc-desc">The business model canvas framed Paniz Manufacturing as a commercial entity — value proposition, customer segments, key resources, cost structure, and revenue streams all mapped out. This grounded the technical manufacturing work in a commercial reality: we aren't just printing parts, we are running a manufacturing business.</div>
+      <div class="mc-watermark">BMC</div>
+    </div>
+
+    <div class="meth-card">
+      <div class="mc-icon"><svg viewBox="0 0 32 32"><path d="M4 20l8-8 6 6 10-14"/><circle cx="4" cy="20" r="2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/><circle cx="18" cy="18" r="2" fill="currentColor" stroke="none"/><circle cx="28" cy="6" r="2" fill="currentColor" stroke="none"/></svg></div>
+      <div class="mc-tag">Validation</div>
+      <div class="mc-title">Machine Qualification & Process Capability</div>
+      <div class="mc-desc">Before committing to 25 printers, the Bambu P1S was formally qualified: process capability indices calculated, gauge repeatability confirmed, and a controlled acceptance test run. Qualification is what separates a promising prototype from a production-ready system. The Ultimaker failed this step; the Bambu passed it.</div>
+      <div class="mc-watermark">Cpk</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── BUILD MEASURE LEARN ─── -->
+<section id="bml" class="reveal">
+  <div class="label-col">
+    <div>
+      <div class="sec-tag">04 — Framework</div>
+      <div class="sec-big-num">MVP</div>
+    </div>
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Lean Start-Up<br>Applied to Manufacturing</div>
+  </div>
+  <div class="bml-content">
+    <h2>Build →<br><em>Measure →<br>Learn.</em></h2>
+    <div class="bml-sub">Minimum Viable Product · Lean Start-Up Applied to Digital Manufacturing</div>
+    <div class="bml-cycle">
+      <div class="bml-node">
+        <div class="bml-node-n">01</div>
+        <div class="bml-node-title">Build</div>
+        <div class="bml-node-sub">Minimum Viable Product</div>
+        <div class="bml-node-desc">Don't design perfection — build the <strong>simplest version that can be tested</strong>. First prints on the Ultimaker were the MVP: rough, imperfect, but enough to learn from. The CAD model was the next MVP. The Bambu P1S slicer profile was another.</div>
+      </div>
+      <div class="bml-node">
+        <div class="bml-node-n">02</div>
+        <div class="bml-node-title">Measure</div>
+        <div class="bml-node-sub">Data-Driven Decisions</div>
+        <div class="bml-node-desc">Every build was measured against hard criteria — FESTO laser station pass/fail, wall thickness, dimensional accuracy. <strong>Not gut feel. Data.</strong> The laser measurement station made the Ultimaker's failure undeniable. SPC made the Bambu's success provable.</div>
+      </div>
+      <div class="bml-node">
+        <div class="bml-node-n">03</div>
+        <div class="bml-node-title">Learn</div>
+        <div class="bml-node-sub">Pivot or Persevere</div>
+        <div class="bml-node-desc">Each measurement generated a decision: <strong>pivot or persevere</strong>. Ultimaker → pivot to Bambu. USB printing → pivot to cloud. Sharp edges → add deburring. The project ran three distinct BML cycles in 9 weeks. Each one tightened the system.</div>
+      </div>
+    </div>
+    <div class="bml-project-map">
+      <div class="bml-pm-item">
+        <div class="bml-pm-label">Cycle 1</div>
+        <div class="bml-pm-val">Build: <em>Ultimaker prints</em><br>Measure: FESTO laser<br>Learn: <em>Switch printer</em></div>
+      </div>
+      <div class="bml-pm-item">
+        <div class="bml-pm-label">Cycle 2</div>
+        <div class="bml-pm-val">Build: <em>Bambu P1S prints</em><br>Measure: SPC + FESTO<br>Learn: <em>Lock settings, scale up</em></div>
+      </div>
+      <div class="bml-pm-item">
+        <div class="bml-pm-label">Cycle 3</div>
+        <div class="bml-pm-val">Build: <em>25-printer simulation</em><br>Measure: DES throughput<br>Learn: <em>Station 2 bottleneck</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DIGITAL TOOLS ─── -->
+<section id="tools" class="reveal">
+  <div class="tool-block">
+    <div class="tool-logo">F360</div>
+    <div class="tool-name">Autodesk Fusion 360</div>
+    <div class="tool-cat">CAD Modelling</div>
+    <div class="tool-desc">Parametric CAD modelling of both casings — top reverse-engineered, bottom from technical drawing. Full assembly modelled to verify press-fit geometry before printing.</div>
+  </div>
+  <div class="tool-block">
+    <div class="tool-logo">Bambu</div>
+    <div class="tool-name">Bambu Lab P1S</div>
+    <div class="tool-cat">Production Printer</div>
+    <div class="tool-desc">High-speed closed-chamber FDM. AMS auto-calibration, 500mm/s print speed, cloud printing via Bambu Cloud. Selected after Ultimaker failed dimensional qualification.</div>
+  </div>
+  <div class="tool-block">
+    <div class="tool-logo">TXMT</div>
+    <div class="tool-name">Siemens Tecnomatix</div>
+    <div class="tool-cat">Plant Simulation / DES</div>
+    <div class="tool-desc">Discrete Event Simulation of the full 25-printer production system. Value stream mapping, takt time, bottleneck analysis, and capacity validation for 50,000 units/year target.</div>
+  </div>
+  <div class="tool-block">
+    <div class="tool-logo">IHub</div>
+    <div class="tool-name">Siemens Insights Hub</div>
+    <div class="tool-cat">IIoT Platform</div>
+    <div class="tool-desc">Industrial IoT platform explored for real-time machine data integration. Enables predictive maintenance, live print monitoring, and remote oversight of the 24/7 unattended fleet.</div>
+  </div>
+</section>
+
+<!-- ─── KEY OUTCOMES ─── -->
+<section id="outcomes" class="reveal">
+  <div class="stat-block">
+    <div class="stat-n">80<span class="u">%</span></div>
+    <div class="stat-desc">Bambu Success Rate</div>
+    <div class="stat-note">4 of 5 prints passed — 3 dimensionally perfect</div>
+  </div>
+  <div class="stat-block">
+    <div class="stat-n">0<span class="u">%</span></div>
+    <div class="stat-desc">Ultimaker Pass Rate</div>
+    <div class="stat-note">0 of 15 prints passed FESTO laser station</div>
+  </div>
+  <div class="stat-block">
+    <div class="stat-n">25<span class="u">×</span></div>
+    <div class="stat-desc">Bambu P1S Fleet</div>
+    <div class="stat-note">24/7 operation = 50K casings/year</div>
+  </div>
+  <div class="stat-block">
+    <div class="stat-n">3</div>
+    <div class="stat-desc">BML Cycles Completed</div>
+    <div class="stat-note">Build → Measure → Learn in 9 weeks</div>
+  </div>
+</section>
+
+<!-- ─── FESTO STATIONS ─── -->
+<section id="festo" class="reveal">
+  <div class="label-col">
+    <div>
+      <div class="sec-tag">05 — Assembly</div>
+      <div class="sec-big-num">FESTO</div>
+    </div>
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">CP Lab<br>6-Station Line</div>
+  </div>
+  <div class="festo-content">
+    <h2>FESTO CP Lab<br><em>Assembly Line.</em></h2>
+    <div class="festo-sub">The final proof — 6 stations, live assembly, real parts</div>
+    <div class="festo-stations">
+      <div class="festo-st pass">
+        <div class="fst-num">01</div>
+        <div class="fst-status pass"><span class="dot"></span>Pass</div>
+        <div class="fst-title">Part ID</div>
+        <div class="fst-desc">Traceability label read and verified. Part batch confirmed before proceeding.</div>
+      </div>
+      <div class="festo-st fail">
+        <div class="fst-num">02</div>
+        <div class="fst-status fail"><span class="dot"></span>Critical</div>
+        <div class="fst-title">Laser Measurement</div>
+        <div class="fst-desc">Wall depth checked. Ultimaker prints failed here (1.18mm). Bambu prints pass consistently.</div>
+      </div>
+      <div class="festo-st pass">
+        <div class="fst-num">03</div>
+        <div class="fst-status pass"><span class="dot"></span>Pass</div>
+        <div class="fst-title">Visual Inspection</div>
+        <div class="fst-desc">Surface quality, edge condition, and cosmetic finish verified by automated camera.</div>
+      </div>
+      <div class="festo-st pass">
+        <div class="fst-num">04</div>
+        <div class="fst-status pass"><span class="dot"></span>Pass</div>
+        <div class="fst-title">Press Fit</div>
+        <div class="fst-desc">Top casing pressed onto bottom. Revised tolerances from CAD ensure consistent engagement.</div>
+      </div>
+      <div class="festo-st pass">
+        <div class="fst-num">05</div>
+        <div class="fst-status pass"><span class="dot"></span>Pass</div>
+        <div class="fst-title">Weight Check</div>
+        <div class="fst-desc">Assembled casing weighed. Validates material consistency and detects missing features.</div>
+      </div>
+      <div class="festo-st pass">
+        <div class="fst-num">06</div>
+        <div class="fst-status pass"><span class="dot"></span>Pass</div>
+        <div class="fst-title">Final Sign-off</div>
+        <div class="fst-desc">Complete assembly inspected. Passed units logged to traceability system and cleared for dispatch.</div>
+      </div>
+    </div>
+    <div class="festo-note">
+      <div class="festo-note-icon">⚠</div>
+      <p><strong>Station 2 was the critical failure point</strong> throughout Ultimaker trials. The FESTO laser measured a consistent 1.18mm depth — outside the 1.6–2.2mm specification — causing 100% rejection of all Ultimaker prints. After the switch to Bambu P1S, Station 2 rejections dropped to zero. This single data point from the FESTO line was the primary evidence driving the printer platform decision.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRACEABILITY ─── -->
+<section id="traceability" class="reveal">
+  <div class="trace-card">
+    <div class="trace-tag">06 — Quality System</div>
+    <div class="trace-title">Traceability<br>& IIoT</div>
+    <div class="trace-desc">Every casing carries a <strong>unique identifier</strong> — batch number, printer ID, print date, slicer version. In a 50,000-unit annual run, traceability is the backbone of a quality system: it's what makes SPC data actionable, defect root-cause analysis possible, and a recall manageable without scrapping an entire production batch.</div>
+    <div class="trace-features">
+      <div class="trace-feat">Unique part ID per casing — embedded or labelled</div>
+      <div class="trace-feat">Batch number linked to printer, date, and slicer profile version</div>
+      <div class="trace-feat">FESTO station pass/fail logged against each part ID</div>
+      <div class="trace-feat">SPC data tagged by printer ID to isolate machine drift</div>
+      <div class="trace-feat">IIoT integration with Siemens Insights Hub planned for full-scale</div>
+    </div>
+    <div class="trace-wm">TRACE</div>
+  </div>
+  <div class="trace-card">
+    <div class="trace-tag">Industry 4.0</div>
+    <div class="trace-title">Data is the<br>Real Product</div>
+    <div class="trace-desc">In Industry 4.0, <strong>the more information you have about your manufacturing system, the easier it is to implement, optimise, and scale</strong>. The phone casing is the deliverable. The data generated in making it — print parameters, dimensional measurements, cycle times, failure rates — is what powers continuous improvement.</div>
+    <div class="trace-features">
+      <div class="trace-feat">Siemens Insights Hub — real-time machine telemetry from Bambu fleet</div>
+      <div class="trace-feat">Tecnomatix DES — virtual factory model updated with live data</div>
+      <div class="trace-feat">Bambu Cloud — remote print monitoring, progress tracking, alerts</div>
+      <div class="trace-feat">SPC dashboard — live control charts, drift detection, Cpk monitoring</div>
+      <div class="trace-feat">Camera system — 24/7 visual oversight of unattended overnight operation</div>
+    </div>
+    <div class="trace-wm">4.0</div>
+  </div>
+</section>
+
+<!-- ─── PORTFOLIO NOTE ─── -->
+<section id="portfolio-note" class="reveal">
+  <div class="pn-bg">PROCESS</div>
+  <div class="pn-tag">This Portfolio</div>
+  <h2 class="pn-h2">It's About<br><em>The Process.</em></h2>
+  <p class="pn-body">This blog is not a product catalogue. It is a <strong>record of engineering decision-making</strong> — every wrong turn documented, every pivot justified with data, every methodology applied with intention. A client reading this portfolio should see a team that can identify what's wrong, know how to fix it, and prove the fix worked. That's what digital manufacturing looks like in practice.</p>
+  <div class="pn-grid">
+    <div class="pn-item">
+      <div class="pn-item-n">9</div>
+      <div class="pn-item-l">Weeks of documented process</div>
+    </div>
+    <div class="pn-item">
+      <div class="pn-item-n">3</div>
+      <div class="pn-item-l">Build → Measure → Learn cycles</div>
+    </div>
+    <div class="pn-item">
+      <div class="pn-item-n">6</div>
+      <div class="pn-item-l">Core digital mfg. methodologies applied</div>
+    </div>
   </div>
 </section>
 
 <footer>
-  <div><div class="f-logo">Paniz Manufacturing Co.</div></div>
-  <div class="f-links"><a href="design.html">Design</a><a href="printing.html">3D Printing</a><a href="simulation.html">Capacity</a></div>
+  <div class="f-logo">PANIZ<span>.</span></div>
+  <div class="f-copy">© 2026 — Digital Manufacturing Portfolio · Phones-R-Us Project</div>
+  <div class="f-links">
+    <a href="project.html">Project</a>
+    <a href="design.html">Design</a>
+    <a href="pfmea.html">PFMEA</a>
+    <a href="printing.html">3D Printing</a>
+    <a href="quality.html">Quality</a>
+    <a href="simulation.html">Simulation</a>
+  </div>
 </footer>
+
+<script>
+/* CURSOR */
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+let rx=0,ry=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
+(function animRing(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';ring.style.opacity='0';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.opacity='.4';});
+});
+
+/* SCROLL REVEAL */
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')}),{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* STAT COUNT-UP */
+const sobs=new IntersectionObserver(e=>e.forEach(x=>{
+  if(x.isIntersecting){
+    x.target.querySelectorAll('.stat-n').forEach(el=>{
+      const u=el.querySelector('.u');const uH=u?u.outerHTML:'';
+      const num=parseFloat(el.textContent);
+      if(!isNaN(num)){
+        el.innerHTML='<span class="nv">0</span>'+uH;
+        let v=0;const dur=1400,step=16,inc=num/(dur/step);
+        const t=setInterval(()=>{v=Math.min(v+inc,num);
+          el.querySelector('.nv').textContent=Number.isInteger(num)?Math.floor(v):v.toFixed(1);
+          if(v>=num)clearInterval(t);},step);
+      }
+    });
+  }
+}),{threshold:.3});
+const oc=document.getElementById('outcomes');if(oc)sobs.observe(oc);
+
+/* PROCESS WHEEL — position nodes correctly around circle */
+(function positionNodes(){
+  const wheel=document.querySelector('.process-wheel');
+  if(!wheel)return;
+  const nodes=wheel.querySelectorAll('.pw-node');
+  const cx=150,cy=150,r=130;
+  const angles=[-90,-30,30,90,150,210];
+  nodes.forEach((node,i)=>{
+    const angle=angles[i]*Math.PI/180;
+    const x=cx+r*Math.cos(angle);
+    const y=cy+r*Math.sin(angle);
+    node.style.left=x+'px';
+    node.style.top=y+'px';
+    node.style.position='absolute';
+    node.style.transform='translate(-50%,-50%)';
+  });
+})();
+</script>
 </body>
 </html>
