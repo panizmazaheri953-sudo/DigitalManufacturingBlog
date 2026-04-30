@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Printing | Paniz Manufacturing</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{--navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--cyan:#00e5ff;--cyan2:#00b8cc;--white:#f0f4ff;--muted:#7a8fa8;--border:rgba(0,229,255,0.15);--card:rgba(15,32,64,0.6);--ff:'Space Grotesk',sans-serif;--fm:'Space Mono',monospace;}
+  body{font-family:var(--ff);background:var(--navy);color:var(--white);}
+  nav{position:sticky;top:0;z-index:999;background:rgba(5,13,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;}
+  .logo{font-family:var(--fm);font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);}
+  .nav-links{display:flex;gap:0;list-style:none;}
+  .nav-links a{display:block;padding:0 1.2rem;height:64px;line-height:64px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:2px solid transparent;}
+  .nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan);}
+  .nav-cta{font-family:var(--fm);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--cyan);color:var(--cyan);padding:.45rem 1.1rem;text-decoration:none;}
+  .page-hero{padding:4rem 5% 3rem;text-align:center;}
+  .hero-badge{font-family:var(--fm);font-size:.7rem;color:var(--cyan);border:1px solid var(--border);padding:.35rem .9rem;display:inline-block;margin-bottom:1.5rem;}
+  .page-hero h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:700;text-transform:uppercase;}
+  .page-hero h1 span{color:var(--cyan);}
+  section{padding:3rem 5%;max-width:1200px;margin:0 auto;}
+  .sec-label{font-family:var(--fm);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem;}
+  .sec-label::after{content:'';flex:0 0 40px;height:1px;background:var(--cyan);}
+  .comparison-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0;}
+  .printer-card{background:var(--card);border:1px solid var(--border);padding:1.5rem;transition:all .3s;}
+  .printer-card:hover{transform:translateY(-4px);border-color:var(--cyan);}
+  .printer-card h3{color:var(--cyan);font-size:1.2rem;margin-bottom:.25rem;}
+  .metric-row{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--border);font-size:.85rem;}
+  .metric-pass{color:#4ade80;font-weight:600;}
+  .metric-fail{color:#f87171;font-weight:600;}
+  .settings-table{width:100%;border-collapse:collapse;margin:2rem 0;background:var(--card);border:1px solid var(--border);}
+  .settings-table th,.settings-table td{padding:.75rem;text-align:left;border-bottom:1px solid var(--border);}
+  .settings-table th{color:var(--cyan);font-family:var(--fm);}
+  footer{background:var(--navy2);border-top:1px solid var(--border);padding:2rem 5%;display:flex;justify-content:space-between;flex-wrap:wrap;}
+  @media(max-width:800px){.nav-links{display:none;}.comparison-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Paniz Manufacturing</span>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="project.html">Project</a></li><li><a href="design.html">Design</a></li>
+    <li><a href="pfmea.html">PFMEA</a></li><li><a href="printing.html" class="active">3D Printing</a></li>
+    <li><a href="quality.html">Quality</a></li><li><a href="simulation.html">Simulation</a></li>
+  </ul>
+  <a class="nav-cta" href="simulation.html">50K Target</a>
+</nav>
+
+<div class="page-hero"><div class="hero-badge">FDM Additive Manufacturing</div><h1>3D Printing <span>Comparison</span></h1></div>
+
+<section>
+  <div class="sec-label">Ultimaker vs Bambu</div>
+  <div class="comparison-grid">
+    <div class="printer-card"><h3>Ultimaker S3 / S5 Extended</h3><p style="font-size:.7rem;color:var(--muted);margin-bottom:1rem;">15 prints · Initial trials</p>
+      <div class="metric-row"><span>FESTO Pass Rate</span><span class="metric-fail">0% (0/15)</span></div>
+      <div class="metric-row"><span>Layer Shifting</span><span class="metric-fail">Frequent</span></div>
+      <div class="metric-row"><span>Clogging</span><span class="metric-fail">Multiple incidents</span></div>
+      <div class="metric-row"><span>Dimensional Accuracy</span><span class="metric-fail">Out of spec (1.18mm vs 1.6-2.2mm)</span></div>
+    </div>
+    <div class="printer-card"><h3>Bambu Lab P1S</h3><p style="font-size:.7rem;color:var(--muted);margin-bottom:1rem;">5 prints · Final production</p>
+      <div class="metric-row"><span>FESTO Pass Rate</span><span class="metric-pass">80% (4/5 passed)</span></div>
+      <div class="metric-row"><span>Layer Shifting</span><span class="metric-pass">None</span></div>
+      <div class="metric-row"><span>Clogging</span><span class="metric-pass">None</span></div>
+      <div class="metric-row"><span>Dimensional Accuracy</span><span class="metric-pass">Within spec</span></div>
+    </div>
+  </div>
+
+  <div class="sec-label">Final Print Settings (Bambu P1S)</div>
+  <table class="settings-table">
+    <tr><th>Parameter</th><th>Value</th></tr>
+    <tr><td>Layer Height</td><td>0.15 mm</td></tr>
+    <tr><td>Infill</td><td>25%</td></tr>
+    <tr><td>Nozzle Temperature</td><td>205°C</td></tr>
+    <tr><td>Bed Temperature</td><td>60°C</td></tr>
+    <tr><td>Print Speed</td><td>45 mm/s</td></tr>
+    <tr><td>Material</td><td>White PLA</td></tr>
+    <tr><td>Print Time (both casings)</td><td>2.5 hours</td></tr>
+  </table>
+</section>
+
+<footer><div><div class="f-logo">Paniz Manufacturing Co.</div></div><div class="f-links"><a href="design.html">Design</a><a href="quality.html">Quality</a></div></footer>
+</body>
+</html>
