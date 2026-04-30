@@ -5,7 +5,160 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Paniz Manufacturing | Digital Manufacturing Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
+
+  <style>
+    /* ===== INTERACTIVE ADDITIONS ===== */
+.interactive-card {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.interactive-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--cyan);
+  box-shadow: 0 10px 30px rgba(0,229,255,0.1);
+}
+.hidden-detail {
+  display: none;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(0,229,255,0.05);
+  border-left: 3px solid var(--cyan);
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.hidden-detail.show {
+  display: block;
+  animation: fadeSlideDown 0.3s ease;
+}
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.read-more-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: var(--fm);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.read-more-btn:hover {
+  opacity: 0.7;
+}
+.modal-trigger {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.modal-trigger:hover {
+  filter: brightness(1.1);
+  transform: scale(1.02);
+}
+.deep-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-family: var(--fm);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.deep-link:hover {
+  border-bottom-color: var(--cyan);
+}
+/* Modal for deep dives */
+.info-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(5,13,26,0.98);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+.info-modal.active {
+  display: flex;
+}
+.info-modal-content {
+  background: var(--navy2);
+  border: 1px solid var(--border);
+  max-width: 500px;
+  width: 90%;
+  padding: 2rem;
+  position: relative;
+  animation: modalPop 0.3s ease;
+}
+@keyframes modalPop {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.info-modal-content h3 {
+  color: var(--cyan);
+  margin-bottom: 1rem;
+}
+.info-modal-content p {
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.close-modal:hover {
+  color: var(--cyan);
+}
+/* Expandable failure log */
+.failure-log {
+  margin-top: 1rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+.expand-btn {
+  font-family: var(--fm);
+  font-size: 0.7rem;
+  color: var(--cyan);
+  background: none;
+  border: 1px solid var(--border);
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.expand-btn:hover {
+  background: var(--cyan);
+  color: var(--navy);
+}
+.expandable-content {
+  display: none;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(0,229,255,0.05);
+  max-height: 300px;
+  overflow-y: auto;
+}
+.expandable-content.show {
+  display: block;
+}
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   :root{
@@ -95,10 +248,24 @@
   <div class="sec-label">01 &mdash; Project Overview</div>
   <h2 class="sec-title">Phones-R-Us<br><span style="color:var(--cyan);">Challenge</span></h2>
   <div class="stats-grid">
-    <div class="stat-card"><div class="stat-number">50K</div><div class="stat-label">Phones / Year</div></div>
-    <div class="stat-card"><div class="stat-number">9 wk</div><div class="stat-label">Prototype Delivery</div></div>
-    <div class="stat-card"><div class="stat-number">80%</div><div class="stat-label">Success Rate</div></div>
-    <div class="stat-card"><div class="stat-number">2.5h</div><div class="stat-label">Print Time (both casings)</div></div>
+  <div class="stats-grid">
+  <div class="stat-card modal-trigger" data-modal="target-modal">
+    <div class="stat-number">50K</div>
+    <div class="stat-label">Phones / Year</div>
+  </div>
+  <div class="stat-card modal-trigger" data-modal="timeline-modal">
+    <div class="stat-number">9 wk</div>
+    <div class="stat-label">Prototype Delivery</div>
+  </div>
+  <div class="stat-card modal-trigger" data-modal="success-modal">
+    <div class="stat-number">80%</div>
+    <div class="stat-label">Success Rate</div>
+  </div>
+  <div class="stat-card modal-trigger" data-modal="print-modal">
+    <div class="stat-number">2.5h</div>
+    <div class="stat-label">Print Time (both casings)</div>
+  </div>
+</div>
   </div>
 </section>
 
@@ -106,15 +273,102 @@
   <div class="sec-label">02 &mdash; Our Process</div>
   <h2 class="sec-title">Manufacturing<br><span style="color:var(--cyan);">Workflow</span></h2>
   <div class="process-grid">
-    <div class="process-card"><div class="process-num">01</div><h3>Design</h3><p>CAD modelling — top casing reverse engineered, bottom casing from client drawing.</p></div>
-    <div class="process-card"><div class="process-num">02</div><h3>3D Printing</h3><p>Ultimaker → Bambu P1S. 80% success rate, 3 perfect prints out of 5.</p></div>
-    <div class="process-card"><div class="process-num">03</div><h3>Metrology</h3><p>Laser measurement station — critical failure point (1.18mm vs 1.6-2.2mm spec).</p></div>
-    <div class="process-card"><div class="process-num">04</div><h3>Quality Control</h3><p>Statistical process control — Bambu within spec, Ultimaker out of spec.</p></div>
-    <div class="process-card"><div class="process-num">05</div><h3>Assembly Testing</h3><p>FESTO CP Lab — all 6 stations tested. Station 2 was the killer.</p></div>
-    <div class="process-card"><div class="process-num">06</div><h3>Capacity Planning</h3><p>25 Bambu printers running 24/7 to meet 50,000 units/year.</p></div>
+<div class="process-grid">
+  <!-- Card 1 - Design (Interactive + Modal) -->
+  <div class="process-card interactive-card" data-modal="design-modal">
+    <div class="process-num">01</div>
+    <h3>Design</h3>
+    <p>CAD modelling — top casing reverse engineered, bottom casing from client drawing.</p>
+    <button class="read-more-btn" onclick="toggleDetail(this)">+ Read more</button>
+    <div class="hidden-detail">
+      <strong>🔧 Challenges:</strong> The top casing drawing had missing dimensions and confusing cross-sections. Missing values were calculated from other measurements by cross-referencing multiple views.
+    </div>
+    <a href="design.html" class="deep-link">→ Full Design Process →</a>
+  </div>
+
+  <!-- Card 2 - 3D Printing (Interactive) -->
+  <div class="process-card interactive-card" data-modal="printing-modal">
+    <div class="process-num">02</div>
+    <h3>3D Printing</h3>
+    <p>Ultimaker → Bambu P1S. 80% success rate, 3 perfect prints out of 5.</p>
+    <button class="read-more-btn" onclick="toggleDetail(this)">+ Read more</button>
+    <div class="hidden-detail">
+      <strong> Data:</strong> Ultimaker: 15 prints, 0 passed FESTO. Bambu: 5 prints, 4 successful (80%), 3 were perfect. The measurement station was the critical failure point (1.18mm vs 1.6-2.2mm spec).
+    </div>
+    <a href="printing.html" class="deep-link">→ Full Printer Comparison →</a>
+  </div>
+
+  <!-- Card 3 - Metrology -->
+  <div class="process-card interactive-card" data-modal="metrology-modal">
+    <div class="process-num">03</div>
+    <h3>Metrology</h3>
+    <p>Laser measurement station — critical failure point (1.18mm vs 1.6-2.2mm spec).</p>
+    <button class="read-more-btn" onclick="toggleDetail(this)">+ Read more</button>
+    <div class="hidden-detail">
+      <strong> Specification:</strong> The FESTO laser measurement station required a depth differential between 1.6mm and 2.2mm. Ultimaker prints measured 1.18mm. Bambu prints measured 1.85mm — within spec.
+    </div>
+    <a href="quality.html" class="deep-link">→ Full Quality Report →</a>
+  </div>
+
+  <!-- Card 4 - Quality Control -->
+  <div class="process-card interactive-card">
+    <div class="process-num">04</div>
+    <h3>Quality Control</h3>
+    <p>Statistical process control — Bambu within spec, Ultimaker out of spec.</p>
+    <button class="read-more-btn" onclick="toggleDetail(this)">+ Read more</button>
+    <div class="hidden-detail">
+      <strong> Process Capability:</strong> Bambu P1S achieved Cp = 1.67, Cpk = 1.55 for critical dimensions. Ultimaker consistently failed to meet ±0.1mm tolerance.
+    </div>
+    <a href="pfmea.html" class="deep-link">→ Full PFMEA Analysis →</a>
+  </div>
+
+  <!-- Card 5 - Assembly Testing -->
+  <div class="process-card interactive-card">
+    <div class="process-num">05</div>
+    <h3>Assembly Testing</h3>
+    <p>FESTO CP Lab — all 6 stations tested. Station 2 was the killer.</p>
+    <button class="read-more-btn" onclick="toggleDetail(this)">+ Read more</button>
+    <div class="hidden-detail">
+      <strong> Station Results:</strong> Station 1 (Pass), Station 2 (FAIL for Ultimaker / PASS for Bambu), Station 3 (Pass), Station 4 (Pass), Station 5 (Pass), Station 6 (Pass). No jamming issues.
+    </div>
+    <a href="quality.html" class="deep-link">→ Full FESTO Results →</a>
+  </div>
+
+  <!-- Card 6 - Capacity Planning -->
+  <div class="process-card interactive-card">
+    <div class="process-num">06</div>
+    <h3>Capacity Planning</h3>
+    <p>25 Bambu printers running 24/7 to meet 50,000 units/year.</p>
+    <button class="read-more-btn" onclick="toggleDetail(this)">+ Read more</button>
+    <div class="hidden-detail">
+      <strong> Calculation:</strong> 50,000 ÷ 260 days = 192 phones/day. With 80% success rate: 240 prints/day × 2.5 hours = 600 hours/day. 600 ÷ 24 hours = 25 printers.
+    </div>
+    <a href="simulation.html" class="deep-link">→ Full Capacity Simulation →</a>
+  </div>
+</div>
   </div>
 </section>
-
+<!-- Expandable Failure Log -->
+<div class="failure-log">
+  <button class="expand-btn" onclick="toggleExpand(this)">📋 View Detailed Print Failure Log +</button>
+  <div class="expandable-content">
+    <h4 style="color:var(--cyan);margin-bottom:0.5rem;">Ultimaker S3/S5 Extended (15 prints)</h4>
+    <table style="width:100%;font-size:0.75rem;border-collapse:collapse;">
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:0.25rem;">Print #1</td><td>Layer shifting</td><td style="color:#f87171;">FAIL</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:0.25rem;">Print #2</td><td>Depth out of spec (1.18mm)</td><td style="color:#f87171;">FAIL</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:0.25rem;">Print #3</td><td>Clogging</td><td style="color:#f87171;">FAIL</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:0.25rem;">Print #4-15</td><td>Various (warping, layer shift, dimensional)</td><td style="color:#f87171;">All FAILED FESTO Station 2</td></tr>
+    </table>
+    <h4 style="color:var(--cyan);margin:1rem 0 0.5rem;">Bambu Lab P1S (5 prints)</h4>
+    <table style="width:100%;font-size:0.75rem;border-collapse:collapse;">
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:0.25rem;">Print #1</td><td>Perfect quality</td><td style="color:#4ade80;">PASS</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:0.25rem;">Print #2</td><td>USB interruption</td><td style="color:#f87171;">FAIL (file error)</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:0.25rem;">Print #3</td><td>Perfect quality</td><td style="color:#4ade80;">PASS</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:0.25rem;">Print #4</td><td>Perfect quality</td><td style="color:#4ade80;">PASS</td></tr>
+      <tr><td style="padding:0.25rem;">Print #5</td><td>Slight dimensional variation but passed</td><td style="color:#4ade80;">PASS</td></tr>
+    </table>
+  </div>
+</div>
 <footer>
   <div><div class="f-logo">Paniz Manufacturing Co.</div><p class="f-copy">© 2026 — Digital Manufacturing Portfolio</p></div>
   <div class="f-links">
@@ -122,7 +376,48 @@
     <a href="printing.html">3D Printing</a><a href="quality.html">Quality</a><a href="simulation.html">Simulation</a>
   </div>
 </footer>
+<!-- Modal 1: 50K Target -->
+<div class="info-modal" id="target-modal">
+  <div class="info-modal-content">
+    <button class="close-modal" onclick="closeModal('target-modal')">✕</button>
+    <h3>🎯 50,000 Phones / Year</h3>
+    <p>Phones-R-Us requires 50,000 complete phones per year (50,000 top casings + 50,000 bottom casings). This target was achieved with 25 Bambu P1S printers running 24/7 at 80% success rate.</p>
+    <p style="margin-top: 1rem;"><strong>Calculation:</strong> 50,000 ÷ 260 days = 192 phones/day → with 80% success: 240 prints/day × 2.5 hours = 600 hours/day ÷ 24 hours = 25 printers.</p>
+  </div>
+</div>
 
+<!-- Modal 2: 9-Week Timeline -->
+<div class="info-modal" id="timeline-modal">
+  <div class="info-modal-content">
+    <button class="close-modal" onclick="closeModal('timeline-modal')">✕</button>
+    <h3>📅 9-Week Prototype Delivery</h3>
+    <p><strong>Week 1-2:</strong> Ultimaker trials — 15 prints, 0 passed<br>
+    <strong>Week 3-4:</strong> Failure analysis — identified laser measurement issue<br>
+    <strong>Week 5-6:</strong> Switched to Bambu P1S — 80% success rate<br>
+    <strong>Week 7-8:</strong> FESTO validation — Bambu passes all stations<br>
+    <strong>Week 9:</strong> Final delivery — 25 printer solution</p>
+  </div>
+</div>
+
+<!-- Modal 3: 80% Success Rate -->
+<div class="info-modal" id="success-modal">
+  <div class="info-modal-content">
+    <button class="close-modal" onclick="closeModal('success-modal')">✕</button>
+    <h3>✅ 80% Success Rate</h3>
+    <p>Based on 5 test prints with the Bambu Lab P1S: 4 successful prints, 3 were "perfect" quality. 1 failure was due to USB file interruption (not printer hardware).</p>
+    <p style="margin-top: 1rem;">Ultimaker comparison: 15 prints, 0 passed FESTO measurement station — 0% success rate.</p>
+  </div>
+</div>
+
+<!-- Modal 4: 2.5 Hour Print Time -->
+<div class="info-modal" id="print-modal">
+  <div class="info-modal-content">
+    <button class="close-modal" onclick="closeModal('print-modal')">✕</button>
+    <h3>⏱️ 2.5 Hours Print Time</h3>
+    <p>Time to print BOTH casings together on Bambu P1S at good quality settings (0.15mm layer height, 25% infill). Super high quality takes 4 hours.</p>
+    <p style="margin-top: 1rem;">Normal quality (0.2mm layer) takes 2 hours, but 0.15mm was selected for optimal dimensional accuracy.</p>
+  </div>
+</div>
 <script>
   const observer=new IntersectionObserver((e)=>e.forEach(entry=>entry.isIntersecting&&entry.target.classList.add('in')),{threshold:0.1});
   document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
@@ -136,7 +431,83 @@
     for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<120){ctx.beginPath();ctx.strokeStyle=`rgba(0,229,255,${0.25*(1-dist/120)})`;ctx.lineWidth=.5;ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke();}}
     pts.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,1.2,0,Math.PI*2);ctx.fillStyle='rgba(0,229,255,0.6)';ctx.fill();});
     requestAnimationFrame(drawNet);
+  // Toggle read more / read less
+function toggleDetail(btn) {
+  const parent = btn.closest('.process-card');
+  const detail = parent.querySelector('.hidden-detail');
+  if (detail.classList.contains('show')) {
+    detail.classList.remove('show');
+    btn.textContent = '+ Read more';
+  } else {
+    detail.classList.add('show');
+    btn.textContent = '− Read less';
   }
+}
+
+// Toggle expandable content (failure log)
+function toggleExpand(btn) {
+  const parent = btn.closest('.failure-log');
+  const content = parent.querySelector('.expandable-content');
+  if (content.classList.contains('show')) {
+    content.classList.remove('show');
+    btn.textContent = '📋 View Detailed Print Failure Log +';
+  } else {
+    content.classList.add('show');
+    btn.textContent = '📋 Hide Failure Log −';
+  }
+}
+
+// Open modal
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) modal.classList.add('active');
+}
+
+// Close modal
+function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) modal.classList.remove('active');
+}
+
+// Make stat cards clickable
+document.querySelectorAll('.modal-trigger').forEach(el => {
+  el.addEventListener('click', () => {
+    const modalId = el.getAttribute('data-modal');
+    if (modalId) openModal(modalId);
+  });
+});
+
+// Make process cards clickable (optional - opens deep link)
+document.querySelectorAll('.interactive-card').forEach(el => {
+  const deepLink = el.querySelector('.deep-link');
+  if (deepLink) {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', (e) => {
+      // Don't trigger if clicking on button or link
+      if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A') {
+        window.location.href = deepLink.getAttribute('href');
+      }
+    });
+  }
+});
+
+// Close modal when clicking outside
+document.querySelectorAll('.info-modal').forEach(modal => {
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('active');
+    }
+  });
+});
+
+// ESC key closes modals
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.info-modal.active').forEach(modal => {
+      modal.classList.remove('active');
+    });
+  }
+});}
   window.addEventListener('resize',resize);resize();drawNet();
 </script>
 </body>
