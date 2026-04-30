@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paniz Manufacturing | Digital Manufacturing Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;
+    --cyan:#00e5ff;--cyan2:#00b8cc;--cyan3:rgba(0,229,255,0.12);
+    --white:#f0f4ff;--muted:#7a8fa8;--border:rgba(0,229,255,0.15);
+    --card:rgba(15,32,64,0.6);
+    --ff:'Space Grotesk',sans-serif;--fm:'Space Mono',monospace;
+  }
+  body{font-family:var(--ff);background:var(--navy);color:var(--white);overflow-x:hidden;scroll-behavior:smooth;}
+  nav{position:sticky;top:0;z-index:999;background:rgba(5,13,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;}
+  .logo{font-family:var(--fm);font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);}
+  .nav-links{display:flex;gap:0;list-style:none;}
+  .nav-links a{display:block;padding:0 1.2rem;height:64px;line-height:64px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s,border-bottom .2s;border-bottom:2px solid transparent;}
+  .nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan);}
+  .nav-cta{font-family:var(--fm);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--cyan);color:var(--cyan);padding:.45rem 1.1rem;text-decoration:none;transition:all .2s;}
+  .nav-cta:hover{background:var(--cyan);color:var(--navy);}
+  #hero{min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8% 5%;position:relative;overflow:hidden;}
+  #hero-canvas{position:absolute;inset:0;opacity:.4;}
+  .hero-badge{font-family:var(--fm);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);border:1px solid var(--border);padding:.35rem .9rem;display:inline-block;margin-bottom:2rem;}
+  #hero h1{font-size:clamp(2.8rem,7vw,5.5rem);font-weight:700;line-height:.95;text-transform:uppercase;letter-spacing:-.01em;position:relative;z-index:1;}
+  #hero h1 span{color:var(--cyan);}
+  #hero p{max-width:620px;color:var(--muted);line-height:1.7;margin-top:1.5rem;font-size:1rem;position:relative;z-index:1;}
+  .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+  .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--cyan),transparent);animation:scrollPulse 1.8s infinite;}
+  @keyframes scrollPulse{0%,100%{opacity:.3}50%{opacity:1}}
+  section{padding:5% 5%;width:100%;}
+  .sec-label{font-family:var(--fm);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem;}
+  .sec-label::after{content:'';flex:0 0 40px;height:1px;background:var(--cyan);}
+  .sec-title{font-size:clamp(1.8rem,4vw,3rem);font-weight:700;text-transform:uppercase;line-height:.95;margin-bottom:1.5rem;letter-spacing:-.01em;}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem;}
+  .stat-card{background:var(--card);border:1px solid var(--border);padding:1.5rem;text-align:center;transition:transform .3s,border-color .3s;}
+  .stat-card:hover{transform:translateY(-4px);border-color:var(--cyan);}
+  .stat-number{font-family:var(--fm);font-size:2.2rem;color:var(--cyan);line-height:1;margin-bottom:.5rem;}
+  .stat-label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;}
+  .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem;}
+  .process-card{background:var(--card);border:1px solid var(--border);padding:1.5rem;transition:all .3s;position:relative;overflow:hidden;}
+  .process-card:hover{transform:translateY(-4px);border-color:var(--cyan);}
+  .process-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--cyan);transition:height .4s;}
+  .process-card:hover::before{height:100%;}
+  .process-num{font-family:var(--fm);font-size:2rem;color:var(--cyan);opacity:.3;margin-bottom:.5rem;}
+  .process-card h3{font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;}
+  .process-card p{font-size:.8rem;color:var(--muted);line-height:1.6;}
+  footer{background:var(--navy2);border-top:1px solid var(--border);padding:3rem 5%;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem;}
+  .f-logo{font-family:var(--fm);font-size:.9rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);}
+  .f-copy{font-size:.75rem;color:var(--muted);margin-top:.35rem;}
+  .f-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
+  .f-links a{font-family:var(--fm);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+  .f-links a:hover{color:var(--cyan);}
+  .fade-in{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  .fade-in.in{opacity:1;transform:translateY(0);}
+  @media(max-width:800px){
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+    .process-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Paniz Manufacturing</span>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="project.html">Project</a></li>
+    <li><a href="design.html">Design</a></li>
+    <li><a href="pfmea.html">PFMEA</a></li>
+    <li><a href="printing.html">3D Printing</a></li>
+    <li><a href="quality.html">Quality</a></li>
+    <li><a href="simulation.html">Simulation</a></li>
+  </ul>
+  <a class="nav-cta" href="simulation.html">50K Capacity</a>
+</nav>
+
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-badge">Digital Manufacturing Portfolio</div>
+  <h1>Paniz<br><span>Manufacturing</span></h1>
+  <p>Precision additive manufacturing specialist — delivering 50,000 interchangeable phone casings per year for Phones-R-Us.</p>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<section class="fade-in">
+  <div class="sec-label">01 &mdash; Project Overview</div>
+  <h2 class="sec-title">Phones-R-Us<br><span style="color:var(--cyan);">Challenge</span></h2>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-number">50K</div><div class="stat-label">Phones / Year</div></div>
+    <div class="stat-card"><div class="stat-number">9 wk</div><div class="stat-label">Prototype Delivery</div></div>
+    <div class="stat-card"><div class="stat-number">80%</div><div class="stat-label">Success Rate</div></div>
+    <div class="stat-card"><div class="stat-number">2.5h</div><div class="stat-label">Print Time (both casings)</div></div>
+  </div>
+</section>
+
+<section class="fade-in">
+  <div class="sec-label">02 &mdash; Our Process</div>
+  <h2 class="sec-title">Manufacturing<br><span style="color:var(--cyan);">Workflow</span></h2>
+  <div class="process-grid">
+    <div class="process-card"><div class="process-num">01</div><h3>Design</h3><p>CAD modelling — top casing reverse engineered, bottom casing from client drawing.</p></div>
+    <div class="process-card"><div class="process-num">02</div><h3>3D Printing</h3><p>Ultimaker → Bambu P1S. 80% success rate, 3 perfect prints out of 5.</p></div>
+    <div class="process-card"><div class="process-num">03</div><h3>Metrology</h3><p>Laser measurement station — critical failure point (1.18mm vs 1.6-2.2mm spec).</p></div>
+    <div class="process-card"><div class="process-num">04</div><h3>Quality Control</h3><p>Statistical process control — Bambu within spec, Ultimaker out of spec.</p></div>
+    <div class="process-card"><div class="process-num">05</div><h3>Assembly Testing</h3><p>FESTO CP Lab — all 6 stations tested. Station 2 was the killer.</p></div>
+    <div class="process-card"><div class="process-num">06</div><h3>Capacity Planning</h3><p>25 Bambu printers running 24/7 to meet 50,000 units/year.</p></div>
+  </div>
+</section>
+
+<footer>
+  <div><div class="f-logo">Paniz Manufacturing Co.</div><p class="f-copy">© 2026 — Digital Manufacturing Portfolio</p></div>
+  <div class="f-links">
+    <a href="project.html">Project</a><a href="design.html">Design</a><a href="pfmea.html">PFMEA</a>
+    <a href="printing.html">3D Printing</a><a href="quality.html">Quality</a><a href="simulation.html">Simulation</a>
+  </div>
+</footer>
+
+<script>
+  const observer=new IntersectionObserver((e)=>e.forEach(entry=>entry.isIntersecting&&entry.target.classList.add('in')),{threshold:0.1});
+  document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+  const canvas=document.getElementById('hero-canvas');const ctx=canvas.getContext('2d');
+  let pts=[];
+  function resize(){canvas.width=canvas.offsetWidth;canvas.height=canvas.offsetHeight;initPts();}
+  function initPts(){pts=[];for(let i=0;i<60;i++)pts.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4});}
+  function drawNet(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>canvas.width)p.vx*=-1;if(p.y<0||p.y>canvas.height)p.vy*=-1;});
+    for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<120){ctx.beginPath();ctx.strokeStyle=`rgba(0,229,255,${0.25*(1-dist/120)})`;ctx.lineWidth=.5;ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke();}}
+    pts.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,1.2,0,Math.PI*2);ctx.fillStyle='rgba(0,229,255,0.6)';ctx.fill();});
+    requestAnimationFrame(drawNet);
+  }
+  window.addEventListener('resize',resize);resize();drawNet();
+</script>
+</body>
+</html>
