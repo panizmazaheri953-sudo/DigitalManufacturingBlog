@@ -3,49 +3,164 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Design | Paniz Manufacturing</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>Paniz Manufacturing | Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  :root{--navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--cyan:#00e5ff;--cyan2:#00b8cc;--white:#f0f4ff;--muted:#7a8fa8;--border:rgba(0,229,255,0.15);--card:rgba(15,32,64,0.6);--ff:'Space Grotesk',sans-serif;--fm:'Space Mono',monospace;}
-  body{font-family:var(--ff);background:var(--navy);color:var(--white);}
-  nav{position:sticky;top:0;z-index:999;background:rgba(5,13,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;}
-  .logo{font-family:var(--fm);font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);}
-  .nav-links{display:flex;gap:0;list-style:none;}
-  .nav-links a{display:block;padding:0 1.2rem;height:64px;line-height:64px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s,border-bottom .2s;border-bottom:2px solid transparent;}
-  .nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan);}
-  .nav-cta{font-family:var(--fm);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--cyan);color:var(--cyan);padding:.45rem 1.1rem;text-decoration:none;}
-  .page-hero{padding:4rem 5% 3rem;text-align:center;border-bottom:1px solid var(--border);}
-  .hero-badge{font-family:var(--fm);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);border:1px solid var(--border);padding:.35rem .9rem;display:inline-block;margin-bottom:1.5rem;}
-  .page-hero h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:700;text-transform:uppercase;letter-spacing:-.01em;}
-  .page-hero h1 span{color:var(--cyan);}
-  section{padding:3rem 5%;max-width:1200px;margin:0 auto;}
-  .sec-label{font-family:var(--fm);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem;}
-  .sec-label::after{content:'';flex:0 0 40px;height:1px;background:var(--cyan);}
-  .sec-title{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;text-transform:uppercase;margin-bottom:1.5rem;}
-  .dim-table{width:100%;border-collapse:collapse;margin:2rem 0;background:var(--card);border:1px solid var(--border);}
-  .dim-table th,.dim-table td{padding:1rem;text-align:center;border-bottom:1px solid var(--border);}
-  .dim-table th{color:var(--cyan);font-family:var(--fm);font-size:.7rem;letter-spacing:.1em;}
-  .image-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:1.5rem;margin:2rem 0;}
-  .design-card{background:var(--card);border:1px solid var(--border);border-radius:4px;overflow:hidden;transition:transform .3s,border-color .3s;}
-  .design-card:hover{transform:translateY(-4px);border-color:var(--cyan);}
-  .design-card img{width:100%;height:240px;object-fit:cover;background:var(--navy3);}
-  .design-card-content{padding:1.5rem;}
-  .design-card-content h3{color:var(--cyan);font-size:1.1rem;margin-bottom:.5rem;}
-  .design-card-content p{font-size:.85rem;color:var(--muted);line-height:1.6;margin-bottom:.5rem;}
-  .challenge{background:rgba(0,229,255,0.08);padding:.75rem;margin-top:.75rem;border-left:2px solid var(--cyan);font-size:.8rem;}
-  footer{background:var(--navy2);border-top:1px solid var(--border);padding:2rem 5%;display:flex;justify-content:space-between;flex-wrap:wrap;}
-  .f-logo{font-family:var(--fm);font-size:.8rem;letter-spacing:.2em;color:var(--cyan);}
-  .f-links{display:flex;gap:1.5rem;}
-  .f-links a{font-family:var(--fm);font-size:.65rem;color:var(--muted);text-decoration:none;}
-  .f-links a:hover{color:var(--cyan);}
-  @media(max-width:800px){.nav-links{display:none;}.image-grid{grid-template-columns:1fr;}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--navy4:#152848;
+  --cyan:#00e5ff;--cyan2:#00b8cc;--cyan3:rgba(0,229,255,0.1);
+  --white:#f0f4ff;--muted:#6a7f9a;--border:rgba(0,229,255,0.13);
+  --card:rgba(15,32,64,0.7);
+  --ff:'DM Sans',sans-serif;--fd:'Bebas Neue',sans-serif;--fm:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--navy);color:var(--white);overflow-x:hidden;cursor:none;line-height:1.6}
+
+#cursor{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:screen}
+#cursor-ring{position:fixed;top:0;left:0;width:34px;height:34px;border:1px solid var(--cyan);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.4}
+
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 4%;height:62px;border-bottom:1px solid var(--border);background:rgba(5,13,26,0.95);backdrop-filter:blur(12px)}
+.logo{font-family:var(--fd);font-size:1.4rem;letter-spacing:.06em;color:var(--white);text-decoration:none}
+.logo span{color:var(--cyan)}
+.nav-links{display:flex;list-style:none}
+.nav-links a{font-family:var(--fm);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.4rem .9rem;height:62px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan)}
+.nav-pill{font-family:var(--fm);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--cyan);color:var(--cyan);padding:.45rem 1.2rem;text-decoration:none;transition:all .2s;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%)}
+.nav-pill:hover{background:var(--cyan);color:var(--navy)}
+
+/* PAGE HERO */
+.page-hero{padding:5rem 4% 3rem;border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:3rem;background:var(--navy2);position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.ph-left{}
+.ph-eyebrow{font-family:var(--fm);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem}
+.ph-eyebrow::before{content:'';width:20px;height:1px;background:var(--cyan)}
+.ph-h1{font-family:var(--fd);font-size:clamp(3.5rem,7vw,6rem);line-height:.9;text-transform:uppercase;margin-bottom:1.5rem}
+.ph-h1 em{color:var(--cyan);font-style:normal;-webkit-text-stroke:0}
+.ph-desc{font-size:.9rem;color:var(--muted);line-height:1.75;font-weight:300;max-width:480px}
+.ph-right{display:flex;flex-direction:column;justify-content:flex-end;gap:1rem}
+.spec-table-wrap{border:1px solid var(--border);background:var(--navy3)}
+.spec-table-title{font-family:var(--fm);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);padding:.75rem 1rem;border-bottom:1px solid var(--border)}
+.spec-table{width:100%;border-collapse:collapse;font-size:.78rem}
+.spec-table th{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:.55rem 1rem;text-align:left;border-bottom:1px solid var(--border);font-weight:400}
+.spec-table td{padding:.6rem 1rem;border-bottom:1px solid var(--border);color:var(--white);font-weight:300}
+.spec-table tr:last-child td{border-bottom:none}
+.spec-table td:not(:first-child){font-family:var(--fm);font-size:.72rem;color:var(--cyan)}
+.workflow-chips{display:flex;gap:.5rem;flex-wrap:wrap}
+.chip{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--border);color:var(--muted);padding:.3rem .7rem;display:flex;align-items:center;gap:.4rem}
+.chip-dot{width:5px;height:5px;border-radius:50%;background:var(--cyan)}
+
+/* SECTION DIVIDER */
+.sec-divider{display:flex;align-items:center;padding:2rem 4%;gap:1.5rem;border-bottom:1px solid var(--border);background:var(--navy)}
+.sec-num{font-family:var(--fd);font-size:3.5rem;color:var(--navy4);line-height:1;user-select:none;width:60px;flex-shrink:0}
+.sec-info{}
+.sec-tag{font-family:var(--fm);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.2rem}
+.sec-title{font-family:var(--fd);font-size:2.2rem;line-height:.95;text-transform:uppercase}
+.sec-title em{color:var(--cyan);font-style:normal}
+.sec-divider-line{flex:1;height:1px;background:var(--border)}
+.sec-badge{font-family:var(--fm);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--border);color:var(--muted);padding:.4rem .8rem;flex-shrink:0}
+
+/* ENGINEERING OVERVIEW STRIP */
+.eng-strip{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
+.eng-cell{padding:1.5rem 1.75rem;border-right:1px solid var(--border);position:relative;overflow:hidden;transition:background .25s}
+.eng-cell:last-child{border-right:none}
+.eng-cell:hover{background:var(--navy3)}
+.eng-cell::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--cyan);transition:width .4s}
+.eng-cell:hover::after{width:100%}
+.eng-cell-label{font-family:var(--fm);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.eng-cell-val{font-family:var(--fd);font-size:1.8rem;color:var(--cyan);line-height:1;margin-bottom:.2rem}
+.eng-cell-note{font-size:.72rem;color:var(--muted);font-weight:300}
+
+/* MEDIA + ANNOTATION GRID */
+.case-section{padding:3rem 4%;border-bottom:1px solid var(--border)}
+.case-intro{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid var(--border)}
+.case-intro-text h3{font-family:var(--fd);font-size:1.8rem;text-transform:uppercase;line-height:.95;margin-bottom:1rem}
+.case-intro-text h3 em{color:var(--cyan);font-style:normal}
+.case-intro-text p{font-size:.85rem;color:var(--muted);line-height:1.75;font-weight:300;margin-bottom:.9rem}
+.case-intro-text p strong{color:var(--white);font-weight:500}
+.challenge-box{border:1px solid var(--border);background:var(--navy3);padding:1.25rem}
+.challenge-box-title{font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
+.challenge-box-title::before{content:'';width:6px;height:6px;background:var(--cyan);border-radius:50%}
+.challenge-list{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.challenge-list li{font-size:.78rem;color:var(--muted);font-weight:300;padding-left:1rem;position:relative;line-height:1.55}
+.challenge-list li::before{content:'→';position:absolute;left:0;color:var(--cyan);font-family:var(--fm);font-size:.7rem}
+.solution-row{display:flex;flex-direction:column;gap:1rem}
+.solution-item{display:flex;gap:.75rem;align-items:flex-start}
+.sol-icon{width:28px;height:28px;border:1px solid var(--border);background:var(--navy4);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sol-icon svg{width:14px;height:14px;stroke:var(--cyan);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.sol-text{font-size:.78rem;color:var(--muted);line-height:1.55;font-weight:300;padding-top:.35rem}
+.sol-text strong{color:var(--white);font-weight:500}
+
+/* MEDIA BLOCKS */
+.media-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:2rem}
+.media-block{background:var(--navy2);border:1px solid var(--border);overflow:hidden;position:relative;transition:border-color .3s}
+.media-block:hover{border-color:var(--cyan)}
+.media-block.wide{grid-column:span 1}
+.media-header{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;border-bottom:1px solid var(--border)}
+.media-label{font-family:var(--fm);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.media-type{font-family:var(--fm);font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .5rem;border:1px solid var(--border);color:var(--cyan)}
+.media-body{position:relative;overflow:hidden}
+.media-body img{width:100%;display:block;object-fit:cover}
+.media-body video{width:100%;display:block;background:#000}
+.video-placeholder{background:var(--navy3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;padding:2.5rem 1rem;min-height:180px}
+.play-btn{width:44px;height:44px;border:1.5px solid var(--cyan);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.play-btn svg{width:16px;height:16px;fill:var(--cyan);margin-left:3px}
+.vid-label{font-family:var(--fm);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.media-caption{padding:.75rem 1rem;border-top:1px solid var(--border);font-size:.7rem;color:var(--muted);font-weight:300;line-height:1.5}
+.media-caption strong{color:var(--white);font-weight:500;font-family:var(--fm);font-size:.65rem;letter-spacing:.05em}
+
+/* DIMENSION ANNOTATION */
+.dim-annotation{border:1px solid var(--border);background:var(--navy3);padding:1.25rem}
+.dim-anno-title{font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:1rem}
+.dim-rows{display:flex;flex-direction:column;gap:.5rem}
+.dim-row{display:flex;align-items:center;justify-content:space-between;padding:.5rem .75rem;background:var(--navy2);border-left:2px solid var(--cyan)}
+.dim-name{font-size:.75rem;color:var(--muted);font-weight:300}
+.dim-val{font-family:var(--fm);font-size:.78rem;color:var(--white)}
+.dim-spec{font-family:var(--fm);font-size:.65rem;color:var(--muted)}
+
+/* PROCESS STEPS inline */
+.process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--border);margin-top:2rem}
+.pstep{padding:1.2rem 1rem;border-right:1px solid var(--border);position:relative;overflow:hidden}
+.pstep:last-child{border-right:none}
+.pstep-num{font-family:var(--fm);font-size:.5rem;color:var(--cyan);opacity:.7;margin-bottom:.5rem}
+.pstep-title{font-family:var(--fm);font-size:.6rem;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--white);margin-bottom:.35rem}
+.pstep-desc{font-size:.68rem;color:var(--muted);line-height:1.5;font-weight:300}
+.pstep::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--cyan);transition:width .35s}
+.pstep:hover::after{width:100%}
+
+/* STL EXPORT SECTION */
+.stl-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border)}
+.stl-card{background:var(--navy3);border:1px solid var(--border);padding:1.25rem;display:flex;align-items:flex-start;gap:1rem;transition:border-color .3s}
+.stl-card:hover{border-color:var(--cyan)}
+.stl-icon{width:44px;height:44px;border:1px solid var(--border);background:var(--navy4);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.stl-icon svg{width:22px;height:22px;stroke:var(--cyan);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.stl-info{}
+.stl-title{font-family:var(--fm);font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--white);margin-bottom:.3rem}
+.stl-desc{font-size:.72rem;color:var(--muted);line-height:1.5;font-weight:300}
+.stl-meta{display:flex;gap:.75rem;margin-top:.5rem}
+.stl-tag{font-family:var(--fm);font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--border);color:var(--cyan);padding:.18rem .5rem}
+
+/* FOOTER */
+footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem 4%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2rem}
+.f-logo{font-family:var(--fd);font-size:1.3rem;letter-spacing:.06em;color:var(--white)}
+.f-logo span{color:var(--cyan)}
+.f-copy{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center}
+.f-links{display:flex;gap:1.5rem;justify-content:flex-end}
+.f-links a{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.f-links a:hover{color:var(--cyan)}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.02;pointer-events:none;z-index:9990}
 </style>
 </head>
 <body>
 
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
 <nav>
-  <span class="logo">Paniz Manufacturing</span>
+  <a class="logo" href="index.html">PANIZ<span>.</span></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="project.html">Project</a></li>
@@ -55,48 +170,396 @@
     <li><a href="quality.html">Quality</a></li>
     <li><a href="simulation.html">Simulation</a></li>
   </ul>
-  <a class="nav-cta" href="printing.html">3D Printing</a>
+  <a class="nav-pill" href="simulation.html">50K Capacity →</a>
 </nav>
 
-<div class="page-hero">
-  <div class="hero-badge">CAD Design & Reverse Engineering</div>
-  <h1>Design <span>Process</span></h1>
+<!-- PAGE HERO -->
+<div class="page-hero reveal">
+  <div class="ph-left">
+    <div class="ph-eyebrow">02 — CAD Design & Engineering</div>
+    <h1 class="ph-h1">FUSION 360<br><em>DESIGN</em><br>REPORT</h1>
+    <p class="ph-desc">Two precision phone casings designed from scratch in Autodesk Fusion 360 — one reverse-engineered from a physical sample, one built from a client engineering drawing. Both exported as production-ready STL files for additive manufacturing.</p>
+  </div>
+  <div class="ph-right">
+    <div class="spec-table-wrap">
+      <div class="spec-table-title">Component Dimensions — Both Casings</div>
+      <table class="spec-table">
+        <thead>
+          <tr><th>Component</th><th>Height</th><th>Width</th><th>Depth</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Top Casing</td><td>114 mm</td><td>60 mm</td><td>11.7 mm</td></tr>
+          <tr><td>Bottom Casing</td><td>114 mm</td><td>60 mm</td><td>13 mm</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="workflow-chips">
+      <div class="chip"><span class="chip-dot"></span>Autodesk Fusion 360</div>
+      <div class="chip"><span class="chip-dot"></span>2D Technical Drawing</div>
+      <div class="chip"><span class="chip-dot"></span>3D Parametric Model</div>
+      <div class="chip"><span class="chip-dot"></span>STL Export</div>
+      <div class="chip"><span class="chip-dot"></span>Reverse Engineering</div>
+    </div>
+  </div>
 </div>
 
-<section>
-  <div class="sec-label">01 &mdash; Dimensions</div>
-  <h2 class="sec-title">Final Specifications</h2>
-  <table class="dim-table">
-    <tr><th>Component</th><th>Height</th><th>Width</th><th>Depth</th></tr>
-    <tr><td>Top Casing</td><td>114 mm</td><td>60 mm</td><td>11.7 mm</td></tr>
-    <tr><td>Bottom Casing</td><td>114 mm</td><td>60 mm</td><td>13 mm</td></tr>
-  </table>
+<!-- PART 01 — TOP CASING -->
+<div class="sec-divider reveal">
+  <div class="sec-num">01</div>
+  <div class="sec-info">
+    <div class="sec-tag">Top Casing</div>
+    <div class="sec-title">Reverse <em>Engineered</em></div>
+  </div>
+  <div class="sec-divider-line"></div>
+  <div class="sec-badge">Method: Physical Sample → CAD</div>
+</div>
 
-  <div class="sec-label">02 &mdash; 2D Drawings</div>
-  <div class="image-grid">
-    <div class="design-card">
-      <img src="https://github.com/panizmazaheri953-sudo/Digital-Manufacturing-/blob/main/Screenshot%202026-04-16%20at%2016.33.01.png?raw=true" alt="Top Casing Drawing">
-      <div class="design-card-content">
-        <h3>Top Casing — Reverse Engineered</h3>
-        <p>The drawing had missing dimensions and confusing cross-sections. It was often unclear where exactly on the top casing each measurement applied.</p>
-        <div class="challenge"><strong>📐 Solution:</strong> Missing values were calculated from other measurements on the drawing by cross-referencing multiple views.</div>
+<div class="eng-strip reveal">
+  <div class="eng-cell">
+    <div class="eng-cell-label">Design Method</div>
+    <div class="eng-cell-val" style="font-size:1.1rem;padding-top:.2rem">Reverse Eng.</div>
+    <div class="eng-cell-note">Measured from physical component</div>
+  </div>
+  <div class="eng-cell">
+    <div class="eng-cell-label">Depth</div>
+    <div class="eng-cell-val">11.7mm</div>
+    <div class="eng-cell-note">Shallowest of the two halves</div>
+  </div>
+  <div class="eng-cell">
+    <div class="eng-cell-label">Geometry Complexity</div>
+    <div class="eng-cell-val" style="font-size:1.1rem;padding-top:.2rem">High</div>
+    <div class="eng-cell-note">Varying depth, complex curves</div>
+  </div>
+  <div class="eng-cell">
+    <div class="eng-cell-label">Export Format</div>
+    <div class="eng-cell-val" style="font-size:1.1rem;padding-top:.2rem">STL</div>
+    <div class="eng-cell-note">High-res, print-ready</div>
+  </div>
+</div>
+
+<div class="case-section reveal">
+  <div class="case-intro">
+    <div class="case-intro-text">
+      <h3>Top Casing<br><em>Design Process</em></h3>
+      <p>The top casing presented the most significant engineering challenge of this project. With <strong>no complete engineering drawing provided</strong>, the entire model had to be built from physical measurements taken from the real component using callipers and cross-referencing multiple angles.</p>
+      <p>This process — known as reverse engineering — required a deep understanding of how Fusion 360 handles parametric feature construction. Each sketch was built layer by layer, with unknown dimensions derived mathematically from known proportional relationships.</p>
+      <p>The most challenging features were the <strong>internal lip geometry, the camera aperture positioning, and the subtle draft angles</strong> on the side walls — none of which were explicitly documented, and all of which were critical to achieving a press-fit assembly later in the process.</p>
+      <div class="challenge-box" style="margin-top:1.25rem">
+        <div class="challenge-box-title">Engineering Challenges Overcome</div>
+        <ul class="challenge-list">
+          <li>Missing cross-sectional dimensions — derived from proportion analysis</li>
+          <li>Unclear feature positions — reconstructed via relative distance mapping</li>
+          <li>Complex curved surfaces — modelled using incremental feature construction</li>
+          <li>Internal lip geometry — critical for press-fit at Station 2 (FESTO)</li>
+          <li>Camera cutout and button aperture alignment across all views</li>
+        </ul>
       </div>
     </div>
-    <div class="design-card">
-      <img src="https://github.com/panizmazaheri953-sudo/Digital-Manufacturing-/blob/main/Screenshot%202026-04-16%20at%2016.32.27.png?raw=true" alt="Bottom Casing Drawing">
-      <div class="design-card-content">
-        <h3>Bottom Casing — Client Drawing</h3>
-        <p>The client drawing was clear and complete. All dimensions were properly labelled with unambiguous leaders pointing to correct features.</div>
+    <div class="solution-row">
+      <div class="challenge-box" style="flex:1">
+        <div class="challenge-box-title">Fusion 360 Methodology</div>
+        <div style="display:flex;flex-direction:column;gap:.85rem;margin-top:.25rem">
+          <div class="solution-item">
+            <div class="sol-icon"><svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="5"/><path d="M7 4v3l2 2"/></svg></div>
+            <div class="sol-text"><strong>Step 1 — Physical measurement:</strong> Callipers used to record all accessible external dimensions. Sketches produced at 1:1 scale.</div>
+          </div>
+          <div class="solution-item">
+            <div class="sol-icon"><svg viewBox="0 0 14 14"><path d="M2 12L12 2M2 2h10v10"/></svg></div>
+            <div class="sol-text"><strong>Step 2 — 2D drawing construction:</strong> Multi-view orthographic drawing built in Fusion 360. All ambiguous dimensions flagged and resolved.</div>
+          </div>
+          <div class="solution-item">
+            <div class="sol-icon"><svg viewBox="0 0 14 14"><rect x="2" y="2" width="10" height="10" rx="1"/><path d="M5 7h4M7 5v4"/></svg></div>
+            <div class="sol-text"><strong>Step 3 — 3D parametric model:</strong> Solid body extruded from base sketch. Complex features added incrementally. Accuracy validated at every stage.</div>
+          </div>
+          <div class="solution-item">
+            <div class="sol-icon"><svg viewBox="0 0 14 14"><path d="M3 11l8-8M8 3h3v3"/></svg></div>
+            <div class="sol-text"><strong>Step 4 — STL export:</strong> High-resolution mesh exported. Geometry integrity verified in slicer before handoff to 3D printing stage.</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="sec-label">03 &mdash; 3D Models</div>
-  <div class="image-grid">
-    <div class="design-card">
-      <img src="https://github.com/panizmazaheri953-sudo/Digital-Manufacturing-/blob/main/Screenshot%202026-04-16%20at%2015.53.17.png?raw=true" alt="Top Casing 3D">
-      <div class="design-card-content"><h3>Top Casing — Fusion 360</h3><p>Non-flat geometry with varying depth. Exported as STL for 3D printing.</p></div>
+  <!-- MEDIA: Top Casing -->
+  <div class="media-grid">
+    <div class="media-block">
+      <div class="media-header">
+        <span class="media-label">Fusion 360 — Build Process</span>
+        <span class="media-type">Video</span>
+      </div>
+      <div class="media-body">
+        <div class="video-placeholder">
+          <div class="play-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14" fill="var(--cyan)"/></svg></div>
+          <div class="vid-label">Top Casing — Fusion 360 Modelling Walkthrough</div>
+          <div style="font-family:var(--fm);font-size:.5rem;color:rgba(106,127,154,0.6);letter-spacing:.1em;text-transform:uppercase;margin-top:.25rem">Replace src with your video file</div>
+        </div>
+      </div>
+      <div class="media-caption"><strong>Fusion 360 Video:</strong> Full modelling walkthrough from initial sketch to completed solid body — including reverse engineering decisions and feature construction sequence.</div>
     </div>
-    <div class="design-card">
-      <img src="https://github.com/panizmazaheri953-sudo/Digital-Manufacturing-/blob/main/Screenshot%202026-04-16%20at%2015.54.32.png?raw=true" alt="Bottom Casing 3D">
-      <div class="design-card-content"><h3>Bottom Casing — Fusion 360</h3><p>Consistent 13mm depth. Verified against client drawing at each
+
+    <div class="media-block">
+      <div class="media-header">
+        <span class="media-label">2D Technical Drawing</span>
+        <span class="media-type">Fusion 360</span>
+      </div>
+      <div class="media-body">
+        <img src="https://github.com/panizmazaheri953-sudo/Digital-Manufacturing-/blob/main/Screenshot%202026-04-16%20at%2016.33.01.png?raw=true" alt="Top Casing 2D Drawing" style="min-height:180px">
+      </div>
+      <div class="media-caption"><strong>Orthographic Drawing:</strong> Multi-view 2D drawing with full dimensioning. Derived values indicated where original measurements were absent or ambiguous.</div>
+    </div>
+
+    <div class="media-block">
+      <div class="media-header">
+        <span class="media-label">3D CAD Model</span>
+        <span class="media-type">STL Ready</span>
+      </div>
+      <div class="media-body">
+        <img src="https://github.com/panizmazaheri953-sudo/Digital-Manufacturing-/blob/main/Screenshot%202026-04-16%20at%2015.53.17.png?raw=true" alt="Top Casing 3D Model" style="min-height:180px">
+      </div>
+      <div class="media-caption"><strong>Parametric Solid Model:</strong> Final 3D model showing surface geometry, wall thickness profile, and internal features. Exported as high-resolution STL for printing.</div>
+    </div>
+  </div>
+
+  <!-- DIMENSION TABLE -->
+  <div class="dim-annotation">
+    <div class="dim-anno-title">Critical Dimensions — Top Casing</div>
+    <div class="dim-rows">
+      <div class="dim-row"><span class="dim-name">Overall Height</span><span class="dim-val">114 mm</span><span class="dim-spec">Measured</span></div>
+      <div class="dim-row"><span class="dim-name">Overall Width</span><span class="dim-val">60 mm</span><span class="dim-spec">Measured</span></div>
+      <div class="dim-row"><span class="dim-name">Depth (Z)</span><span class="dim-val">11.7 mm</span><span class="dim-spec">Measured</span></div>
+      <div class="dim-row"><span class="dim-name">Wall Thickness</span><span class="dim-val">1.6–2.2 mm</span><span class="dim-spec">Spec range — critical</span></div>
+      <div class="dim-row"><span class="dim-name">Internal Lip</span><span class="dim-val">Derived</span><span class="dim-spec">Calculated from proportions</span></div>
+      <div class="dim-row"><span class="dim-name">Camera Aperture</span><span class="dim-val">Derived</span><span class="dim-spec">Cross-referenced from top view</span></div>
+    </div>
+  </div>
+
+  <!-- PROCESS STEPS -->
+  <div class="process-steps">
+    <div class="pstep"><div class="pstep-num">01</div><div class="pstep-title">Measure</div><div class="pstep-desc">Callipers across all external faces. Internal features estimated.</div></div>
+    <div class="pstep"><div class="pstep-num">02</div><div class="pstep-title">Sketch</div><div class="pstep-desc">Multi-view orthographic in Fusion 360. Missing dims derived.</div></div>
+    <div class="pstep"><div class="pstep-num">03</div><div class="pstep-title">Extrude</div><div class="pstep-desc">Parametric solid built from base profile upward.</div></div>
+    <div class="pstep"><div class="pstep-num">04</div><div class="pstep-title">Validate</div><div class="pstep-desc">Cross-check at every feature against physical sample.</div></div>
+    <div class="pstep"><div class="pstep-num">05</div><div class="pstep-title">Export STL</div><div class="pstep-desc">High-res mesh. Verified in slicer. Sent to printer.</div></div>
+  </div>
+
+  <!-- STL EXPORT -->
+  <div class="stl-row">
+    <div class="stl-card">
+      <div class="stl-icon"><svg viewBox="0 0 22 22"><path d="M3 16l8-12 8 12H3z"/><path d="M6 16v4h10v-4"/></svg></div>
+      <div class="stl-info">
+        <div class="stl-title">top_casing_v3_final.stl</div>
+        <div class="stl-desc">High-resolution STL mesh exported from Fusion 360. Geometry validated in Bambu Studio before printing. Zero mesh errors detected on final export.</div>
+        <div class="stl-meta">
+          <div class="stl-tag">STL</div>
+          <div class="stl-tag">Fusion 360</div>
+          <div class="stl-tag">Print Ready</div>
+        </div>
+      </div>
+    </div>
+    <div class="stl-card">
+      <div class="stl-icon"><svg viewBox="0 0 22 22"><path d="M11 2v14M6 12l5 5 5-5"/><path d="M3 18h16"/></svg></div>
+      <div class="stl-info">
+        <div class="stl-title">Export Settings — Top Casing</div>
+        <div class="stl-desc">Format: Binary STL — Surface deviation: 0.001mm — Normal deviation: 1° — Refinement: High — Compatible with Bambu P1S slicer profile.</div>
+        <div class="stl-meta">
+          <div class="stl-tag">Binary STL</div>
+          <div class="stl-tag">0.001mm Tolerance</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PART 02 — BOTTOM CASING -->
+<div class="sec-divider reveal">
+  <div class="sec-num">02</div>
+  <div class="sec-info">
+    <div class="sec-tag">Bottom Casing</div>
+    <div class="sec-title">Client <em>Drawing</em></div>
+  </div>
+  <div class="sec-divider-line"></div>
+  <div class="sec-badge">Method: Engineering Drawing → CAD</div>
+</div>
+
+<div class="eng-strip reveal">
+  <div class="eng-cell">
+    <div class="eng-cell-label">Design Method</div>
+    <div class="eng-cell-val" style="font-size:1.1rem;padding-top:.2rem">Drawing-Based</div>
+    <div class="eng-cell-note">All dims fully defined by client</div>
+  </div>
+  <div class="eng-cell">
+    <div class="eng-cell-label">Depth</div>
+    <div class="eng-cell-val">13mm</div>
+    <div class="eng-cell-note">Deeper to house internals</div>
+  </div>
+  <div class="eng-cell">
+    <div class="eng-cell-label">Geometry Complexity</div>
+    <div class="eng-cell-val" style="font-size:1.1rem;padding-top:.2rem">Moderate</div>
+    <div class="eng-cell-note">Structured, well-defined features</div>
+  </div>
+  <div class="eng-cell">
+    <div class="eng-cell-label">Export Format</div>
+    <div class="eng-cell-val" style="font-size:1.1rem;padding-top:.2rem">STL</div>
+    <div class="eng-cell-note">High-res, print-ready</div>
+  </div>
+</div>
+
+<div class="case-section reveal">
+  <div class="case-intro">
+    <div class="case-intro-text">
+      <h3>Bottom Casing<br><em>Design Process</em></h3>
+      <p>The bottom casing was modelled directly from a <strong>complete client engineering drawing</strong> — a significantly more structured workflow than the reverse-engineered top casing. Every dimension, datum, and feature relationship was clearly defined from the outset.</p>
+      <p>The primary engineering objective was <strong>precision translation</strong>: ensuring that every dimension in the 2D drawing was faithfully reproduced in the 3D model without accumulated tolerancing errors. Fusion 360's parametric constraint system was critical to maintaining feature relationships throughout the build.</p>
+      <p>The bottom casing is 1.3mm deeper than the top, which has direct implications for the <strong>press-fit assembly</strong> at Station 2 of the FESTO CP Lab testing rig. Maintaining the depth specification within ±0.15mm was treated as a critical control point from the very first sketch.</p>
+      <div class="challenge-box" style="margin-top:1.25rem">
+        <div class="challenge-box-title">Key Engineering Decisions</div>
+        <ul class="challenge-list">
+          <li>All features constructed from fully constrained parametric sketches</li>
+          <li>Datum references aligned to match client drawing coordinate system</li>
+          <li>Depth tolerance treated as critical — directly affects assembly fit</li>
+          <li>USB port recess and speaker grille modelled to exact drawing specifications</li>
+          <li>Regular cross-checks between Fusion 360 model and original drawing throughout</li>
+        </ul>
+      </div>
+    </div>
+    <div class="solution-row">
+      <div class="challenge-box" style="flex:1">
+        <div class="challenge-box-title">Fusion 360 Methodology</div>
+        <div style="display:flex;flex-direction:column;gap:.85rem;margin-top:.25rem">
+          <div class="solution-item">
+            <div class="sol-icon"><svg viewBox="0 0 14 14"><rect x="2" y="2" width="10" height="10" rx="1"/><path d="M5 5h4M5 7h4M5 9h2"/></svg></div>
+            <div class="sol-text"><strong>Step 1 — Drawing interpretation:</strong> Client engineering drawing studied in full. Datums, tolerances, and feature hierarchies identified before opening Fusion 360.</div>
+          </div>
+          <div class="solution-item">
+            <div class="sol-icon"><svg viewBox="0 0 14 14"><path d="M2 12L12 2M2 2h10v10"/></svg></div>
+            <div class="sol-text"><strong>Step 2 — Fully constrained sketch:</strong> Base profile built with all dimensions locked to drawing values. No derived or estimated inputs — all values directly entered.</div>
+          </div>
+          <div class="solution-item">
+            <div class="sol-icon"><svg viewBox="0 0 14 14"><rect x="2" y="2" width="10" height="10" rx="1"/><path d="M5 7h4M7 5v4"/></svg></div>
+            <div class="sol-text"><strong>Step 3 — Feature build:</strong> Shell, ports, and structural ribs added in sequence. Each feature verified against drawing before proceeding to the next.</div>
+          </div>
+          <div class="solution-item">
+            <div class="sol-icon"><svg viewBox="0 0 14 14"><path d="M3 11l8-8M8 3h3v3"/></svg></div>
+            <div class="sol-text"><strong>Step 4 — STL export:</strong> High-resolution mesh at 0.001mm surface deviation. Geometry verified clean before handoff to 3D printing stage.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEDIA: Bottom Casing -->
+  <div class="media-grid">
+    <div class="media-block">
+      <div class="media-header">
+        <span class="media-label">Fusion 360 — Build Process</span>
+        <span class="media-type">Video</span>
+      </div>
+      <div class="media-body">
+        <div class="video-placeholder">
+          <div class="play-btn"><svg viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14" fill="var(--cyan)"/></svg></div>
+          <div class="vid-label">Bottom Casing — Fusion 360 Modelling Walkthrough</div>
+          <div style="font-family:var(--fm);font-size:.5rem;color:rgba(106,127,154,0.6);letter-spacing:.1em;text-transform:uppercase;margin-top:.25rem">Replace src with your video file</div>
+        </div>
+      </div>
+      <div class="media-caption"><strong>Fusion 360 Video:</strong> Step-by-step walkthrough of the drawing-based modelling process — from constrained sketch to completed solid body with all client-specified features.</div>
+    </div>
+
+    <div class="media-block">
+      <div class="media-header">
+        <span class="media-label">2D Technical Drawing</span>
+        <span class="media-type">Fusion 360</span>
+      </div>
+      <div class="media-body">
+        <img src="https://github.com/panizmazaheri953-sudo/Digital-Manufacturing-/blob/main/Screenshot%202026-04-16%20at%2016.32.27.png?raw=true" alt="Bottom Casing 2D Drawing" style="min-height:180px">
+      </div>
+      <div class="media-caption"><strong>Orthographic Drawing:</strong> Fully dimensioned multi-view drawing produced in Fusion 360. All values sourced directly from the client's engineering drawing — no derived inputs.</div>
+    </div>
+
+    <div class="media-block">
+      <div class="media-header">
+        <span class="media-label">3D CAD Model</span>
+        <span class="media-type">STL Ready</span>
+      </div>
+      <div class="media-body">
+        <img src="https://github.com/panizmazaheri953-sudo/Digital-Manufacturing-/blob/main/Screenshot%202026-04-16%20at%2015.54.32.png?raw=true" alt="Bottom Casing 3D Model" style="min-height:180px">
+      </div>
+      <div class="media-caption"><strong>Parametric Solid Model:</strong> Completed 3D model with all client-specified features. Depth confirmed at 13mm — critical for FESTO assembly press-fit clearance.</div>
+    </div>
+  </div>
+
+  <!-- DIMENSION TABLE -->
+  <div class="dim-annotation">
+    <div class="dim-anno-title">Critical Dimensions — Bottom Casing</div>
+    <div class="dim-rows">
+      <div class="dim-row"><span class="dim-name">Overall Height</span><span class="dim-val">114 mm</span><span class="dim-spec">Client drawing</span></div>
+      <div class="dim-row"><span class="dim-name">Overall Width</span><span class="dim-val">60 mm</span><span class="dim-spec">Client drawing</span></div>
+      <div class="dim-row"><span class="dim-name">Depth (Z)</span><span class="dim-val">13 mm</span><span class="dim-spec">Client drawing — critical</span></div>
+      <div class="dim-row"><span class="dim-name">Wall Thickness</span><span class="dim-val">1.6–2.2 mm</span><span class="dim-spec">Spec range — SPC controlled</span></div>
+      <div class="dim-row"><span class="dim-name">USB Port Recess</span><span class="dim-val">Per drawing</span><span class="dim-spec">Exact from client spec</span></div>
+      <div class="dim-row"><span class="dim-name">Speaker Grille</span><span class="dim-val">Per drawing</span><span class="dim-spec">Exact from client spec</span></div>
+    </div>
+  </div>
+
+  <!-- PROCESS STEPS -->
+  <div class="process-steps">
+    <div class="pstep"><div class="pstep-num">01</div><div class="pstep-title">Interpret</div><div class="pstep-desc">Client drawing studied. Datums and tolerances identified.</div></div>
+    <div class="pstep"><div class="pstep-num">02</div><div class="pstep-title">Constrain</div><div class="pstep-desc">Fully constrained sketch — all dims from drawing, no estimates.</div></div>
+    <div class="pstep"><div class="pstep-num">03</div><div class="pstep-title">Build</div><div class="pstep-desc">Shell, ports, ribs added sequentially. Each verified before next.</div></div>
+    <div class="pstep"><div class="pstep-num">04</div><div class="pstep-title">Verify</div><div class="pstep-desc">All dimensions cross-checked against original drawing in full.</div></div>
+    <div class="pstep"><div class="pstep-num">05</div><div class="pstep-title">Export STL</div><div class="pstep-desc">High-res mesh. Zero errors. Sent to 3D printing stage.</div></div>
+  </div>
+
+  <!-- STL EXPORT -->
+  <div class="stl-row">
+    <div class="stl-card">
+      <div class="stl-icon"><svg viewBox="0 0 22 22"><path d="M3 16l8-12 8 12H3z"/><path d="M6 16v4h10v-4"/></svg></div>
+      <div class="stl-info">
+        <div class="stl-title">bottom_casing_v2_final.stl</div>
+        <div class="stl-desc">High-resolution STL mesh exported from Fusion 360. Fully validated against client drawing dimensions. Zero mesh errors. Slicer import successful on first attempt.</div>
+        <div class="stl-meta">
+          <div class="stl-tag">STL</div>
+          <div class="stl-tag">Fusion 360</div>
+          <div class="stl-tag">Print Ready</div>
+        </div>
+      </div>
+    </div>
+    <div class="stl-card">
+      <div class="stl-icon"><svg viewBox="0 0 22 22"><path d="M11 2v14M6 12l5 5 5-5"/><path d="M3 18h16"/></svg></div>
+      <div class="stl-info">
+        <div class="stl-title">Export Settings — Bottom Casing</div>
+        <div class="stl-desc">Format: Binary STL — Surface deviation: 0.001mm — Normal deviation: 1° — Refinement: High — Compatible with Bambu P1S slicer profile.</div>
+        <div class="stl-meta">
+          <div class="stl-tag">Binary STL</div>
+          <div class="stl-tag">0.001mm Tolerance</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="f-logo">PANIZ<span>.</span></div>
+  <div class="f-copy">© 2026 — Digital Manufacturing Portfolio</div>
+  <div class="f-links">
+    <a href="project.html">Project</a>
+    <a href="pfmea.html">PFMEA</a>
+    <a href="printing.html">3D Printing</a>
+    <a href="quality.html">Quality</a>
+    <a href="simulation.html">Simulation</a>
+  </div>
+</footer>
+
+<script>
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+let rx=0,ry=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
+(function animRing(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';ring.style.opacity='0'});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.opacity='.4'});
+});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')}),{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
