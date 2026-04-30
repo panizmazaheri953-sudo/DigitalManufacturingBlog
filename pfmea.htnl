@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PFMEA | Paniz Manufacturing</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{--navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--cyan:#00e5ff;--cyan2:#00b8cc;--white:#f0f4ff;--muted:#7a8fa8;--border:rgba(0,229,255,0.15);--card:rgba(15,32,64,0.6);--ff:'Space Grotesk',sans-serif;--fm:'Space Mono',monospace;}
+  body{font-family:var(--ff);background:var(--navy);color:var(--white);}
+  nav{position:sticky;top:0;z-index:999;background:rgba(5,13,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;}
+  .logo{font-family:var(--fm);font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);}
+  .nav-links{display:flex;gap:0;list-style:none;}
+  .nav-links a{display:block;padding:0 1.2rem;height:64px;line-height:64px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s,border-bottom .2s;border-bottom:2px solid transparent;}
+  .nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan);}
+  .page-hero{padding:4rem 5% 3rem;text-align:center;border-bottom:1px solid var(--border);}
+  .hero-badge{font-family:var(--fm);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);border:1px solid var(--border);padding:.35rem .9rem;display:inline-block;margin-bottom:1.5rem;}
+  .page-hero h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:700;text-transform:uppercase;}
+  .page-hero h1 span{color:var(--cyan);}
+  section{padding:3rem 5%;max-width:1400px;margin:0 auto;}
+  .sec-label{font-family:var(--fm);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem;}
+  .sec-label::after{content:'';flex:0 0 40px;height:1px;background:var(--cyan);}
+  .stats-row{display:flex;gap:1rem;margin:2rem 0;flex-wrap:wrap;}
+  .stat-box{background:var(--card);border:1px solid var(--border);padding:1.5rem;flex:1;text-align:center;}
+  .stat-box h3{font-family:var(--fm);font-size:2rem;color:var(--cyan);}
+  .table-wrap{overflow-x:auto;margin:2rem 0;}
+  .pfmea-table{width:100%;border-collapse:collapse;font-size:.7rem;background:var(--card);border:1px solid var(--border);}
+  .pfmea-table th,.pfmea-table td{padding:8px 6px;border:1px solid var(--border);text-align:center;vertical-align:top;}
+  .pfmea-table th{background:var(--navy3);color:var(--cyan);font-family:var(--fm);}
+  .rpn-high{background:rgba(255,80,80,0.2);color:#ff9999;font-weight:700;}
+  .rpn-low{background:rgba(0,229,255,0.15);color:var(--cyan);font-weight:700;}
+  .scale-table{width:100%;border-collapse:collapse;margin:1rem 0;background:var(--card);border:1px solid var(--border);}
+  .scale-table th,.scale-table td{padding:8px 12px;border:1px solid var(--border);text-align:left;font-size:.75rem;}
+  .scale-table th{background:var(--navy3);color:var(--cyan);}
+  .reference{background:var(--card);border-left:3px solid var(--cyan);padding:1.5rem;margin:2rem 0;}
+  footer{background:var(--navy2);border-top:1px solid var(--border);padding:2rem 5%;display:flex;justify-content:space-between;flex-wrap:wrap;}
+  @media(max-width:800px){.nav-links{display:none;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Paniz Manufacturing</span>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="project.html">Project</a></li>
+    <li><a href="design.html">Design</a></li>
+    <li><a href="pfmea.html" class="active">PFMEA</a></li>
+    <li><a href="printing.html">3D Printing</a></li>
+    <li><a href="quality.html">Quality</a></li>
+    <li><a href="simulation.html">Simulation</a></li>
+  </ul>
+  <a class="nav-cta" href="simulation.html">Capacity</a>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-badge">Process Failure Mode & Effects Analysis</div>
+  <h1>PFMEA <span>Phones-R-Us</span></h1>
+</div>
+
+<section>
+  <div class="sec-label">Risk Priority Numbers</div>
+  <div class="stats-row">
+    <div class="stat-box"><h3>288</h3><p>Peak RPN (Before)</p></div>
+    <div class="stat-box"><h3>64</h3><p>Peak RPN (After)</p></div>
+    <div class="stat-box"><h3>80%</h3><p>Success Rate</p></div>
+    <div class="stat-box"><h3>25</h3><p>Printers Needed</p></div>
+  </div>
+
+  <div class="table-wrap">
+    <table class="pfmea-table">
+      <thead><tr><th>Process</th><th>Failure Mode</th><th>Cause</th><th>S</th><th>O</th><th>D</th><th>RPN</th><th>Action</th><th>New RPN</th></tr></thead>
+      <tbody>
+        <tr><td>Ultimaker Printing</td><td>Depth out of spec (1.18mm vs 1.6-2.2mm)</td><td>Poor dimensional accuracy</td><td>8</td><td>9</td><td>4</td><td class="rpn-high">288</td><td>Switched to Bambu P1S</td><td class="rpn-low">64</td></tr>
+        <tr><td>Ultimaker Printing</td><td>Layer shifting</td><td>Loose belts, speed too high</td><td>7</td><td>7</td><td>5</td><td class="rpn-high">245</td><td>Bambu auto-calibration</td><td class="rpn-low">42</td></tr>
+        <tr><td>Ultimaker Printing</td><td>Clogging / extrusion</td><td>Filament quality, temperature</td><td>6</td><td>8</td><td>6</td><td class="rpn-high">288</td><td>Bambu hardened nozzle</td><td class="rpn-low">48</td></tr>
+        <tr><td>FESTO Station 2</td><td>Laser measurement fail</td><td>Ultimaker dimensional error</td><td>8</td><td>9</td><td>2</td><td>144</td><td>Bambu prints pass</td><td class="rpn-low">32</td></tr>
+        <tr><td>Assembly</td><td>Operator cuts finger</td><td>Sharp edges</td><td>10</td><td>5</td><td>8</td><td class="rpn-high">400</td><td>Deburring operation</td><td>80</td></tr>
+        <tr><td>24/7 Operation</td><td>Printer fails overnight</td><td>No operator present</td><td>6</td><td>3</td><td>8</td><td>144</td><td>Remote monitoring cameras</td><td>90</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="reference">
+    <h4 style="color:var(--cyan);margin-bottom:.5rem;">📚 References</h4>
+    <p>AIAG & VDA (2019). FMEA Handbook. | Stamatis, D. H. (2003). FMEA from Theory to Execution. | ISO 9001:2015.</p>
+  </div>
+</section>
+
+<footer><div><div class="f-logo">Paniz Manufacturing Co.</div></div><div class="f-links"><a href="printing.html">3D Printing</a><a href="quality.html">Quality</a></div></footer>
+</body>
+</html>
