@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project | Paniz Manufacturing</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{--navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--cyan:#00e5ff;--cyan2:#00b8cc;--white:#f0f4ff;--muted:#7a8fa8;--border:rgba(0,229,255,0.15);--card:rgba(15,32,64,0.6);--ff:'Space Grotesk',sans-serif;--fm:'Space Mono',monospace;}
+  body{font-family:var(--ff);background:var(--navy);color:var(--white);}
+  nav{position:sticky;top:0;z-index:999;background:rgba(5,13,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;}
+  .logo{font-family:var(--fm);font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);}
+  .nav-links{display:flex;gap:0;list-style:none;}
+  .nav-links a{display:block;padding:0 1.2rem;height:64px;line-height:64px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s,border-bottom .2s;border-bottom:2px solid transparent;}
+  .nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan);}
+  .nav-cta{font-family:var(--fm);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--cyan);color:var(--cyan);padding:.45rem 1.1rem;text-decoration:none;transition:all .2s;}
+  .page-hero{padding:4rem 5% 3rem;text-align:center;border-bottom:1px solid var(--border);}
+  .hero-badge{font-family:var(--fm);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);border:1px solid var(--border);padding:.35rem .9rem;display:inline-block;margin-bottom:1.5rem;}
+  .page-hero h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:700;text-transform:uppercase;letter-spacing:-.01em;}
+  .page-hero h1 span{color:var(--cyan);}
+  section{padding:3rem 5%;max-width:1200px;margin:0 auto;}
+  .sec-label{font-family:var(--fm);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem;}
+  .sec-label::after{content:'';flex:0 0 40px;height:1px;background:var(--cyan);}
+  .sec-title{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;text-transform:uppercase;margin-bottom:1.5rem;}
+  .requirements-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin:2rem 0;}
+  .req-card{background:var(--card);border:1px solid var(--border);padding:1.5rem;transition:all .3s;}
+  .req-card:hover{border-color:var(--cyan);transform:translateY(-4px);}
+  .req-card h3{font-size:1rem;font-weight:600;text-transform:uppercase;margin-bottom:.5rem;color:var(--cyan);}
+  .req-card p{font-size:.85rem;color:var(--muted);line-height:1.6;}
+  .timeline{display:flex;flex-direction:column;gap:.5rem;margin:2rem 0;}
+  .timeline-item{display:flex;align-items:flex-start;gap:1.5rem;padding:1rem;border-left:2px solid var(--border);}
+  .timeline-week{font-family:var(--fm);font-size:.7rem;color:var(--cyan);min-width:70px;}
+  .timeline-desc{font-size:.85rem;color:var(--muted);}
+  footer{background:var(--navy2);border-top:1px solid var(--border);padding:2rem 5%;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;}
+  .f-logo{font-family:var(--fm);font-size:.8rem;letter-spacing:.2em;color:var(--cyan);}
+  .f-links{display:flex;gap:1.5rem;}
+  .f-links a{font-family:var(--fm);font-size:.65rem;color:var(--muted);text-decoration:none;}
+  .f-links a:hover{color:var(--cyan);}
+  @media(max-width:800px){.nav-links{display:none;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Paniz Manufacturing</span>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="project.html" class="active">Project</a></li>
+    <li><a href="design.html">Design</a></li>
+    <li><a href="pfmea.html">PFMEA</a></li>
+    <li><a href="printing.html">3D Printing</a></li>
+    <li><a href="quality.html">Quality</a></li>
+    <li><a href="simulation.html">Simulation</a></li>
+  </ul>
+  <a class="nav-cta" href="simulation.html">50K Capacity</a>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-badge">Phones-R-Us · 2026</div>
+  <h1>Project <span>Overview</span></h1>
+</div>
+
+<section>
+  <div class="sec-label">01 &mdash; Client Requirement</div>
+  <h2 class="sec-title">The Challenge</h2>
+  <div class="requirements-grid">
+    <div class="req-card"><h3>Bottom Casing</h3><p>Drawing provided by client — must match exactly ±0.1mm tolerance.</p></div>
+    <div class="req-card"><h3>Top Casing</h3><p>Reverse engineer from physical part — drawing had missing dimensions and confusing cross-sections.</p></div>
+    <div class="req-card"><h3>Interchangeability</h3><p>Must fit with existing master casings from another supplier.</p></div>
+    <div class="req-card"><h3>Assembly Line</h3><p>Must flow through FESTO CP Lab without jamming — all 6 stations.</p></div>
+    <div class="req-card"><h3>Production Target</h3><p>50,000 complete phones per year (50,000 top + 50,000 bottom casings).</p></div>
+    <div class="req-card"><h3>Timeline</h3><p>9 weeks to present sample for testing and validation.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-label">02 &mdash; Timeline</div>
+  <h2 class="sec-title">9-Week Journey</h2>
+  <div class="timeline">
+    <div class="timeline-item"><div class="timeline-week">Week 1-2</div><div class="timeline-desc">Ultimaker trials — 15 prints, 0 passed FESTO measurement station.</div></div>
+    <div class="timeline-item"><div class="timeline-week">Week 3-4</div><div class="timeline-desc">Failure analysis — identified laser measurement issue (1.18mm vs 1.6-2.2mm spec).</div></div>
+    <div class="timeline-item"><div class="timeline-week">Week 5-6</div><div class="timeline-desc">Switched to Bambu P1S — first prints: 80% success rate, 3 perfect.</div></div>
+    <div class="timeline-item"><div class="timeline-week">Week 7-8</div><div class="timeline-desc">FESTO validation — Bambu prints pass all 6 stations.</div></div>
+    <div class="timeline-item"><div class="timeline-week">Week 9</div><div class="timeline-desc">Final delivery — 50,000/year plan: 25 printers running 24/7.</div></div>
+  </div>
+</section>
+
+<footer>
+  <div><div class="f-logo">Paniz Manufacturing Co.</div></div>
+  <div class="f-links"><a href="design.html">Design</a><a href="printing.html">3D Printing</a><a href="simulation.html">Capacity</a></div>
+</footer>
+</body>
+</html>
