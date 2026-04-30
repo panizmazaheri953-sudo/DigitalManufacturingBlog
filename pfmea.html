@@ -3,45 +3,303 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PFMEA | Paniz Manufacturing</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>PFMEA — Paniz Manufacturing</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  :root{--navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--cyan:#00e5ff;--cyan2:#00b8cc;--white:#f0f4ff;--muted:#7a8fa8;--border:rgba(0,229,255,0.15);--card:rgba(15,32,64,0.6);--ff:'Space Grotesk',sans-serif;--fm:'Space Mono',monospace;}
-  body{font-family:var(--ff);background:var(--navy);color:var(--white);}
-  nav{position:sticky;top:0;z-index:999;background:rgba(5,13,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;}
-  .logo{font-family:var(--fm);font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);}
-  .nav-links{display:flex;gap:0;list-style:none;}
-  .nav-links a{display:block;padding:0 1.2rem;height:64px;line-height:64px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s,border-bottom .2s;border-bottom:2px solid transparent;}
-  .nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan);}
-  .page-hero{padding:4rem 5% 3rem;text-align:center;border-bottom:1px solid var(--border);}
-  .hero-badge{font-family:var(--fm);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);border:1px solid var(--border);padding:.35rem .9rem;display:inline-block;margin-bottom:1.5rem;}
-  .page-hero h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:700;text-transform:uppercase;}
-  .page-hero h1 span{color:var(--cyan);}
-  section{padding:3rem 5%;max-width:1400px;margin:0 auto;}
-  .sec-label{font-family:var(--fm);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem;}
-  .sec-label::after{content:'';flex:0 0 40px;height:1px;background:var(--cyan);}
-  .stats-row{display:flex;gap:1rem;margin:2rem 0;flex-wrap:wrap;}
-  .stat-box{background:var(--card);border:1px solid var(--border);padding:1.5rem;flex:1;text-align:center;}
-  .stat-box h3{font-family:var(--fm);font-size:2rem;color:var(--cyan);}
-  .table-wrap{overflow-x:auto;margin:2rem 0;}
-  .pfmea-table{width:100%;border-collapse:collapse;font-size:.7rem;background:var(--card);border:1px solid var(--border);}
-  .pfmea-table th,.pfmea-table td{padding:8px 6px;border:1px solid var(--border);text-align:center;vertical-align:top;}
-  .pfmea-table th{background:var(--navy3);color:var(--cyan);font-family:var(--fm);}
-  .rpn-high{background:rgba(255,80,80,0.2);color:#ff9999;font-weight:700;}
-  .rpn-low{background:rgba(0,229,255,0.15);color:var(--cyan);font-weight:700;}
-  .scale-table{width:100%;border-collapse:collapse;margin:1rem 0;background:var(--card);border:1px solid var(--border);}
-  .scale-table th,.scale-table td{padding:8px 12px;border:1px solid var(--border);text-align:left;font-size:.75rem;}
-  .scale-table th{background:var(--navy3);color:var(--cyan);}
-  .reference{background:var(--card);border-left:3px solid var(--cyan);padding:1.5rem;margin:2rem 0;}
-  footer{background:var(--navy2);border-top:1px solid var(--border);padding:2rem 5%;display:flex;justify-content:space-between;flex-wrap:wrap;}
-  @media(max-width:800px){.nav-links{display:none;}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--navy4:#152848;
+  --cyan:#00e5ff;--cyan2:#00b8cc;--cyan3:rgba(0,229,255,0.1);--cyan4:rgba(0,229,255,0.06);
+  --white:#f0f4ff;--muted:#6a7f9a;--border:rgba(0,229,255,0.13);
+  --card:rgba(15,32,64,0.7);
+  --red:#ff4444;--red2:rgba(255,68,68,0.12);
+  --orange:#ffa500;--orange2:rgba(255,165,0,0.12);
+  --green:#00e5ff;--green2:rgba(0,229,255,0.12);
+  --ff:'DM Sans',sans-serif;--fd:'Bebas Neue',sans-serif;--fm:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--navy);color:var(--white);overflow-x:hidden;cursor:none}
+
+#cursor{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:screen}
+#cursor-ring{position:fixed;top:0;left:0;width:34px;height:34px;border:1px solid var(--cyan);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.4;transition:opacity .2s}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 4%;height:62px;border-bottom:1px solid var(--border);background:rgba(5,13,26,0.92);backdrop-filter:blur(12px)}
+.logo{font-family:var(--fd);font-size:1.55rem;letter-spacing:.06em;color:var(--white);text-decoration:none}
+.logo span{color:var(--cyan)}
+.nav-links{display:flex;list-style:none}
+.nav-links a{font-family:var(--fm);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.4rem .9rem;transition:color .2s;height:62px;display:flex;align-items:center;border-bottom:2px solid transparent}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan)}
+.nav-pill{font-family:var(--fm);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--cyan);color:var(--cyan);padding:.45rem 1.2rem;text-decoration:none;transition:all .2s;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%)}
+.nav-pill:hover{background:var(--cyan);color:var(--navy)}
+
+/* NOISE */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.02;pointer-events:none;z-index:9990}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* HERO */
+#hero{padding-top:62px;min-height:52vh;display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.hero-label{padding:3.5rem 2.5rem;border-right:1px solid var(--border);background:var(--navy2);display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.hero-label::after{content:'PFMEA';position:absolute;bottom:-1rem;left:-1rem;font-family:var(--fd);font-size:8rem;color:rgba(0,229,255,0.03);line-height:1;pointer-events:none;white-space:nowrap}
+.sec-tag{font-family:var(--fm);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.5rem}
+.sec-big-num{font-family:var(--fd);font-size:5rem;color:var(--navy4);line-height:1;user-select:none}
+.hero-main{padding:3.5rem 4%;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.hero-eyebrow{font-family:var(--fm);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);display:inline-flex;align-items:center;gap:.8rem;margin-bottom:1.5rem}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--cyan)}
+.hero-h1{font-family:var(--fd);font-size:clamp(4rem,7vw,7.5rem);line-height:.88;letter-spacing:.01em;margin-bottom:1.5rem}
+.hero-h1 .hollow{-webkit-text-stroke:2px var(--white);color:transparent}
+.hero-h1 .glow{color:var(--cyan)}
+.hero-sub{max-width:560px;font-size:.9rem;line-height:1.75;color:var(--muted);font-weight:300;margin-bottom:2rem}
+.formula-box{display:inline-flex;align-items:center;gap:1rem;border:1px solid var(--border);background:var(--navy3);padding:.85rem 1.5rem;font-family:var(--fm);font-size:.75rem;letter-spacing:.08em}
+.formula-box .f-var{color:var(--cyan);font-size:1rem;font-family:var(--fd)}
+.formula-box .f-op{color:var(--muted);margin:0 .4rem}
+.formula-box .f-label{font-size:.52rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;display:block;margin-top:.15rem}
+
+/* MARQUEE */
+.marquee-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:var(--navy3);padding:.55rem 0}
+.marquee-track{display:flex;animation:marquee 28s linear infinite;white-space:nowrap}
+.marquee-track:hover{animation-play-state:paused}
+.m-item{font-family:var(--fd);font-size:1rem;letter-spacing:.06em;color:rgba(0,229,255,0.3);padding:0 2rem;display:flex;align-items:center;gap:1.5rem}
+.m-item span{color:var(--cyan);font-size:.7rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* GOALS SECTION */
+#goals{display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border)}
+.label-col{padding:3rem 2.5rem;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;background:var(--navy2)}
+.goals-grid{padding:3rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.goal-card{padding:1.5rem;border:1px solid var(--border);background:var(--navy2);transition:border-color .3s,background .3s;position:relative;overflow:hidden}
+.goal-card:hover{border-color:var(--cyan);background:var(--navy3)}
+.goal-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--cyan);transition:height .4s}
+.goal-card:hover::before{height:100%}
+.goal-num{font-family:var(--fd);font-size:2.5rem;color:var(--navy4);line-height:1;margin-bottom:.75rem}
+.goal-title{font-family:var(--fm);font-size:.62rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--white);margin-bottom:.5rem}
+.goal-desc{font-size:.75rem;color:var(--muted);line-height:1.6;font-weight:300}
+
+/* SUMMARY CARDS */
+#summary{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--border)}
+.sum-card{padding:2rem 1.75rem;border-right:1px solid var(--border);position:relative;overflow:hidden;background:var(--navy);transition:background .3s}
+.sum-card:last-child{border-right:none}
+.sum-card:hover{background:var(--navy2)}
+.sum-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;transition:width .5s}
+.sum-card:hover::after{width:100%}
+.sum-card.red::after{background:var(--red)}
+.sum-card.orange::after{background:var(--orange)}
+.sum-card.cyan::after{background:var(--cyan)}
+.sum-n{font-family:var(--fd);font-size:3.2rem;line-height:1}
+.sum-n.red{color:var(--red)}
+.sum-n.orange{color:var(--orange)}
+.sum-n.cyan{color:var(--cyan)}
+.sum-label{font-family:var(--fm);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.4rem}
+.sum-note{font-size:.68rem;color:var(--muted);margin-top:.25rem;font-weight:300;opacity:.7}
+
+/* RISK BANNER */
+.risk-banner{background:var(--navy3);border-bottom:1px solid var(--border);padding:1.25rem 4%;display:flex;align-items:center;gap:3rem}
+.rb-label{font-family:var(--fm);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);flex-shrink:0}
+.rb-scale{display:flex;flex:1;gap:0}
+.rb-seg{flex:1;height:6px;position:relative}
+.rb-seg:first-child{background:linear-gradient(90deg,rgba(0,229,255,0.2),rgba(0,229,255,0.5));border-radius:3px 0 0 3px}
+.rb-seg:nth-child(2){background:linear-gradient(90deg,rgba(255,165,0,0.4),rgba(255,165,0,0.7))}
+.rb-seg:last-child{background:linear-gradient(90deg,rgba(255,68,68,0.5),rgba(255,68,68,0.9));border-radius:0 3px 3px 0}
+.rb-seg-label{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-family:var(--fm);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.rb-seg:first-child .rb-seg-label{color:var(--cyan)}
+.rb-seg:nth-child(2) .rb-seg-label{color:var(--orange)}
+.rb-seg:last-child .rb-seg-label{color:var(--red)}
+.rb-legend{display:flex;gap:1.5rem;flex-shrink:0}
+.rb-dot{display:flex;align-items:center;gap:.4rem;font-family:var(--fm);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase}
+.rb-dot::before{content:'';width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.rb-dot.low::before{background:var(--cyan)}
+.rb-dot.mid::before{background:var(--orange)}
+.rb-dot.high::before{background:var(--red)}
+.rb-dot.low{color:var(--cyan)}
+.rb-dot.mid{color:var(--orange)}
+.rb-dot.high{color:var(--red)}
+
+/* TABLE SECTION */
+#table-section{border-bottom:1px solid var(--border)}
+.table-head{display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border)}
+.table-head-label{padding:2.5rem;border-right:1px solid var(--border);background:var(--navy2)}
+.table-head-content{padding:2.5rem 3rem;display:flex;align-items:flex-end;justify-content:space-between}
+.table-head-content h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3.2rem);line-height:.95;text-transform:uppercase}
+.table-head-content h2 em{color:var(--cyan);font-style:normal}
+.filter-row{display:flex;gap:.5rem;align-items:center}
+.filter-btn{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .9rem;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s}
+.filter-btn:hover,.filter-btn.active{border-color:var(--cyan);color:var(--cyan);background:var(--cyan4)}
+.filter-btn.active-red{border-color:var(--red);color:var(--red);background:var(--red2)}
+.filter-btn.active-orange{border-color:var(--orange);color:var(--orange);background:var(--orange2)}
+
+/* PFMEA TABLE */
+.table-wrap{overflow-x:auto;padding:0}
+.pfmea-table{width:100%;border-collapse:collapse;font-size:.72rem}
+.pfmea-table th{font-family:var(--fm);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:.9rem 1rem;border-bottom:1px solid var(--border);border-right:1px solid var(--border);background:var(--navy2);white-space:nowrap;position:sticky;top:0;z-index:10}
+.pfmea-table th:last-child{border-right:none}
+.pfmea-table th.cyan{color:var(--cyan)}
+.pfmea-table td{padding:.85rem 1rem;border-bottom:1px solid var(--border);border-right:1px solid var(--border);vertical-align:top;line-height:1.45;color:var(--muted);font-weight:300;background:var(--navy)}
+.pfmea-table td:last-child{border-right:none}
+.pfmea-table tr:hover td{background:var(--navy2)}
+.pfmea-table .process-group td:first-child{border-left:3px solid var(--cyan)}
+.pfmea-table .process-label{font-family:var(--fm);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);background:var(--navy3)!important}
+.pfmea-table .process-label td{padding:.65rem 1rem;background:var(--navy3)!important;color:var(--cyan);font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+
+/* RPN BADGE */
+.rpn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.4rem;min-width:52px;padding:.2rem .4rem;border-radius:2px;line-height:1}
+.rpn.high{color:var(--red);background:var(--red2);border:1px solid rgba(255,68,68,0.3)}
+.rpn.mid{color:var(--orange);background:var(--orange2);border:1px solid rgba(255,165,0,0.3)}
+.rpn.low{color:var(--cyan);background:var(--green2);border:1px solid rgba(0,229,255,0.2)}
+.rpn-after{display:inline-flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.1rem;min-width:44px;padding:.15rem .35rem;border-radius:2px;line-height:1;opacity:.75}
+.rpn-after.high{color:var(--red);background:var(--red2)}
+.rpn-after.mid{color:var(--orange);background:var(--orange2)}
+.rpn-after.low{color:var(--cyan);background:var(--green2)}
+.arr-down{display:inline-block;margin:0 .3rem;color:var(--muted);font-size:.65rem}
+
+/* SEV/OCC/DET CELLS */
+.score-cell{font-family:var(--fd);font-size:1.5rem;line-height:1;text-align:center}
+.score-cell.sev-high{color:var(--red)}
+.score-cell.sev-mid{color:var(--orange)}
+.score-cell.sev-low{color:var(--cyan)}
+.class-badge{display:inline-flex;padding:.15rem .5rem;border-radius:2px;font-family:var(--fm);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.class-badge.safety{background:rgba(255,68,68,0.15);border:1px solid var(--red);color:var(--red)}
+.class-badge.critical{background:rgba(255,100,0,0.12);border:1px solid #ff6400;color:#ff6400}
+.class-badge.major{background:var(--orange2);border:1px solid var(--orange);color:var(--orange)}
+.class-badge.minor{background:var(--green2);border:1px solid rgba(0,229,255,0.3);color:var(--cyan)}
+.col-fn{min-width:130px;color:var(--white)!important;font-weight:400!important}
+.col-fm{min-width:170px}
+.col-fe{min-width:150px}
+.col-cause{min-width:150px}
+.col-ctrl{min-width:130px}
+.col-action{min-width:170px;color:var(--white)!important;font-weight:400!important}
+.col-resp{min-width:130px}
+.col-taken{min-width:150px}
+.line-num{font-family:var(--fd);font-size:1.4rem;color:var(--navy4);text-align:center}
+
+/* DELTA */
+.delta{display:inline-flex;align-items:center;gap:.25rem;font-family:var(--fm);font-size:.55rem;color:#4cff91;margin-left:.4rem}
+.delta::before{content:'▼';font-size:.45rem}
+
+/* CAPACITY SECTION */
+#capacity{display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border)}
+.cap-content{padding:3rem}
+.cap-content h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3.2rem);line-height:.95;text-transform:uppercase;margin-bottom:.5rem}
+.cap-content h2 em{color:var(--cyan);font-style:normal}
+.cap-sub{font-family:var(--fm);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem}
+.cap-table-wrap{border:1px solid var(--border);overflow:hidden}
+.cap-table{width:100%;border-collapse:collapse}
+.cap-table th{font-family:var(--fm);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:.8rem 1.25rem;background:var(--navy2);border-bottom:1px solid var(--border);border-right:1px solid var(--border);text-align:left}
+.cap-table th:last-child{border-right:none}
+.cap-table td{padding:.85rem 1.25rem;border-bottom:1px solid var(--border);border-right:1px solid var(--border);font-size:.78rem;color:var(--muted);font-weight:300}
+.cap-table td:last-child{border-right:none}
+.cap-table tr:last-child td{border-bottom:none}
+.cap-table tr.recommended td{background:rgba(0,229,255,0.04);color:var(--white)}
+.cap-table tr.recommended td:first-child{border-left:3px solid var(--cyan);color:var(--cyan);font-weight:500}
+.cap-table tr:hover td{background:var(--navy3)}
+.cap-num{font-family:var(--fd);font-size:1.5rem;color:var(--cyan);line-height:1}
+.cap-note{margin-top:1.5rem;padding:1rem 1.25rem;border:1px solid rgba(0,229,255,0.2);background:var(--cyan4);display:flex;align-items:flex-start;gap:.75rem}
+.cap-note-icon{color:var(--cyan);font-size:1.1rem;flex-shrink:0;margin-top:.05rem}
+.cap-note p{font-size:.75rem;color:var(--muted);line-height:1.6;font-weight:300}
+.cap-note strong{color:var(--white);font-weight:500}
+
+/* TRIAL RESULTS */
+#trials{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)}
+.trial-card{padding:3rem;position:relative;overflow:hidden}
+.trial-card:first-child{border-right:1px solid var(--border);background:var(--navy2)}
+.trial-card:last-child{background:var(--navy)}
+.trial-badge{font-family:var(--fm);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1.5rem}
+.dot{width:6px;height:6px;border-radius:50%;display:inline-block;flex-shrink:0}
+.dot.active{background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+.dot.dead{background:var(--red)}
+.trial-name{font-family:var(--fd);font-size:2.8rem;line-height:.95;text-transform:uppercase;margin-bottom:.3rem}
+.trial-sub{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem}
+.trial-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+.tstat{padding:1rem;border:1px solid var(--border);background:var(--navy)}
+.tstat-n{font-family:var(--fd);font-size:2rem;line-height:1}
+.tstat-n.fail{color:var(--red)}
+.tstat-n.pass{color:var(--cyan)}
+.tstat-l{font-family:var(--fm);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.25rem}
+.trial-insight{padding:1rem 1.25rem;border:1px solid var(--border);font-size:.75rem;color:var(--muted);line-height:1.6;font-weight:300}
+.trial-insight strong{color:var(--white);font-weight:500}
+.watermark{position:absolute;bottom:1.5rem;right:2rem;font-family:var(--fd);font-size:5rem;opacity:.04;line-height:1;pointer-events:none;text-transform:uppercase}
+
+/* RATING SCALES */
+#scales{border-bottom:1px solid var(--border)}
+.scales-head{display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border)}
+.scales-head-label{padding:2.5rem;border-right:1px solid var(--border);background:var(--navy2)}
+.scales-head-content{padding:2.5rem 3rem;display:flex;align-items:flex-end;justify-content:space-between}
+.scales-head-content h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3.2rem);line-height:.95;text-transform:uppercase}
+.scales-head-content h2 em{color:var(--cyan);font-style:normal}
+.scales-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.scale-block{border-right:1px solid var(--border);padding:2.5rem}
+.scale-block:last-child{border-right:none}
+.scale-title{font-family:var(--fd);font-size:1.8rem;text-transform:uppercase;color:var(--white);margin-bottom:.25rem}
+.scale-sub{font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem}
+.scale-table{width:100%;border-collapse:collapse}
+.scale-table th{font-family:var(--fm);font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:.5rem .75rem;border-bottom:1px solid var(--border);text-align:left}
+.scale-table td{padding:.55rem .75rem;border-bottom:1px solid rgba(0,229,255,0.06);font-size:.7rem;color:var(--muted);font-weight:300;vertical-align:middle}
+.scale-table tr:last-child td{border-bottom:none}
+.scale-table tr:hover td{background:var(--navy3);color:var(--white)}
+.s-rank{font-family:var(--fd);font-size:1.4rem;color:var(--white);width:32px;text-align:center}
+.s-rank.r10,.s-rank.r9{color:var(--red)}
+.s-rank.r8,.s-rank.r7{color:#ff6400}
+.s-rank.r6,.s-rank.r5{color:var(--orange)}
+.s-rank.r4,.s-rank.r3{color:#c8ff00}
+.s-rank.r2,.s-rank.r1{color:var(--cyan)}
+
+/* REFLECTION */
+#reflection{display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border)}
+.refl-content{padding:3rem}
+.refl-content h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3.2rem);line-height:.95;text-transform:uppercase;margin-bottom:2rem}
+.refl-content h2 em{color:var(--cyan);font-style:normal}
+.refl-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.refl-card{padding:1.5rem;border:1px solid var(--border);background:var(--navy2);transition:border-color .3s}
+.refl-card:hover{border-color:var(--cyan)}
+.refl-card-tag{font-family:var(--fm);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem}
+.refl-card-title{font-weight:500;color:var(--white);font-size:.88rem;margin-bottom:.5rem}
+.refl-card p{font-size:.75rem;color:var(--muted);line-height:1.65;font-weight:300}
+.conclusion-bar{margin-top:1.5rem;padding:1.5rem;border:1px solid rgba(0,229,255,0.25);background:var(--cyan4);display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:center}
+.conclusion-n{font-family:var(--fd);font-size:4rem;color:var(--cyan);line-height:1}
+.conclusion-text p{font-size:.8rem;color:var(--muted);line-height:1.7;font-weight:300}
+.conclusion-text strong{color:var(--white);font-weight:500}
+
+/* REFERENCES */
+#references{border-bottom:1px solid var(--border);display:grid;grid-template-columns:260px 1fr}
+.ref-content{padding:3rem}
+.ref-content h2{font-family:var(--fd);font-size:2rem;text-transform:uppercase;margin-bottom:1.5rem}
+.ref-content h2 em{color:var(--cyan);font-style:normal}
+.ref-list{display:flex;flex-direction:column;gap:.75rem}
+.ref-item{padding:.85rem 1.1rem;border:1px solid var(--border);display:flex;align-items:flex-start;gap:1rem;font-size:.72rem;color:var(--muted);line-height:1.55;font-weight:300;transition:border-color .3s,background .3s}
+.ref-item:hover{border-color:rgba(0,229,255,0.3);background:var(--navy2)}
+.ref-num{font-family:var(--fd);font-size:1.3rem;color:var(--navy4);flex-shrink:0;line-height:1;margin-top:.1rem}
+.ref-text strong{color:var(--white);font-weight:500;display:block;margin-bottom:.2rem}
+
+/* FOOTER */
+footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem 4%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2rem}
+.f-logo{font-family:var(--fd);font-size:1.3rem;letter-spacing:.06em;color:var(--white)}
+.f-logo span{color:var(--cyan)}
+.f-copy{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center}
+.f-links{display:flex;gap:1.5rem;justify-content:flex-end;flex-wrap:wrap}
+.f-links a{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.f-links a:hover{color:var(--cyan)}
+
+/* SCAN GRID */
+.scan-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.025) 1px,transparent 1px);background-size:44px 44px;pointer-events:none}
+
+/* TOOLTIP */
+[data-tip]{position:relative}
+[data-tip]:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--navy2);border:1px solid var(--border);color:var(--white);font-family:var(--fm);font-size:.5rem;letter-spacing:.08em;white-space:nowrap;padding:.35rem .65rem;pointer-events:none;z-index:200}
+
+/* HIDDEN ROWS FOR FILTER */
+tr.hidden-row{display:none}
 </style>
 </head>
 <body>
 
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
 <nav>
-  <span class="logo">Paniz Manufacturing</span>
+  <a class="logo" href="index.html">PANIZ<span>.</span></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="project.html">Project</a></li>
@@ -51,43 +309,838 @@
     <li><a href="quality.html">Quality</a></li>
     <li><a href="simulation.html">Simulation</a></li>
   </ul>
-  <a class="nav-cta" href="simulation.html">Capacity</a>
+  <a class="nav-pill" href="#">50K Capacity →</a>
 </nav>
 
-<div class="page-hero">
-  <div class="hero-badge">Process Failure Mode & Effects Analysis</div>
-  <h1>PFMEA <span>Phones-R-Us</span></h1>
-</div>
-
-<section>
-  <div class="sec-label">Risk Priority Numbers</div>
-  <div class="stats-row">
-    <div class="stat-box"><h3>288</h3><p>Peak RPN (Before)</p></div>
-    <div class="stat-box"><h3>64</h3><p>Peak RPN (After)</p></div>
-    <div class="stat-box"><h3>80%</h3><p>Success Rate</p></div>
-    <div class="stat-box"><h3>25</h3><p>Printers Needed</p></div>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-label reveal">
+    <div>
+      <div class="sec-tag">04 — Risk Analysis</div>
+      <div class="sec-big-num">04</div>
+    </div>
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Based on Actual Trial Data<br>15+ Prints · 10 FESTO Runs</div>
   </div>
-
-  <div class="table-wrap">
-    <table class="pfmea-table">
-      <thead><tr><th>Process</th><th>Failure Mode</th><th>Cause</th><th>S</th><th>O</th><th>D</th><th>RPN</th><th>Action</th><th>New RPN</th></tr></thead>
-      <tbody>
-        <tr><td>Ultimaker Printing</td><td>Depth out of spec (1.18mm vs 1.6-2.2mm)</td><td>Poor dimensional accuracy</td><td>8</td><td>9</td><td>4</td><td class="rpn-high">288</td><td>Switched to Bambu P1S</td><td class="rpn-low">64</td></tr>
-        <tr><td>Ultimaker Printing</td><td>Layer shifting</td><td>Loose belts, speed too high</td><td>7</td><td>7</td><td>5</td><td class="rpn-high">245</td><td>Bambu auto-calibration</td><td class="rpn-low">42</td></tr>
-        <tr><td>Ultimaker Printing</td><td>Clogging / extrusion</td><td>Filament quality, temperature</td><td>6</td><td>8</td><td>6</td><td class="rpn-high">288</td><td>Bambu hardened nozzle</td><td class="rpn-low">48</td></tr>
-        <tr><td>FESTO Station 2</td><td>Laser measurement fail</td><td>Ultimaker dimensional error</td><td>8</td><td>9</td><td>2</td><td>144</td><td>Bambu prints pass</td><td class="rpn-low">32</td></tr>
-        <tr><td>Assembly</td><td>Operator cuts finger</td><td>Sharp edges</td><td>10</td><td>5</td><td>8</td><td class="rpn-high">400</td><td>Deburring operation</td><td>80</td></tr>
-        <tr><td>24/7 Operation</td><td>Printer fails overnight</td><td>No operator present</td><td>6</td><td>3</td><td>8</td><td>144</td><td>Remote monitoring cameras</td><td>90</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="reference">
-    <h4 style="color:var(--cyan);margin-bottom:.5rem;">📚 References</h4>
-    <p>AIAG & VDA (2019). FMEA Handbook. | Stamatis, D. H. (2003). FMEA from Theory to Execution. | ISO 9001:2015.</p>
+  <div class="hero-main reveal d1">
+    <div class="scan-grid-bg"></div>
+    <div>
+      <div class="hero-eyebrow">Process Failure Mode &amp; Effects Analysis — 2026</div>
+      <h1 class="hero-h1">
+        PROCESS<br>
+        <span class="hollow">FAILURE</span><br>
+        <span class="glow">PFMEA.</span>
+      </h1>
+      <p class="hero-sub">A systematic risk analysis of the Phones-R-Us manufacturing process — from 3D printing platform selection through FESTO CP Lab assembly. Every failure mode identified, scored, and actioned before it could reach production.</p>
+    </div>
+    <div style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap">
+      <div class="formula-box">
+        <div>
+          <span class="f-var">RPN</span>
+          <span class="f-label">Risk Priority Number</span>
+        </div>
+        <span class="f-op">=</span>
+        <div>
+          <span class="f-var">S</span>
+          <span class="f-label">Severity</span>
+        </div>
+        <span class="f-op">×</span>
+        <div>
+          <span class="f-var">O</span>
+          <span class="f-label">Occurrence</span>
+        </div>
+        <span class="f-op">×</span>
+        <div>
+          <span class="f-var">D</span>
+          <span class="f-label">Detection</span>
+        </div>
+      </div>
+      <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);line-height:1.8">
+        AIAG &amp; VDA (2019) Standard<br>
+        ISO 9001:2015 Compliant
+      </div>
+    </div>
   </div>
 </section>
 
-<footer><div><div class="f-logo">Paniz Manufacturing Co.</div></div><div class="f-links"><a href="printing.html">3D Printing</a><a href="quality.html">Quality</a></div></footer>
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="m-item">PFMEA ANALYSIS <span>✦</span></div>
+    <div class="m-item">RPN = SEVERITY × OCCURRENCE × DETECTION <span>✦</span></div>
+    <div class="m-item">12 FAILURE MODES IDENTIFIED <span>✦</span></div>
+    <div class="m-item">MAX RPN 400 → REDUCED TO 80 <span>✦</span></div>
+    <div class="m-item">BAMBU P1S SELECTED <span>✦</span></div>
+    <div class="m-item">STATION 2 CRITICAL FAILURE <span>✦</span></div>
+    <div class="m-item">ISO 9001:2015 COMPLIANT <span>✦</span></div>
+    <div class="m-item">AIAG &amp; VDA 2019 STANDARD <span>✦</span></div>
+    <div class="m-item">PFMEA ANALYSIS <span>✦</span></div>
+    <div class="m-item">RPN = SEVERITY × OCCURRENCE × DETECTION <span>✦</span></div>
+    <div class="m-item">12 FAILURE MODES IDENTIFIED <span>✦</span></div>
+    <div class="m-item">MAX RPN 400 → REDUCED TO 80 <span>✦</span></div>
+    <div class="m-item">BAMBU P1S SELECTED <span>✦</span></div>
+    <div class="m-item">STATION 2 CRITICAL FAILURE <span>✦</span></div>
+    <div class="m-item">ISO 9001:2015 COMPLIANT <span>✦</span></div>
+    <div class="m-item">AIAG &amp; VDA 2019 STANDARD <span>✦</span></div>
+  </div>
+</div>
+
+<!-- GOALS -->
+<section id="goals" class="reveal">
+  <div class="label-col">
+    <div>
+      <div class="sec-tag">01 — Objectives</div>
+      <div class="sec-big-num">05</div>
+    </div>
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Why PFMEA?</div>
+  </div>
+  <div class="goals-grid">
+    <div class="goal-card">
+      <div class="goal-num">01</div>
+      <div class="goal-title">Identify Critical Components</div>
+      <div class="goal-desc">Pinpoint every component and process step that directly affects product quality — before production begins at scale.</div>
+    </div>
+    <div class="goal-card">
+      <div class="goal-num">02</div>
+      <div class="goal-title">Early Failure Detection</div>
+      <div class="goal-desc">Surface potential failure modes at the design and planning stage, not during a 50,000-unit production run.</div>
+    </div>
+    <div class="goal-card">
+      <div class="goal-num">03</div>
+      <div class="goal-title">Pre-Estimate Risk</div>
+      <div class="goal-desc">Quantify severity, occurrence, and detection probability so every risk is ranked objectively, not by gut feeling.</div>
+    </div>
+    <div class="goal-card">
+      <div class="goal-num">04</div>
+      <div class="goal-title">Reduce Post-Launch Cost</div>
+      <div class="goal-desc">Engineering changes after mass production starts cost 10–100× more. PFMEA eliminates the need for them.</div>
+    </div>
+    <div class="goal-card">
+      <div class="goal-num">05</div>
+      <div class="goal-title">Support Continuous Improvement</div>
+      <div class="goal-desc">Living document updated as the process matures — RPN scores track real improvement as corrective actions land.</div>
+    </div>
+    <div class="goal-card" style="border-color:rgba(0,229,255,0.2);background:var(--cyan4)">
+      <div class="goal-num" style="color:rgba(0,229,255,0.15)">↑</div>
+      <div class="goal-title" style="color:var(--cyan)">Key Outcome</div>
+      <div class="goal-desc" style="color:var(--muted)">Switching to Bambu P1S — guided by PFMEA — reduced the highest RPN from <strong style="color:var(--white)">288 → 64</strong>. The CAD design was never the problem.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SUMMARY CARDS -->
+<section id="summary" class="reveal">
+  <div class="sum-card red">
+    <div class="sum-n red">400</div>
+    <div class="sum-label">Highest Initial RPN</div>
+    <div class="sum-note">Operator injury — sharp casing edge</div>
+  </div>
+  <div class="sum-card red">
+    <div class="sum-n red">2</div>
+    <div class="sum-label">Safety-Class Items</div>
+    <div class="sum-note">Operator injury + overnight fire risk</div>
+  </div>
+  <div class="sum-card orange">
+    <div class="sum-n orange">288</div>
+    <div class="sum-label">Peak Print RPN (Before)</div>
+    <div class="sum-note">Ultimaker dimensional failure</div>
+  </div>
+  <div class="sum-card cyan">
+    <div class="sum-n cyan">64</div>
+    <div class="sum-label">Peak Print RPN (After)</div>
+    <div class="sum-note">Post Bambu P1S switch</div>
+  </div>
+  <div class="sum-card cyan">
+    <div class="sum-n cyan">12</div>
+    <div class="sum-label">Failure Modes Logged</div>
+    <div class="sum-note">Across all 4 process areas</div>
+  </div>
+</section>
+
+<!-- RISK SCALE BANNER -->
+<div class="risk-banner">
+  <div class="rb-label">RPN Risk Scale</div>
+  <div class="rb-scale">
+    <div class="rb-seg"><span class="rb-seg-label">Low &lt;50</span></div>
+    <div class="rb-seg"><span class="rb-seg-label">Medium 50–125</span></div>
+    <div class="rb-seg"><span class="rb-seg-label">High &gt;125</span></div>
+  </div>
+  <div style="width:36px"></div>
+  <div class="rb-legend">
+    <div class="rb-dot low">Acceptable</div>
+    <div class="rb-dot mid">Monitor</div>
+    <div class="rb-dot high">Action Required</div>
+  </div>
+</div>
+
+<!-- PFMEA TABLE -->
+<section id="table-section" class="reveal">
+  <div class="table-head">
+    <div class="table-head-label">
+      <div class="sec-tag">02 — Full Analysis</div>
+    </div>
+    <div class="table-head-content">
+      <h2>PFMEA<br><em>Register.</em></h2>
+      <div>
+        <div style="font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.65rem">Filter by Risk</div>
+        <div class="filter-row">
+          <button class="filter-btn active" onclick="filterTable('all',this)">All</button>
+          <button class="filter-btn" onclick="filterTable('high',this)" style="border-color:rgba(255,68,68,0.3);color:#ff6b6b">High RPN</button>
+          <button class="filter-btn" onclick="filterTable('mid',this)" style="border-color:rgba(255,165,0,0.3);color:#ffa500">Medium</button>
+          <button class="filter-btn" onclick="filterTable('low',this)" style="border-color:rgba(0,229,255,0.3);color:var(--cyan)">Low</button>
+          <button class="filter-btn" onclick="filterTable('safety',this)" style="border-color:rgba(255,68,68,0.4);color:#ff4444">Safety ⚠</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table class="pfmea-table" id="mainTable">
+      <thead>
+        <tr>
+          <th>Line</th>
+          <th>Opr #</th>
+          <th class="col-fn">Process Function</th>
+          <th class="col-fm">Potential Failure Mode</th>
+          <th class="col-fe">Potential Effects</th>
+          <th data-tip="Severity 1–10" class="cyan">SEV</th>
+          <th>Class</th>
+          <th class="col-cause">Potential Cause(s)</th>
+          <th data-tip="Occurrence 1–10" class="cyan">OCC</th>
+          <th class="col-ctrl">Process Controls</th>
+          <th data-tip="Detection 1–10" class="cyan">DET</th>
+          <th class="cyan">RPN</th>
+          <th class="col-action">Recommended Actions</th>
+          <th class="col-resp">Responsible &amp; Target</th>
+          <th>Actions Taken</th>
+          <th class="cyan">RPN After</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- GROUP LABEL: 3D PRINTING ULTIMAKER -->
+        <tr class="process-label" data-group="print" data-rpnval="288">
+          <td colspan="16">── LINE 10 &nbsp;·&nbsp; 3D PRINTING — ULTIMAKER S3/S5 EXTENDED &nbsp;·&nbsp; Phase 1 (Retired)</td>
+        </tr>
+
+        <tr data-group="print" data-rpnval="288" data-class="critical">
+          <td class="line-num">10</td>
+          <td class="line-num" style="font-size:.9rem">10</td>
+          <td class="col-fn">3D Printing<br><span style="color:var(--muted);font-weight:300;font-size:.68rem">Ultimaker S3/S5</span></td>
+          <td class="col-fm">Depth out of spec<br><span style="color:var(--red);font-size:.68rem">1.18mm vs 1.6–2.2mm</span></td>
+          <td class="col-fe">Fails FESTO laser measurement station; 100% rejection</td>
+          <td class="score-cell sev-high">8</td>
+          <td><span class="class-badge critical">Critical</span></td>
+          <td class="col-cause">Poor dimensional accuracy; Ultimaker calibration drift</td>
+          <td class="score-cell sev-high">9</td>
+          <td class="col-ctrl">Printer calibration<br>Visual inspection</td>
+          <td class="score-cell sev-mid">4</td>
+          <td><span class="rpn high">288</span></td>
+          <td class="col-action">Switch to Bambu P1S printer with superior dimensional accuracy</td>
+          <td class="col-resp">Production Team<br><span style="color:var(--cyan);font-size:.65rem">Week 4</span></td>
+          <td>Switched to Bambu P1S — all subsequent prints pass</td>
+          <td><span class="rpn-after low">64</span><span class="delta">78%</span></td>
+        </tr>
+
+        <tr data-group="print" data-rpnval="245" data-class="major">
+          <td class="line-num">10</td>
+          <td class="line-num" style="font-size:.9rem">10</td>
+          <td class="col-fn">3D Printing<br><span style="color:var(--muted);font-weight:300;font-size:.68rem">Ultimaker S3/S5</span></td>
+          <td class="col-fm">Layer shifting</td>
+          <td class="col-fe">Misaligned geometry; gaps; top casing won't close</td>
+          <td class="score-cell sev-high">7</td>
+          <td><span class="class-badge major">Major</span></td>
+          <td class="col-cause">Loose belts; print speed set too high</td>
+          <td class="score-cell sev-high">7</td>
+          <td class="col-ctrl">Maintenance schedule<br>Operator inspection</td>
+          <td class="score-cell sev-mid">5</td>
+          <td><span class="rpn high">245</span></td>
+          <td class="col-action">Regular belt tensioning; reduce print speed; move to Bambu auto-calibration</td>
+          <td class="col-resp">Maintenance<br><span style="color:var(--cyan);font-size:.65rem">Week 2</span></td>
+          <td>Bambu P1S auto-calibration eliminated layer shift entirely</td>
+          <td><span class="rpn-after low">42</span><span class="delta">83%</span></td>
+        </tr>
+
+        <tr data-group="print" data-rpnval="288" data-class="major">
+          <td class="line-num">10</td>
+          <td class="line-num" style="font-size:.9rem">10</td>
+          <td class="col-fn">3D Printing<br><span style="color:var(--muted);font-weight:300;font-size:.68rem">Ultimaker S3/S5</span></td>
+          <td class="col-fm">Clogging / extrusion failure</td>
+          <td class="col-fe">Incomplete print; wasted material and print time</td>
+          <td class="score-cell sev-mid">6</td>
+          <td><span class="class-badge major">Major</span></td>
+          <td class="col-cause">Poor filament quality; nozzle temperature instability</td>
+          <td class="score-cell sev-high">8</td>
+          <td class="col-ctrl">Filament storage protocol<br>Printer error alert</td>
+          <td class="score-cell sev-mid">6</td>
+          <td><span class="rpn high">288</span></td>
+          <td class="col-action">Upgrade to Bambu hardened nozzle; maintain proper filament storage</td>
+          <td class="col-resp">Production<br><span style="color:var(--cyan);font-size:.65rem">Week 2</span></td>
+          <td>Upgraded to Bambu P1S with hardened nozzle system</td>
+          <td><span class="rpn-after low">48</span><span class="delta">83%</span></td>
+        </tr>
+
+        <tr data-group="print" data-rpnval="144" data-class="minor">
+          <td class="line-num">10</td>
+          <td class="line-num" style="font-size:.9rem">10</td>
+          <td class="col-fn">3D Printing<br><span style="color:var(--muted);font-weight:300;font-size:.68rem">Ultimaker S3/S5</span></td>
+          <td class="col-fm">Support material bonding — hard to remove</td>
+          <td class="col-fe">Damaged part surfaces; rough finish; cosmetic failure</td>
+          <td class="score-cell sev-low">4</td>
+          <td><span class="class-badge minor">Minor</span></td>
+          <td class="col-cause">PLA supports too strong; poor interface layer settings</td>
+          <td class="score-cell sev-mid">6</td>
+          <td class="col-ctrl">Slicer settings review<br>Manual inspection</td>
+          <td class="score-cell sev-mid">6</td>
+          <td><span class="rpn high">144</span></td>
+          <td class="col-action">Adjust support Z-distance in slicer; use interface layer break-away material</td>
+          <td class="col-resp">Design Team<br><span style="color:var(--cyan);font-size:.65rem">Week 3</span></td>
+          <td>Bambu P1S interface layer settings resolved automatically</td>
+          <td><span class="rpn-after low">24</span><span class="delta">83%</span></td>
+        </tr>
+
+        <!-- GROUP LABEL: 3D PRINTING BAMBU -->
+        <tr class="process-label" data-group="bambu" data-rpnval="56">
+          <td colspan="16">── LINE 20 &nbsp;·&nbsp; 3D PRINTING — BAMBU LAB P1S &nbsp;·&nbsp; Phase 2 (Active Production)</td>
+        </tr>
+
+        <tr data-group="bambu" data-rpnval="56" data-class="minor">
+          <td class="line-num">20</td>
+          <td class="line-num" style="font-size:.9rem">20</td>
+          <td class="col-fn">3D Printing<br><span style="color:var(--cyan);font-weight:300;font-size:.68rem">Bambu P1S</span></td>
+          <td class="col-fm">USB / file interruption — print stops mid-way</td>
+          <td class="col-fe">Print abandoned; wasted material; lost cycle time</td>
+          <td class="score-cell sev-low">4</td>
+          <td><span class="class-badge minor">Minor</span></td>
+          <td class="col-cause">Flash drive corruption; poor USB contact</td>
+          <td class="score-cell sev-low">2</td>
+          <td class="col-ctrl">Quality USB drives only<br>Printer alert system</td>
+          <td class="score-cell sev-high">7</td>
+          <td><span class="rpn mid">56</span></td>
+          <td class="col-action">Eliminate USB dependency — switch to network/cloud printing via Bambu Cloud</td>
+          <td class="col-resp">IT Team<br><span style="color:var(--cyan);font-size:.65rem">Week 2</span></td>
+          <td>USB eliminated; cloud printing implemented across all 25 printers</td>
+          <td><span class="rpn-after low">12</span><span class="delta">79%</span></td>
+        </tr>
+
+        <tr data-group="bambu" data-rpnval="40" data-class="minor">
+          <td class="line-num">20</td>
+          <td class="line-num" style="font-size:.9rem">20</td>
+          <td class="col-fn">3D Printing<br><span style="color:var(--cyan);font-weight:300;font-size:.68rem">Bambu P1S</span></td>
+          <td class="col-fm">Slight dimensional variation between prints</td>
+          <td class="col-fe">Imperfect fit — passes inspection but reduces margin</td>
+          <td class="score-cell sev-mid">5</td>
+          <td><span class="class-badge minor">Minor</span></td>
+          <td class="col-cause">Normal process variation within machine tolerance</td>
+          <td class="score-cell sev-low">2</td>
+          <td class="col-ctrl">Auto-calibration (AMS)<br>FESTO laser station</td>
+          <td class="score-cell sev-low">4</td>
+          <td><span class="rpn low">40</span></td>
+          <td class="col-action">Accept within tolerance; monitor via SPC; flag if drift exceeds ±0.12mm</td>
+          <td class="col-resp">Quality<br><span style="color:var(--cyan);font-size:.65rem">Week 4</span></td>
+          <td>80% success rate achieved; SPC monitoring ongoing</td>
+          <td><span class="rpn-after low">40</span></td>
+        </tr>
+
+        <!-- GROUP LABEL: ASSEMBLY -->
+        <tr class="process-label" data-group="assembly" data-rpnval="400">
+          <td colspan="16">── LINE 30 &nbsp;·&nbsp; FESTO CP LAB ASSEMBLY &nbsp;·&nbsp; 6-Station Verification Line</td>
+        </tr>
+
+        <tr data-group="assembly" data-rpnval="400" data-class="safety">
+          <td class="line-num">30</td>
+          <td class="line-num" style="font-size:.9rem">30.01</td>
+          <td class="col-fn">Assemble lid on phone<br><span style="color:var(--muted);font-weight:300;font-size:.68rem">Station 1</span></td>
+          <td class="col-fm">Operator cuts finger on sharp casing edge</td>
+          <td class="col-fe" style="color:var(--red)">Personal injury — direct harm to operator</td>
+          <td class="score-cell sev-high" style="color:var(--red)">10</td>
+          <td><span class="class-badge safety">⚠ Safety</span></td>
+          <td class="col-cause">Sharp edges from additive manufacturing layer lines</td>
+          <td class="score-cell sev-mid">5</td>
+          <td class="col-ctrl">Design guidelines<br><em style="color:var(--red)">No detection control</em></td>
+          <td class="score-cell sev-high" style="color:var(--red)">8</td>
+          <td><span class="rpn high">400</span></td>
+          <td class="col-action">Design curved/chamfered edges; add deburring operation post-print; quality inspection gate</td>
+          <td class="col-resp">Design: Wk 1<br>Mfg: Wk 2<br>Quality: Wk 3</td>
+          <td>Deburring station added; edge radius inspection added to Station 6</td>
+          <td><span class="rpn-after mid">80</span><span class="delta">80%</span></td>
+        </tr>
+
+        <tr data-group="assembly" data-rpnval="144" data-class="critical">
+          <td class="line-num">30</td>
+          <td class="line-num" style="font-size:.9rem">30.02</td>
+          <td class="col-fn">FESTO Station 2<br><span style="color:var(--muted);font-weight:300;font-size:.68rem">Laser Measurement</span></td>
+          <td class="col-fm">Depth out of spec — 1.18mm measured</td>
+          <td class="col-fe">Casing rejected; assembly line halted at Station 2</td>
+          <td class="score-cell sev-high">8</td>
+          <td><span class="class-badge critical">Critical</span></td>
+          <td class="col-cause">Ultimaker dimensional inaccuracy — systematic failure</td>
+          <td class="score-cell sev-high">9</td>
+          <td class="col-ctrl">Process control<br>FESTO laser (catches but doesn't prevent)</td>
+          <td class="score-cell sev-low">2</td>
+          <td><span class="rpn high">144</span></td>
+          <td class="col-action">Switch to Bambu P1S; implement batch inspection before FESTO line entry</td>
+          <td class="col-resp">Production<br><span style="color:var(--cyan);font-size:.65rem">Week 4</span></td>
+          <td>Bambu P1S prints now pass Station 2 consistently; 0 laser rejections post-switch</td>
+          <td><span class="rpn-after low">32</span><span class="delta">78%</span></td>
+        </tr>
+
+        <tr data-group="assembly" data-rpnval="72" data-class="major">
+          <td class="line-num">30</td>
+          <td class="line-num" style="font-size:.9rem">30.03</td>
+          <td class="col-fn">FESTO Station 4<br><span style="color:var(--muted);font-weight:300;font-size:.68rem">Pressing</span></td>
+          <td class="col-fm">Casing too tight — press fit fails</td>
+          <td class="col-fe">Assembly incomplete; top casing won't close onto bottom</td>
+          <td class="score-cell sev-mid">6</td>
+          <td><span class="class-badge major">Major</span></td>
+          <td class="col-cause">Oversized features; interference fit exceeds tolerance</td>
+          <td class="score-cell sev-low">4</td>
+          <td class="col-ctrl">Tolerance analysis<br>Manual test assembly</td>
+          <td class="score-cell sev-low">3</td>
+          <td><span class="rpn mid">72</span></td>
+          <td class="col-action">Pre-batch test assembly; tighten tolerance analysis; adjust CAD clearance</td>
+          <td class="col-resp">Quality<br><span style="color:var(--cyan);font-size:.65rem">Week 3</span></td>
+          <td>Revised tolerances implemented in CAD; test assembly now mandatory pre-batch</td>
+          <td><span class="rpn-after low">36</span><span class="delta">50%</span></td>
+        </tr>
+
+        <tr data-group="assembly" data-rpnval="90" data-class="major">
+          <td class="line-num">30</td>
+          <td class="line-num" style="font-size:.9rem">30.04</td>
+          <td class="col-fn">FESTO Assembly<br><span style="color:var(--muted);font-weight:300;font-size:.68rem">General</span></td>
+          <td class="col-fm">Casing too loose — undersized dimensions</td>
+          <td class="col-fe">Part shifts during assembly; misalignment on final product</td>
+          <td class="score-cell sev-mid">6</td>
+          <td><span class="class-badge major">Major</span></td>
+          <td class="col-cause">Undersized dimensions from Ultimaker shrinkage</td>
+          <td class="score-cell sev-mid">5</td>
+          <td class="col-ctrl">SPC monitoring<br>Assembly fixture</td>
+          <td class="score-cell sev-low">3</td>
+          <td><span class="rpn mid">90</span></td>
+          <td class="col-action">Statistical process control on all key dimensions; daily SPC chart review</td>
+          <td class="col-resp">Quality<br><span style="color:var(--cyan);font-size:.65rem">Week 3</span></td>
+          <td>SPC implemented across Bambu P1S fleet; dimension drift alerts active</td>
+          <td><span class="rpn-after low">12</span><span class="delta">87%</span></td>
+        </tr>
+
+        <tr data-group="assembly" data-rpnval="80" data-class="minor">
+          <td class="line-num">30</td>
+          <td class="line-num" style="font-size:.9rem">30.05</td>
+          <td class="col-fn">Final Assembly<br><span style="color:var(--muted);font-weight:300;font-size:.68rem">Completion</span></td>
+          <td class="col-fm">Gaps between top and bottom casing</td>
+          <td class="col-fe">Poor cosmetic appearance; dust ingress risk</td>
+          <td class="score-cell sev-low">4</td>
+          <td><span class="class-badge minor">Minor</span></td>
+          <td class="col-cause">Inconsistent depth across part; print orientation issue</td>
+          <td class="score-cell sev-mid">5</td>
+          <td class="col-ctrl">Design specification<br>Visual inspection</td>
+          <td class="score-cell sev-low">4</td>
+          <td><span class="rpn mid">80</span></td>
+          <td class="col-action">Inspect critical mating surfaces; optimise print orientation in Bambu slicer</td>
+          <td class="col-resp">Production<br><span style="color:var(--cyan);font-size:.65rem">Week 2</span></td>
+          <td>Bambu print orientation optimised; gap tolerance now within ±0.05mm</td>
+          <td><span class="rpn-after low">24</span><span class="delta">70%</span></td>
+        </tr>
+
+        <!-- GROUP LABEL: CAPACITY -->
+        <tr class="process-label" data-group="capacity" data-rpnval="144">
+          <td colspan="16">── LINE 40 &nbsp;·&nbsp; 24/7 CAPACITY OPERATION &nbsp;·&nbsp; 25× Bambu P1S Fleet</td>
+        </tr>
+
+        <tr data-group="capacity" data-rpnval="144" data-class="major">
+          <td class="line-num">40</td>
+          <td class="line-num" style="font-size:.9rem">40.01</td>
+          <td class="col-fn">24/7 Printer Fleet<br><span style="color:var(--muted);font-weight:300;font-size:.68rem">Overnight Operation</span></td>
+          <td class="col-fm">Printer fails overnight — no operator present</td>
+          <td class="col-fe">Undetected downtime; wasted material; missed daily target</td>
+          <td class="score-cell sev-mid">6</td>
+          <td><span class="class-badge major">Major</span></td>
+          <td class="col-cause">No operator on-site to intervene during failure</td>
+          <td class="score-cell sev-low">3</td>
+          <td class="col-ctrl">Remote monitoring<br>Bambu Cloud alerts</td>
+          <td class="score-cell sev-high">8</td>
+          <td><span class="rpn high">144</span></td>
+          <td class="col-action">Install CCTV cameras; configure remote monitoring dashboard; SMS alerts on failure</td>
+          <td class="col-resp">IT Team<br><span style="color:var(--cyan);font-size:.65rem">Week 4</span></td>
+          <td>Camera monitoring system installed; remote dashboard live 24/7</td>
+          <td><span class="rpn-after mid">90</span><span class="delta">38%</span></td>
+        </tr>
+
+        <tr data-group="capacity" data-rpnval="72" data-class="safety">
+          <td class="line-num">40</td>
+          <td class="line-num" style="font-size:.9rem">40.02</td>
+          <td class="col-fn">24/7 Printer Fleet<br><span style="color:var(--muted);font-weight:300;font-size:.68rem">Safety</span></td>
+          <td class="col-fm">Fire risk — thermal runaway event</td>
+          <td class="col-fe" style="color:var(--red)">Safety hazard to facility; equipment destruction; production loss</td>
+          <td class="score-cell sev-high" style="color:var(--red)">9</td>
+          <td><span class="class-badge safety">⚠ Safety</span></td>
+          <td class="col-cause">Unattended electrical fault in overnight operation</td>
+          <td class="score-cell sev-low">1</td>
+          <td class="col-ctrl">Bambu thermal protection<br>Smoke detector</td>
+          <td class="score-cell sev-high">8</td>
+          <td><span class="rpn mid">72</span></td>
+          <td class="col-action">Install fire suppression system; use UL-certified printers only; fireball suppressors</td>
+          <td class="col-resp">Facilities<br><span style="color:var(--cyan);font-size:.65rem">Week 6</span></td>
+          <td>Fireball auto-suppressors installed above print farm; UL certification confirmed</td>
+          <td><span class="rpn-after low">45</span><span class="delta">38%</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CAPACITY SECTION -->
+<section id="capacity" class="reveal">
+  <div class="label-col">
+    <div>
+      <div class="sec-tag">03 — Capacity</div>
+      <div class="sec-big-num">50K</div>
+    </div>
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Production Analysis<br>Phones / Year</div>
+  </div>
+  <div class="cap-content">
+    <h2>Capacity<br><em>Analysis.</em></h2>
+    <div class="cap-sub">50,000 phones/year · 2.5h cycle time · 80% yield · Bambu P1S</div>
+    <div class="cap-table-wrap">
+      <table class="cap-table">
+        <thead>
+          <tr>
+            <th>Operating Scenario</th>
+            <th>Hours / Day</th>
+            <th>Calculation</th>
+            <th>Printers Required</th>
+            <th>Annual Output</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>8-Hour Shift (9–5, single shift)</td>
+            <td>8h</td>
+            <td>600 ÷ 8 hrs</td>
+            <td><span class="cap-num">75</span> printers</td>
+            <td>50,000 phones</td>
+          </tr>
+          <tr>
+            <td>16-Hour Shift (two shifts)</td>
+            <td>16h</td>
+            <td>600 ÷ 16 hrs</td>
+            <td><span class="cap-num">38</span> printers</td>
+            <td>50,000 phones</td>
+          </tr>
+          <tr class="recommended">
+            <td>★ 24/7 Operation (Recommended)</td>
+            <td>24h</td>
+            <td>600 ÷ 24 hrs</td>
+            <td><span class="cap-num">25</span> printers</td>
+            <td>50,000 phones</td>
+          </tr>
+          <tr>
+            <td>24/7 + 20% Maintenance Buffer</td>
+            <td>24h</td>
+            <td>25 × 1.2</td>
+            <td><span class="cap-num" style="color:var(--orange)">30</span> printers</td>
+            <td>60,000 phones (buffer)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cap-note">
+      <div class="cap-note-icon">→</div>
+      <p><strong>Recommendation:</strong> 25 Bambu P1S printers running 24/7 is the optimal configuration to meet the 50,000 phones/year target. This is equivalent to operating 75 printers on a single 8-hour shift — a capital saving of <strong>£50,000+</strong> in printer hardware alone, but requires a robust remote monitoring infrastructure to manage unattended overnight operation (PFMEA Line 40.01 — addressed via camera system and cloud dashboard).</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRIAL RESULTS -->
+<section id="trials" class="reveal">
+  <div class="trial-card">
+    <div class="trial-badge"><span class="dot dead"></span> Retired — Out of Specification</div>
+    <div class="trial-name">Ultimaker S3/S5</div>
+    <div class="trial-sub">Phase 1 — FDM Desktop Printer</div>
+    <div class="trial-stat-row">
+      <div class="tstat"><div class="tstat-n fail">15</div><div class="tstat-l">Total Prints</div></div>
+      <div class="tstat"><div class="tstat-n fail">10</div><div class="tstat-l">Failed Prints</div></div>
+      <div class="tstat"><div class="tstat-n fail">66%</div><div class="tstat-l">Failure Rate</div></div>
+      <div class="tstat"><div class="tstat-n fail">0</div><div class="tstat-l">FESTO Passes</div></div>
+    </div>
+    <div class="trial-insight">
+      <strong>Key Finding:</strong> 7 prints appeared visually acceptable but every single one failed the FESTO laser measurement station. The primary failure was consistent — depth measuring <strong>1.18mm</strong> against a required range of <strong>1.6–2.2mm</strong>. This was a systemic calibration failure of the Ultimaker platform, not an operator error. The CAD design was confirmed correct.
+    </div>
+    <div class="watermark">RETIRED</div>
+  </div>
+  <div class="trial-card">
+    <div class="trial-badge"><span class="dot active"></span> Active — Production Line</div>
+    <div class="trial-name">Bambu P1S</div>
+    <div class="trial-sub">Phase 2 — High-Speed FDM Production</div>
+    <div class="trial-stat-row">
+      <div class="tstat"><div class="tstat-n pass">5</div><div class="tstat-l">Total Prints</div></div>
+      <div class="tstat"><div class="tstat-n pass">4</div><div class="tstat-l">Successful</div></div>
+      <div class="tstat"><div class="tstat-n pass">80%</div><div class="tstat-l">Success Rate</div></div>
+      <div class="tstat"><div class="tstat-n pass">3</div><div class="tstat-l">Perfect Prints</div></div>
+    </div>
+    <div class="trial-insight">
+      <strong>Key Finding:</strong> 3 prints were dimensionally perfect — passing all FESTO stations. 1 additional print passed with minor variation. Only 1 failure occurred due to a <strong>USB interruption</strong> (not a print quality issue) — eliminated by switching to cloud printing. Wall thickness achieved: <strong>1.9mm ✓</strong> — comfortably within the 1.6–2.2mm specification.
+    </div>
+    <div class="watermark" style="color:var(--cyan)">ACTIVE</div>
+  </div>
+</section>
+
+<!-- RATING SCALES -->
+<section id="scales" class="reveal">
+  <div class="scales-head">
+    <div class="scales-head-label">
+      <div class="sec-tag">04 — Scoring</div>
+    </div>
+    <div class="scales-head-content">
+      <h2>Rating<br><em>Scales.</em></h2>
+      <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:right">AIAG &amp; VDA 2019<br>Industry Standard</div>
+    </div>
+  </div>
+  <div class="scales-grid">
+    <!-- SEVERITY -->
+    <div class="scale-block">
+      <div class="scale-title">Severity</div>
+      <div class="scale-sub">Impact of failure on customer / safety</div>
+      <table class="scale-table">
+        <thead><tr><th>Rank</th><th>Severity</th><th>Impact</th></tr></thead>
+        <tbody>
+          <tr><td class="s-rank r10">10</td><td>Hazardous – No Warning</td><td>Potential injury; no warning</td></tr>
+          <tr><td class="s-rank r9">9</td><td>Hazardous – With Warning</td><td>Injury possible; production shutdown</td></tr>
+          <tr><td class="s-rank r8">8</td><td>Very High</td><td>100% product scrapped; major financial</td></tr>
+          <tr><td class="s-rank r7">7</td><td>High</td><td>Product sorted; portion scrapped</td></tr>
+          <tr><td class="s-rank r6">6</td><td>Moderate</td><td>Portion scrapped; major rework</td></tr>
+          <tr><td class="s-rank r5">5</td><td>Low</td><td>100% product reworked offline</td></tr>
+          <tr><td class="s-rank r4">4</td><td>Very Low</td><td>Sorted; portion reworked</td></tr>
+          <tr><td class="s-rank r3">3</td><td>Minor</td><td>Portion reworked online</td></tr>
+          <tr><td class="s-rank r2">2</td><td>Minor</td><td>Reworked in-station</td></tr>
+          <tr><td class="s-rank r1">1</td><td>None</td><td>Slight inconvenience</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- OCCURRENCE -->
+    <div class="scale-block" style="border-left:1px solid var(--border)">
+      <div class="scale-title">Occurrence</div>
+      <div class="scale-sub">Likelihood of failure cause occurring</div>
+      <table class="scale-table">
+        <thead><tr><th>Rank</th><th>Keyword</th><th>Failure Rate</th></tr></thead>
+        <tbody>
+          <tr><td class="s-rank r10">10</td><td>Very High</td><td>≥100,000 PPM (≥1 in 10)</td></tr>
+          <tr><td class="s-rank r9">9</td><td>Very High</td><td>50,000 PPM (1 in 20)</td></tr>
+          <tr><td class="s-rank r8">8</td><td>High</td><td>20,000 PPM (1 in 50)</td></tr>
+          <tr><td class="s-rank r7">7</td><td>High</td><td>10,000 PPM (1 in 100)</td></tr>
+          <tr><td class="s-rank r6">6</td><td>Moderate</td><td>5,000 PPM (1 in 200)</td></tr>
+          <tr><td class="s-rank r5">5</td><td>Moderate</td><td>2,000 PPM (1 in 500)</td></tr>
+          <tr><td class="s-rank r4">4</td><td>Moderate</td><td>500 PPM (1 in 2,000)</td></tr>
+          <tr><td class="s-rank r3">3</td><td>Low</td><td>100 PPM (1 in 10,000)</td></tr>
+          <tr><td class="s-rank r2">2</td><td>Low</td><td>10 PPM (1 in 100,000)</td></tr>
+          <tr><td class="s-rank r1">1</td><td>Remote</td><td>≤1 PPM (&lt;1 in 1,000,000)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- DETECTION -->
+    <div class="scale-block" style="border-left:1px solid var(--border)">
+      <div class="scale-title">Detection</div>
+      <div class="scale-sub">Ability of controls to detect failure</div>
+      <table class="scale-table">
+        <thead><tr><th>Rank</th><th>Keyword</th><th>Detection Likelihood</th></tr></thead>
+        <tbody>
+          <tr><td class="s-rank r10">10</td><td>Almost Impossible</td><td>No control; cannot detect</td></tr>
+          <tr><td class="s-rank r9">9</td><td>Very Remote</td><td>Very remote detection chance</td></tr>
+          <tr><td class="s-rank r8">8</td><td>Remote</td><td>Remote chance of detection</td></tr>
+          <tr><td class="s-rank r7">7</td><td>Very Low</td><td>Very low detection chance</td></tr>
+          <tr><td class="s-rank r6">6</td><td>Low</td><td>Low chance of detection</td></tr>
+          <tr><td class="s-rank r5">5</td><td>Moderate</td><td>Moderate detection chance</td></tr>
+          <tr><td class="s-rank r4">4</td><td>Moderately High</td><td>Moderately high detection</td></tr>
+          <tr><td class="s-rank r3">3</td><td>High</td><td>High chance of detection</td></tr>
+          <tr><td class="s-rank r2">2</td><td>Very High</td><td>Very high detection chance</td></tr>
+          <tr><td class="s-rank r1">1</td><td>Almost Certain</td><td>Will almost certainly detect</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- REFLECTION -->
+<section id="reflection" class="reveal">
+  <div class="label-col">
+    <div>
+      <div class="sec-tag">05 — Insight</div>
+      <div class="sec-big-num">↑</div>
+    </div>
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Engineering Conclusions</div>
+  </div>
+  <div class="refl-content">
+    <h2>Student<br><em>Reflection.</em></h2>
+    <div class="refl-grid">
+      <div class="refl-card">
+        <div class="refl-card-tag">01 — Printer as Control Point</div>
+        <div class="refl-card-title">Equipment selection is a process variable</div>
+        <p>Traditional PFMEA treats process capability as fixed — this project showed that printer selection is itself a controllable variable. The Ultimaker consistently failed (RPN 288) while the Bambu P1S passed (RPN 64). Switching printers was the corrective action, not redesigning the CAD.</p>
+      </div>
+      <div class="refl-card">
+        <div class="refl-card-tag">02 — Economic Analysis</div>
+        <div class="refl-card-title">24/7 vs shift-based operation</div>
+        <p>75 printers on an 8-hour shift produces the same as 25 printers running 24/7 — a hardware capital saving of over £50,000. However, 24/7 introduces unattended operation risk (PFMEA 40.01, RPN 144). The remote monitoring system was the enabling corrective action that made 24/7 viable.</p>
+      </div>
+      <div class="refl-card">
+        <div class="refl-card-tag">03 — CAD Was Never the Problem</div>
+        <div class="refl-card-title">Design validated through process failure</div>
+        <p>All 15 Ultimaker prints failed measurement — yet when the same CAD file was printed on the Bambu P1S, 80% passed first time. This confirms the dimensional specification was correct and achievable. PFMEA prevented the team from incorrectly blaming the design file.</p>
+      </div>
+      <div class="refl-card">
+        <div class="refl-card-tag">04 — Safety First Priority</div>
+        <div class="refl-card-title">RPN 400 — highest risk addressed first</div>
+        <p>The highest RPN in the entire analysis wasn't a dimensional issue — it was operator safety (RPN 400, SEV 10). Sharp casing edges identified as a hazard drove an immediate design change to chamfered edges and a mandatory deburring station, reducing RPN to 80.</p>
+      </div>
+    </div>
+    <div class="conclusion-bar">
+      <div class="conclusion-n">64</div>
+      <div class="conclusion-text">
+        <p><strong>Conclusion:</strong> Switching to Bambu P1S reduced the occurrence score from 9 to 2, cutting the primary print RPN from <strong>288 → 64</strong>. For 50,000 units/year, 25 Bambu P1S printers running 24/7 — supported by cloud monitoring, remote camera systems, and fireball suppression — is the recommended production configuration. All safety-class items have been actioned and verified.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section id="references" class="reveal">
+  <div class="label-col">
+    <div>
+      <div class="sec-tag">06 — Sources</div>
+      <div class="sec-big-num">06</div>
+    </div>
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Academic &amp; Industry<br>References</div>
+  </div>
+  <div class="ref-content">
+    <h2>Academic<br><em>References.</em></h2>
+    <div class="ref-list">
+      <div class="ref-item">
+        <div class="ref-num">01</div>
+        <div class="ref-text"><strong>AIAG &amp; VDA (2019). Failure Mode and Effects Analysis (FMEA) Handbook.</strong> Automotive Industry Action Group. — Primary methodology standard used throughout this analysis.</div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-num">02</div>
+        <div class="ref-text"><strong>Stamatis, D. H. (2003). Failure Mode and Effect Analysis: FMEA from Theory to Execution.</strong> ASQ Quality Press. — Foundational reference for RPN calculation and severity/occurrence/detection scales.</div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-num">03</div>
+        <div class="ref-text"><strong>Liu, H. C., Liu, L., &amp; Liu, N. (2013). Risk evaluation approaches in FMEA: A literature review.</strong> Expert Systems with Applications, 40(2), 828–838. — Used to justify RPN threshold selection and risk prioritisation approach.</div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-num">04</div>
+        <div class="ref-text"><strong>Huang, J., &amp; Li, Z. (2017). An integrated FMEA approach for additive manufacturing process risk assessment.</strong> Procedia Manufacturing, 11, 705–712. — Specific to additive manufacturing PFMEA; informed the 3D printing failure mode identification.</div>
+      </div>
+      <div class="ref-item">
+        <div class="ref-num">05</div>
+        <div class="ref-text"><strong>ISO 9001:2015 — Quality Management Systems — Requirements.</strong> International Organisation for Standardisation. — Compliance standard for all quality control and documentation procedures in this project.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">PANIZ<span>.</span></div>
+  <div class="f-copy">© 2026 — PFMEA Analysis · Phones-R-Us Project · Based on Actual Trial Data (15+ prints, 10 FESTO runs)</div>
+  <div class="f-links">
+    <a href="project.html">Project</a>
+    <a href="design.html">Design</a>
+    <a href="pfmea.html">PFMEA</a>
+    <a href="printing.html">3D Printing</a>
+    <a href="quality.html">Quality</a>
+    <a href="simulation.html">Simulation</a>
+  </div>
+</footer>
+
+<script>
+/* CUSTOM CURSOR */
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+let rx=0,ry=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
+(function animRing(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';ring.style.opacity='0';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.opacity='.4';});
+});
+
+/* SCROLL REVEAL */
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')}),{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* TABLE FILTER */
+function filterTable(type, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b=>{
+    b.classList.remove('active','active-red','active-orange');
+  });
+  if(type==='all') btn.classList.add('active');
+  else if(type==='high') btn.classList.add('active-red');
+  else if(type==='mid') btn.classList.add('active-orange');
+  else btn.classList.add('active');
+
+  const rows = document.querySelectorAll('#mainTable tbody tr');
+  rows.forEach(row=>{
+    if(row.classList.contains('process-label')){
+      row.style.display='';
+      return;
+    }
+    const rpn = parseInt(row.getAttribute('data-rpnval')||'0');
+    const cls = row.getAttribute('data-class')||'';
+    let show = false;
+    if(type==='all') show=true;
+    else if(type==='high') show=rpn>125;
+    else if(type==='mid') show=rpn>=50&&rpn<=125;
+    else if(type==='low') show=rpn<50;
+    else if(type==='safety') show=cls==='safety';
+    row.style.display=show?'':'none';
+  });
+
+  /* Hide group labels if all rows hidden */
+  let lastLabel=null;
+  rows.forEach(row=>{
+    if(row.classList.contains('process-label')){
+      lastLabel=row;
+    } else if(lastLabel){
+      if(row.style.display!=='none'){lastLabel.style.display='';lastLabel=null;}
+    }
+  });
+  /* Second pass to hide orphaned labels */
+  let labels=[...document.querySelectorAll('.process-label')];
+  labels.forEach((lbl,i)=>{
+    const next=labels[i+1];
+    let hasVisible=false;
+    let sib=lbl.nextElementSibling;
+    while(sib&&!sib.classList.contains('process-label')){
+      if(sib.style.display!=='none'){hasVisible=true;break;}
+      sib=sib.nextElementSibling;
+    }
+    lbl.style.display=hasVisible?'':'none';
+  });
+}
+
+/* COUNT-UP for summary cards */
+const sobs2=new IntersectionObserver(e=>e.forEach(x=>{
+  if(x.isIntersecting){
+    x.target.querySelectorAll('.sum-n').forEach(el=>{
+      const orig=el.textContent.trim();
+      const num=parseFloat(orig);
+      if(!isNaN(num)){
+        let v=0;const dur=1200,step=16,inc=num/(dur/step);
+        const t=setInterval(()=>{
+          v=Math.min(v+inc,num);
+          el.textContent=Number.isInteger(num)?Math.floor(v):v.toFixed(0);
+          if(v>=num){el.textContent=orig;clearInterval(t);}
+        },step);
+      }
+    });
+  }
+}),{threshold:.4});
+const sm=document.getElementById('summary');if(sm)sobs2.observe(sm);
+
+/* HOVER ROW HIGHLIGHT on table */
+document.querySelectorAll('.pfmea-table tbody tr').forEach(row=>{
+  if(!row.classList.contains('process-label')){
+    row.addEventListener('mouseenter',()=>{row.style.cursor='default';});
+  }
+});
+</script>
 </body>
 </html>
