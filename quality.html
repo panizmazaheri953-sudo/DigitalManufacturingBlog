@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quality | Paniz Manufacturing</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{--navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--cyan:#00e5ff;--cyan2:#00b8cc;--white:#f0f4ff;--muted:#7a8fa8;--border:rgba(0,229,255,0.15);--card:rgba(15,32,64,0.6);--ff:'Space Grotesk',sans-serif;--fm:'Space Mono',monospace;}
+  body{font-family:var(--ff);background:var(--navy);color:var(--white);}
+  nav{position:sticky;top:0;z-index:999;background:rgba(5,13,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;}
+  .logo{font-family:var(--fm);font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);}
+  .nav-links{display:flex;gap:0;list-style:none;}
+  .nav-links a{display:block;padding:0 1.2rem;height:64px;line-height:64px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:2px solid transparent;}
+  .nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan);}
+  .page-hero{padding:4rem 5% 3rem;text-align:center;}
+  .hero-badge{font-family:var(--fm);font-size:.7rem;color:var(--cyan);border:1px solid var(--border);padding:.35rem .9rem;display:inline-block;margin-bottom:1.5rem;}
+  .page-hero h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:700;text-transform:uppercase;}
+  .page-hero h1 span{color:var(--cyan);}
+  section{padding:3rem 5%;max-width:1200px;margin:0 auto;}
+  .sec-label{font-family:var(--fm);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem;}
+  .sec-label::after{content:'';flex:0 0 40px;height:1px;background:var(--cyan);}
+  .station-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;}
+  .station{background:var(--card);border:1px solid var(--border);padding:1rem;text-align:center;}
+  .station.pass{border-left:3px solid #4ade80;}
+  .station.fail{border-left:3px solid #f87171;}
+  .station h4{font-size:.9rem;margin-bottom:.5rem;}
+  .measurement-table{width:100%;border-collapse:collapse;margin:2rem 0;background:var(--card);border:1px solid var(--border);}
+  .measurement-table th,.measurement-table td{padding:1rem;text-align:center;border-bottom:1px solid var(--border);}
+  .measurement-table th{color:var(--cyan);}
+  .fail-highlight{color:#f87171;font-weight:700;}
+  .pass-highlight{color:#4ade80;font-weight:700;}
+  footer{background:var(--navy2);border-top:1px solid var(--border);padding:2rem 5%;display:flex;justify-content:space-between;flex-wrap:wrap;}
+  @media(max-width:800px){.nav-links{display:none;}.station-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Paniz Manufacturing</span>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="project.html">Project</a></li><li><a href="design.html">Design</a></li>
+    <li><a href="pfmea.html">PFMEA</a></li><li><a href="printing.html">3D Printing</a></li>
+    <li><a href="quality.html" class="active">Quality</a></li><li><a href="simulation.html">Simulation</a></li>
+  </ul>
+  <a class="nav-cta" href="simulation.html">Capacity</a>
+</nav>
+
+<div class="page-hero"><div class="hero-badge">Metrology & FESTO Validation</div><h1>Quality <span>Control</span></h1></div>
+
+<section>
+  <div class="sec-label">FESTO CP Lab — Station Results</div>
+  <div class="station-grid">
+    <div class="station pass"><h4>Station 1</h4><p>Loading / Transfer</p><span style="color:#4ade80;">✓ Pass</span></div>
+    <div class="station fail"><h4>Station 2</h4><p>Laser Measurement</p><span style="color:#f87171;">✗ FAIL (Ultimaker: 1.18mm)</span><br><span style="color:#4ade80;font-size:.7rem;">✓ Pass (Bambu: within 1.6-2.2mm)</span></div>
+    <div class="station pass"><h4>Station 3</h4><p>Component Addition</p><span style="color:#4ade80;">✓ Pass</span></div>
+    <div class="station pass"><h4>Station 4</h4><p>Pressing</p><span style="color:#4ade80;">✓ Pass</span></div>
+    <div class="station pass"><h4>Station 5</h4><p>Curing</p><span style="color:#4ade80;">✓ Pass</span></div>
+    <div class="station pass"><h4>Station 6</h4><p>Robotic Collection</p><span style="color:#4ade80;">✓ Pass</span></div>
+  </div>
+
+  <div class="sec-label">Laser Measurement Results</div>
+  <table class="measurement-table">
+    <tr><th>Printer</th><th>Measurement (mm)</th><th>Spec Required</th><th>Result</th></tr>
+    <tr><td>Ultimaker S5</td><td class="fail-highlight">1.18 mm</td><td>1.6 — 2.2 mm</td><td class="fail-highlight">FAIL</td></tr>
+    <tr><td>Bambu P1S</td><td class="pass-highlight">1.85 mm</td><td>1.6 — 2.2 mm</td><td class="pass-highlight">PASS</td></tr>
+  </table>
+</section>
+
+<footer><div><div class="f-logo">Paniz Manufacturing Co.</div></div><div class="f-links"><a href="printing.html">3D Printing</a><a href="simulation.html">Simulation</a></div></footer>
+</body>
+</html>
