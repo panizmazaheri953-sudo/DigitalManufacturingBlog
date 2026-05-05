@@ -6,6 +6,21 @@
 <title>Industry Challenge — Paniz Manufacturing</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  .ref-item a {
+  color: var(--cyan);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.3);
+  transition: all 0.2s ease;
+  margin-left: 0.5rem;
+  font-family: var(--fm);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+}
+
+.ref-item a:hover {
+  border-bottom-color: var(--cyan);
+  opacity: 0.8;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--navy4:#152848;
@@ -162,8 +177,8 @@ sup.ref{font-family:var(--fm);font-size:.48rem;color:var(--cyan);vertical-align:
   <a class="logo" href="index.html">PANIZ<span>.</span></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
+    <li><a href="industry.html" class="active">Industry Challenge</a></li>
     <li><a href="project.html">Project</a></li>
-    <li><a href="industry.html" class="active">Industry</a></li>
     <li><a href="design.html">Design</a></li>
     <li><a href="pfmea.html">PFMEA</a></li>
     <li><a href="printing.html">3D Printing</a></li>
@@ -332,19 +347,62 @@ sup.ref{font-family:var(--fm);font-size:.48rem;color:var(--cyan);vertical-align:
 </section>
 
 <section id="references" class="sec-shell reveal">
-  <div class="label-col"><div><div class="sec-tag">06 — Sources</div><div class="sec-big-num">REF</div></div><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)"> </div></div>
+  <div class="label-col">
+    <div>
+      <div class="sec-tag">06 — Sources</div>
+      <div class="sec-big-num">REF</div>
+    </div>
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Harvard References</div>
+  </div>
   <div class="sec-body">
     <h2 class="sec-h2">Academic &amp; Industry<br><em>References.</em></h2>
     <div class="reference-list">
-      <div class="ref-item">Christensen, C.M. (1997) <em>The Innovator's Dilemma: When New Technologies Cause Great Firms to Fail</em>. Boston: Harvard Business School Press.</div>
-      <div class="ref-item">Grand View Research (2024) <em>3D Printing Market Size, Share &amp; Trends Report 2024-2030</em>. San Francisco: Grand View Research.</div>
-      <div class="ref-item">IDC (2024) <em>Worldwide Smartphone Shipments 2023 Full Year Results</em>. Framingham: International Data Corporation.</div>
-      <div class="ref-item">McKinsey Global Institute (2015) <em>Industry 4.0: The Future of Productivity and Growth in Manufacturing</em>. London: McKinsey &amp; Company.</div>
-      <div class="ref-item">Rayna, T. and Striukova, L. (2021) 'From rapid prototyping to home fabrication: How 3D printing is changing business model innovation', <em>Technological Forecasting and Social Change</em>, 164, p. 120469. doi:10.1016/j.techfore.2017.04.029.</div>
-      <div class="ref-item">Ries, E. (2011) <em>The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses</em>. New York: Crown Business.</div>
-      <div class="ref-item">Schwab, K. (2016) 'The Fourth Industrial Revolution: what it means and how to respond', <em>World Economic Forum</em>, 14 January. Available at: https://www.weforum.org/agenda/2016/01/the-fourth-industrial-revolution-what-it-means-and-how-to-respond/ (Accessed: 5 May 2026).</div>
-      <div class="ref-item">Wohlers, T. and Gornet, T. (2020) 'History of additive manufacturing and cost crossover analysis', <em>Additive Manufacturing</em>, 35, p. 101190. doi:10.1016/j.addma.2020.101190.</div>
-      <div class="ref-item">Womack, J.P., Jones, D.T. and Roos, D. (1990) <em>The Machine That Changed the World: The Story of Lean Production</em>. New York: Free Press.</div>
+      
+      <div class="ref-item">
+        <strong>Christensen, C.M. (1997)</strong> <em>The Innovator's Dilemma: When New Technologies Cause Great Firms to Fail</em>. Boston: Harvard Business School Press. 
+        <a href="https://www.hbs.edu/faculty/Pages/item.aspx?num=46" target="_blank" style="color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,0.3);">↗ View at HBS</a>
+      </div>
+      
+      <div class="ref-item">
+        <strong>Grand View Research (2024)</strong> <em>3D Printing Market Size, Share &amp; Trends Report 2024-2030</em>. San Francisco: Grand View Research. 
+        <a href="https://www.grandviewresearch.com/industry-analysis/3d-printing-market" target="_blank" style="color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,0.3);">↗ Open Report</a>
+      </div>
+      
+      <div class="ref-item">
+        <strong>IDC (2024)</strong> <em>Worldwide Smartphone Shipments 2023 Full Year Results</em>. Framingham: International Data Corporation. 
+        <a href="https://www.idc.com/getdoc.jsp?containerId=prUS51519223" target="_blank" style="color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,0.3);">↗ Read Summary</a>
+      </div>
+      
+      <div class="ref-item">
+        <strong>McKinsey Global Institute (2015)</strong> <em>Industry 4.0: The Future of Productivity and Growth in Manufacturing</em>. London: McKinsey &amp; Company. 
+        <a href="https://www.mckinsey.com/capabilities/operations/our-insights/industry-four-point-o-the-future-of-productivity-and-growth-in-manufacturing-industries" target="_blank" style="color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,0.3);">↗ Open Report</a>
+      </div>
+      
+      <div class="ref-item">
+        <strong>Rayna, T. and Striukova, L. (2021)</strong> 'From rapid prototyping to home fabrication: How 3D printing is changing business model innovation', <em>Technological Forecasting and Social Change</em>, 164, p. 120469. 
+        <a href="https://doi.org/10.1016/j.techfore.2017.04.029" target="_blank" style="color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,0.3);">↗ Open DOI</a>
+      </div>
+      
+      <div class="ref-item">
+        <strong>Ries, E. (2011)</strong> <em>The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses</em>. New York: Crown Business.
+        <a href="https://theleanstartup.com/" target="_blank" style="color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,0.3);">↗ Official Site</a>
+      </div>
+      
+      <div class="ref-item">
+        <strong>Schwab, K. (2016)</strong> 'The Fourth Industrial Revolution: what it means and how to respond', <em>World Economic Forum</em>, 14 January.
+        <a href="https://www.weforum.org/agenda/2016/01/the-fourth-industrial-revolution-what-it-means-and-how-to-respond/" target="_blank" style="color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,0.3);">↗ Read Article</a>
+      </div>
+      
+      <div class="ref-item">
+        <strong>Wohlers, T. and Gornet, T. (2020)</strong> 'History of additive manufacturing and cost crossover analysis', <em>Additive Manufacturing</em>, 35, p. 101190.
+        <a href="https://doi.org/10.1016/j.addma.2020.101190" target="_blank" style="color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,0.3);">↗ Open DOI</a>
+      </div>
+      
+      <div class="ref-item">
+        <strong>Womack, J.P., Jones, D.T. and Roos, D. (1990)</strong> <em>The Machine That Changed the World: The Story of Lean Production</em>. New York: Free Press.
+        <a href="https://mitpress.mit.edu/9780262731492/the-machine-that-changed-the-world/" target="_blank" style="color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,0.3);">↗ MIT Press</a>
+      </div>
+      
     </div>
   </div>
 </section>
