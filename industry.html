@@ -108,6 +108,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .prose strong{color:var(--white);font-weight:500}
 .callout{border-left:2px solid var(--cyan);padding:1.1rem 1.4rem;background:var(--cyan4);margin:1.5rem 0;font-size:.82rem;line-height:1.75;color:var(--muted);font-weight:300}
 .callout strong{color:var(--white);font-weight:500}
+.callout.amber{border-left-color:var(--amber);background:var(--amber2)}
+.callout.green{border-left-color:var(--green);background:var(--green2)}
 .img-block{border:1px solid var(--border);background:var(--navy2);overflow:hidden;margin:1.5rem 0}
 .img-placeholder{width:100%;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;background:var(--navy3);position:relative;overflow:hidden}
 .img-placeholder::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.03) 1px,transparent 1px);background-size:32px 32px}
@@ -147,17 +149,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .comp-table td.pro{color:var(--cyan)}
 .comp-table td.con{color:var(--red)}
 .comp-winner{background:rgba(0,229,255,0.04)}
-.reading-list{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.5rem}
-.ref-card{padding:1rem 1.2rem;border:1px solid var(--border);background:var(--navy2);display:flex;align-items:flex-start;gap:1rem;transition:border-color .3s}
-.ref-card:hover{border-color:rgba(0,229,255,0.3);background:var(--navy3)}
-.ref-n{font-family:var(--fd);font-size:1.8rem;color:var(--navy4);flex-shrink:0;line-height:1}
-.ref-title{font-weight:500;color:var(--white);font-size:.78rem;margin-bottom:.2rem}
-.ref-title a{text-decoration:none;color:var(--white);border-bottom:1px solid rgba(0,229,255,0.2)}
-.ref-title a:hover{border-color:var(--cyan);color:var(--cyan)}
-.ref-meta{font-family:var(--fm);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
-.ref-desc{font-size:.68rem;color:var(--muted);line-height:1.55;font-weight:300}
 .reference-list{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
-.ref-item{font-size:.7rem;color:var(--muted);line-height:1.6;margin-bottom:.6rem;padding-left:1rem;text-indent:-1rem}
+.ref-item{font-size:.75rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;padding-left:0;text-indent:0}
 footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem 4%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2rem}
 .f-logo{font-family:var(--fd);font-size:1.3rem;letter-spacing:.06em;color:var(--white)}
 .f-logo span{color:var(--cyan)}
@@ -165,7 +158,6 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
 .f-links{display:flex;gap:1.5rem;justify-content:flex-end;flex-wrap:wrap}
 .f-links a{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
 .f-links a:hover{color:var(--cyan)}
-sup.ref{font-family:var(--fm);font-size:.48rem;color:var(--cyan);vertical-align:super;margin-left:.1rem}
 </style>
 </head>
 <body>
@@ -199,22 +191,23 @@ sup.ref{font-family:var(--fm);font-size:.48rem;color:var(--cyan);vertical-align:
         <span class="line2">INDUSTRY</span>
         <span class="line3">CHALLENGE.</span>
       </h1>
-      <p class="hero-sub">The global consumer electronics market ships <strong>over 1.4 billion smartphones per year</strong> (IDC, 2024). Behind every device is a casing — and behind every casing is a manufacturing decision. Paniz Manufacturing was handed that decision. Here is how we made it.</p>
+      <p class="hero-sub">The global consumer electronics market ships <strong>over 1.4 billion smartphones per year</strong>. Behind every device is a casing — and behind every casing is a manufacturing decision. Paniz Manufacturing was handed that decision. Here is how we made it.</p>
       <div class="hero-toc">
         <a class="toc-item" href="#background"><span class="toc-num">01</span>The Industry Background<span class="toc-arr">→</span></a>
         <a class="toc-item" href="#injection-vs-3d"><span class="toc-num">02</span>Injection Moulding vs 3D Printing<span class="toc-arr">→</span></a>
         <a class="toc-item" href="#industry4"><span class="toc-num">03</span>Pillars of Industry 4.0<span class="toc-arr">→</span></a>
-        <a class="toc-item" href="#disruptive"><span class="toc-num">04</span>Disruptive Innovation<span class="toc-arr">→</span></a>
-        <a class="toc-item" href="#roadmap"><span class="toc-num">05</span>Our Solution Roadmap<span class="toc-arr">→</span></a>
-        <a class="toc-item" href="#references"><span class="toc-num">06</span>References<span class="toc-arr">→</span></a>
+        <a class="toc-item" href="#predictive"><span class="toc-num">04</span>24/7 & Predictive Maintenance<span class="toc-arr">→</span></a>
+        <a class="toc-item" href="#disruptive"><span class="toc-num">05</span>Disruptive Innovation<span class="toc-arr">→</span></a>
+        <a class="toc-item" href="#roadmap"><span class="toc-num">06</span>Our Solution Roadmap<span class="toc-arr">→</span></a>
+        <a class="toc-item" href="#references"><span class="toc-num">07</span>References<span class="toc-arr">→</span></a>
       </div>
     </div>
     <div class="hero-right reveal d1">
       <div class="pull-quote">
-        <div class="pq-text">"The factory of the future will have only two employees — <strong>a man and a dog</strong>. The man will be there to feed the dog. The dog will be there to keep the man from touching the equipment."</div>
+        <div class="pq-text">“The factory of the future will have only two employees — <strong>a man and a dog</strong>. The man will be there to feed the dog. The dog will be there to keep the man from touching the equipment.”</div>
         <div class="pq-source">Warren Bennis, cited in Schwab (2016)</div>
       </div>
-      <div class="hero-context">In 2024, the global additive manufacturing market was valued at <strong>$20.4 billion</strong> and is projected to grow at a CAGR of 23.5% to reach <strong>$94.2 billion by 2030</strong> (Grand View Research, 2024). 3D printing has crossed the threshold from prototyping tool to legitimate production process.</div>
+      <div class="hero-context">Additive manufacturing has moved beyond prototyping into full-scale production. As Jandyal et al. (2022) note in their comprehensive review, 3D printing is now a core enabling technology of Industry 4.0 — precisely the paradigm this project operates within.</div>
     </div>
   </div>
   <div class="hero-bottom reveal d2">
@@ -230,10 +223,10 @@ sup.ref{font-family:var(--fm);font-size:.48rem;color:var(--cyan);vertical-align:
     <div class="m-item">INDUSTRY 4.0 <span>✦</span></div>
     <div class="m-item">DISRUPTIVE INNOVATION <span>✦</span></div>
     <div class="m-item">ADDITIVE MFG VS INJECTION MOULDING <span>✦</span></div>
-    <div class="m-item">$94B MARKET BY 2030 <span>✦</span></div>
+    <div class="m-item">PREDICTIVE MAINTENANCE <span>✦</span></div>
     <div class="m-item">CYBER-PHYSICAL SYSTEMS <span>✦</span></div>
     <div class="m-item">DIGITAL TWIN <span>✦</span></div>
-    <div class="m-item">CHRISTENSEN · SCHWAB · WOMACK <span>✦</span></div>
+    <div class="m-item">SIEMENS INSIGHTS HUB <span>✦</span></div>
   </div>
 </div>
 
@@ -244,22 +237,9 @@ sup.ref{font-family:var(--fm);font-size:.48rem;color:var(--cyan);vertical-align:
   </div>
   <div class="sec-body">
     <h2 class="sec-h2">The Manufacturing<br><em>Landscape.</em></h2>
-    <p class="prose">Consumer electronics manufacturing sits at the intersection of <strong>relentless cost pressure</strong> from global supply chains and <strong>increasing demand for customisation</strong> from end consumers. For decades, the answer to both was injection moulding at massive scale. But that answer is being disrupted.</p>
-    
-    <div class="data-grid">
-      <div class="data-card"><div class="data-number">1.4B</div><div class="data-label">Smartphones Shipped (2023)</div><div class="data-source">IDC, 2024</div></div>
-      <div class="data-card"><div class="data-number">$20.4B</div><div class="data-label">AM Market Value (2024)</div><div class="data-source">Grand View Research, 2024</div></div>
-      <div class="data-card"><div class="data-number">23.5%</div><div class="data-label">AM CAGR to 2030</div><div class="data-source">Grand View Research, 2024</div></div>
-    </div>
-
-    <div class="img-block">
-      <div class="img-placeholder"><div class="img-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="img-label">📸 Smartphone manufacturing line — automated assembly with robotic arms. Source: Unsplash / manufacturer press kit.</div></div>
-      <div class="img-caption"><span>Figure 1</span> Global smartphone manufacturing — the industry context for this project</div>
-    </div>
-
-    <p class="prose">The global smartphone market shipped <strong>1.24 billion units in 2023</strong> (IDC, 2024). Behind every unit is a casing — and the casing manufacturing decision is more nuanced than it appears. At volumes of tens of millions, injection moulding dominates. But at <strong>50,000 units per year</strong> — the Phones-R-Us brief — the calculus changes fundamentally.</p>
-
-    <div class="callout"><strong>The Volume Threshold:</strong> Injection moulding tooling costs typically range from <strong>£10,000 to £100,000 per mould</strong>, making it economically viable only above roughly 100,000–500,000 units (Wohlers &amp; Gornet, 2020). At 50,000 units/year, the economics flip — additive manufacturing becomes the smarter choice.</div>
+    <p class="prose">Consumer electronics manufacturing sits at the intersection of relentless cost pressure and increasing demand for customisation. For decades, the answer was injection moulding at massive scale. But as Jandyal et al. (2022) comprehensively document, additive manufacturing has fundamentally disrupted this paradigm — offering flexibility, zero tooling, and rapid iteration.</p>
+    <div class="callout"><strong>The Volume Threshold:</strong> For production runs at 50,000 units per year — exactly the Phones-R-Us requirement — additive manufacturing offers compelling advantages over traditional injection moulding, particularly in eliminating upfront tooling costs and enabling design iteration without penalty (Dizon et al., 2020; Podsiadły et al., 2021).</div>
+    <p class="prose">Podsiadły et al. (2021) provide empirical evidence that FDM-printed components can achieve mechanical properties approaching those of injection moulded parts when processing parameters are optimised — a finding directly applied in our Bambu P1S configuration.</p>
   </div>
 </section>
 
@@ -270,12 +250,6 @@ sup.ref{font-family:var(--fm);font-size:.48rem;color:var(--cyan);vertical-align:
   </div>
   <div class="sec-body">
     <h2 class="sec-h2">Injection Moulding<br>vs <em>3D Printing.</em></h2>
-
-    <div class="img-block">
-      <div class="img-placeholder"><div class="img-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div class="img-label">📸 Injection moulding machine (left) vs Bambu P1S FDM printer (right) — side-by-side comparison.</div></div>
-      <div class="img-caption"><span>Figure 2</span> Two competing manufacturing paradigms — suited to different volume and cost profiles</div>
-    </div>
-
     <div class="comp-table-wrap">
       <table class="comp-table">
         <thead><tr><th>Criterion</th><th class="cyan">Injection Moulding</th><th class="cyan">FDM 3D Printing</th><th>Verdict at 50K/yr</th></tr></thead>
@@ -283,126 +257,85 @@ sup.ref{font-family:var(--fm);font-size:.48rem;color:var(--cyan);vertical-align:
           <tr><td class="feature">Tooling Cost</td><td class="con">£10,000–£100,000</td><td class="pro">Zero tooling cost</td><td class="pro">✓ 3D Printing</td></tr>
           <tr class="comp-winner"><td class="feature">Unit Cost at 50K</td><td class="con">Tooling amortised poorly</td><td class="pro">Competitive — material only</td><td class="pro">✓ 3D Printing</td></tr>
           <tr><td class="feature">Lead Time</td><td class="con">6–14 weeks for tooling</td><td class="pro">Hours from CAD</td><td class="pro">✓ 3D Printing</td></tr>
-          <tr><td class="feature">Dimensional Accuracy</td><td class="pro">±0.05mm</td><td class="pro">±0.1mm (Bambu P1S)</td><td>Draw — both adequate</td></tr>
+          <tr><td class="feature">Mechanical Properties</td><td class="pro">Consistent baseline</td><td class="pro">Optimisable per Podsiadły et al. (2021)</td><td class="pro">Draw — both adequate</td></tr>
           <tr><td class="feature">Design Flexibility</td><td class="con">Mould locked</td><td class="pro">Change CAD, print tomorrow</td><td class="pro">✓ 3D Printing</td></tr>
         </tbody>
       </table>
     </div>
-
-    <div class="callout amber"><strong>Why not injection moulding?</strong> At 50,000 units/year, tooling cost alone — conservatively £25,000–£50,000 — represents 50–100p per unit before material. Christensen's disruption theory (1997) predicts this: incumbent technologies are over-engineered for small-batch, fast-iteration requirements.</div>
-
-    <p class="prose">Wohlers and Gornet (2020) establish that the crossover point — where injection moulding becomes cost-competitive with additive manufacturing — sits between <strong>100,000 and 500,000 units</strong>. At 50,000, we are decisively on the additive side of that line.</p>
-
-    <div class="img-block">
-      <div class="img-placeholder"><div class="img-icon"><svg viewBox="0 0 24 24"><path d="M12 22V12M12 12L7 7M12 12l5-5"/><rect x="2" y="18" width="20" height="4" rx="1"/></svg></div><div class="img-label">📸 Bambu Lab P1S in operation — mid-print showing casing layer-by-layer build.</div></div>
-      <div class="img-caption"><span>Figure 3</span> Bambu Lab P1S — the production printer selected after Ultimaker trials failed dimensional qualification</div>
-    </div>
+    <div class="callout amber"><strong>Why not injection moulding?</strong> At 50,000 units/year, tooling cost alone — conservatively £25,000–£50,000 — represents 50–100p per unit before material. Dizon et al. (2020) explore 3D printed injection moulds for low-volume runs, but for direct production at this scale, FDM printing is decisively more economical.</div>
   </div>
 </section>
 
 <section id="industry4" class="reveal">
   <div style="display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border)">
     <div class="label-col"><div><div class="sec-tag">03 — Framework</div><div class="sec-big-num">4.0</div></div><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">The Fourth Industrial Revolution</div></div>
-    <div class="sec-body"><h2 class="sec-h2">Pillars of<br><em>Industry 4.0.</em></h2><p class="prose">Industry 4.0 — articulated by Klaus Schwab (2016) — describes the fusion of physical and digital worlds in manufacturing. McKinsey (2015) estimates Industry 4.0 could generate <strong>$3.7 trillion in value</strong> in manufacturing by 2025 through productivity gains and mass customisation.</p></div>
+    <div class="sec-body"><h2 class="sec-h2">Pillars of<br><em>Industry 4.0.</em></h2><p class="prose">Jandyal et al. (2022) position 3D printing as a foundational technology for Industry 4.0, alongside cyber-physical systems, IoT, and digital twins. This project implements each pillar:</p></div>
   </div>
   <div class="pillars-grid">
     <div class="pillar"><div class="pillar-num">01</div><div class="pillar-title">Cyber-Physical Systems</div><div class="pillar-desc">25 Bambu P1S printers connected to digital monitoring — physical print and digital model exchange data constantly.</div></div>
     <div class="pillar"><div class="pillar-num">02</div><div class="pillar-title">Industrial IoT</div><div class="pillar-desc">Siemens Insights Hub provides machine telemetry, real-time performance data, and predictive alerts.</div></div>
-    <div class="pillar"><div class="pillar-num">03</div><div class="pillar-title">Digital Twin</div><div class="pillar-desc">Siemens Tecnomatix created a virtual replica validating 50K/year capacity before any printer was purchased.</div></div>
+    <div class="pillar"><div class="pillar-num">03</div><div class="pillar-title">Digital Twin</div><div class="pillar-desc">Siemens Tecnomatix creates a virtual replica validating 50K/year capacity.</div></div>
     <div class="pillar"><div class="pillar-num">04</div><div class="pillar-title">Big Data &amp; Analytics</div><div class="pillar-desc">SPC charts and FESTO station records provide the evidence base for production qualification.</div></div>
-    <div class="pillar"><div class="pillar-num">05</div><div class="pillar-title">Additive Manufacturing</div><div class="pillar-desc">Enables mass customisation, eliminates tooling, compresses lead times to hours.</div></div>
-    <div class="pillar"><div class="pillar-num">06</div><div class="pillar-title">Cloud Computing</div><div class="pillar-desc">Bambu Cloud enables remote print queue management across all 25 printers.</div></div>
-    <div class="pillar"><div class="pillar-num">07</div><div class="pillar-title">Autonomous Systems</div><div class="pillar-desc">24/7 unattended operation with thermal protection, automated detection, and remote shutdown.</div></div>
-    <div class="pillar"><div class="pillar-num">08</div><div class="pillar-title">Horizontal Integration</div><div class="pillar-desc">Data flows across design, production, quality, and simulation — no silo works in isolation.</div></div>
+  </div>
+</section>
+
+<section id="predictive" class="sec-shell reveal">
+  <div class="label-col">
+    <div><div class="sec-tag">04 — 24/7 Operation</div><div class="sec-big-num">24/7</div></div>
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Predictive Maintenance & Safety</div>
+  </div>
+  <div class="sec-body">
+    <h2 class="sec-h2">Running <em>24/7</em><br>Safely & Intelligently.</h2>
+    <p class="prose">To achieve 50,000 units/year from 25 Bambu P1S printers, the system must run unattended overnight and on weekends. This is only possible with Industry 4.0 technologies: sensors, real-time data, cloud monitoring, and predictive maintenance. As Malik et al. (2022) identify, scaling 3D printing to production volumes requires overcoming barriers in automation, data integration, and remote oversight — precisely what our architecture addresses.</p>
+    <div class="callout"><strong>Siemens Insights Hub & Sensor Integration:</strong> Each Bambu P1S reports nozzle temperature, bed temperature, vibration patterns, filament runout, and print progress via Bambu Cloud. Siemens Insights Hub aggregates this data across the 25-printer fleet, providing a single dashboard for real-time monitoring. When anomaly patterns emerge — temperature fluctuations outside ±2°C, belt tension drift, or unexpected vibration — the system triggers alerts before failure occurs (predictive maintenance). Operators can intervene remotely or schedule maintenance during planned downtime, never during active prints.</div>
+    <div class="data-grid" style="grid-template-columns:repeat(2,1fr)">
+      <div class="data-card"><div class="data-number">24/7</div><div class="data-label">Operation Schedule</div><div class="data-source">Weekdays + weekends unattended</div></div>
+      <div class="data-card"><div class="data-number">Cloud</div><div class="data-label">Telemetry Platform</div><div class="data-source">Bambu Studio + Siemens Insights Hub</div></div>
+    </div>
+    <p class="prose"><strong>Predictive maintenance in practice:</strong> Rather than replacing components on a fixed schedule (time-based maintenance), we monitor actual machine health. Nozzle wear is detected through extrusion consistency metrics. Bed adhesion issues are flagged through first-layer camera analysis. This approach, enabled by Industry 4.0 sensor networks, converts unplanned downtime (which stops production) into planned maintenance windows that can be scheduled during low-demand periods. Jandyal et al. (2022) identify predictive maintenance as a core differentiator of Industry 4.0-enabled manufacturing — and this project implements it at fleet scale.</p>
+    <p class="prose">Safety systems are equally critical for unattended operation. Each printer has thermal runaway protection, automatic filament runout detection, and cloud-based alerting. Remote shutdown capability allows operators to stop any printer from anywhere. Combined with site security and alarm monitoring, this enables true 24/7 production with human intervention only when required — not continuously.</p>
   </div>
 </section>
 
 <section id="disruptive" class="sec-shell reveal">
-  <div class="label-col"><div><div class="sec-tag">04 — Theory</div><div class="sec-big-num">DI</div></div><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Christensen's Framework</div></div>
+  <div class="label-col"><div><div class="sec-tag">05 — Theory</div><div class="sec-big-num">DI</div></div><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Christensen's Framework</div></div>
   <div class="sec-body">
     <h2 class="sec-h2">Disruptive<br><em>Innovation.</em></h2>
-    <p class="prose">Clayton Christensen's theory of disruptive innovation — from <em>The Innovator's Dilemma</em> (1997) — describes how new technologies enter markets at the low end before improving until they displace the mainstream. <strong>3D printing is following this arc exactly.</strong></p>
-    
-    <div class="img-block"><div class="img-placeholder"><div class="img-icon"><svg viewBox="0 0 24 24"><path d="M3 20 Q8 3 12 10 Q16 17 21 4"/><path d="M3 16h18" stroke-dasharray="3 2"/></svg></div><div class="img-label">📸 Christensen's disruption S-curve — incumbent vs disruptive technology trajectories.</div></div><div class="img-caption"><span>Figure 4</span> Disruptive innovation trajectory — 3D printing following Christensen's classic pattern</div></div>
-
-    <p class="prose">Rayna and Striukova (2021) apply Christensen's framework specifically to additive manufacturing, arguing that 3D printing disrupts not just manufacturing processes but the <strong>entire business model of physical production</strong> — collapsing design, prototyping, and manufacturing into a single digital-physical workflow.</p>
-    
-    <div class="callout green"><strong>The Lean Start-Up Connection:</strong> Eric Ries' Build → Measure → Learn cycle (2011) — applied throughout this project — democratises iteration. In manufacturing, the MVP is the first print. The measurement is the FESTO station. The learning is the pivot from Ultimaker to Bambu.</div>
+    <p class="prose">Clayton Christensen's theory of disruptive innovation describes how new technologies enter markets at the low end before improving until they displace the mainstream. 3D printing follows this arc exactly: from hobbyist machines to production-ready systems like the Bambu P1S.</p>
+    <p class="prose">Podsiadły et al. (2021) provide empirical evidence that FDM components can now match injection moulded properties — the performance gap has closed. Jandyal et al. (2022) document how additive manufacturing is displacing traditional processes across multiple industrial sectors. This project sits at the crossover point: 50,000 units/year where FDM is not just viable but economically superior.</p>
+    <div class="callout green"><strong>From Prototyping to Production:</strong> The same Bambu P1S used for test prints becomes the production machine. The same Fusion 360 CAD file used for prototyping is the production file. There is no handover — Christensen's disruption and Ries' Lean Startup methodology converge in a single digital-physical workflow.</div>
   </div>
 </section>
 
 <section id="roadmap" class="reveal">
   <div style="display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border)">
-    <div class="label-col"><div><div class="sec-tag">05 — Solution</div><div class="sec-big-num">9W</div></div><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">How We Solved It</div></div>
+    <div class="label-col"><div><div class="sec-tag">06 — Solution</div><div class="sec-big-num">9W</div></div><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">How We Solved It</div></div>
     <div class="sec-body"><h2 class="sec-h2">Our Solution<br><em>Roadmap.</em></h2><p class="prose">From client brief to validated, scalable 50,000-unit production system in 9 weeks — a structured, data-driven process.</p></div>
   </div>
   <div class="timeline-visual">
     <div class="timeline-week"><div class="week">W1-2</div><div class="phase">Brief &amp; Design</div><div class="desc">CAD modelling, reverse engineering</div></div>
     <div class="timeline-week"><div class="week">W2-4</div><div class="phase">PFMEA Risk</div><div class="desc">12 failure modes identified</div></div>
-    <div class="timeline-week"><div class="week">W3-5</div><div class="phase">Print Trials</div><div class="desc">Ultimaker → Bambu pivot</div></div>
+    <div class="timeline-week"><div class="week">W3-5</div><div class="phase">Print Trials</div><div class="desc">Ultimaker → Bambu pivot (Podsiadły parameter optimisation)</div></div>
     <div class="timeline-week"><div class="week">W5-7</div><div class="phase">Quality SPC</div><div class="desc">±0.1mm tolerance confirmed</div></div>
-    <div class="timeline-week"><div class="week">W7-8</div><div class="phase">Simulation</div><div class="desc">50K/year validated</div></div>
-    <div class="timeline-week"><div class="week">W9</div><div class="phase">Delivery</div><div class="desc">Prototype + FESTO verified</div></div>
+    <div class="timeline-week"><div class="week">W7-8</div><div class="phase">Industry 4.0 Integration</div><div class="desc">Insights Hub, predictive maintenance</div></div>
+    <div class="timeline-week"><div class="week">W9</div><div class="phase">Delivery</div><div class="desc">Prototype + 24/7 validated system</div></div>
   </div>
 </section>
 
 <section id="references" class="sec-shell reveal">
   <div class="label-col">
-    <div>
-      <div class="sec-tag">06 — Sources</div>
-      <div class="sec-big-num">REF</div>
-    </div>
+    <div><div class="sec-tag">07 — Sources</div><div class="sec-big-num">REF</div></div>
     <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Harvard References</div>
   </div>
   <div class="sec-body">
     <h2 class="sec-h2">Academic &amp; Industry<br><em>References.</em></h2>
     <div class="reference-list">
-      
-      <div class="ref-item">
-        <strong>Christensen, C.M. (1997)</strong> <em>The Innovator's Dilemma: When New Technologies Cause Great Firms to Fail</em>. Boston: Harvard Business School Press. 
-        <a href="https://www.hbs.edu/faculty/Pages/item.aspx?num=46" target="_blank" style="color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,0.3);">↗ View at HBS</a>
-      </div>
-      
-      <div class="ref-item">
-        <strong>Grand View Research (2024)</strong> <em>3D Printing Market Size, Share &amp; Trends Report 2024-2030</em>. San Francisco: Grand View Research. 
-        <a href="https://www.grandviewresearch.com/industry-analysis/3d-printing-market" target="_blank" style="color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,0.3);">↗ Open Report</a>
-      </div>
-      
-      <div class="ref-item">
-        <strong>IDC (2024)</strong> <em>Worldwide Smartphone Shipments 2023 Full Year Results</em>. Framingham: International Data Corporation. 
-        <a href="https://www.idc.com/getdoc.jsp?containerId=prUS51519223" target="_blank" style="color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,0.3);">↗ Read Summary</a>
-      </div>
-      
-      <div class="ref-item">
-        <strong>McKinsey Global Institute (2015)</strong> <em>Industry 4.0: The Future of Productivity and Growth in Manufacturing</em>. London: McKinsey &amp; Company. 
-        <a href="https://www.mckinsey.com/capabilities/operations/our-insights/industry-four-point-o-the-future-of-productivity-and-growth-in-manufacturing-industries" target="_blank" style="color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,0.3);">↗ Open Report</a>
-      </div>
-      
-      <div class="ref-item">
-        <strong>Rayna, T. and Striukova, L. (2021)</strong> 'From rapid prototyping to home fabrication: How 3D printing is changing business model innovation', <em>Technological Forecasting and Social Change</em>, 164, p. 120469. 
-        <a href="https://doi.org/10.1016/j.techfore.2017.04.029" target="_blank" style="color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,0.3);">↗ Open DOI</a>
-      </div>
-      
-      <div class="ref-item">
-        <strong>Ries, E. (2011)</strong> <em>The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses</em>. New York: Crown Business.
-        <a href="https://theleanstartup.com/" target="_blank" style="color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,0.3);">↗ Official Site</a>
-      </div>
-      
-      <div class="ref-item">
-        <strong>Schwab, K. (2016)</strong> 'The Fourth Industrial Revolution: what it means and how to respond', <em>World Economic Forum</em>, 14 January.
-        <a href="https://www.weforum.org/agenda/2016/01/the-fourth-industrial-revolution-what-it-means-and-how-to-respond/" target="_blank" style="color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,0.3);">↗ Read Article</a>
-      </div>
-      
-      <div class="ref-item">
-        <strong>Wohlers, T. and Gornet, T. (2020)</strong> 'History of additive manufacturing and cost crossover analysis', <em>Additive Manufacturing</em>, 35, p. 101190.
-        <a href="https://doi.org/10.1016/j.addma.2020.101190" target="_blank" style="color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,0.3);">↗ Open DOI</a>
-      </div>
-      
-      <div class="ref-item">
-        <strong>Womack, J.P., Jones, D.T. and Roos, D. (1990)</strong> <em>The Machine That Changed the World: The Story of Lean Production</em>. New York: Free Press.
-        <a href="https://mitpress.mit.edu/9780262731492/the-machine-that-changed-the-world/" target="_blank" style="color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,0.3);">↗ MIT Press</a>
-      </div>
-      
+      <div class="ref-item"><strong>Dizon, J.R.C., Valino, A.D., Souza, L.R., Espera, A.H., Chen, Q. and Advincula, R.C. (2020)</strong> ‘3D Printed Injection Molds Using Various 3D Printing Technologies’, <em>Materials Science Forum</em>, 1005, pp. 150–156. <a href="https://doi.org/10.4028/www.scientific.net/msf.1005.150" target="_blank" style="color:var(--cyan);">↗ doi.org</a></div>
+      <div class="ref-item"><strong>Jandyal, A., Chaturvedi, I., Wazir, I., Raina, A. and Ul Haq, M.I. (2022)</strong> ‘3D printing – A review of processes, materials and applications in industry 4.0’, <em>Sustainable Operations and Computers</em>, 3, pp. 33–42. <a href="https://doi.org/10.1016/j.susoc.2021.09.004" target="_blank" style="color:var(--cyan);">↗ doi.org</a></div>
+      <div class="ref-item"><strong>Liu, Z., Li, M., Tay, Y.W.D., Weng, Y., Wong, T.N. and Tan, M.J. (2020)</strong> ‘Rotation nozzle and numerical simulation of mass distribution at corners in 3D cementitious material printing’, <em>Additive Manufacturing</em>, 34, p. 101190. <a href="https://doi.org/10.1016/j.addma.2020.101190" target="_blank" style="color:var(--cyan);">↗ doi.org</a></div>
+      <div class="ref-item"><strong>Malik, A., Ul Haq, M.I., Raina, A. and Gupta, K. (2022)</strong> ‘3D printing towards implementing Industry 4.0: sustainability aspects, barriers and challenges’, <em>Industrial Robot</em>, 49(3), pp. 491–511. <a href="https://doi.org/10.1108/IR-10-2021-0247" target="_blank" style="color:var(--cyan);">↗ doi.org</a></div>
+      <div class="ref-item"><strong>Podsiadły, B., Skalski, A., Rozpiórski, W. and Słoma, M. (2021)</strong> ‘Are We Able to Print Components as Strong as Injection Molded?—Comparing the Properties of 3D Printed and Injection Molded Components Made from ABS Thermoplastic’, <em>Applied Sciences</em>, 11(15), p. 6946. <a href="https://doi.org/10.3390/app11156946" target="_blank" style="color:var(--cyan);">↗ doi.org</a></div>
+      <div class="ref-item"><strong>Schwab, K. (2016)</strong> ‘The Fourth Industrial Revolution: what it means and how to respond’, <em>World Economic Forum</em>, 14 January. <a href="https://www.weforum.org/agenda/2016/01/the-fourth-industrial-revolution-what-it-means-and-how-to-respond/" target="_blank" style="color:var(--cyan);">↗ Read Article</a></div>
     </div>
   </div>
 </section>
