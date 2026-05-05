@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +47,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .btn-ghost:hover{color:var(--cyan)}
 .arr{width:12px;height:12px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg);flex-shrink:0}
 
-/* HERO RIGHT — engineering panel */
 .hero-right{position:relative;overflow:hidden;background:var(--navy2)}
 .grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.04) 1px,transparent 1px);background-size:44px 44px}
 .scan-line{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(0,229,255,0.3),transparent);animation:scan 4s linear infinite;top:0}
@@ -109,7 +110,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .stat-desc{font-family:var(--fm);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.5rem}
 .stat-note{font-size:.72rem;color:var(--muted);margin-top:.3rem;font-weight:300;opacity:.7}
 
-/* PROCESS */
+/* PROCESS — updated to 5-col to handle 10 steps in 2 rows */
 #process{border-bottom:1px solid var(--border)}
 .proc-head{display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border)}
 .proc-head-label{padding:2.5rem;border-right:1px solid var(--border);background:var(--navy2)}
@@ -118,13 +119,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .proc-head-title h2 em{color:var(--cyan);font-style:normal}
 .view-all{font-family:var(--fm);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:color .2s}
 .view-all:hover{color:var(--cyan)}
-.steps-grid{display:grid;grid-template-columns:repeat(6,1fr)}
-.step{padding:1.75rem 1.5rem;border-right:1px solid var(--border);position:relative;transition:background .25s}
-.step:last-child{border-right:none}
+.steps-grid{display:grid;grid-template-columns:repeat(5,1fr)}
+.step{padding:1.75rem 1.5rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;transition:background .25s}
+.step:nth-child(5n){border-right:none}
+.step:nth-child(n+6){border-bottom:none}
 .step:hover{background:var(--navy3)}
 .step-idx{font-family:var(--fm);font-size:.55rem;color:var(--cyan);margin-bottom:1.2rem;opacity:.6}
 .step-icon{width:28px;height:28px;margin-bottom:.9rem}
-.step-icon svg{width:28px;height:28px;stroke:var(--cyan);fill:none;stroke-width:1.5}
+.step-icon svg{width:28px;height:28px;stroke:var(--cyan);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .step h3{font-family:var(--fm);font-size:.65rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;color:var(--white)}
 .step p{font-size:.72rem;color:var(--muted);line-height:1.55;font-weight:300}
 .step-bar{position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--cyan);transition:width .35s}
@@ -160,7 +162,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .tl-row{display:flex;gap:2rem;margin-bottom:2.5rem;position:relative}
 .tl-dot{width:9px;height:9px;background:var(--cyan);border-radius:50%;flex-shrink:0;position:absolute;left:-2.6rem;top:.25rem;box-shadow:0 0 10px var(--cyan)}
 .tl-wk{font-family:var(--fd);font-size:1.5rem;color:rgba(0,229,255,0.2);width:72px;flex-shrink:0;line-height:1;padding-top:.1rem}
-.tl-body{}
 .tl-title{font-weight:500;color:var(--white);margin-bottom:.25rem;font-size:.88rem}
 .tl-desc{font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300}
 .tl-pill{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;margin-top:.4rem;padding:.2rem .6rem;border-radius:2px}
@@ -191,9 +192,67 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .chk-ico{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .chk-ico.pass{background:rgba(0,229,255,0.15);border:1px solid var(--cyan)}
 .chk-ico.fail{background:rgba(255,107,107,0.15);border:1px solid #ff6b6b}
-.chk-ico svg{width:9px;height:9px;fill:none;stroke-width:2}
+.chk-ico svg{width:9px;height:9px;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .chk-ico.pass svg{stroke:var(--cyan)}
 .chk-ico.fail svg{stroke:#ff6b6b}
+
+/* BMC SECTION */
+#bmc{padding:4rem 4%;background:var(--navy2);border-bottom:1px solid var(--border)}
+.bmc-head{margin-bottom:2rem}
+.bmc-head h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3.5rem);line-height:.95;text-transform:uppercase;margin-bottom:.5rem}
+.bmc-head h2 em{color:var(--cyan);font-style:normal}
+.bmc-ref{font-family:var(--fm);font-size:.9rem;letter-spacing:.1em;color:var(--muted);margin-top:.4rem;border-left:2px solid var(--cyan);padding-left:.75rem}
+
+.bmc-metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem;margin-bottom:1.5rem}
+.bmc-metric{background:var(--navy3);border:1px solid var(--border);padding:1rem;text-align:center;position:relative;overflow:hidden;transition:border-color .3s}
+.bmc-metric:hover{border-color:var(--cyan)}
+.bmc-metric::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--cyan);transition:width .4s}
+.bmc-metric:hover::after{width:100%}
+.bmc-metric-val{font-family:var(--fd);font-size:1.8rem;color:var(--cyan);line-height:1}
+.bmc-metric-label{font-family:var(--fm);font-size:.46rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
+
+.bmc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
+.bmc-vp{grid-row:span 2}
+
+.fp{perspective:900px}
+.fc{position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1);cursor:pointer;min-height:190px}
+.bmc-vp .fc{min-height:400px}
+.fp:hover .fc{transform:rotateY(180deg)}
+.ff-side,.fb-side{backface-visibility:hidden;-webkit-backface-visibility:hidden;position:absolute;inset:0;padding:1.25rem 1rem;border:1px solid var(--border);background:var(--navy)}
+.fb-side{transform:rotateY(180deg);overflow:auto}
+.ff-side{display:flex;flex-direction:column}
+.bmc-vp .ff-side{background:var(--navy3);border-color:rgba(0,229,255,0.22)}
+.bmc-vp .fb-side{background:var(--navy3);border-color:rgba(0,229,255,0.22)}
+.fp:hover .ff-side{border-color:rgba(0,229,255,0.3)}
+.fi{width:28px;height:28px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:.7rem;flex-shrink:0}
+.fi svg{width:13px;height:13px;stroke:var(--cyan);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.ff-side h3{font-family:var(--fd);font-size:1.25rem;text-transform:uppercase;line-height:.95;color:var(--white);flex:1}
+.ff-sub{font-family:var(--fm);font-size:.46rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.4rem}
+.ff-hint{font-family:var(--fm);font-size:.42rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,229,255,0.3);margin-top:.5rem}
+.fb-side h4{font-family:var(--fm);font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.65rem;padding-bottom:.4rem;border-bottom:1px solid var(--border)}
+.fb-side ul{list-style:none;display:flex;flex-direction:column;gap:.38rem}
+.fb-side ul li{font-size:.68rem;color:var(--muted);line-height:1.5;font-weight:300;padding-left:.75rem;position:relative}
+.fb-side ul li::before{content:'→';position:absolute;left:0;color:var(--cyan);font-family:var(--fm);font-size:.56rem;line-height:1.5}
+.fb-side ul li strong{color:var(--white);font-weight:500}
+
+.bmc-cost{margin-top:.6rem;border:1px solid var(--border);background:var(--navy)}
+.bmc-cost-top{display:flex;align-items:center;gap:.75rem;padding:.9rem 1.25rem;border-bottom:1px solid var(--border)}
+.bmc-cost-top .fi{margin-bottom:0;flex-shrink:0}
+.bmc-cost-top h3{font-family:var(--fd);font-size:1.25rem;text-transform:uppercase;line-height:1;color:var(--white)}
+.bmc-cost-top-sub{font-family:var(--fm);font-size:.46rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.15rem}
+.bmc-cost-cols{display:grid;grid-template-columns:repeat(3,1fr)}
+.bmc-cost-col{padding:1.1rem 1.25rem}
+.bmc-cost-col:not(:last-child){border-right:1px solid var(--border)}
+.bmc-cost-col h4{font-family:var(--fm);font-size:.54rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.65rem;padding-bottom:.38rem;border-bottom:1px solid var(--border)}
+.bmc-cost-col ul{list-style:none;display:flex;flex-direction:column;gap:.38rem}
+.bmc-cost-col ul li{font-size:.68rem;color:var(--muted);line-height:1.45;font-weight:300;padding-left:.75rem;position:relative}
+.bmc-cost-col ul li::before{content:'→';position:absolute;left:0;color:var(--cyan);font-family:var(--fm);font-size:.56rem;line-height:1.45}
+.bmc-cost-col ul li strong{color:var(--white);font-weight:500}
+.bmc-cost-summary{background:var(--navy3);border-top:1px solid var(--border);padding:.7rem 1.25rem;display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+.bcs-item{text-align:center}
+.bcs-val{font-family:var(--fd);font-size:1.35rem;color:var(--cyan);line-height:1}
+.bcs-label{font-family:var(--fm);font-size:.43rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
+.bmc-footnote{font-family:var(--fm);font-size:.5rem;letter-spacing:.09em;color:var(--muted);text-align:center;margin-top:.9rem;line-height:1.6}
 
 /* CTA */
 #cta{padding:6rem 4%;text-align:center;background:var(--navy);position:relative;overflow:hidden}
@@ -217,88 +276,10 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
 .f-links a{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
 .f-links a:hover{color:var(--cyan)}
 
-/* REVEAL */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
 .reveal.in{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 
-/* NOISE */
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.02;pointer-events:none;z-index:9990}
-
-/* ENHANCED FLIP CARDS SECTION (BMC) */
-.bmc-pavilion { padding: 5rem 4% 4rem; background: var(--navy2); border-bottom: 1px solid var(--border); }
-.bmc-header h2 { font-family: var(--fd); font-size: clamp(2.5rem,5vw,4rem); line-height: 1; text-transform: uppercase; margin-bottom: 0.5rem; }
-.bmc-header h2 em { color: var(--cyan); font-style: normal; }
-.bmc-sub { font-family: var(--fm); font-size: 0.7rem; letter-spacing: 0.2em; color: var(--muted); margin-bottom: 2rem; border-left: 3px solid var(--cyan); padding-left: 1rem; }
-
-.flip-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.8rem;
-  margin-top: 2rem;
-}
-.flip-perspective {
-  background-color: transparent;
-  perspective: 1600px;
-  cursor: pointer;
-}
-.flip-card-3d {
-  position: relative;
-  width: 100%;
-  height: 320px;
-  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  transform-style: preserve-3d;
-  border-radius: 0px;
-}
-.flip-perspective:hover .flip-card-3d {
-  transform: rotateY(180deg);
-}
-.flip-front, .flip-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  padding: 1.8rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border: 1px solid var(--border);
-  background: var(--card);
-  backdrop-filter: blur(4px);
-  box-sizing: border-box;
-}
-.flip-front {
-  background: linear-gradient(145deg, var(--navy3), var(--navy2));
-  color: var(--white);
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-}
-.flip-front .front-icon { font-size: 2.5rem; margin-bottom: 1rem; color: var(--cyan); }
-.flip-front h3 { font-family: var(--fd); font-size: 2rem; letter-spacing: 0.02em; text-transform: uppercase; color: var(--white); line-height: 1.2; }
-.flip-front .front-sub { font-family: var(--fm); font-size: 0.6rem; color: var(--cyan); margin-top: 0.5rem; }
-.flip-back {
-  background: var(--navy);
-  transform: rotateY(180deg);
-  text-align: left;
-  overflow-y: auto;
-  color: var(--white);
-  border-left: 3px solid var(--cyan);
-}
-.flip-back h4 { font-family: var(--fd); font-size: 1.3rem; color: var(--cyan); margin-bottom: 1rem; text-transform: uppercase; border-bottom: 1px solid var(--cyan); display: inline-block; }
-.flip-back ul { list-style: none; margin-top: 0.5rem; }
-.flip-back li { font-family: var(--ff); font-size: 0.7rem; margin-bottom: 0.6rem; padding-left: 1rem; position: relative; color: var(--muted); font-weight: 300; }
-.flip-back li::before { content: "▹"; position: absolute; left: 0; color: var(--cyan); }
-.flip-back strong { color: var(--white); font-weight: 500; }
-
-.full-width-flip {
-  margin-top: 2rem;
-}
-
-@media (max-width: 760px) {
-  .flip-card-3d { height: 380px; }
-  .flip-grid { gap: 1.2rem; }
-}
 </style>
 </head>
 <body>
@@ -328,15 +309,14 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <h1 class="hero-h1">
       PHONE<br>
       <span class="hollow">CASING</span><br>
-      <span class="glow">MFG.</span>
+      <span class="glow">MFG-ENCLOS3D</span>
     </h1>
-    <p class="hero-sub">Precision additive manufacturing for Phones-R-Us. 50,000 interchangeable casings per year. Prototype delivered in 9 weeks.</p>
+    <p class="hero-sub">Precision additive manufacturing for Phones-R-Us. 50,000 interchangeable casings per year. Prototype delivered in 9 weeks.<br><span style="font-weight:600;color:var(--white)">We don't just promise — we prove. Every milestone documented, every spec verified, every delivery on time.</span></p>
     <div class="hero-ctas">
       <a href="#" class="btn-primary">View Full Report <span class="arr"></span></a>
       <a href="#process" class="btn-ghost">Our Process <span class="arr"></span></a>
     </div>
   </div>
-
   <div class="hero-right">
     <div class="grid-bg"></div>
     <div class="scan-line"></div>
@@ -358,16 +338,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
           <div class="phone-btn-l1"></div>
           <div class="phone-btn-l2"></div>
           <div class="phone-usb"></div>
-          <div class="dim-h">
-            <div class="dl"></div>
-            <span>158mm</span>
-            <div class="dl"></div>
-          </div>
-          <div class="dim-w">
-            <div class="dl"></div>
-            <span>74mm</span>
-            <div class="dl"></div>
-          </div>
+          <div class="dim-h"><div class="dl"></div><span>158mm</span><div class="dl"></div></div>
+          <div class="dim-w"><div class="dl"></div><span>74mm</span><div class="dl"></div></div>
         </div>
       </div>
     </div>
@@ -403,49 +375,58 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 <section id="about" class="reveal">
   <div class="label-col">
     <div><div class="sec-tag">01 — About</div><div class="sec-big-num">01</div></div>
-    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Paniz Manufacturing Co.<br>Manchester, UK</div>
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">ENCLOS3D Manufacturing Co.<br>Manchester, UK</div>
   </div>
   <div class="about-content">
     <h2>Phones-R-Us<br><em>Challenge.</em></h2>
     <div class="about-body">
-      <div><p>Paniz Manufacturing was tasked with delivering a complete digital manufacturing solution for Phones-R-Us — a client requiring <strong>50,000 interchangeable phone casings per year</strong>, across both a reverse-engineered top casing and a technically-specified bottom casing.</p></div>
-      <div><p>The brief demanded not just volume, but <strong>dimensional precision, full traceability, and a repeatable production workflow</strong> — from CAD modelling through to final FESTO CP Lab assembly verification, all within a 9-week prototype delivery window.</p></div>
+      <div><p>Paniz Manufacturing was tasked with delivering a complete digital manufacturing solution for Phones-R-Us — a client requiring <strong>50,000 interchangeable phone casings per year</strong>, across both top casing and bottom casing.</p></div>
+      <div><p>The brief demanded not just volume, but <strong>dimensional precision, full traceability, FESTO CP Lab verification, and a repeatable production workflow</strong> — from CAD modelling through to final assembly verification and full simulation, all within a 9-week prototype delivery window.</p></div>
     </div>
   </div>
 </section>
 
 <section id="stats" class="reveal">
-  <div class="stat-block"><div class="stat-n">50<span class="u">K</span></div><div class="stat-desc">Target Units / Year</div><div class="stat-note">25 Bambu P1S printers, 24/7 operation</div></div>
+  <div class="stat-block"><div class="stat-n">50<span class="u">K</span></div><div class="stat-desc">Target Units / Year</div><div class="stat-note">25 Bambu P1S printers, weekdays 24/7 + weekends</div></div>
   <div class="stat-block"><div class="stat-n">9<span class="u">wk</span></div><div class="stat-desc">Prototype Delivery</div><div class="stat-note">From initial brief to client-ready prototype</div></div>
-  <div class="stat-block"><div class="stat-n">80<span class="u">%</span></div><div class="stat-desc">Print Success Rate</div><div class="stat-note">3 perfect prints from 5 — Bambu P1S</div></div>
+  <div class="stat-block"><div class="stat-n">80<span class="u">%</span></div><div class="stat-desc">Print Success Rate</div><div class="stat-note">Bambu P1S — 62,500 attempts for 50,000 good pairs</div></div>
   <div class="stat-block"><div class="stat-n">2.5<span class="u">h</span></div><div class="stat-desc">Full Cycle Time</div><div class="stat-note">Both top + bottom casing per print run</div></div>
 </section>
 
 <section id="process" class="reveal">
-  <div class="proc-head"><div class="proc-head-label"><div class="sec-tag">02 — Workflow</div></div><div class="proc-head-title"><h2>Manufacturing<br><em>Workflow.</em></h2><a href="#" class="view-all">Full Docs <span class="arr"></span></a></div></div>
+  <div class="proc-head">
+    <div class="proc-head-label"><div class="sec-tag">02 — Workflow</div></div>
+    <div class="proc-head-title"><h2>Manufacturing<br><em>Workflow.</em></h2><a href="#" class="view-all"><span class="arr"></span></a></div>
+  </div>
   <div class="steps-grid">
-    <div class="step"><div class="step-idx">01</div><div class="step-icon"><svg viewBox="0 0 28 28"><rect x="3" y="3" width="22" height="22" rx="2"/><path d="M9 14h10M14 9v10"/></svg></div><h3>Design</h3><p>CAD modelling — top casing reverse-engineered, bottom casing from client technical drawing.</p><div class="step-bar"></div></div>
-    <div class="step"><div class="step-idx">02</div><div class="step-icon"><svg viewBox="0 0 28 28"><path d="M7 25V14l7-11 7 11v11"/><path d="M11 25v-7h6v7"/></svg></div><h3>3D Print</h3><p>Ultimaker → Bambu P1S. 80% success rate. 3 dimensionally perfect prints out of 5 test runs.</p><div class="step-bar"></div></div>
-    <div class="step"><div class="step-idx">03</div><div class="step-icon"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="9"/><path d="M14 5v4M14 19v4M5 14h4M19 14h4"/></svg></div><h3>Metrology</h3><p>Laser measurement station — critical failure at 1.18mm vs 1.6–2.2mm spec.</p><div class="step-bar"></div></div>
-    <div class="step"><div class="step-idx">04</div><div class="step-icon"><svg viewBox="0 0 28 28"><path d="M5 14l5 5L23 7"/></svg></div><h3>Quality</h3><p>SPC analysis — Bambu within tolerance, Ultimaker out of spec and retired from production.</p><div class="step-bar"></div></div>
-    <div class="step"><div class="step-idx">05</div><div class="step-icon"><svg viewBox="0 0 28 28"><rect x="3" y="9" width="22" height="14" rx="2"/><path d="M9 9V7a5 5 0 0 1 10 0v2"/></svg></div><h3>Assembly</h3><p>FESTO CP Lab — all 6 stations tested. Station 2 identified as critical failure point.</p><div class="step-bar"></div></div>
-    <div class="step"><div class="step-idx">06</div><div class="step-icon"><svg viewBox="0 0 28 28"><path d="M3 25V11l11-7 11 7v14"/><path d="M14 25v-7"/></svg></div><h3>Capacity</h3><p>25 Bambu P1S printers, 24/7 continuous operation validated for 50,000 units/year.</p><div class="step-bar"></div></div>
+    <div class="step"><div class="step-idx">01</div><div class="step-icon"><svg viewBox="0 0 28 28"><rect x="3" y="3" width="22" height="22" rx="2"/><path d="M9 14h10M14 9v10"/></svg></div><h3>Design & CAD</h3><p>Top and bottom casings designed in Fusion 360. Top reverse-engineered; bottom from client drawing.</p><div class="step-bar"></div></div>
+    <div class="step"><div class="step-idx">02</div><div class="step-icon"><svg viewBox="0 0 28 28"><path d="M5 14l5 5L23 7"/></svg></div><h3>PFMEA & Risk</h3><p>Process Failure Mode Effects Analysis. High-risk failures identified and mitigated before production.</p><div class="step-bar"></div></div>
+    <div class="step"><div class="step-idx">03</div><div class="step-icon"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="10"/><path d="M9 14h10M14 9v10"/></svg></div><h3>Technology Selection</h3><p>FDM printing chosen over injection moulding for low tooling cost and rapid iteration.</p><div class="step-bar"></div></div>
+    <div class="step"><div class="step-idx">04</div><div class="step-icon"><svg viewBox="0 0 28 28"><path d="M7 25V14l7-11 7 11v11"/><path d="M11 25v-7h6v7"/></svg></div><h3>3D Printing</h3><p>Bambu P1S selected for production. 80% first-pass yield. 2.5h cycle time per batch.</p><div class="step-bar"></div></div>
+    <div class="step"><div class="step-idx">05</div><div class="step-icon"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="9"/><path d="M14 5v4M14 19v4M5 14h4M19 14h4"/></svg></div><h3>FESTO CP Lab</h3><p>6-station assembly verification. Laser measurement at Station 2. Bambu P1S passed; production ready.</p><div class="step-bar"></div></div>
+    <div class="step"><div class="step-idx">06</div><div class="step-icon"><svg viewBox="0 0 28 28"><rect x="3" y="5" width="22" height="18" rx="2"/><path d="M8 12h12M14 8v8"/></svg></div><h3>Manufacturing Systems</h3><p>Factory layout, material flow, and 25-printer cell configuration optimised for continuous production.</p><div class="step-bar"></div></div>
+    <div class="step"><div class="step-idx">07</div><div class="step-icon"><svg viewBox="0 0 28 28"><rect x="4" y="4" width="20" height="20" rx="2"/><circle cx="14" cy="14" r="3"/><path d="M14 7v4M14 17v4M7 14h4M17 14h4"/></svg></div><h3>Simulation & Digital Twin</h3><p>Tecnomatix Plant Simulation. AI-driven optimisation. 50,000 units/year capacity validated.</p><div class="step-bar"></div></div>
+    <div class="step"><div class="step-idx">08</div><div class="step-icon"><svg viewBox="0 0 28 28"><rect x="3" y="3" width="22" height="22" rx="2"/><path d="M8 14h12M14 8v12"/></svg></div><h3>Business Model Canvas</h3><p>Value proposition validated. £5.50/pair pricing. 25.9% gross margin. Lima & Baudier (2017) framework.</p><div class="step-bar"></div></div>
+    <div class="step"><div class="step-idx">09</div><div class="step-icon"><svg viewBox="0 0 28 28"><rect x="3" y="9" width="22" height="14" rx="2"/><path d="M9 9V7a5 5 0 0 1 10 0v2"/></svg></div><h3>IoT & Digital Thread</h3><p>QR code traceability. Real-time monitoring. End-to-end digital tracking from print to assembly.</p><div class="step-bar"></div></div>
+    <div class="step"><div class="step-idx">10</div><div class="step-icon"><svg viewBox="0 0 28 28"><path d="M3 25V11l11-7 11 7v14"/><path d="M14 25v-7"/></svg></div><h3>Capacity & Scale</h3><p>25 Bambu P1S printers. Weekdays 24/7 + weekends 8h/day. 50,000 units/year validated.</p><div class="step-bar"></div></div>
   </div>
 </section>
 
 <section id="machines" class="reveal">
   <div class="mcard"><div class="mbadge"><span class="dot dead"></span> Retired — Out of Spec</div><div class="mname">Ultimaker</div><div class="msub">FDM Desktop Printer — Phase 1</div><div class="spec-row"><span class="spec-k">Dimensional Accuracy</span><span class="spec-v fail">±0.4mm — FAIL</span></div><div class="spec-row"><span class="spec-k">Wall Thickness Result</span><span class="spec-v fail">1.18mm (spec: 1.6–2.2mm)</span></div><div class="spec-row"><span class="spec-k">SPC Status</span><span class="spec-v fail">Out of Specification</span></div><div class="spec-row"><span class="spec-k">Production Decision</span><span class="spec-v fail">Retired</span></div><div class="watermark">RETIRED</div></div>
-  <div class="mcard"><div class="mbadge"><span class="dot active"></span> Active — Production Line</div><div class="mname">Bambu P1S</div><div class="msub">High-Speed FDM — Phase 2 Production</div><div class="spec-row"><span class="spec-k">Max Print Speed</span><span class="spec-v pass">500mm/s</span></div><div class="spec-row"><span class="spec-k">Wall Thickness Result</span><span class="spec-v pass">1.9mm ✓ Within Spec</span></div><div class="spec-row"><span class="spec-k">SPC Status</span><span class="spec-v pass">In Specification</span></div><div class="spec-row"><span class="spec-k">Fleet Required</span><span class="spec-v">25 units × 24/7</span></div><div class="watermark" style="opacity:.03;color:var(--cyan)">ACTIVE</div></div>
+  <div class="mcard"><div class="mbadge"><span class="dot active"></span> Active — Production Line</div><div class="mname">Bambu P1S</div><div class="msub">High-Speed FDM — Phase 2 Production</div><div class="spec-row"><span class="spec-k">Max Print Speed</span><span class="spec-v pass">500mm/s</span></div><div class="spec-row"><span class="spec-k">Wall Thickness Result</span><span class="spec-v pass">1.9mm ✓ Within Spec</span></div><div class="spec-row"><span class="spec-k">SPC Status</span><span class="spec-v pass">In Specification</span></div><div class="spec-row"><span class="spec-k">Fleet Required</span><span class="spec-v">25 units — £470/unit = £11,750 capital</span></div><div class="watermark" style="opacity:.03;color:var(--cyan)">ACTIVE</div></div>
 </section>
 
 <section id="timeline" class="reveal">
   <div class="tl-head"><div><div class="sec-tag">03 — Delivery Schedule</div><h2>9-Week<br><em>Roadmap.</em></h2></div><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Contracted Deadline</div></div>
   <div class="tl-track"><div class="tl-spine"></div>
-    <div class="tl-row"><div class="tl-dot"></div><div class="tl-wk">W1–2</div><div class="tl-body"><div class="tl-title">Brief Analysis & CAD Design</div><div class="tl-desc">Client brief dissected. Reverse engineering of top casing initiated. Bottom casing drawn from technical specifications.</div><div class="tl-pill done">● Complete</div></div></div>
-    <div class="tl-row"><div class="tl-dot"></div><div class="tl-wk">W3–4</div><div class="tl-body"><div class="tl-title">PFMEA & Risk Assessment</div><div class="tl-desc">Process Failure Mode & Effects Analysis conducted. Station 2 and dimensional tolerance risks flagged early.</div><div class="tl-pill done">● Complete</div></div></div>
-    <div class="tl-row"><div class="tl-dot"></div><div class="tl-wk">W5–6</div><div class="tl-body"><div class="tl-title">3D Print Trials & Metrology</div><div class="tl-desc">Ultimaker and Bambu P1S both tested. Laser measurement identified 1.18mm failure. Bambu P1S selected for production.</div><div class="tl-pill done">● Complete</div></div></div>
-    <div class="tl-row"><div class="tl-dot"></div><div class="tl-wk">W7–8</div><div class="tl-body"><div class="tl-title">Quality Control & SPC Analysis</div><div class="tl-desc">Statistical process control charts generated. Bambu P1S confirmed within tolerance. Production line configuration locked.</div><div class="tl-pill done">● Complete</div></div></div>
-    <div class="tl-row"><div class="tl-dot"></div><div class="tl-wk">W9</div><div class="tl-body"><div class="tl-title">Prototype Delivery & Simulation</div><div class="tl-desc">Final prototype submitted. 25-printer capacity simulation validated for 50K/year. Full report packaged for Phones-R-Us.</div><div class="tl-pill wip">● Delivery</div></div></div>
+    <div class="tl-row"><div class="tl-dot"></div><div class="tl-wk">W1</div><div class="tl-body"><div class="tl-title">Brief Analysis & CAD Design</div><div class="tl-desc">Client brief dissected. Reverse engineering of top casing initiated. Bottom casing drawn from technical specifications. Technology selection: FDM over injection moulding.</div><div class="tl-pill done">● Complete</div></div></div>
+    <div class="tl-row"><div class="tl-dot"></div><div class="tl-wk">W2</div><div class="tl-body"><div class="tl-title">PFMEA & Risk Assessment</div><div class="tl-desc">Process Failure Mode & Effects Analysis conducted. High-risk failures identified: bed adhesion, warping, snap tolerance.</div><div class="tl-pill done">● Complete</div></div></div>
+    <div class="tl-row"><div class="tl-dot"></div><div class="tl-wk">W3–4</div><div class="tl-body"><div class="tl-title">3D Print Trials & FESTO Validation</div><div class="tl-desc">Ultimaker and Bambu P1S tested. Laser measurement at Station 2 identified 1.18mm failure on Ultimaker. Bambu P1S selected. FESTO CP Lab assembly verification passed.</div><div class="tl-pill done">● Complete</div></div></div>
+    <div class="tl-row"><div class="tl-dot"></div><div class="tl-wk">W5</div><div class="tl-body"><div class="tl-title">Manufacturing Systems Design</div><div class="tl-desc">Factory layout designed. Material flow optimised. 25-printer cell configuration established for continuous production.</div><div class="tl-pill done">● Complete</div></div></div>
+    <div class="tl-row"><div class="tl-dot"></div><div class="tl-wk">W6–7</div><div class="tl-body"><div class="tl-title">Simulation & Digital Twin</div><div class="tl-desc">Tecnomatix Plant Simulation. AI-driven optimisation. Bottleneck analysis. IoT architecture designed. QR traceability system implemented.</div><div class="tl-pill done">● Complete</div></div></div>
+    <div class="tl-row"><div class="tl-dot"></div><div class="tl-wk">W8</div><div class="tl-body"><div class="tl-title">Business Model & Quality Lock</div><div class="tl-desc">Business Model Canvas finalised using Lima & Baudier (2017) framework. £5.50/pair pricing confirmed. 25.9% gross margin validated. SPC charts generated. Production parameters locked.</div><div class="tl-pill done">● Complete</div></div></div>
+    <div class="tl-row"><div class="tl-dot"></div><div class="tl-wk">W9</div><div class="tl-body"><div class="tl-title">Capacity Validation & Delivery</div><div class="tl-desc">25-printer capacity simulation validated for 50K/year. Digital thread verified. Full report packaged. Final prototype delivered to Phones-R-Us.</div><div class="tl-pill wip">● Delivery</div></div></div>
   </div>
 </section>
 
@@ -456,39 +437,268 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <div class="gauge"><div class="gauge-label">Dimensional Tolerance</div><div class="gauge-track"><div class="gauge-fill" style="width:0%" data-w="92%"></div></div><div class="gauge-val pass">±0.1mm</div><div class="gauge-note">Achieved vs ±0.15mm maximum</div></div>
     <div class="gauge"><div class="gauge-label">Overall Print Yield</div><div class="gauge-track"><div class="gauge-fill" style="width:0%" data-w="80%"></div></div><div class="gauge-val pass">80%</div><div class="gauge-note">3 of 5 test prints — dimensionally perfect</div></div>
   </div></div>
-  <div class="qual-side"><div><div class="sec-tag">FESTO CP Lab</div><div class="qs-title">Assembly<br>Test Results</div><div class="qs-sub" style="margin-top:.5rem">6 Station Verification</div></div><div class="checks"><div class="chk"><div class="chk-ico pass"><svg viewBox="0 0 9 9"><path d="M1.5 4.5l2 2 4-4"/></svg></div><span>Station 1 — Part Identification</span></div><div class="chk"><div class="chk-ico fail"><svg viewBox="0 0 9 9"><path d="M2 2l5 5M7 2l-5 5"/></svg></div><span style="color:var(--white)">Station 2 — Press Fit (Critical Fail)</span></div><div class="chk"><div class="chk-ico pass"><svg viewBox="0 0 9 9"><path d="M1.5 4.5l2 2 4-4"/></svg></div><span>Station 3 — Visual Inspection</span></div><div class="chk"><div class="chk-ico pass"><svg viewBox="0 0 9 9"><path d="M1.5 4.5l2 2 4-4"/></svg></div><span>Station 4 — Dimensional Check</span></div><div class="chk"><div class="chk-ico pass"><svg viewBox="0 0 9 9"><path d="M1.5 4.5l2 2 4-4"/></svg></div><span>Station 5 — Weight Verification</span></div><div class="chk"><div class="chk-ico pass"><svg viewBox="0 0 9 9"><path d="M1.5 4.5l2 2 4-4"/></svg></div><span>Station 6 — Final Sign-off</span></div></div></div>
-</section>
-
-<!-- ===== NEW INTERACTIVE BMC FLIP CARDS SECTION (inserted after quality, before CTA) ===== -->
-<section class="bmc-pavilion reveal" id="strategy">
-  <div class="bmc-header">
-    <div class="sec-tag">05 — Business Model Canvas</div>
-    <h2>Digital Manufacturing<br><em>Value Architecture.</em></h2>
-    <div class="bmc-sub">Osterwalder & Pigneur framework · Hover any card to reveal strategic insights</div>
-  </div>
-  <div class="flip-grid">
-    <div class="flip-perspective"><div class="flip-card-3d"><div class="flip-front"><div class="front-icon">🤝</div><h3>Key<br>Partners</h3><div class="front-sub">strategic alliance</div></div><div class="flip-back"><h4>🔗 Key Partners</h4><ul><li><strong>Bambu Lab</strong> – Certified P1S provider, firmware support</li><li><strong>Filamentum / Prusament</strong> – High-tolerance PLA for industrial scale</li><li><strong>FESTO CP Lab</strong> – Assembly line integration & validation partner</li><li><strong>Phones-R-Us</strong> – Co-development of interchangeable casings</li><li><strong>Keyence</strong> – Metrology & laser measurement systems</li></ul></div></div></div></div>
-    <div class="flip-perspective"><div class="flip-card-3d"><div class="flip-front"><div class="front-icon">⚙️</div><h3>Key<br>Activities</h3><div class="front-sub">execution core</div></div><div class="flip-back"><h4>🎯 Key Activities</h4><ul><li>High-speed FDM printing (25x Bambu P1S)</li><li>SPC & real-time dimensional monitoring</li><li>Automated assembly verification (FESTO stations)</li><li>Reverse-engineering & CAD iteration</li><li>Predictive maintenance & printer calibration</li></ul></div></div></div></div>
-    <div class="flip-perspective"><div class="flip-card-3d"><div class="flip-front"><div class="front-icon">🏭</div><h3>Key<br>Resources</h3><div class="front-sub">assets & IP</div></div><div class="flip-back"><h4>📦 Key Resources</h4><ul><li>Bambu P1S fleet (25 units, 24/7 operation)</li><li>Tecnomatix Plant Simulation digital twin</li><li>ISO 9001:2024 quality management system</li><li>Proprietary print profiles (85% success yield)</li><li>Skilled additive manufacturing engineers</li></ul></div></div></div></div>
-    <div class="flip-perspective"><div class="flip-card-3d"><div class="flip-front"><div class="front-icon">💎</div><h3>Value<br>Props</h3><div class="front-sub">competitive edge</div></div><div class="flip-back"><h4>✨ Value Propositions</h4><ul><li><strong>Zero-tooling interchangeable casings</strong> – ±0.1mm accuracy</li><li><strong>50,000 units/year guaranteed capacity</strong> – validated via simulation</li><li><strong>End-to-end digital thread</strong> – QR traceability, SPC reports</li><li><strong>9-week prototype-to-production</strong> – radically shorter lead times</li><li><strong>Assembly-line ready</strong> – 100% CP Lab compatibility (except station 2 fix)</li></ul></div></div></div></div>
-    <div class="flip-perspective"><div class="flip-card-3d"><div class="flip-front"><div class="front-icon">❤️</div><h3>Customer<br>Relations</h3><div class="front-sub">trust & partnership</div></div><div class="flip-back"><h4>🤝 Customer Relationships</h4><ul><li>Dedicated account + quality dashboard (real-time Cp/Cpk)</li><li>Quarterly business reviews with Phones-R-Us</li><li>Co-engineering sprints for design changes</li><li>24h response SLA for production anomalies</li></ul></div></div></div></div>
-    <div class="flip-perspective"><div class="flip-card-3d"><div class="flip-front"><div class="front-icon">📡</div><h3>Channels</h3><div class="front-sub">reach & delivery</div></div><div class="flip-back"><h4>📢 Channels</h4><ul><li>Direct B2B sales to OEMs (modular electronics)</li><li>Technical portfolio (this site) & industry whitepapers</li><li>Additive Manufacturing Expo (booth presence)</li><li>Referral program via FESTO ecosystem partners</li></ul></div></div></div></div>
-    <div class="flip-perspective"><div class="flip-card-3d"><div class="flip-front"><div class="front-icon">👥</div><h3>Customer<br>Segments</h3><div class="front-sub">target markets</div></div><div class="flip-back"><h4>🎯 Customer Segments</h4><ul><li><strong>Primary:</strong> Phones-R-Us (modular phone manufacturer)</li><li><strong>Secondary:</strong> Consumer electronics brands requiring custom enclosures</li><li><strong>Tertiary:</strong> Medtech & industrial IoT (small batch, high precision)</li></ul></div></div></div></div>
-    <div class="flip-perspective"><div class="flip-card-3d"><div class="flip-front"><div class="front-icon">💰</div><h3>Revenue<br>Streams</h3><div class="front-sub">value capture</div></div><div class="flip-back"><h4>💵 Revenue Streams</h4><ul><li>Volume-based pricing: $4.20 per casing pair (50K units/year)</li><li>NRE fee for design iteration & reverse engineering</li><li>Premium quality certification add-on (SPC reports + traceability)</li><li>Long-term contract (3 years) with volume escalators</li></ul></div></div></div></div>
-  </div>
-  <div class="full-width-flip flip-perspective" style="margin-top: 1.8rem;">
-    <div class="flip-card-3d" style="height: 260px;">
-      <div class="flip-front"><div class="front-icon">📉</div><h3>Cost Structure</h3><div class="front-sub">financial model</div></div>
-      <div class="flip-back" style="display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; align-items: start;">
-        <div><h4>Fixed Costs</h4><ul><li>Printer fleet amortization: $45K/year</li><li>Software licenses (Plant Sim + ERP): $12K/year</li><li>Facility & utilities: $28K/year</li><li>Salaries (tech + QA): $210K/year</li></ul></div>
-        <div><h4>Variable Costs (per unit)</h4><ul><li>PLA filament: $0.48</li><li>Electricity: $0.06</li><li>Maintenance / spares: $0.11</li><li>Packaging + logistics: $0.22</li></ul></div>
-        <div><h4>Unit Economics</h4><ul><li><strong>Total variable cost: ~$0.87 per casing</strong></li><li>Fixed cost per unit (50K): ~$5.90</li><li>Total cost per casing pair: ≈$6.77</li><li>Revenue per pair: $8.40 → Gross margin ~19%</li></ul></div>
-      </div>
+  <div class="qual-side">
+    <div><div class="sec-tag">FESTO CP Lab</div><div class="qs-title">Assembly<br>Test Results</div><div class="qs-sub" style="margin-top:.5rem">6 Station Verification</div></div>
+    <div class="checks">
+      <div class="chk"><div class="chk-ico pass"><svg viewBox="0 0 9 9"><path d="M1.5 4.5l2 2 4-4"/></svg></div><span>Station 1 — Front Magazine</span></div>
+      <div class="chk"><div class="chk-ico fail"><svg viewBox="0 0 9 9"><path d="M2 2l5 5M7 2l-5 5"/></svg></div><span style="color:var(--white)">Station 2 — Measurement (Critical Fail)</span></div>
+      <div class="chk"><div class="chk-ico pass"><svg viewBox="0 0 9 9"><path d="M1.5 4.5l2 2 4-4"/></svg></div><span>Station 3 — iPick</span></div>
+      <div class="chk"><div class="chk-ico pass"><svg viewBox="0 0 9 9"><path d="M1.5 4.5l2 2 4-4"/></svg></div><span>Station 4 — Press</span></div>
+      <div class="chk"><div class="chk-ico pass"><svg viewBox="0 0 9 9"><path d="M1.5 4.5l2 2 4-4"/></svg></div><span>Station 5 — Oven</span></div>
+      <div class="chk"><div class="chk-ico pass"><svg viewBox="0 0 9 9"><path d="M1.5 4.5l2 2 4-4"/></svg></div><span>Station 6 — Output</span></div>
     </div>
   </div>
-  <div class="bmc-sub" style="margin-top: 1rem; text-align: center;">Reference: Osterwalder & Pigneur (2010) · Interactive strategy canvas for Paniz Manufacturing</div>
 </section>
-<!-- ===== END BMC SECTION ===== -->
+
+<!-- BMC SECTION -->
+<section id="bmc" class="reveal">
+  <div class="bmc-head">
+    <div class="sec-tag">05 — Business Model Canvas</div>
+    <h2>Digital Manufacturing<br><em>Value Architecture.</em></h2>
+    <div class="f">Lima & Baudier (2017) Business Model Canvas framework · Hover any card to reveal strategic detail · All figures verified in GBP</div>
+  </div>
+
+  <div class="bmc-metrics">
+    <div class="bmc-metric"><div class="bmc-metric-val">£5.50</div><div class="bmc-metric-label">Price per casing pair</div></div>
+    <div class="bmc-metric"><div class="bmc-metric-val">£275K</div><div class="bmc-metric-label">Annual revenue</div></div>
+    <div class="bmc-metric"><div class="bmc-metric-val">£204K</div><div class="bmc-metric-label">Total annual costs</div></div>
+    <div class="bmc-metric"><div class="bmc-metric-val">£71K</div><div class="bmc-metric-label">Gross profit / year</div></div>
+    <div class="bmc-metric"><div class="bmc-metric-val">25.9%</div><div class="bmc-metric-label">Gross margin</div></div>
+  </div>
+
+  <div class="bmc-grid">
+
+    <div class="fp">
+      <div class="fc">
+        <div class="ff-side">
+          <div class="fi"><svg viewBox="0 0 13 13"><circle cx="4.5" cy="4.5" r="2.5"/><circle cx="9" cy="8.5" r="2"/><path d="M6.5 4.5h1.5"/></svg></div>
+          <h3>Key Partners</h3>
+          <div class="ff-sub">strategic alliance</div>
+          <div class="ff-hint">Hover to reveal</div>
+        </div>
+        <div class="fb-side">
+          <h4>Key Partners</h4>
+          <ul>
+            <li><strong>Phones-R-Us</strong> – Primary client; defined all casing specs and 50,000/year volume commitment</li>
+            <li><strong>Bambu Lab</strong> – P1S at £470/unit; only printer to pass SPC dimensional checks</li>
+            <li><strong>FESTO CP Lab</strong> – 6-station assembly verification partner; prototype sign-off rig</li>
+            <li><strong>Keyence</strong> – Laser metrology station; identified Ultimaker 1.18mm wall failure</li>
+            <li><strong>Autodesk</strong> – Fusion 360 for all 2D drawings and 3D parametric models</li>
+            <li><strong>Filament supplier</strong> – PLA at £20/kg; 6,250kg/year consumed; largest variable cost</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="fp">
+      <div class="fc">
+        <div class="ff-side">
+          <div class="fi"><svg viewBox="0 0 13 13"><circle cx="6.5" cy="6.5" r="5"/><path d="M6.5 4v2.5l1.5 1"/></svg></div>
+          <h3>Key Activities</h3>
+          <div class="ff-sub">execution core</div>
+          <div class="ff-hint">Hover to reveal</div>
+        </div>
+        <div class="fb-side">
+          <h4>Key Activities</h4>
+          <ul>
+            <li>FDM printing across 25x Bambu P1S — weekdays 24/7, weekends 8h/day</li>
+            <li>Managing 80% yield — 62,500 print attempts to deliver 50,000 good pairs</li>
+            <li>Reverse engineering top casing from physical sample in Fusion 360</li>
+            <li>SPC monitoring — wall thickness ±0.1mm within 1.6–2.2mm spec</li>
+            <li>STL export, Bambu Studio slicer profiling and batch scheduling</li>
+            <li>FESTO CP Lab assembly testing each batch; Station 2 corrective action ongoing</li>
+            <li>Site security and alarm monitoring during unmanned overnight runs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="fp">
+      <div class="fc">
+        <div class="ff-side">
+          <div class="fi"><svg viewBox="0 0 13 13"><path d="M2 10V5l4.5-3L11 5v5"/><path d="M6.5 10V7.5"/></svg></div>
+          <h3>Key Resources</h3>
+          <div class="ff-sub">assets & capability</div>
+          <div class="ff-hint">Hover to reveal</div>
+        </div>
+        <div class="fb-side">
+          <h4>Key Resources</h4>
+          <ul>
+            <li><strong>25x Bambu P1S</strong> – £11,750 capital; 2.5h cycle time per pair</li>
+            <li><strong>PLA filament</strong> – £20/kg; 6,250kg/year at 80% yield accounting</li>
+            <li>Fusion 360 CAD models — top & bottom casing, fully dimensioned and STL-ready</li>
+            <li>Tecnomatix Plant Simulation digital twin — capacity validated at 50,000 units/year</li>
+            <li>Proprietary Bambu slicer profiles — tuned for 80% print success rate</li>
+            <li>Laser metrology station — dimensional data captured every batch for SPC</li>
+            <li>Site security & alarm system — enables safe unmanned overnight operation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="fp bmc-vp">
+      <div class="fc">
+        <div class="ff-side">
+          <div class="fi"><svg viewBox="0 0 13 13"><polygon points="6.5,1 8,4.5 12,5 9.5,7.5 10.2,11.5 6.5,9.5 2.8,11.5 3.5,7.5 1,5 5,4.5"/></svg></div>
+          <h3>Value Propositions</h3>
+          <div class="ff-sub">competitive edge</div>
+          <div class="ff-hint">Hover to reveal</div>
+        </div>
+        <div class="fb-side">
+          <h4>Value Propositions</h4>
+          <ul>
+            <li><strong>50,000 interchangeable pairs/year</strong> — validated by Tecnomatix Plant Simulation</li>
+            <li><strong>±0.1mm dimensional accuracy</strong> — Bambu P1S within SPC spec; Ultimaker rejected</li>
+            <li><strong>9-week prototype-to-production</strong> — CAD brief to FESTO-verified prototype</li>
+            <li><strong>Zero tooling cost</strong> — additive manufacturing eliminates injection mould investment</li>
+            <li><strong>£5.50 per pair</strong> — competitively priced at 25.9% margin, absorbing 20% failure rate</li>
+            <li><strong>Full digital thread</strong> — Fusion 360 → STL → Bambu Studio → SPC → FESTO; every batch traceable</li>
+            <li><strong>Safe unmanned operation</strong> — security systems enable overnight printing without on-site staff</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="fp">
+      <div class="fc">
+        <div class="ff-side">
+          <div class="fi"><svg viewBox="0 0 13 13"><path d="M1.5 2.5h10v6a1.5 1.5 0 0 1-1.5 1.5H3A1.5 1.5 0 0 1 1.5 8.5V2.5z"/><path d="M1.5 2.5l5 3.5 5-3.5"/></svg></div>
+          <h3>Customer Relations</h3>
+          <div class="ff-sub">trust & retention</div>
+          <div class="ff-hint">Hover to reveal</div>
+        </div>
+        <div class="fb-side">
+          <h4>Customer Relationships</h4>
+          <ul>
+            <li>Dedicated engineering contact for Phones-R-Us queries and design changes</li>
+            <li>SPC batch reports after every run — Cp/Cpk data visible to client</li>
+            <li>FESTO 6-station results reviewed by client before full production approval</li>
+            <li>9-week delivery commitment tracked against milestones and reported weekly</li>
+            <li>Station 2 failure transparently reported with documented corrective action plan</li>
+            <li>3-year supply contract with annual volume escalators built in from year one</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="fp">
+      <div class="fc">
+        <div class="ff-side">
+          <div class="fi"><svg viewBox="0 0 13 13"><path d="M1.5 6.5h10M8.5 3.5l3 3-3 3"/></svg></div>
+          <h3>Channels</h3>
+          <div class="ff-sub">reach & delivery</div>
+          <div class="ff-hint">Hover to reveal</div>
+        </div>
+        <div class="fb-side">
+          <h4>Channels</h4>
+          <ul>
+            <li>Direct B2B contract with Phones-R-Us — primary channel for this project</li>
+            <li>Digital manufacturing portfolio website — technical evidence for future clients</li>
+            <li>FESTO CP Lab ecosystem — credibility signal to other electronics manufacturers</li>
+            <li>Physical prototype delivery — tangible sign-off artefact at week 9</li>
+            <li>Additive manufacturing industry events — secondary pipeline for future contracts</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="fp">
+      <div class="fc">
+        <div class="ff-side">
+          <div class="fi"><svg viewBox="0 0 13 13"><circle cx="6.5" cy="4" r="2"/><path d="M2 11c0-2.5 2-4.5 4.5-4.5S11 8.5 11 11"/></svg></div>
+          <h3>Customer Segments</h3>
+          <div class="ff-sub">target markets</div>
+          <div class="ff-hint">Hover to reveal</div>
+        </div>
+        <div class="fb-side">
+          <h4>Customer Segments</h4>
+          <ul>
+            <li><strong>Primary — Phones-R-Us:</strong> modular phone manufacturer requiring 50,000 precision interchangeable pairs/year at ±0.1mm tolerance</li>
+            <li><strong>Secondary — Consumer electronics OEMs:</strong> brands needing low-tooling-cost enclosures in small-to-mid volumes</li>
+            <li><strong>Tertiary — Industrial & MedTech:</strong> sectors requiring high-precision additive parts with full SPC traceability</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="fp">
+      <div class="fc">
+        <div class="ff-side">
+          <div class="fi"><svg viewBox="0 0 13 13"><rect x="1" y="3.5" width="11" height="6" rx="1"/><path d="M4 6.5h5M4 8h3"/><circle cx="9.5" cy="8" r="0.8"/></svg></div>
+          <h3>Revenue Streams</h3>
+          <div class="ff-sub">value capture</div>
+          <div class="ff-hint">Hover to reveal</div>
+        </div>
+        <div class="fb-side">
+          <h4>Revenue Streams</h4>
+          <ul>
+            <li><strong>Unit volume pricing:</strong> £5.50 per pair × 50,000 = £275,000/year</li>
+            <li><strong>NRE design fee:</strong> one-off charge covering Fusion 360 CAD, reverse engineering, and 9-week prototype programme</li>
+            <li><strong>Quality certification add-on:</strong> SPC batch reports and FESTO 6-station sign-off documentation per delivery</li>
+            <li><strong>3-year contract premium:</strong> long-term supply agreement with annual volume escalator — revenue certainty justifies fleet investment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bmc-cost">
+    <div class="bmc-cost-top">
+      <div class="fi" style="margin-bottom:0;flex-shrink:0"><svg viewBox="0 0 13 13"><path d="M6.5 1v11M4 3.5H3a1.5 1.5 0 0 0 0 3h3.5"/><path d="M4 9H3a1.5 1.5 0 0 1 0-3h3.5M9 3.5h.5a1.5 1.5 0 0 1 0 3H6.5M9 9h.5a1.5 1.5 0 0 0 0-3H6.5"/></svg></div>
+      <div>
+        <h3>Cost Structure</h3>
+        <div class="bmc-cost-top-sub">verified project costings — GBP · items marked (est.) are industry approximations</div>
+      </div>
+    </div>
+    <div class="bmc-cost-cols">
+      <div class="bmc-cost-col">
+        <h4>Fixed Costs (annual)</h4>
+        <ul>
+          <li>25x Bambu P1S fleet — £11,750 capital, amortised 3yr = <strong>£3,917/yr</strong> ✓ verified</li>
+          <li>Fusion 360 + Plant Simulation licences = <strong>~£8,000/yr</strong> (est.)</li>
+          <li>Electricity — weekdays 24/7 + weekends 8h at £0.25/kWh = <strong>~£10,962/yr</strong></li>
+          <li>Site security & alarm system = <strong>~£4,000/yr</strong> (est.) — required for overnight operation</li>
+          <li>Engineering & QA salaries = <strong>~£60,000/yr</strong> (est.)</li>
+          <li><strong>Total fixed: ~£86,879/yr</strong></li>
+        </ul>
+      </div>
+      <div class="bmc-cost-col">
+        <h4>Variable Costs (per pair produced)</h4>
+        <ul>
+          <li>PLA filament — 100g per pair at £20/kg = <strong>£2.00/pair</strong> ✓ verified</li>
+          <li>Failed print absorption — 20% failure adds <strong>£0.50/pair</strong> effective filament cost</li>
+          <li>Packaging & logistics = <strong>~£0.18/pair</strong> (est.)</li>
+          <li><strong>Effective variable: ~£2.68/pair</strong></li>
+          <li>Total variable at 50,000 good pairs: <strong>£134,000/yr</strong></li>
+          <li>Filament alone (62,500 attempts): <strong>£125,000/yr — dominant cost</strong></li>
+        </ul>
+      </div>
+      <div class="bmc-cost-col">
+        <h4>Unit Economics (50,000 pairs)</h4>
+        <ul>
+          <li>Total annual costs: <strong>£203,879</strong></li>
+          <li>Cost per successful pair: <strong>£4.08</strong></li>
+          <li>Revenue per pair: <strong>£5.50</strong></li>
+          <li>Profit per pair: <strong>£1.42</strong></li>
+          <li>Annual gross profit: <strong>£71,121</strong></li>
+          <li><strong>Gross margin: 25.9%</strong> — covers filament price risk and machine wear</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bmc-cost-summary">
+      <div class="bcs-item"><div class="bcs-val">£11,750</div><div class="bcs-label">Fleet capital (verified)</div></div>
+      <div class="bcs-item"><div class="bcs-val">£125K</div><div class="bcs-label">Filament / yr (verified)</div></div>
+      <div class="bcs-item"><div class="bcs-val">£275K</div><div class="bcs-label">Annual revenue</div></div>
+      <div class="bcs-item"><div class="bcs-val">25.9%</div><div class="bcs-label">Gross margin</div></div>
+    </div>
+  </div>
+
+  <div class="bmc-footnote">
+    Lima, M. & Baudier, P. (2017) 'Business model canvas acceptance among French entrepreneurship students', Journal of Innovation Economics & Management, 20(3), pp. 99–119.<br>
+    Verified: Bambu P1S £470/unit · PLA filament £20/kg · 80% print success rate · 2.5h cycle time · 25 printers · weekdays 24/7 + weekends 8h/day · UK electricity £0.25/kWh · (est.) = industry approximation
+  </div>
+</section>
 
 <section id="cta">
   <div class="cta-bg-txt">50,000</div>
@@ -505,8 +715,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <div class="f-logo">PANIZ<span>.</span></div>
   <div class="f-copy">© 2026 — Digital Manufacturing Portfolio</div>
   <div class="f-links">
-    <a href="#">Project</a><a href="#">Design</a><a href="#">PFMEA</a>
-    <a href="#">3D Printing</a><a href="#">Quality</a><a href="#">Simulation</a>
+    <a href="project.html">Project</a><a href="design.html">Design</a><a href="pfmea.html">PFMEA</a>
+    <a href="printing.html">3D Printing</a><a href="quality.html">Quality</a><a href="simulation.html">Simulation</a>
   </div>
 </footer>
 
@@ -532,18 +742,19 @@ const gobs=new IntersectionObserver(e=>e.forEach(x=>{
 }),{threshold:.3});
 const qs=document.getElementById('quality');if(qs)gobs.observe(qs);
 
-function animCount(el,end,suffix){
+function animCount(el,end){
   let v=0;const dur=1400,step=16,inc=end/(dur/step);
+  const u=el.querySelector('.u');const uH=u?u.outerHTML:'';
+  el.innerHTML='<span class="nv">0</span>'+uH;
   const t=setInterval(()=>{v=Math.min(v+inc,end);
-  el.querySelector('.nv').textContent=(Number.isInteger(end)?Math.floor(v):v.toFixed(1))+suffix;
+  el.querySelector('.nv').textContent=Number.isInteger(end)?Math.floor(v):v.toFixed(1);
   if(v>=end)clearInterval(t);},step);
 }
 const sobs=new IntersectionObserver(e=>e.forEach(x=>{
   if(x.isIntersecting){
     x.target.querySelectorAll('.stat-n').forEach(el=>{
-      const u=el.querySelector('.u');const uH=u?u.outerHTML:'';
       const num=parseFloat(el.textContent);
-      if(!isNaN(num)){el.innerHTML='<span class="nv">0</span>'+uH;animCount(el,num,'');}
+      if(!isNaN(num))animCount(el,num);
     });
   }
 }),{threshold:.3});
