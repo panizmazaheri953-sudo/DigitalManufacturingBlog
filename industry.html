@@ -1,1 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industry Challenge — Paniz Manufacturing</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--navy4:#152848;
+  --cyan:#00e5ff;--cyan2:#00b8cc;--cyan3:rgba(0,229,255,0.1);--cyan4:rgba(0,229,255,0.06);
+  --white:#f0f4ff;--muted:#6a7f9a;--border:rgba(0,229,255,0.13);
+  --amber:#ffb347;--amber2:rgba(255,179,71,0.10);
+  --green:#00ff88;--green2:rgba(0,255,136,0.08);
+  --red:#ff4444;--red2:rgba(255,68,68,0.10);
+  --ff:'DM Sans',sans-serif;--fd:'Bebas Neue',sans-serif;--fm:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--navy);color:var(--white);overflow-x:hidden;cursor:none}
 
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.025;pointer-events:none;z-index:9990}
+
+#cursor{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:screen}
+#cursor-ring{position:fixed;top:0;left:0;width:34px;height:34px;border:1px solid var(--cyan);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.4;transition:opacity .2s}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 4%;height:62px;border-bottom:1px solid var(--border);background:rgba(5,13,26,0.92);backdrop-filter:blur(12px)}
+.logo{font-family:var(--fd);font-size:1.55rem;letter-spacing:.06em;color:var(--white);text-decoration:none}
+.logo span{color:var(--cyan)}
+.nav-links{display:flex;list-style:none}
+.nav-links a{font-family:var(--fm);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.4rem .9rem;transition:color .2s;height:62px;display:flex;align-items:center;border-bottom:2px solid transparent}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan)}
+.nav-pill{font-family:var(--fm);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--cyan);color:var(--cyan);padding:.45rem 1.2rem;text-decoration:none;transition:all .2s;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%)}
+.nav-pill:hover{background:var(--cyan);color:var(--navy)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+#hero{padding-top:62px;min-height:100vh;display:grid;grid-template-rows:1fr auto;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.035) 1px,transparent 1px);background-size:56px 56px}
+.scan-h{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(0,229,255,0.4) 50%,transparent 100%);animation:scanH 5s linear infinite}
+@keyframes scanH{0%{top:62px;opacity:1}95%{opacity:.4}100%{top:100%;opacity:0}}
+.hero-main{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;height:calc(100vh - 62px - 120px)}
+.hero-left{padding:5rem 4%;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border)}
+.hero-eyebrow{font-family:var(--fm);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);display:inline-flex;align-items:center;gap:.8rem;margin-bottom:2rem}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--cyan)}
+.hero-h1{font-family:var(--fd);font-size:clamp(4rem,7.5vw,8rem);line-height:.86;letter-spacing:.01em;margin-bottom:2rem}
+.hero-h1 .line1{display:block}
+.hero-h1 .line2{display:block;-webkit-text-stroke:2px var(--white);color:transparent}
+.hero-h1 .line3{display:block;color:var(--cyan)}
+.hero-sub{max-width:440px;font-size:.88rem;line-height:1.82;color:var(--muted);font-weight:300;margin-bottom:2.5rem}
+.hero-sub strong{color:var(--white);font-weight:500}
+.hero-toc{display:flex;flex-direction:column;gap:.5rem}
+.toc-item{display:flex;align-items:center;gap:1rem;font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.5rem 0;border-bottom:1px solid rgba(0,229,255,0.06);transition:color .2s}
+.toc-item:hover{color:var(--cyan)}
+.toc-num{font-family:var(--fd);font-size:1.1rem;color:var(--navy4);transition:color .2s;width:24px}
+.toc-item:hover .toc-num{color:var(--cyan)}
+.toc-arr{margin-left:auto;opacity:0;transition:opacity .2s;color:var(--cyan)}
+.toc-item:hover .toc-arr{opacity:1}
+.hero-right{padding:5rem 4%;display:flex;flex-direction:column;justify-content:center;gap:2rem;background:var(--navy2)}
+.pull-quote{border-left:2px solid var(--cyan);padding:1.25rem 1.5rem;background:var(--cyan4)}
+.pq-text{font-size:1.05rem;line-height:1.7;color:var(--white);font-weight:300;font-style:italic;margin-bottom:.75rem}
+.pq-text strong{font-style:normal;color:var(--cyan);font-weight:500}
+.pq-source{font-family:var(--fm);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.hero-context{font-size:.78rem;color:var(--muted);line-height:1.75;font-weight:300}
+.hero-stat-row{display:flex;gap:1.5rem;flex-wrap:wrap}
+.hs{border:1px solid var(--border);padding:.85rem 1.25rem;flex:1;min-width:100px}
+.hs-n{font-family:var(--fd);font-size:2rem;color:var(--cyan);line-height:1}
+.hs-l{font-family:var(--fm);font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
+.hero-bottom{position:relative;z-index:2;border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr);height:120px}
+.hb-cell{display:flex;flex-direction:column;justify-content:center;padding:1.25rem 2rem;border-right:1px solid var(--border);gap:.3rem}
+.hb-cell:last-child{border-right:none}
+.hb-tag{font-family:var(--fm);font-size:.48rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.hb-val{font-family:var(--fd);font-size:1.6rem;color:var(--white);line-height:1}
+.hb-val.cyan{color:var(--cyan)}
+.hb-note{font-size:.65rem;color:var(--muted);font-weight:300}
+.marquee-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:var(--navy3);padding:.55rem 0}
+.marquee-track{display:flex;animation:marquee 32s linear infinite;white-space:nowrap}
+.marquee-track:hover{animation-play-state:paused}
+.m-item{font-family:var(--fd);font-size:1rem;letter-spacing:.06em;color:rgba(0,229,255,0.3);padding:0 2rem;display:flex;align-items:center;gap:1.5rem}
+.m-item span{color:var(--cyan);font-size:.7rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.sec-shell{display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border)}
+.label-col{padding:3rem 2.5rem;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;background:var(--navy2)}
+.sec-tag{font-family:var(--fm);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.5rem}
+.sec-big-num{font-family:var(--fd);font-size:5rem;color:var(--navy4);line-height:1;user-select:none}
+.sec-body{padding:3rem 3.5rem}
+.sec-h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3.5rem);line-height:.9;text-transform:uppercase;margin-bottom:1.5rem}
+.sec-h2 em{color:var(--cyan);font-style:normal}
+.prose{font-size:.86rem;line-height:1.85;color:var(--muted);font-weight:300;max-width:700px}
+.prose+.prose{margin-top:1rem}
+.prose strong{color:var(--white);font-weight:500}
+.callout{border-left:2px solid var(--cyan);padding:1.1rem 1.4rem;background:var(--cyan4);margin:1.5rem 0;font-size:.82rem;line-height:1.75;color:var(--muted);font-weight:300}
+.callout strong{color:var(--white);font-weight:500}
+.img-block{border:1px solid var(--border);background:var(--navy2);overflow:hidden;margin:1.5rem 0}
+.img-placeholder{width:100%;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;background:var(--navy3);position:relative;overflow:hidden}
+.img-placeholder::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.03) 1px,transparent 1px);background-size:32px 32px}
+.img-icon{width:40px;height:40px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center}
+.img-icon svg{width:22px;height:22px;stroke:var(--muted);fill:none;stroke-width:1.2}
+.img-label{font-family:var(--fm);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:center;line-height:1.6;max-width:260px}
+.img-label strong{color:var(--cyan);display:block;font-size:.6rem;margin-bottom:.2rem}
+.img-caption{padding:.7rem 1rem;font-family:var(--fm);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--border)}
+.img-caption span{color:var(--cyan)}
+.data-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0}
+.data-card{background:var(--navy2);border:1px solid var(--border);padding:1.5rem;text-align:center;transition:transform .2s}
+.data-card:hover{transform:translateY(-4px);border-color:var(--cyan)}
+.data-number{font-family:var(--fd);font-size:2.8rem;color:var(--cyan);line-height:1}
+.data-label{font-family:var(--fm);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:.5rem 0 .3rem}
+.data-source{font-size:.6rem;color:var(--muted);font-family:var(--fm)}
+.timeline-visual{display:flex;margin:2rem 0;flex-wrap:wrap;gap:1rem}
+.timeline-week{flex:1;min-width:100px;background:var(--navy2);border:1px solid var(--border);padding:1rem;text-align:center;border-top:3px solid var(--cyan)}
+.timeline-week .week{font-family:var(--fd);font-size:1.2rem;color:var(--cyan)}
+.timeline-week .phase{font-size:.7rem;color:var(--white);margin:.3rem 0}
+.timeline-week .desc{font-size:.6rem;color:var(--muted)}
+.pillars-grid{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
+.pillar{padding:2rem 1.75rem;border-right:1px solid var(--border);position:relative;overflow:hidden;transition:background .3s;background:var(--navy)}
+.pillar:last-child{border-right:none}
+.pillar:hover{background:var(--navy2)}
+.pillar::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--cyan);transition:width .45s}
+.pillar:hover::after{width:100%}
+.pillar-num{font-family:var(--fd);font-size:3.5rem;color:var(--navy4);line-height:1;margin-bottom:.75rem}
+.pillar-title{font-family:var(--fm);font-size:.62rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--white);margin-bottom:.5rem}
+.pillar-desc{font-size:.72rem;color:var(--muted);line-height:1.6;font-weight:300}
+.comp-table-wrap{border:1px solid var(--border);overflow-x:auto;margin:1.5rem 0}
+.comp-table{width:100%;border-collapse:collapse;min-width:600px}
+.comp-table th{font-family:var(--fm);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;padding:.8rem 1.2rem;background:var(--navy2);border-bottom:1px solid var(--border);border-right:1px solid var(--border);text-align:left;color:var(--muted)}
+.comp-table th.cyan{color:var(--cyan)}
+.comp-table td{padding:.8rem 1.2rem;border-bottom:1px solid var(--border);border-right:1px solid var(--border);font-size:.72rem;color:var(--muted);font-weight:300}
+.comp-table td:last-child{border-right:none}
+.comp-table tr:last-child td{border-bottom:none}
+.comp-table td.pro{color:var(--cyan)}
+.comp-table td.con{color:var(--red)}
+.comp-winner{background:rgba(0,229,255,0.04)}
+.reading-list{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.5rem}
+.ref-card{padding:1rem 1.2rem;border:1px solid var(--border);background:var(--navy2);display:flex;align-items:flex-start;gap:1rem;transition:border-color .3s}
+.ref-card:hover{border-color:rgba(0,229,255,0.3);background:var(--navy3)}
+.ref-n{font-family:var(--fd);font-size:1.8rem;color:var(--navy4);flex-shrink:0;line-height:1}
+.ref-title{font-weight:500;color:var(--white);font-size:.78rem;margin-bottom:.2rem}
+.ref-title a{text-decoration:none;color:var(--white);border-bottom:1px solid rgba(0,229,255,0.2)}
+.ref-title a:hover{border-color:var(--cyan);color:var(--cyan)}
+.ref-meta{font-family:var(--fm);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
+.ref-desc{font-size:.68rem;color:var(--muted);line-height:1.55;font-weight:300}
+.reference-list{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.ref-item{font-size:.7rem;color:var(--muted);line-height:1.6;margin-bottom:.6rem;padding-left:1rem;text-indent:-1rem}
+footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem 4%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2rem}
+.f-logo{font-family:var(--fd);font-size:1.3rem;letter-spacing:.06em;color:var(--white)}
+.f-logo span{color:var(--cyan)}
+.f-copy{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center}
+.f-links{display:flex;gap:1.5rem;justify-content:flex-end;flex-wrap:wrap}
+.f-links a{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.f-links a:hover{color:var(--cyan)}
+sup.ref{font-family:var(--fm);font-size:.48rem;color:var(--cyan);vertical-align:super;margin-left:.1rem}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<nav>
+  <a class="logo" href="index.html">PANIZ<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="project.html">Project</a></li>
+    <li><a href="industry.html" class="active">Industry</a></li>
+    <li><a href="design.html">Design</a></li>
+    <li><a href="pfmea.html">PFMEA</a></li>
+    <li><a href="printing.html">3D Printing</a></li>
+    <li><a href="quality.html">Quality</a></li>
+    <li><a href="simulation.html">Simulation</a></li>
+  </ul>
+  <a class="nav-pill" href="#roadmap">Our Roadmap →</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="scan-h"></div>
+  <div class="hero-main">
+    <div class="hero-left reveal">
+      <div class="hero-eyebrow">Industry Background &amp; Context</div>
+      <h1 class="hero-h1">
+        <span class="line1">THE</span>
+        <span class="line2">INDUSTRY</span>
+        <span class="line3">CHALLENGE.</span>
+      </h1>
+      <p class="hero-sub">The global consumer electronics market ships <strong>over 1.4 billion smartphones per year</strong> (IDC, 2024). Behind every device is a casing — and behind every casing is a manufacturing decision. Paniz Manufacturing was handed that decision. Here is how we made it.</p>
+      <div class="hero-toc">
+        <a class="toc-item" href="#background"><span class="toc-num">01</span>The Industry Background<span class="toc-arr">→</span></a>
+        <a class="toc-item" href="#injection-vs-3d"><span class="toc-num">02</span>Injection Moulding vs 3D Printing<span class="toc-arr">→</span></a>
+        <a class="toc-item" href="#industry4"><span class="toc-num">03</span>Pillars of Industry 4.0<span class="toc-arr">→</span></a>
+        <a class="toc-item" href="#disruptive"><span class="toc-num">04</span>Disruptive Innovation<span class="toc-arr">→</span></a>
+        <a class="toc-item" href="#roadmap"><span class="toc-num">05</span>Our Solution Roadmap<span class="toc-arr">→</span></a>
+        <a class="toc-item" href="#references"><span class="toc-num">06</span>References<span class="toc-arr">→</span></a>
+      </div>
+    </div>
+    <div class="hero-right reveal d1">
+      <div class="pull-quote">
+        <div class="pq-text">"The factory of the future will have only two employees — <strong>a man and a dog</strong>. The man will be there to feed the dog. The dog will be there to keep the man from touching the equipment."</div>
+        <div class="pq-source">Warren Bennis, cited in Schwab (2016)</div>
+      </div>
+      <div class="hero-context">In 2024, the global additive manufacturing market was valued at <strong>$20.4 billion</strong> and is projected to grow at a CAGR of 23.5% to reach <strong>$94.2 billion by 2030</strong> (Grand View Research, 2024). 3D printing has crossed the threshold from prototyping tool to legitimate production process.</div>
+    </div>
+  </div>
+  <div class="hero-bottom reveal d2">
+    <div class="hb-cell"><div class="hb-tag">Project Type</div><div class="hb-val cyan">Production</div><div class="hb-note">Not just a prototype — a scalable system</div></div>
+    <div class="hb-cell"><div class="hb-tag">Manufacturing Method</div><div class="hb-val">FDM Print</div><div class="hb-note">Selected over injection moulding at this volume</div></div>
+    <div class="hb-cell"><div class="hb-tag">Key Decision Point</div><div class="hb-val cyan">50K</div><div class="hb-note">Units/year — the volume that changes everything</div></div>
+    <div class="hb-cell"><div class="hb-tag">Framework</div><div class="hb-val">Industry 4.0</div><div class="hb-note">Data-driven manufacturing at every stage</div></div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="m-item">INDUSTRY 4.0 <span>✦</span></div>
+    <div class="m-item">DISRUPTIVE INNOVATION <span>✦</span></div>
+    <div class="m-item">ADDITIVE MFG VS INJECTION MOULDING <span>✦</span></div>
+    <div class="m-item">$94B MARKET BY 2030 <span>✦</span></div>
+    <div class="m-item">CYBER-PHYSICAL SYSTEMS <span>✦</span></div>
+    <div class="m-item">DIGITAL TWIN <span>✦</span></div>
+    <div class="m-item">CHRISTENSEN · SCHWAB · WOMACK <span>✦</span></div>
+  </div>
+</div>
+
+<section id="background" class="sec-shell reveal">
+  <div class="label-col">
+    <div><div class="sec-tag">01 — Background</div><div class="sec-big-num">01</div></div>
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">The Industry Context</div>
+  </div>
+  <div class="sec-body">
+    <h2 class="sec-h2">The Manufacturing<br><em>Landscape.</em></h2>
+    <p class="prose">Consumer electronics manufacturing sits at the intersection of <strong>relentless cost pressure</strong> from global supply chains and <strong>increasing demand for customisation</strong> from end consumers. For decades, the answer to both was injection moulding at massive scale. But that answer is being disrupted.</p>
+    
+    <div class="data-grid">
+      <div class="data-card"><div class="data-number">1.4B</div><div class="data-label">Smartphones Shipped (2023)</div><div class="data-source">IDC, 2024</div></div>
+      <div class="data-card"><div class="data-number">$20.4B</div><div class="data-label">AM Market Value (2024)</div><div class="data-source">Grand View Research, 2024</div></div>
+      <div class="data-card"><div class="data-number">23.5%</div><div class="data-label">AM CAGR to 2030</div><div class="data-source">Grand View Research, 2024</div></div>
+    </div>
+
+    <div class="img-block">
+      <div class="img-placeholder"><div class="img-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="img-label">📸 Smartphone manufacturing line — automated assembly with robotic arms. Source: Unsplash / manufacturer press kit.</div></div>
+      <div class="img-caption"><span>Figure 1</span> Global smartphone manufacturing — the industry context for this project</div>
+    </div>
+
+    <p class="prose">The global smartphone market shipped <strong>1.24 billion units in 2023</strong> (IDC, 2024). Behind every unit is a casing — and the casing manufacturing decision is more nuanced than it appears. At volumes of tens of millions, injection moulding dominates. But at <strong>50,000 units per year</strong> — the Phones-R-Us brief — the calculus changes fundamentally.</p>
+
+    <div class="callout"><strong>The Volume Threshold:</strong> Injection moulding tooling costs typically range from <strong>£10,000 to £100,000 per mould</strong>, making it economically viable only above roughly 100,000–500,000 units (Wohlers &amp; Gornet, 2020). At 50,000 units/year, the economics flip — additive manufacturing becomes the smarter choice.</div>
+  </div>
+</section>
+
+<section id="injection-vs-3d" class="sec-shell reveal">
+  <div class="label-col">
+    <div><div class="sec-tag">02 — Process Decision</div><div class="sec-big-num">02</div></div>
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">The Make-or-Break Choice</div>
+  </div>
+  <div class="sec-body">
+    <h2 class="sec-h2">Injection Moulding<br>vs <em>3D Printing.</em></h2>
+
+    <div class="img-block">
+      <div class="img-placeholder"><div class="img-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div class="img-label">📸 Injection moulding machine (left) vs Bambu P1S FDM printer (right) — side-by-side comparison.</div></div>
+      <div class="img-caption"><span>Figure 2</span> Two competing manufacturing paradigms — suited to different volume and cost profiles</div>
+    </div>
+
+    <div class="comp-table-wrap">
+      <table class="comp-table">
+        <thead><tr><th>Criterion</th><th class="cyan">Injection Moulding</th><th class="cyan">FDM 3D Printing</th><th>Verdict at 50K/yr</th></tr></thead>
+        <tbody>
+          <tr><td class="feature">Tooling Cost</td><td class="con">£10,000–£100,000</td><td class="pro">Zero tooling cost</td><td class="pro">✓ 3D Printing</td></tr>
+          <tr class="comp-winner"><td class="feature">Unit Cost at 50K</td><td class="con">Tooling amortised poorly</td><td class="pro">Competitive — material only</td><td class="pro">✓ 3D Printing</td></tr>
+          <tr><td class="feature">Lead Time</td><td class="con">6–14 weeks for tooling</td><td class="pro">Hours from CAD</td><td class="pro">✓ 3D Printing</td></tr>
+          <tr><td class="feature">Dimensional Accuracy</td><td class="pro">±0.05mm</td><td class="pro">±0.1mm (Bambu P1S)</td><td>Draw — both adequate</td></tr>
+          <tr><td class="feature">Design Flexibility</td><td class="con">Mould locked</td><td class="pro">Change CAD, print tomorrow</td><td class="pro">✓ 3D Printing</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout amber"><strong>Why not injection moulding?</strong> At 50,000 units/year, tooling cost alone — conservatively £25,000–£50,000 — represents 50–100p per unit before material. Christensen's disruption theory (1997) predicts this: incumbent technologies are over-engineered for small-batch, fast-iteration requirements.</div>
+
+    <p class="prose">Wohlers and Gornet (2020) establish that the crossover point — where injection moulding becomes cost-competitive with additive manufacturing — sits between <strong>100,000 and 500,000 units</strong>. At 50,000, we are decisively on the additive side of that line.</p>
+
+    <div class="img-block">
+      <div class="img-placeholder"><div class="img-icon"><svg viewBox="0 0 24 24"><path d="M12 22V12M12 12L7 7M12 12l5-5"/><rect x="2" y="18" width="20" height="4" rx="1"/></svg></div><div class="img-label">📸 Bambu Lab P1S in operation — mid-print showing casing layer-by-layer build.</div></div>
+      <div class="img-caption"><span>Figure 3</span> Bambu Lab P1S — the production printer selected after Ultimaker trials failed dimensional qualification</div>
+    </div>
+  </div>
+</section>
+
+<section id="industry4" class="reveal">
+  <div style="display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border)">
+    <div class="label-col"><div><div class="sec-tag">03 — Framework</div><div class="sec-big-num">4.0</div></div><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">The Fourth Industrial Revolution</div></div>
+    <div class="sec-body"><h2 class="sec-h2">Pillars of<br><em>Industry 4.0.</em></h2><p class="prose">Industry 4.0 — articulated by Klaus Schwab (2016) — describes the fusion of physical and digital worlds in manufacturing. McKinsey (2015) estimates Industry 4.0 could generate <strong>$3.7 trillion in value</strong> in manufacturing by 2025 through productivity gains and mass customisation.</p></div>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar"><div class="pillar-num">01</div><div class="pillar-title">Cyber-Physical Systems</div><div class="pillar-desc">25 Bambu P1S printers connected to digital monitoring — physical print and digital model exchange data constantly.</div></div>
+    <div class="pillar"><div class="pillar-num">02</div><div class="pillar-title">Industrial IoT</div><div class="pillar-desc">Siemens Insights Hub provides machine telemetry, real-time performance data, and predictive alerts.</div></div>
+    <div class="pillar"><div class="pillar-num">03</div><div class="pillar-title">Digital Twin</div><div class="pillar-desc">Siemens Tecnomatix created a virtual replica validating 50K/year capacity before any printer was purchased.</div></div>
+    <div class="pillar"><div class="pillar-num">04</div><div class="pillar-title">Big Data &amp; Analytics</div><div class="pillar-desc">SPC charts and FESTO station records provide the evidence base for production qualification.</div></div>
+    <div class="pillar"><div class="pillar-num">05</div><div class="pillar-title">Additive Manufacturing</div><div class="pillar-desc">Enables mass customisation, eliminates tooling, compresses lead times to hours.</div></div>
+    <div class="pillar"><div class="pillar-num">06</div><div class="pillar-title">Cloud Computing</div><div class="pillar-desc">Bambu Cloud enables remote print queue management across all 25 printers.</div></div>
+    <div class="pillar"><div class="pillar-num">07</div><div class="pillar-title">Autonomous Systems</div><div class="pillar-desc">24/7 unattended operation with thermal protection, automated detection, and remote shutdown.</div></div>
+    <div class="pillar"><div class="pillar-num">08</div><div class="pillar-title">Horizontal Integration</div><div class="pillar-desc">Data flows across design, production, quality, and simulation — no silo works in isolation.</div></div>
+  </div>
+</section>
+
+<section id="disruptive" class="sec-shell reveal">
+  <div class="label-col"><div><div class="sec-tag">04 — Theory</div><div class="sec-big-num">DI</div></div><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Christensen's Framework</div></div>
+  <div class="sec-body">
+    <h2 class="sec-h2">Disruptive<br><em>Innovation.</em></h2>
+    <p class="prose">Clayton Christensen's theory of disruptive innovation — from <em>The Innovator's Dilemma</em> (1997) — describes how new technologies enter markets at the low end before improving until they displace the mainstream. <strong>3D printing is following this arc exactly.</strong></p>
+    
+    <div class="img-block"><div class="img-placeholder"><div class="img-icon"><svg viewBox="0 0 24 24"><path d="M3 20 Q8 3 12 10 Q16 17 21 4"/><path d="M3 16h18" stroke-dasharray="3 2"/></svg></div><div class="img-label">📸 Christensen's disruption S-curve — incumbent vs disruptive technology trajectories.</div></div><div class="img-caption"><span>Figure 4</span> Disruptive innovation trajectory — 3D printing following Christensen's classic pattern</div></div>
+
+    <p class="prose">Rayna and Striukova (2021) apply Christensen's framework specifically to additive manufacturing, arguing that 3D printing disrupts not just manufacturing processes but the <strong>entire business model of physical production</strong> — collapsing design, prototyping, and manufacturing into a single digital-physical workflow.</p>
+    
+    <div class="callout green"><strong>The Lean Start-Up Connection:</strong> Eric Ries' Build → Measure → Learn cycle (2011) — applied throughout this project — democratises iteration. In manufacturing, the MVP is the first print. The measurement is the FESTO station. The learning is the pivot from Ultimaker to Bambu.</div>
+  </div>
+</section>
+
+<section id="roadmap" class="reveal">
+  <div style="display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border)">
+    <div class="label-col"><div><div class="sec-tag">05 — Solution</div><div class="sec-big-num">9W</div></div><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">How We Solved It</div></div>
+    <div class="sec-body"><h2 class="sec-h2">Our Solution<br><em>Roadmap.</em></h2><p class="prose">From client brief to validated, scalable 50,000-unit production system in 9 weeks — a structured, data-driven process.</p></div>
+  </div>
+  <div class="timeline-visual">
+    <div class="timeline-week"><div class="week">W1-2</div><div class="phase">Brief &amp; Design</div><div class="desc">CAD modelling, reverse engineering</div></div>
+    <div class="timeline-week"><div class="week">W2-4</div><div class="phase">PFMEA Risk</div><div class="desc">12 failure modes identified</div></div>
+    <div class="timeline-week"><div class="week">W3-5</div><div class="phase">Print Trials</div><div class="desc">Ultimaker → Bambu pivot</div></div>
+    <div class="timeline-week"><div class="week">W5-7</div><div class="phase">Quality SPC</div><div class="desc">±0.1mm tolerance confirmed</div></div>
+    <div class="timeline-week"><div class="week">W7-8</div><div class="phase">Simulation</div><div class="desc">50K/year validated</div></div>
+    <div class="timeline-week"><div class="week">W9</div><div class="phase">Delivery</div><div class="desc">Prototype + FESTO verified</div></div>
+  </div>
+</section>
+
+<section id="references" class="sec-shell reveal">
+  <div class="label-col"><div><div class="sec-tag">06 — Sources</div><div class="sec-big-num">REF</div></div><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)"> </div></div>
+  <div class="sec-body">
+    <h2 class="sec-h2">Academic &amp; Industry<br><em>References.</em></h2>
+    <div class="reference-list">
+      <div class="ref-item">Christensen, C.M. (1997) <em>The Innovator's Dilemma: When New Technologies Cause Great Firms to Fail</em>. Boston: Harvard Business School Press.</div>
+      <div class="ref-item">Grand View Research (2024) <em>3D Printing Market Size, Share &amp; Trends Report 2024-2030</em>. San Francisco: Grand View Research.</div>
+      <div class="ref-item">IDC (2024) <em>Worldwide Smartphone Shipments 2023 Full Year Results</em>. Framingham: International Data Corporation.</div>
+      <div class="ref-item">McKinsey Global Institute (2015) <em>Industry 4.0: The Future of Productivity and Growth in Manufacturing</em>. London: McKinsey &amp; Company.</div>
+      <div class="ref-item">Rayna, T. and Striukova, L. (2021) 'From rapid prototyping to home fabrication: How 3D printing is changing business model innovation', <em>Technological Forecasting and Social Change</em>, 164, p. 120469. doi:10.1016/j.techfore.2017.04.029.</div>
+      <div class="ref-item">Ries, E. (2011) <em>The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses</em>. New York: Crown Business.</div>
+      <div class="ref-item">Schwab, K. (2016) 'The Fourth Industrial Revolution: what it means and how to respond', <em>World Economic Forum</em>, 14 January. Available at: https://www.weforum.org/agenda/2016/01/the-fourth-industrial-revolution-what-it-means-and-how-to-respond/ (Accessed: 5 May 2026).</div>
+      <div class="ref-item">Wohlers, T. and Gornet, T. (2020) 'History of additive manufacturing and cost crossover analysis', <em>Additive Manufacturing</em>, 35, p. 101190. doi:10.1016/j.addma.2020.101190.</div>
+      <div class="ref-item">Womack, J.P., Jones, D.T. and Roos, D. (1990) <em>The Machine That Changed the World: The Story of Lean Production</em>. New York: Free Press.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">PANIZ<span>.</span></div>
+  <div class="f-copy">© 2026 — Digital Manufacturing Portfolio · Phones-R-Us Project</div>
+  <div class="f-links"><a href="project.html">Project</a><a href="industry.html">Industry</a><a href="design.html">Design</a><a href="simulation.html">Simulation</a></div>
+</footer>
+
+<script>
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+let rx=0,ry=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
+(function animRing(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';ring.style.opacity='0';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.opacity='.4';});
+});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')}),{threshold:.05});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const sections=document.querySelectorAll('section[id]');
+const tocLinks=document.querySelectorAll('.toc-item');
+const sObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const id=e.target.getAttribute('id');tocLinks.forEach(l=>{l.style.color=l.getAttribute('href')==='#'+id?'var(--cyan)':'';const n=l.querySelector('.toc-num');if(n)n.style.color=l.getAttribute('href')==='#'+id?'var(--cyan)':'';});}});},{threshold:.3});
+sections.forEach(s=>sObs.observe(s));
+</script>
+</body>
+</html>
