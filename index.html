@@ -6,6 +6,27 @@
 <title>Paniz Manufacturing — Digital Manufacturing Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  /* Remove gaps at top */
+body > *:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+#hero {
+  margin-top: 0 !important;
+  padding-top: 62px !important;
+}
+
+.bmc-head, .bmc-metrics, .bmc-grid {
+  margin-top: 0;
+}
+
+/* Fix any stray div causing gap */
+.bmc-head .f {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--navy4:#152848;
