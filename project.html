@@ -964,7 +964,14 @@ function animateCap(){
 }
 
 // Init
+// Force scroll to top and ensure panel 0 is active
+window.scrollTo(0, 0);
 showPanel(0);
+
+// Remove any hash from URL that might cause jumping
+if (window.location.hash) {
+  history.pushState("", document.title, window.location.pathname);
+}
 </script>
 </body>
 </html>
