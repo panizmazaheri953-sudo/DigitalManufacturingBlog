@@ -195,33 +195,62 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .chk-ico.fail svg{stroke:#ff6b6b}
 
 /* BMC SECTION */
-<!-- BMC SECTION -->
-<section id="bmc" class="reveal">
-  <div class="bmc-head">
-    <div class="sec-tag">05 — Business Model Canvas</div>
-    <h2>Digital Manufacturing<br><em>Value Architecture.</em></h2>
-    <div style="font-size:0.75rem; color:var(--muted); margin-top:0.5rem;">Lima & Baudier (2017) Business Model Canvas framework · Hover any card to reveal strategic detail · All figures verified in GBP</div>
-  </div>
+#bmc{padding:4rem 4%;background:var(--navy2);border-bottom:1px solid var(--border)}
+.bmc-head{margin-bottom:2rem}
+.bmc-head h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3.5rem);line-height:.95;text-transform:uppercase;margin-bottom:.5rem}
+.bmc-head h2 em{color:var(--cyan);font-style:normal}
+.bmc-ref{font-family:var(--fm);font-size:.9rem;letter-spacing:.1em;color:var(--muted);margin-top:.4rem;border-left:2px solid var(--cyan);padding-left:.75rem}
 
-  <div class="bmc-metrics">
-    <div class="bmc-metric"><div class="bmc-metric-val">£5.50</div><div class="bmc-metric-label">Price per casing pair</div></div>
-    <div class="bmc-metric"><div class="bmc-metric-val">£275K</div><div class="bmc-metric-label">Annual revenue</div></div>
-    <div class="bmc-metric"><div class="bmc-metric-val">£204K</div><div class="bmc-metric-label">Total annual costs</div></div>
-    <div class="bmc-metric"><div class="bmc-metric-val">£71K</div><div class="bmc-metric-label">Gross profit / year</div></div>
-    <div class="bmc-metric"><div class="bmc-metric-val">25.9%</div><div class="bmc-metric-label">Gross margin</div></div>
-  </div>
+.bmc-metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem;margin-bottom:1.5rem}
+.bmc-metric{background:var(--navy3);border:1px solid var(--border);padding:1rem;text-align:center;position:relative;overflow:hidden;transition:border-color .3s}
+.bmc-metric:hover{border-color:var(--cyan)}
+.bmc-metric::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--cyan);transition:width .4s}
+.bmc-metric:hover::after{width:100%}
+.bmc-metric-val{font-family:var(--fd);font-size:1.8rem;color:var(--cyan);line-height:1}
+.bmc-metric-label{font-family:var(--fm);font-size:.46rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
 
-  <div class="bmc-grid">
-    <!-- All your BMC cards go here - they look correct -->
-  </div>
+.bmc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
+.bmc-vp{grid-row:span 2}
 
-  <div class="bmc-footnote">
-    Lima, M. & Baudier, P. (2017) 'Business model canvas acceptance among French entrepreneurship students', Journal of Innovation Economics & Management, 20(3), pp. 99–119.<br>
-    Verified: Bambu P1S £470/unit · PLA filament £20/kg · 80% print success rate · 2.5h cycle time · 25 printers · weekdays 24/7 + weekends 8h/day · UK electricity £0.25/kWh · (est.) = industry approximation
-  </div>
-</section>
+.fp{perspective:900px}
+.fc{position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1);cursor:pointer;min-height:190px}
+.bmc-vp .fc{min-height:400px}
+.fp:hover .fc{transform:rotateY(180deg)}
+.ff-side,.fb-side{backface-visibility:hidden;-webkit-backface-visibility:hidden;position:absolute;inset:0;padding:1.25rem 1rem;border:1px solid var(--border);background:var(--navy)}
+.fb-side{transform:rotateY(180deg);overflow:auto}
+.ff-side{display:flex;flex-direction:column}
+.bmc-vp .ff-side{background:var(--navy3);border-color:rgba(0,229,255,0.22)}
+.bmc-vp .fb-side{background:var(--navy3);border-color:rgba(0,229,255,0.22)}
+.fp:hover .ff-side{border-color:rgba(0,229,255,0.3)}
+.fi{width:28px;height:28px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:.7rem;flex-shrink:0}
+.fi svg{width:13px;height:13px;stroke:var(--cyan);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.ff-side h3{font-family:var(--fd);font-size:1.25rem;text-transform:uppercase;line-height:.95;color:var(--white);flex:1}
+.ff-sub{font-family:var(--fm);font-size:.46rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.4rem}
+.ff-hint{font-family:var(--fm);font-size:.42rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,229,255,0.3);margin-top:.5rem}
+.fb-side h4{font-family:var(--fm);font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.65rem;padding-bottom:.4rem;border-bottom:1px solid var(--border)}
+.fb-side ul{list-style:none;display:flex;flex-direction:column;gap:.38rem}
+.fb-side ul li{font-size:.68rem;color:var(--muted);line-height:1.5;font-weight:300;padding-left:.75rem;position:relative}
+.fb-side ul li::before{content:'→';position:absolute;left:0;color:var(--cyan);font-family:var(--fm);font-size:.56rem;line-height:1.5}
+.fb-side ul li strong{color:var(--white);font-weight:500}
 
-
+.bmc-cost{margin-top:.6rem;border:1px solid var(--border);background:var(--navy)}
+.bmc-cost-top{display:flex;align-items:center;gap:.75rem;padding:.9rem 1.25rem;border-bottom:1px solid var(--border)}
+.bmc-cost-top .fi{margin-bottom:0;flex-shrink:0}
+.bmc-cost-top h3{font-family:var(--fd);font-size:1.25rem;text-transform:uppercase;line-height:1;color:var(--white)}
+.bmc-cost-top-sub{font-family:var(--fm);font-size:.46rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.15rem}
+.bmc-cost-cols{display:grid;grid-template-columns:repeat(3,1fr)}
+.bmc-cost-col{padding:1.1rem 1.25rem}
+.bmc-cost-col:not(:last-child){border-right:1px solid var(--border)}
+.bmc-cost-col h4{font-family:var(--fm);font-size:.54rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.65rem;padding-bottom:.38rem;border-bottom:1px solid var(--border)}
+.bmc-cost-col ul{list-style:none;display:flex;flex-direction:column;gap:.38rem}
+.bmc-cost-col ul li{font-size:.68rem;color:var(--muted);line-height:1.45;font-weight:300;padding-left:.75rem;position:relative}
+.bmc-cost-col ul li::before{content:'→';position:absolute;left:0;color:var(--cyan);font-family:var(--fm);font-size:.56rem;line-height:1.45}
+.bmc-cost-col ul li strong{color:var(--white);font-weight:500}
+.bmc-cost-summary{background:var(--navy3);border-top:1px solid var(--border);padding:.7rem 1.25rem;display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+.bcs-item{text-align:center}
+.bcs-val{font-family:var(--fd);font-size:1.35rem;color:var(--cyan);line-height:1}
+.bcs-label{font-family:var(--fm);font-size:.43rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
+.bmc-footnote{font-family:var(--fm);font-size:.75rem;letter-spacing:.09em;color:var(--muted);text-align:center;margin-top:.9rem;line-height:1.6}
 
 /* CTA */
 #cta{padding:6rem 4%;text-align:center;background:var(--navy);position:relative;overflow:hidden}
