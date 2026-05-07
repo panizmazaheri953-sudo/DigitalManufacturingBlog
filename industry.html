@@ -158,6 +158,15 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
 .f-links{display:flex;gap:1.5rem;justify-content:flex-end;flex-wrap:wrap}
 .f-links a{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
 .f-links a:hover{color:var(--cyan)}
+  /* ENLARGED FONTS — add this block */
+.hero-sub { font-size: 1.0rem; }
+.prose { font-size: 0.95rem; }
+.pq-text { font-size: 1.15rem; }
+.callout { font-size: 0.9rem; }
+.comp-table td { font-size: 0.8rem; }
+.pillar-desc { font-size: 0.8rem; }
+.hero-context { font-size: 0.85rem; }
+.ref-item { font-size: 0.82rem; }
 </style>
 </head>
 <body>
@@ -234,8 +243,8 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   <div class="sec-body">
     <h2 class="sec-h2">The Manufacturing<br><em>Landscape.</em></h2>
     <p class="prose">Consumer electronics manufacturing sits at the intersection of relentless cost pressure and increasing demand for customisation. For decades, the answer was injection moulding at massive scale. But as Jandyal et al. (2022) comprehensively document, additive manufacturing has fundamentally disrupted this paradigm by offering flexibility, zero tooling, and rapid iteration.</p>
-    <div class="callout"><strong>The Volume Threshold:</strong> For production runs at 50,000 units per year — exactly the Phones-R-Us requirement — additive manufacturing offers compelling advantages over traditional injection moulding, particularly in eliminating upfront tooling costs and enabling design iteration without penalty (Dizon et al., 2020; Podsiadły et al., 2021).</div>
-    <p class="prose">Podsiadły et al. (2021) provide empirical evidence that FDM-printed components can achieve mechanical properties approaching those of injection moulded parts when processing parameters are optimised — a finding directly applied in our Bambu P1S configuration.</p>
+    <div class="callout"><strong>The Volume Threshold:</strong> For production runs at 50,000 units per year which is exactly the Phones-R-Us requirement  additive manufacturing offers compelling advantages over traditional injection moulding, particularly in eliminating upfront tooling costs and enabling design iteration without penalty (Dizon et al., 2020; Podsiadły et al., 2021).</div>
+    <p class="prose">Podsiadły et al. (2021) provide empirical evidence that FDM-printed components can achieve mechanical properties approaching those of injection moulded parts when processing parameters are optimised which is a finding directly applied in our Bambu P1S configuration.</p>
   </div>
 </section>
 
@@ -246,6 +255,13 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   </div>
   <div class="sec-body">
     <h2 class="sec-h2">Injection Moulding<br>vs <em>3D Printing.</em></h2>
+    <div class="callout" style="margin-bottom: 1.5rem; background: var(--cyan4); border-left-color: var(--cyan);">
+  <div style="font-family: var(--fm); font-size: 0.65rem; color: var(--cyan); margin-bottom: 0.5rem;">✓ DECISION LOCKED: RISK vs COST TRADEOFF</div>
+  <p style="margin-bottom: 0.75rem;"><strong>At 50,000 units/year, injection moulding offers lower per-unit cost (£3.30-£3.50 vs £4.08).</strong> However, FDM 3D printing eliminates £25,000–£50,000 of upfront tooling risk, enables design iteration without penalty, and delivers a <strong>25.9% gross margin</strong> with zero tooling commitment.</p>
+  <p style="margin-bottom: 0;">For a first production run where design may evolve, <strong>FDM is the lower-risk choice</strong>. Above 100,000 units/year with a locked design, we would recommend switching to injection moulding. This staged approach — FDM for launch, IM for scale — is the optimal manufacturing strategy.</p>
+</div>
+    
+    
     <div class="comp-table-wrap">
       <table class="comp-table">
         <thead><tr><th>Criterion</th><th class="cyan">Injection Moulding</th><th class="cyan">FDM 3D Printing</th><th>Verdict at 50K/yr</th></tr></thead>
@@ -258,8 +274,73 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
         </tbody>
       </table>
     </div>
-    <div class="callout amber"><strong>Why not injection moulding?</strong> At 50,000 units/year, tooling cost alone — conservatively £25,000–£50,000 — represents 50–100p per unit before material. Dizon et al. (2020) explore 3D printed injection moulds for low-volume runs, but for direct production at this scale, FDM printing is decisively more economical.</div>
+    
+    
+    
+    
+    
+    <!-- COST STRUCTURE — EXACT MATCH TO YOUR NUMBERS -->
+<div class="img-block" style="margin: 1.5rem 0;">
+  <div class="img-placeholder" style="aspect-ratio: auto; padding: 1.5rem;">
+    <div style="width: 100%;">
+      <div style="font-family: var(--fm); font-size: 0.55rem; letter-spacing: 0.15em; color: var(--cyan); margin-bottom: 1rem;"> COST STRUCTURE — VERIFIED PROJECT COSTINGS (GBP)</div>
+      
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+        
+        <div style="background: var(--navy3); padding: 1rem; border-left: 2px solid var(--cyan);">
+          <div style="font-family: var(--fm); font-size: 0.65rem; color: var(--cyan); margin-bottom: 0.75rem;">FIXED COSTS (Annual)</div>
+          <div style="font-size: 0.7rem; line-height: 1.6;">
+            <div>25x Bambu P1S — amortised = <strong>£3,917/yr</strong> ✓ verified</div>
+            <div>Licences (Fusion 360 + Plant Simulation) = <strong>~£8,000/yr</strong></div>
+            <div>Electricity = <strong>~£10,962/yr</strong></div>
+            <div>Site security = <strong>~£4,000/yr</strong></div>
+            <div>Engineering & QA salaries = <strong>~£43,000/yr</strong></div>
+            <div style="margin-top: 0.6rem; border-top: 1px solid var(--border); padding-top: 0.4rem;"><strong>Total fixed: £69,879/yr</strong></div>
+          </div>
+        </div>
+        
+        <div style="background: var(--navy3); padding: 1rem; border-left: 2px solid var(--green);">
+          <div style="font-family: var(--fm); font-size: 0.65rem; color: var(--green); margin-bottom: 0.75rem;">VARIABLE COSTS (per pair)</div>
+          <div style="font-size: 0.7rem; line-height: 1.6;">
+            <div>PLA filament — 100g/pair @ £20/kg = <strong>£2.00/pair</strong> ✓ verified</div>
+            <div>Failed print absorption = <strong>£0.50/pair</strong></div>
+            <div>Packaging & logistics = <strong>£0.18/pair</strong></div>
+            <div style="margin-top: 0.4rem;"><strong>Variable: £2.68/pair</strong></div>
+            <div style="margin-top: 0.6rem; border-top: 1px solid var(--border); padding-top: 0.4rem;">Total variable at 50,000 pairs: <strong>£134,000</strong></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- This row matches your 25.9% exactly -->
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; text-align: center; margin-bottom: 1rem;">
+        <div style="background: var(--navy2); padding: 0.75rem; border: 1px solid var(--border);">
+          <div style="font-family: var(--fd); font-size: 1.5rem; color: var(--cyan);">£5.50</div>
+          <div style="font-size: 0.55rem; font-family: var(--fm); color: var(--muted);">Price per pair</div>
+        </div>
+        <div style="background: var(--navy2); padding: 0.75rem; border: 1px solid var(--border);">
+          <div style="font-family: var(--fd); font-size: 1.5rem; color: var(--cyan);">£275K</div>
+          <div style="font-size: 0.55rem; font-family: var(--fm); color: var(--muted);">Annual revenue</div>
+        </div>
+        <div style="background: var(--navy2); padding: 0.75rem; border: 1px solid var(--border);">
+          <div style="font-family: var(--fd); font-size: 1.5rem; color: var(--cyan);">£204K</div>
+          <div style="font-size: 0.55rem; font-family: var(--fm); color: var(--muted);">Total annual costs</div>
+        </div>
+        <div style="background: var(--navy2); padding: 0.75rem; border: 1px solid var(--border);">
+          <div style="font-family: var(--fd); font-size: 1.5rem; color: var(--cyan);">£71K</div>
+          <div style="font-size: 0.55rem; font-family: var(--fm); color: var(--muted);">Gross profit / year</div>
+        </div>
+      </div>
+      
+      <div style="background: var(--green2); padding: 0.75rem; text-align: center; border-left: 3px solid var(--green);">
+        <span style="font-family: var(--fd); font-size: 2rem; color: var(--green);">25.9%</span>
+        <span style="font-family: var(--fm); font-size: 0.6rem; color: var(--muted); margin-left: 0.75rem;">GROSS MARGIN</span>
+      </div>
+      
+    </div>
   </div>
+  <div class="img-caption"><span>✓ VERIFIED</span> — Fixed £69,879 + Variable £134,000 = £203,879 total · £71,121 profit ÷ £275,000 = 25.86%</div>
+</div>
+    <div class="callout amber"><strong>Why not injection moulding for this project?</strong> The decision was not about per-unit cost — it was about <strong>risk elimination</strong>. At 50,000 units, injection moulding would require £25,000–£50,000 upfront before producing a single part. FDM requires zero tooling investment. For a first production run where the client may request design changes, that flexibility is worth the higher per-unit cost. Dizon et al. (2020) explore 3D printed injection moulds for low-volume runs, but for direct production at this scale with iteration uncertainty, FDM printing is the <strong>lower-risk</strong> choice.</div>
 </section>
 
 <section id="industry4" class="reveal">
@@ -268,7 +349,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
     <div class="sec-body"><h2 class="sec-h2">Pillars of<br><em>Industry 4.0.</em></h2><p class="prose">Jandyal et al. (2022) position 3D printing as a foundational technology for Industry 4.0, alongside cyber-physical systems, IoT, and digital twins. This project implements each pillar:</p></div>
   </div>
   <div class="pillars-grid">
-    <div class="pillar"><div class="pillar-num">01</div><div class="pillar-title">Cyber-Physical Systems</div><div class="pillar-desc">25 Bambu P1S printers connected to digital monitoring — physical print and digital model exchange data constantly.</div></div>
+    <div class="pillar"><div class="pillar-num">01</div><div class="pillar-title">Cyber-Physical Systems</div><div class="pillar-desc">25 Bambu P1S printers connected to digital monitoring therefore physical print and digital model exchange data constantly.</div></div>
     <div class="pillar"><div class="pillar-num">02</div><div class="pillar-title">Industrial IoT</div><div class="pillar-desc">Siemens Insights Hub provides machine telemetry, real-time performance data, and predictive alerts.</div></div>
     <div class="pillar"><div class="pillar-num">03</div><div class="pillar-title">Digital Twin</div><div class="pillar-desc">Siemens Tecnomatix creates a virtual replica validating 50K/year capacity.</div></div>
     <div class="pillar"><div class="pillar-num">04</div><div class="pillar-title">Big Data &amp; Analytics</div><div class="pillar-desc">SPC charts and FESTO station records provide the evidence base for production qualification.</div></div>
@@ -298,8 +379,8 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   <div class="sec-body">
     <h2 class="sec-h2">Disruptive<br><em>Innovation.</em></h2>
     <p class="prose">Clayton Christensen's theory of disruptive innovation describes how new technologies enter markets at the low end before improving until they displace the mainstream. 3D printing follows this arc exactly: from hobbyist machines to production-ready systems like the Bambu P1S.</p>
-    <p class="prose">Podsiadły et al. (2021) provide empirical evidence that FDM components can now match injection moulded properties — the performance gap has closed. Jandyal et al. (2022) document how additive manufacturing is displacing traditional processes across multiple industrial sectors. This project sits at the crossover point: 50,000 units/year where FDM is not just viable but economically superior.</p>
-    <div class="callout green"><strong>From Prototyping to Production:</strong> The same Bambu P1S used for test prints becomes the production machine. The same Fusion 360 CAD file used for prototyping is the production file. There is no handover — Christensen's disruption and Ries' Lean Startup methodology converge in a single digital-physical workflow.</div>
+    <p class="prose">Podsiadły et al. (2021) provide empirical evidence that FDM components can now match injection moulded properties and the performance gap has closed. Jandyal et al. (2022) document how additive manufacturing is displacing traditional processes across multiple industrial sectors. This project sits at the crossover point: 50,000 units/year where FDM is the lower-risk choice for a first production run, even if injection moulding offers lower per-unit cost at scale.r.</p>
+    <div class="callout green"><strong>From Prototyping to Production:</strong> The same Bambu P1S used for test prints becomes the production machine. The same Fusion 360 CAD file used for prototyping is the production file.</div>
   </div>
 </section>
 
@@ -330,7 +411,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
       <div class="ref-item"><strong>Jandyal, A., Chaturvedi, I., Wazir, I., Raina, A. and Ul Haq, M.I. (2022)</strong> ‘3D printing – A review of processes, materials and applications in industry 4.0’, <em>Sustainable Operations and Computers</em>, 3, pp. 33–42. <a href="https://doi.org/10.1016/j.susoc.2021.09.004" target="_blank" style="color:var(--cyan);">↗ doi.org</a></div>
       <div class="ref-item"><strong>Liu, Z., Li, M., Tay, Y.W.D., Weng, Y., Wong, T.N. and Tan, M.J. (2020)</strong> ‘Rotation nozzle and numerical simulation of mass distribution at corners in 3D cementitious material printing’, <em>Additive Manufacturing</em>, 34, p. 101190. <a href="https://doi.org/10.1016/j.addma.2020.101190" target="_blank" style="color:var(--cyan);">↗ doi.org</a></div>
       <div class="ref-item"><strong>Malik, A., Ul Haq, M.I., Raina, A. and Gupta, K. (2022)</strong> ‘3D printing towards implementing Industry 4.0: sustainability aspects, barriers and challenges’, <em>Industrial Robot</em>, 49(3), pp. 491–511. <a href="https://doi.org/10.1108/IR-10-2021-0247" target="_blank" style="color:var(--cyan);">↗ doi.org</a></div>
-      <div class="ref-item"><strong>Podsiadły, B., Skalski, A., Rozpiórski, W. and Słoma, M. (2021)</strong> ‘Are We Able to Print Components as Strong as Injection Molded?—Comparing the Properties of 3D Printed and Injection Molded Components Made from ABS Thermoplastic’, <em>Applied Sciences</em>, 11(15), p. 6946. <a href="https://doi.org/10.3390/app11156946" target="_blank" style="color:var(--cyan);">↗ doi.org</a></div>
+      <div class="ref-item"><strong>Podsiadły, B., Skalski, A., Rozpiórski, W. and Słoma, M. (2021)</strong> ‘Are We Able to Print Components as Strong as Injection Molded?Comparing the Properties of 3D Printed and Injection Molded Components Made from ABS Thermoplastic’, <em>Applied Sciences</em>, 11(15), p. 6946. <a href="https://doi.org/10.3390/app11156946" target="_blank" style="color:var(--cyan);">↗ doi.org</a></div>
       <div class="ref-item"><strong>Schwab, K. (2016)</strong> ‘The Fourth Industrial Revolution: what it means and how to respond’, <em>World Economic Forum</em>, 14 January. <a href="https://ideas.repec.org/h/elg/eechap/21349_2.html" target="_blank" style="color:var(--cyan);">↗ Read Article</a></div>
     </div>
   </div>
