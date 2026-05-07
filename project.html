@@ -332,7 +332,25 @@ footer{background:var(--navy2);padding:2rem 4%;display:grid;grid-template-column
 .f-links a:hover{color:var(--cyan)}
 </style>
 </head>
-<body>
+<body style="overflow-anchor: none;">
+  <script>
+  // BLOCK any scrolling until page is fully loaded
+  window.scrollTo(0, 0);
+  
+  // Disable anchor jumping completely
+  if (window.location.hash) {
+    window.location.hash = "";
+  }
+  
+  // Prevent any automatic scrolling
+  window.addEventListener('load', function() {
+    window.scrollTo(0, 0);
+    // Re-enable normal behavior after 100ms
+    setTimeout(function() {
+      window.scrollTo(0, 0);
+    }, 50);
+  });
+</script>
 <div id="cursor"></div><div id="cursor-ring"></div>
 <nav><a class="logo" href="index.html">ENCLOS3D<span>.</span></a>
   <ul class="nav-links">
