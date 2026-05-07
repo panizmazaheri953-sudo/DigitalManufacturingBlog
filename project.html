@@ -458,7 +458,7 @@ footer{background:var(--navy2);padding:2rem 4%;display:grid;grid-template-column
       <div class="panel-left">
         <div class="panel-week-tag">Week 1 — Design Input</div>
         <h2 class="panel-title">Brief Analysis<br>& <em>Fusion 360</em><br>CAD Design</h2>
-        <p class="panel-desc">The project kicked off with a clear challenge: design two phone casings for Phones-R-Us. The <strong>bottom casing</strong> came with a complete engineering drawing — straightforward translation into Fusion 360. The <strong>top casing</strong> had no drawing — just a physical sample. That meant reverse engineering: callipers, cross-referencing views, deriving missing dimensions mathematically.</p>
+        <p class="panel-desc">The project kicked off with a clear challenge: design two phone casings for Phones-R-Us. The <strong>bottom casing</strong> came with a complete engineering drawing and a straightforward translation into Fusion 360. The <strong>top casing</strong> had a drawing too, but the measurements were not as clear.That meant reverse engineering: callipers, cross-referencing views, deriving missing dimensions mathematically.</p>
         <p class="panel-desc">The very first decision was also one of the biggest: <strong>FDM 3D printing vs injection moulding</strong>. Injection moulding would cost £15,000–£40,000 in tooling alone before a single part could be made. FDM requires zero tooling — ideal for a 9-week sprint and a scalable annual contract.</p>
         <div class="outcomes">
           <div class="oc pass"><span class="oc-dot"></span>Bottom casing from drawing</div>
@@ -500,9 +500,9 @@ footer{background:var(--navy2);padding:2rem 4%;display:grid;grid-template-column
     <div class="panel">
       <div class="panel-left">
         <div class="panel-week-tag">Week 2 — Risk Analysis</div>
-        <h2 class="panel-title">PFMEA<br><em>12 Failure</em><br>Modes Mapped</h2>
-        <p class="panel-desc">Before a single print was attempted, every way the process could go wrong was mapped using a <strong>Process Failure Mode & Effects Analysis</strong>. 12 failure modes were identified across the print and assembly pipeline — from bed adhesion failures to sharp edges injuring operators.</p>
-        <p class="panel-desc">The highest-risk failure was sharp edges on freshly printed parts — RPN of 400. This was immediately mitigated by adding chamfers to the CAD model and a mandatory deburring step in the process flow, bringing the RPN down to 80.</p>
+        <h2 class="panel-title">PFMEA<br><em>13 Failure</em><br>Modes Mapped</h2>
+        <p class="panel-desc">Before a single print was attempted, every way the process could go wrong was mapped using a <strong>Process Failure Mode & Effects Analysis</strong>. 13 failure modes were identified across the print and assembly pipeline, from bed adhesion failures to sharp edges injuring operators.</p>
+        <p class="panel-desc">The highest-risk failure was sharp edges on freshly printed parts with RPN of 400. This was immediately mitigated by adding chamfers to the CAD model and a mandatory deburring step in the process flow, bringing the RPN down to 80.</p>
         <div class="outcomes">
           <div class="oc pass"><span class="oc-dot"></span>12 failure modes identified</div>
           <div class="oc pass"><span class="oc-dot"></span>Max RPN 400 → mitigated to 80</div>
@@ -541,46 +541,46 @@ footer{background:var(--navy2);padding:2rem 4%;display:grid;grid-template-column
   </div>
 
   <!-- PANEL 2 — W3-4: Ultimaker -->
-  <div class="panel-wrap" id="panel-2">
-    <div class="panel">
-      <div class="panel-left">
-        <div class="panel-week-tag">Weeks 3–4 — Print Trials (Phase 1)</div>
-        <h2 class="panel-title">Ultimaker<br><em>Trials.</em><br>All Failed.</h2>
-        <p class="panel-desc">The first print platform tested was the Ultimaker. Multiple prints were run, tweaking settings each time. Every single one failed at <strong>FESTO Station 2</strong> — the laser measurement station. The laser consistently measured a wall depth of <strong>1.18mm</strong> against a specification of 1.6–2.2mm.</p>
-        <p class="panel-desc">This wasn't a calibration issue — it was a fundamental limitation of the Ultimaker's open-frame design causing inconsistent extrusion and warping. The data was clear: <strong>0% pass rate</strong> across all Ultimaker prints at the critical dimension check. A platform pivot was inevitable.</p>
-        <div class="outcomes">
-          <div class="oc fail"><span class="oc-dot"></span>0% pass rate at FESTO Station 2</div>
-          <div class="oc fail"><span class="oc-dot"></span>1.18mm wall (spec: 1.6–2.2mm)</div>
-          <div class="oc fail"><span class="oc-dot"></span>Warping on both casings</div>
-          <div class="oc warn"><span class="oc-dot"></span>Decision: platform switch required</div>
-        </div>
-        <div class="nav-btns">
-          <button class="nav-btn" onclick="showPanel(1)"><span class="arr left"></span> Back</button>
-          <button class="nav-btn primary" onclick="showPanel(3)">See the Pivot <span class="arr"></span></button>
-        </div>
+<div class="panel-wrap" id="panel-2">
+  <div class="panel">
+    <div class="panel-left">
+      <div class="panel-week-tag">Weeks 3–4 — Print Trials (Phase 1)</div>
+      <h2 class="panel-title">Ultimaker<br><em>Trials.</em><br>All Failed.</h2>
+      <p class="panel-desc">The first print platform tested was the Ultimaker. Multiple prints were run, tweaking settings each time. Every single one failed either at <strong>FESTO Station 2</strong>, the laser measurement station or their visual quality. The laser consistently measured the wall depth <strong>wrong</strong> against a specification of 1.6–2.2mm.</p>
+      <p class="panel-desc">This wasn't a calibration issue it was a fundamental limitation of the Ultimaker's open-frame design causing inconsistent extrusion and warping. The data was clear: <strong>0% pass rate</strong> across all Ultimaker prints at the critical dimension check. A platform pivot was inevitable.</p>
+      <div class="outcomes">
+        <div class="oc fail"><span class="oc-dot"></span>0% pass rate at FESTO Station 2</div>
+        <div class="oc fail"><span class="oc-dot"></span>1.18mm wall (spec: 1.6–2.2mm)</div>
+        <div class="oc fail"><span class="oc-dot"></span>Warping on both casings</div>
+        <div class="oc warn"><span class="oc-dot"></span>Decision: platform switch required</div>
       </div>
-      <div class="panel-right">
-        <div style="margin-bottom:.75rem">
-          <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:.75rem">Ultimaker Print Results — Station 2</div>
-          <div class="printer-grid" id="ultimakerGrid"></div>
-        </div>
-        <table class="compare-table">
-          <thead><tr><th>Measurement</th><th>Ultimaker</th><th>Spec</th><th>Status</th></tr></thead>
-          <tbody>
-            <tr><td class="label">Wall Thickness</td><td class="fail">1.18mm</td><td>1.6–2.2mm</td><td class="fail">✗ FAIL</td></tr>
-            <tr><td class="label">Dimensional Acc.</td><td class="fail">±0.4mm</td><td>±0.15mm</td><td class="fail">✗ FAIL</td></tr>
-            <tr><td class="label">Station 2 Pass</td><td class="fail">0 / all</td><td>100%</td><td class="fail">✗ FAIL</td></tr>
-            <tr><td class="label">Warping observed</td><td class="fail">Yes — all</td><td>None</td><td class="fail">✗ FAIL</td></tr>
-            <tr><td class="label">Platform decision</td><td colspan="3" class="fail">RETIRED — all prints rejected</td></tr>
-          </tbody>
-        </table>
-        <div style="background:rgba(255,68,68,0.06);border:1px solid rgba(255,68,68,0.2);padding:.85rem 1rem;margin-top:.75rem">
-          <div style="font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:.4rem">⚠ Critical Finding</div>
-          <div style="font-size:.72rem;color:var(--muted);line-height:1.55;font-weight:300">The FESTO laser measurement station provided objective, unambiguous data. No amount of settings tweaking could bring the Ultimaker within the 1.6–2.2mm wall spec. The open-frame design was the root cause.</div>
-        </div>
+      <div class="nav-btns">
+        <button class="nav-btn" onclick="showPanel(1)"><span class="arr left"></span> Back</button>
+        <button class="nav-btn primary" onclick="showPanel(3)">See the Pivot <span class="arr"></span></button>
+      </div>
+    </div>
+    <div class="panel-right">
+      <div style="margin-bottom:.75rem">
+        <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:.75rem">Ultimaker Print Results — Station 2</div>
+        <!-- REMOVED the printer-grid div with 25 boxes -->
+      </div>
+      <table class="compare-table">
+        <thead><tr><th>Measurement</th><th>Ultimaker</th><th>Spec</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td class="label">Wall Thickness</td><td class="fail">1.18mm</td><td>1.6–2.2mm</td><td class="fail">✗ FAIL</td></tr>
+          <tr><td class="label">Dimensional Acc.</td><td class="fail">±0.4mm</td><td>±0.15mm</td><td class="fail">✗ FAIL</td></tr>
+          <tr><td class="label">Station 2 Pass</td><td class="fail">0 / all</td><td>100%</td><td class="fail">✗ FAIL</td></tr>
+          <tr><td class="label">Warping observed</td><td class="fail">Yes — all</td><td>None</td><td class="fail">✗ FAIL</td></tr>
+          <tr><td class="label">Platform decision</td><td colspan="3" class="fail">RETIRED — all prints rejected</td></tr>
+        </tbody>
+      </table>
+      <div style="background:rgba(255,68,68,0.06);border:1px solid rgba(255,68,68,0.2);padding:.85rem 1rem;margin-top:.75rem">
+        <div style="font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:.4rem">⚠ Critical Finding</div>
+        <div style="font-size:.72rem;color:var(--muted);line-height:1.55;font-weight:300">The FESTO laser measurement station provided objective, unambiguous data. No amount of settings tweaking could bring the Ultimaker within the 1.6–2.2mm wall spec. The open-frame design was the root cause.</div>
       </div>
     </div>
   </div>
+</div>
 
   <!-- PANEL 3 — W4-5: Bambu -->
   <div class="panel-wrap" id="panel-3">
@@ -624,102 +624,102 @@ footer{background:var(--navy2);padding:2rem 4%;display:grid;grid-template-column
     </div>
   </div>
 
-  <!-- PANEL 4 — W5-6: MSD -->
-  <div class="panel-wrap" id="panel-4">
-    <div class="panel">
-      <div class="panel-left">
-        <div class="panel-week-tag">Weeks 5–6 — Manufacturing Systems Design</div>
-        <h2 class="panel-title">MSD<br><em>Factory</em><br>Layout.</h2>
-        <p class="panel-desc">With the Bambu P1S confirmed as the production platform, the focus shifted to designing the full manufacturing system. <strong>Manufacturing Systems Design (MSD)</strong> covered the physical layout of the production cell, material flow from filament storage through to assembly despatch, and the configuration of the 25-printer fleet.</p>
-        <p class="panel-desc">Key design decisions included printer arrangement for efficient operator access, filament spool management for 24/7 operation, and integration points with the FESTO CP Lab assembly line at the end of the production flow.</p>
-        <div class="outcomes">
-          <div class="oc pass"><span class="oc-dot"></span>25-printer cell layout designed</div>
-          <div class="oc pass"><span class="oc-dot"></span>Material flow mapped end-to-end</div>
-          <div class="oc pass"><span class="oc-dot"></span>FESTO integration point defined</div>
-          <div class="oc pass"><span class="oc-dot"></span>VSM — Ultimaker changeover waste eliminated</div>
-        </div>
-        <div class="nav-btns">
-          <button class="nav-btn" onclick="showPanel(3)"><span class="arr left"></span> Back</button>
-          <button class="nav-btn primary" onclick="showPanel(5)">Next: Simulation <span class="arr"></span></button>
-        </div>
+ <!-- PANEL 4 — W5-6: MSD -->
+<div class="panel-wrap" id="panel-4">
+  <div class="panel">
+    <div class="panel-left">
+      <div class="panel-week-tag">Weeks 5–6 — Manufacturing Systems Design</div>
+      <h2 class="panel-title">MSD<br><em>Factory</em><br>Layout.</h2>
+      <p class="panel-desc">With the Bambu P1S confirmed as the production platform, the focus shifted to designing the full manufacturing system. <strong>Manufacturing Systems Design (MSD)</strong> covered the physical layout of the production cell, material flow from filament storage through to assembly despatch, and the configuration of the 25-printer fleet.</p>
+      <p class="panel-desc">Key design decisions included printer arrangement for efficient operator access, filament spool management for 24/7 operation, and integration points with the FESTO CP Lab assembly line at the end of the production flow.</p>
+      <div class="outcomes">
+        <div class="oc pass"><span class="oc-dot"></span>25-printer cell layout designed</div>
+        <div class="oc pass"><span class="oc-dot"></span>Material flow mapped end-to-end</div>
+        <div class="oc pass"><span class="oc-dot"></span>FESTO integration point defined</div>
+        <div class="oc pass"><span class="oc-dot"></span>VSM — Ultimaker changeover waste eliminated</div>
       </div>
-      <div class="panel-right">
-        <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">25-Printer Fleet — Production Cell</div>
-        <div class="printer-grid" id="bambuGrid"></div>
-        <div class="decision-card" style="margin-top:.75rem">
-          <div class="dc-header">MSD Key Decisions</div>
-          <div class="dc-rows">
-            <div class="dc-row"><span class="dc-key">Layout type</span><span class="dc-val pass">Cellular — 5×5 printer array</span></div>
-            <div class="dc-row"><span class="dc-key">Material flow</span><span class="dc-val">Filament → Print → QC → FESTO</span></div>
-            <div class="dc-row"><span class="dc-key">Takt time (single shift)</span><span class="dc-val fail">Would need 75 printers</span></div>
-            <div class="dc-row"><span class="dc-key">Takt time (24/7)</span><span class="dc-val pass">25 printers sufficient</span></div>
-            <div class="dc-row"><span class="dc-key">VSM waste identified</span><span class="dc-val warn">Ultimaker changeover removed</span></div>
-          </div>
+      <div class="nav-btns">
+        <button class="nav-btn" onclick="showPanel(3)"><span class="arr left"></span> Back</button>
+        <button class="nav-btn primary" onclick="showPanel(5)">Next: Simulation <span class="arr"></span></button>
+      </div>
+    </div>
+    <div class="panel-right">
+      <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">25-Printer Fleet — Production Cell</div>
+      <!-- REMOVED the printer-grid div with 25 boxes -->
+      <div class="decision-card" style="margin-top:.75rem">
+        <div class="dc-header">MSD Key Decisions</div>
+        <div class="dc-rows">
+          <div class="dc-row"><span class="dc-key">Layout type</span><span class="dc-val pass">Cellular — 5×5 printer array</span></div>
+          <div class="dc-row"><span class="dc-key">Material flow</span><span class="dc-val">Filament → Print → QC → FESTO</span></div>
+          <div class="dc-row"><span class="dc-key">Takt time (single shift)</span><span class="dc-val fail">Would need 75 printers</span></div>
+          <div class="dc-row"><span class="dc-key">Takt time (24/7)</span><span class="dc-val pass">25 printers sufficient</span></div>
+          <div class="dc-row"><span class="dc-key">VSM waste identified</span><span class="dc-val warn">Ultimaker changeover removed</span></div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- PANEL 5 — W6-7: Simulation -->
-  <div class="panel-wrap" id="panel-5">
-    <div class="panel">
-      <div class="panel-left">
-        <div class="panel-week-tag">Weeks 6–7 — Digital Twin & Simulation</div>
-        <h2 class="panel-title">Tecnomatix<br><em>Plant Sim.</em><br>50K Proven.</h2>
-        <p class="panel-desc">A full <strong>Discrete Event Simulation</strong> was built in Siemens Tecnomatix Plant Simulation to validate whether 25 Bambu P1S printers could actually hit 50,000 casings per year. The digital twin modelled every print cycle, maintenance window, and failure event.</p>
-        <p class="panel-desc">The capacity calculation confirmed the schedule: <strong>weekdays 24/7 and weekends 8h/day</strong>. This gives 150,790 usable print hours/year — enough for 60,316 attempts at 80% success = 48,253 good pairs, close enough to 50K when supplemented with minor overtime buffer.</p>
-        <div class="outcomes">
-          <div class="oc pass"><span class="oc-dot"></span>50,000 units/year validated</div>
-          <div class="oc pass"><span class="oc-dot"></span>25 printers — optimal fleet size</div>
-          <div class="oc warn"><span class="oc-dot"></span>Station 2 bottleneck identified</div>
-          <div class="oc pass"><span class="oc-dot"></span>Schedule locked: weekdays 24/7 + weekends 8h</div>
-        </div>
-        <div class="nav-btns">
-          <button class="nav-btn" onclick="showPanel(4)"><span class="arr left"></span> Back</button>
-          <button class="nav-btn primary" onclick="showPanel(6)">Next: IoT <span class="arr"></span></button>
-        </div>
+ <!-- PANEL 5 — W6-7: Simulation -->
+<div class="panel-wrap" id="panel-5">
+  <div class="panel">
+    <div class="panel-left">
+      <div class="panel-week-tag">Weeks 6–7 — Digital Twin & Simulation</div>
+      <h2 class="panel-title">Tecnomatix<br><em>Plant Sim.</em><br>50K Proven.</h2>
+      <p class="panel-desc">A full <strong>Discrete Event Simulation</strong> was built in Siemens Tecnomatix Plant Simulation to validate whether 25 Bambu P1S printers could actually hit 50,000 casings per year. The digital twin modelled every print cycle, maintenance window, and failure event.</p>
+      <p class="panel-desc">The capacity calculation confirmed the schedule: <strong>weekdays 24/7 and weekends 8h/day (including Sunday)</strong>. This gives 6365 usable print hours/year — enough for 63,650 attempts at 80% success = 50,920 good pairs, which successfully meets the 50k target.</p>
+      <div class="outcomes">
+        <div class="oc pass"><span class="oc-dot"></span>50,000 units/year validated</div>
+        <div class="oc pass"><span class="oc-dot"></span>25 printers — optimal fleet size</div>
+        <div class="oc warn"><span class="oc-dot"></span>Station 2 bottleneck identified</div>
+        <div class="oc pass"><span class="oc-dot"></span>Schedule locked: weekdays 24/7 + weekends 8h (including Sunday)</div>
       </div>
-      <div class="panel-right">
-        <div class="cap-vis" id="capVis">
-          <div class="cap-vis-title">Capacity Model — Annual Print Hours</div>
-          <div class="cap-bars">
-            <div style="display:flex;align-items:center;margin-bottom:4px">
-              <span style="font-family:var(--fm);font-size:.48rem;color:var(--muted);width:100px;flex-shrink:0;text-align:right;padding-right:.5rem">Gross hours</span>
-              <div style="flex:1;height:20px;background:var(--navy2);overflow:hidden"><div class="cap-bar-fill" style="width:0%;background:rgba(0,229,255,0.3);height:100%;transition:width 1.2s ease;display:flex;align-items:center;padding-left:6px" data-w="100%"><span style="font-family:var(--fm);font-size:.46rem;color:var(--cyan)">177,400 hrs</span></div></div>
-            </div>
-            <div style="display:flex;align-items:center;margin-bottom:4px">
-              <span style="font-family:var(--fm);font-size:.48rem;color:var(--muted);width:100px;flex-shrink:0;text-align:right;padding-right:.5rem">Usable (85%)</span>
-              <div style="flex:1;height:20px;background:var(--navy2);overflow:hidden"><div class="cap-bar-fill" style="width:0%;background:rgba(0,229,255,0.5);height:100%;transition:width 1.4s .1s ease;display:flex;align-items:center;padding-left:6px" data-w="85%"><span style="font-family:var(--fm);font-size:.46rem;color:var(--cyan)">150,790 hrs</span></div></div>
-            </div>
-            <div style="display:flex;align-items:center;margin-bottom:4px">
-              <span style="font-family:var(--fm);font-size:.48rem;color:var(--muted);width:100px;flex-shrink:0;text-align:right;padding-right:.5rem">Print attempts</span>
-              <div style="flex:1;height:20px;background:var(--navy2);overflow:hidden"><div class="cap-bar-fill" style="width:0%;background:rgba(0,229,255,0.7);height:100%;transition:width 1.6s .2s ease;display:flex;align-items:center;padding-left:6px" data-w="78%"><span style="font-family:var(--fm);font-size:.46rem;color:var(--navy);font-weight:500">60,316 attempts</span></div></div>
-            </div>
-            <div style="display:flex;align-items:center">
-              <span style="font-family:var(--fm);font-size:.48rem;color:var(--cyan);width:100px;flex-shrink:0;text-align:right;padding-right:.5rem">Good pairs (80%)</span>
-              <div style="flex:1;height:20px;background:var(--navy2);overflow:hidden"><div class="cap-bar-fill" style="width:0%;background:var(--cyan);height:100%;transition:width 1.8s .3s ease;display:flex;align-items:center;padding-left:6px" data-w="65%"><span style="font-family:var(--fm);font-size:.46rem;color:var(--navy);font-weight:500">~48,253 pairs ≈ 50K ✓</span></div></div>
-            </div>
+      <div class="nav-btns">
+        <button class="nav-btn" onclick="showPanel(4)"><span class="arr left"></span> Back</button>
+        <button class="nav-btn primary" onclick="showPanel(6)">Next: IoT <span class="arr"></span></button>
+      </div>
+    </div>
+    <div class="panel-right">
+      <div class="cap-vis" id="capVis">
+        <div class="cap-vis-title">Capacity Model — Annual Print Hours</div>
+        <div class="cap-bars">
+          <div style="display:flex;align-items:center;margin-bottom:4px">
+            <span style="font-family:var(--fm);font-size:.48rem;color:var(--muted);width:100px;flex-shrink:0;text-align:right;padding-right:.5rem">Gross hours</span>
+            <div style="flex:1;height:20px;background:var(--navy2);overflow:hidden"><div class="cap-bar-fill" style="width:0%;background:rgba(0,229,255,0.3);height:100%;transition:width 1.2s ease;display:flex;align-items:center;padding-left:6px" data-w="100%"><span style="font-family:var(--fm);font-size:.46rem;color:var(--cyan)">176,800 hrs</span></div></div>
+          </div>
+          <div style="display:flex;align-items:center;margin-bottom:4px">
+            <span style="font-family:var(--fm);font-size:.48rem;color:var(--muted);width:100px;flex-shrink:0;text-align:right;padding-right:.5rem">Usable (90%)</span>
+            <div style="flex:1;height:20px;background:var(--navy2);overflow:hidden"><div class="cap-bar-fill" style="width:0%;background:rgba(0,229,255,0.5);height:100%;transition:width 1.4s .1s ease;display:flex;align-items:center;padding-left:6px" data-w="85%"><span style="font-family:var(--fm);font-size:.46rem;color:var(--cyan)">159,120 hrs</span></div></div>
+          </div>
+          <div style="display:flex;align-items:center;margin-bottom:4px">
+            <span style="font-family:var(--fm);font-size:.48rem;color:var(--muted);width:100px;flex-shrink:0;text-align:right;padding-right:.5rem">Print attempts</span>
+            <div style="flex:1;height:20px;background:var(--navy2);overflow:hidden"><div class="cap-bar-fill" style="width:0%;background:rgba(0,229,255,0.7);height:100%;transition:width 1.6s .2s ease;display:flex;align-items:center;padding-left:6px" data-w="78%"><span style="font-family:var(--fm);font-size:.46rem;color:var(--navy);font-weight:500">63,648 attempts</span></div></div>
+          </div>
+          <div style="display:flex;align-items:center">
+            <span style="font-family:var(--fm);font-size:.48rem;color:var(--cyan);width:100px;flex-shrink:0;text-align:right;padding-right:.5rem">Good pairs (80%)</span>
+            <div style="flex:1;height:20px;background:var(--navy2);overflow:hidden"><div class="cap-bar-fill" style="width:0%;background:var(--cyan);height:100%;transition:width 1.8s .3s ease;display:flex;align-items:center;padding-left:6px" data-w="65%"><span style="font-family:var(--fm);font-size:.46rem;color:var(--navy);font-weight:500">~50,918 pairs ≈ 50K ✓</span></div></div>
           </div>
         </div>
-        <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin:.75rem 0 .5rem">Weekly Schedule</div>
-        <div class="schedule-vis">
-          <div class="sv-label"></div>
-          <div class="sv-header">Mon</div><div class="sv-header">Tue</div><div class="sv-header">Wed</div><div class="sv-header">Thu</div><div class="sv-header">Fri</div><div class="sv-header">Sat</div><div class="sv-header">Sun</div>
-          <div class="sv-label" style="font-family:var(--fm);font-size:.44rem;color:var(--muted)">AM</div>
-          <div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell we"></div><div class="sv-cell off"></div>
-          <div class="sv-label" style="font-family:var(--fm);font-size:.44rem;color:var(--muted)">PM</div>
-          <div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell we"></div><div class="sv-cell off"></div>
-          <div class="sv-label" style="font-family:var(--fm);font-size:.44rem;color:var(--muted)">Night</div>
-          <div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell off"></div><div class="sv-cell off"></div>
-        </div>
-        <div style="display:flex;gap:1rem;margin-top:.5rem;font-family:var(--fm);font-size:.45rem;color:var(--muted)">
-          <span style="display:flex;align-items:center;gap:.3rem"><span style="width:10px;height:10px;background:rgba(0,229,255,0.15);border:1px solid rgba(0,229,255,0.3);display:inline-block"></span>Weekday 24/7</span>
-          <span style="display:flex;align-items:center;gap:.3rem"><span style="width:10px;height:10px;background:rgba(0,229,255,0.06);border:1px solid rgba(0,229,255,0.15);display:inline-block"></span>Weekend 8h</span>
-          <span style="display:flex;align-items:center;gap:.3rem"><span style="width:10px;height:10px;background:var(--navy3);border:1px solid var(--border);display:inline-block"></span>Off</span>
-        </div>
+      </div>
+      <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin:.75rem 0 .5rem">Weekly Schedule</div>
+      <div class="schedule-vis">
+        <div class="sv-label"></div>
+        <div class="sv-header">Mon</div><div class="sv-header">Tue</div><div class="sv-header">Wed</div><div class="sv-header">Thu</div><div class="sv-header">Fri</div><div class="sv-header">Sat</div><div class="sv-header">Sun</div>
+        <div class="sv-label" style="font-family:var(--fm);font-size:.44rem;color:var(--muted)">AM</div>
+        <div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell we"></div><div class="sv-cell we"></div>
+        <div class="sv-label" style="font-family:var(--fm);font-size:.44rem;color:var(--muted)">PM</div>
+        <div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell we"></div><div class="sv-cell we"></div>
+        <div class="sv-label" style="font-family:var(--fm);font-size:.44rem;color:var(--muted)">Night</div>
+        <div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell wd"></div><div class="sv-cell off"></div><div class="sv-cell off"></div>
+      </div>
+      <div style="display:flex;gap:1rem;margin-top:.5rem;font-family:var(--fm);font-size:.45rem;color:var(--muted)">
+        <span style="display:flex;align-items:center;gap:.3rem"><span style="width:10px;height:10px;background:rgba(0,229,255,0.15);border:1px solid rgba(0,229,255,0.3);display:inline-block"></span>Weekday 24/7</span>
+        <span style="display:flex;align-items:center;gap:.3rem"><span style="width:10px;height:10px;background:rgba(0,229,255,0.06);border:1px solid rgba(0,229,255,0.15);display:inline-block"></span>Weekend 8h</span>
+        <span style="display:flex;align-items:center;gap:.3rem"><span style="width:10px;height:10px;background:var(--navy3);border:1px solid var(--border);display:inline-block"></span>Off</span>
       </div>
     </div>
   </div>
+</div>
 
   <!-- PANEL 6 — W7: IoT -->
   <div class="panel-wrap" id="panel-6">
@@ -875,9 +875,68 @@ footer{background:var(--navy2);padding:2rem 4%;display:grid;grid-template-column
 </section>
 
 <section id="traceability" class="reveal">
-  <div class="trace-card"><div class="trace-tag">06 — Quality System</div><div class="trace-title">Traceability<br>& IIoT</div><div class="trace-desc">Every casing gets a unique ID: batch number, printer ID, date, slicer version. This makes SPC actionable and defects traceable to source.</div><div class="trace-image-placeholder"><span>📸 PHOTO PLACEHOLDER — QR code / Laser-etched part ID</span><br>Example of unique identifier on casing</div><div class="trace-features"><div class="trace-feat">Unique part ID per casing</div><div class="trace-feat">Batch linked to printer & slicer profile</div><div class="trace-feat">FESTO pass/fail logged per ID</div></div></div>
-  <div class="trace-card"><div class="trace-tag">Industry 4.0</div><div class="trace-title">Data is the<br>Real Product</div><div class="trace-desc">Every print generates data: temperatures, dimensions, cycle times. That data powers continuous improvement.</div><div class="trace-features"><div class="trace-feat">Siemens Insights Hub — real-time telemetry</div><div class="trace-feat">Bambu Cloud — remote monitoring</div><div class="trace-feat">SPC dashboard — live control charts</div></div></div>
+  <div class="trace-card">
+    <div class="trace-tag">06 — Quality System</div>
+    <div class="trace-title">Traceability<br>& IIoT</div>
+    <div class="trace-desc">Every casing gets a unique ID: batch number, printer ID, date, slicer version. This makes SPC actionable and defects traceable to source.</div>
+    
+    <!-- 3 HORIZONTAL PICTURE BOXES -->
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin: 1rem 0;">
+      
+      <!-- PICTURE 1 -->
+      <div class="trace-image-placeholder" style="margin: 0; padding: 0.75rem; text-align: center;">
+        <span style="font-size: 1.5rem;">📸</span>
+        <br>
+        <span style="font-size: 0.6rem; color: var(--cyan);">IMAGE SLOT 1</span>
+        <br>
+        <span style="font-size: 0.55rem; color: var(--muted);">QR / Laser ID</span>
+        <br><br>
+        <code style="font-size: 0.5rem; color: var(--cyan);">← Add link →</code>
+      </div>
+      
+      <!-- PICTURE 2 -->
+      <div class="trace-image-placeholder" style="margin: 0; padding: 0.75rem; text-align: center;">
+        <span style="font-size: 1.5rem;">📸</span>
+        <br>
+        <span style="font-size: 0.6rem; color: var(--cyan);">IMAGE SLOT 2</span>
+        <br>
+        <span style="font-size: 0.55rem; color: var(--muted);">FESTO Data Log</span>
+        <br><br>
+        <code style="font-size: 0.5rem; color: var(--cyan);">← Add link →</code>
+      </div>
+      
+      <!-- PICTURE 3 -->
+      <div class="trace-image-placeholder" style="margin: 0; padding: 0.75rem; text-align: center;">
+        <span style="font-size: 1.5rem;">📸</span>
+        <br>
+        <span style="font-size: 0.6rem; color: var(--cyan);">IMAGE SLOT 3</span>
+        <br>
+        <span style="font-size: 0.55rem; color: var(--muted);">SPC Dashboard</span>
+        <br><br>
+        <code style="font-size: 0.5rem; color: var(--cyan);">← Add link →</code>
+      </div>
+      
+    </div>
+    
+    <div class="trace-features">
+      <div class="trace-feat">Unique part ID per casing</div>
+      <div class="trace-feat">Batch linked to printer & slicer profile</div>
+      <div class="trace-feat">FESTO pass/fail logged per ID</div>
+    </div>
+  </div>
+  
+  <div class="trace-card">
+    <div class="trace-tag">Industry 4.0</div>
+    <div class="trace-title">Data is the<br>Real Product</div>
+    <div class="trace-desc">Every print generates data: temperatures, dimensions, cycle times. That data powers continuous improvement.</div>
+    <div class="trace-features">
+      <div class="trace-feat">Siemens Insights Hub — real-time telemetry</div>
+      <div class="trace-feat">Bambu Cloud — remote monitoring</div>
+      <div class="trace-feat">SPC dashboard — live control charts</div>
+    </div>
+  </div>
 </section>
+ 
 
 <section id="portfolio-note" class="reveal"><div class="pn-bg" style="font-size:8vw;opacity:0.03;position:absolute">PROCESS</div><div class="pn-tag" style="position:relative">This Portfolio</div><h2 class="pn-h2">It's About<br><em>The Process.</em></h2><p class="pn-body">A record of engineering decision-making — every wrong turn documented, every pivot justified with data. That is digital manufacturing in practice.</p></section>
 
