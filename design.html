@@ -161,7 +161,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 <div id="cursor-ring"></div>
 
 <nav>
-  <span class="logo">PANIZ<span>.</span></span>
+  <span class="logo">ENCLOS3D<span>.</span></span>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="industry.html">Industry challenge</a></li>
@@ -244,17 +244,16 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <div class="case-intro">
     <div class="case-intro-text">
       <h3>Top Casing<br><em>Design Process</em></h3>
-      <p>The top casing presented the most significant engineering challenge of this project. With <strong>no complete engineering drawing provided</strong>, the entire model had to be built from physical measurements taken from the real component using callipers and cross-referencing multiple angles.</p>
+      <p>The top casing presented the most significant challenge part of the design. With <strong>no complete engineering drawing provided</strong>, some dimensions where calcukated from the drawing, and for some , the model had to be built from physical measurements taken from the real component.</p>
       <p>This process — known as reverse engineering — required a deep understanding of how Fusion 360 handles parametric feature construction. Each sketch was built layer by layer, with unknown dimensions derived mathematically from known proportional relationships.</p>
-      <p>The most challenging features were the <strong>internal lip geometry, the camera aperture positioning, and the subtle draft angles</strong> on the side walls — none of which were explicitly documented, and all of which were critical to achieving a press-fit assembly later in the process.</p>
+     
       <div class="challenge-box" style="margin-top:1.25rem">
         <div class="challenge-box-title">Engineering Challenges Overcome</div>
         <ul class="challenge-list">
           <li>Missing cross-sectional dimensions — derived from proportion analysis</li>
           <li>Unclear feature positions — reconstructed via relative distance mapping</li>
           <li>Complex curved surfaces — modelled using incremental feature construction</li>
-          <li>Internal lip geometry — critical for press-fit at Station 2 (FESTO)</li>
-          <li>Camera cutout and button aperture alignment across all views</li>
+          <li>Internal lip geometry — critical for press-fit at Station 4 (FESTO)</li>
         </ul>
       </div>
     </div>
@@ -264,11 +263,11 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
         <div style="display:flex;flex-direction:column;gap:.85rem;margin-top:.25rem">
           <div class="solution-item">
             <div class="sol-icon"><svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="5"/><path d="M7 4v3l2 2"/></svg></div>
-            <div class="sol-text"><strong>Step 1 — Physical measurement:</strong> Callipers used to record all accessible external dimensions. Sketches produced at 1:1 scale.</div>
+            <div class="sol-text"><strong>Step 1 — 2D drawing:</strong> Design started from available dimensions.</div>
           </div>
           <div class="solution-item">
             <div class="sol-icon"><svg viewBox="0 0 14 14"><path d="M2 12L12 2M2 2h10v10"/></svg></div>
-            <div class="sol-text"><strong>Step 2 — 2D drawing construction:</strong> Multi-view orthographic drawing built in Fusion 360. All ambiguous dimensions flagged and resolved.</div>
+            <div class="sol-text"><strong>Step 2 — find dimension:</strong> Missing dimensions were calculated from other measurements or measured on the physical device.</div>
           </div>
           <div class="solution-item">
             <div class="sol-icon"><svg viewBox="0 0 14 14"><rect x="2" y="2" width="10" height="10" rx="1"/><path d="M5 7h4M7 5v4"/></svg></div>
@@ -330,9 +329,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       <div class="dim-row"><span class="dim-name">Overall Height</span><span class="dim-val">114 mm</span><span class="dim-spec">Measured</span></div>
       <div class="dim-row"><span class="dim-name">Overall Width</span><span class="dim-val">60 mm</span><span class="dim-spec">Measured</span></div>
       <div class="dim-row"><span class="dim-name">Depth (Z)</span><span class="dim-val">11.7 mm</span><span class="dim-spec">Measured</span></div>
-      <div class="dim-row"><span class="dim-name">Wall Thickness</span><span class="dim-val">1.6–2.2 mm</span><span class="dim-spec">Spec range — critical</span></div>
-      <div class="dim-row"><span class="dim-name">Internal Lip</span><span class="dim-val">Derived</span><span class="dim-spec">Calculated from proportions</span></div>
-      <div class="dim-row"><span class="dim-name">Camera Aperture</span><span class="dim-val">Derived</span><span class="dim-spec">Cross-referenced from top view</span></div>
+
     </div>
   </div>
 
@@ -347,27 +344,21 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
   <!-- STL EXPORT -->
   <div class="stl-row">
-    <div class="stl-card">
-      <div class="stl-icon"><svg viewBox="0 0 22 22"><path d="M3 16l8-12 8 12H3z"/><path d="M6 16v4h10v-4"/></svg></div>
-      <div class="stl-info">
-        <div class="stl-title">top_casing_v3_final.stl</div>
-        <div class="stl-desc">High-resolution STL mesh exported from Fusion 360. Geometry validated in Bambu Studio before printing. Zero mesh errors detected on final export.</div>
-        <div class="stl-meta">
-          <div class="stl-tag">STL</div>
-          <div class="stl-tag">Fusion 360</div>
-          <div class="stl-tag">Print Ready</div>
-        </div>
+  <div class="stl-card" style="grid-column: span 2;">
+    <div class="stl-icon"><svg viewBox="0 0 22 22"><path d="M3 16l8-12 8 12H3z"/><path d="M6 16v4h10v-4"/></svg></div>
+    <div class="stl-info" style="flex:1;">
+      <div class="stl-title">top_casing_v3_final.stl</div>
+      <div class="stl-desc">High-resolution STL mesh exported from Fusion 360. Geometry validated in Bambu Studio before printing. Zero mesh errors detected on final export. Format: STL: Compatible with Bambu P1S slicer profile.</div>
+      <div class="stl-meta">
+        <div class="stl-tag">STL</div>
+        <div class="stl-tag">Print Ready</div>
       </div>
-    </div>
-    <div class="stl-card">
-      <div class="stl-icon"><svg viewBox="0 0 22 22"><path d="M11 2v14M6 12l5 5 5-5"/><path d="M3 18h16"/></svg></div>
-      <div class="stl-info">
-        <div class="stl-title">Export Settings — Top Casing</div>
-        <div class="stl-desc">Format: Binary STL — Surface deviation: 0.001mm — Normal deviation: 1° — Refinement: High — Compatible with Bambu P1S slicer profile.</div>
-        <div class="stl-meta">
-          <div class="stl-tag">Binary STL</div>
-          <div class="stl-tag">0.001mm Tolerance</div>
-        </div>
+      <!-- 👇 PUT YOUR STL DOWNLOAD LINK HERE 👇 -->
+    <div style="margin-top: 1rem;">
+        <a href="https://raw.githubusercontent.com/panizmazaheri953-sudo/DigitalManufacturingBlog/main/Top%20Case%20Final.stl" style="display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--fm); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); text-decoration: none; border: 1px solid var(--cyan); padding: 0.5rem 1rem; transition: all 0.2s;" onmouseover="this.style.background='var(--cyan)'; this.style.color='var(--navy)';" onmouseout="this.style.background='transparent'; this.style.color='var(--cyan)';">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0-3-3m3 3 3-3M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2"/></svg>
+          DOWNLOAD STL FILE
+        </a>
       </div>
     </div>
   </div>
@@ -413,14 +404,14 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       <h3>Bottom Casing<br><em>Design Process</em></h3>
       <p>The bottom casing was modelled directly from a <strong>complete client engineering drawing</strong> — a significantly more structured workflow than the reverse-engineered top casing. Every dimension, datum, and feature relationship was clearly defined from the outset.</p>
       <p>The primary engineering objective was <strong>precision translation</strong>: ensuring that every dimension in the 2D drawing was faithfully reproduced in the 3D model without accumulated tolerancing errors. Fusion 360's parametric constraint system was critical to maintaining feature relationships throughout the build.</p>
-      <p>The bottom casing is 1.3mm deeper than the top, which has direct implications for the <strong>press-fit assembly</strong> at Station 2 of the FESTO CP Lab testing rig. Maintaining the depth specification within ±0.15mm was treated as a critical control point from the very first sketch.</p>
+      <p>The bottom casing is 1.3mm deeper than the top, which has direct implications for the <strong>press-fit assembly</strong> at Station 4 of the FESTO CP Lab testing rig. Maintaining the depth specification within ±0.15mm was treated as a critical control point from the very first sketch.</p>
       <div class="challenge-box" style="margin-top:1.25rem">
         <div class="challenge-box-title">Key Engineering Decisions</div>
         <ul class="challenge-list">
           <li>All features constructed from fully constrained parametric sketches</li>
           <li>Datum references aligned to match client drawing coordinate system</li>
           <li>Depth tolerance treated as critical — directly affects assembly fit</li>
-          <li>USB port recess and speaker grille modelled to exact drawing specifications</li>
+         
           <li>Regular cross-checks between Fusion 360 model and original drawing throughout</li>
         </ul>
       </div>
@@ -439,11 +430,11 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
           </div>
           <div class="solution-item">
             <div class="sol-icon"><svg viewBox="0 0 14 14"><rect x="2" y="2" width="10" height="10" rx="1"/><path d="M5 7h4M7 5v4"/></svg></div>
-            <div class="sol-text"><strong>Step 3 — Feature build:</strong> Shell, ports, and structural ribs added in sequence. Each feature verified against drawing before proceeding to the next.</div>
+            <div class="sol-text"><strong>Step 3 — Feature build:</strong>  Each feature verified against drawing before proceeding to the next.</div>
           </div>
           <div class="solution-item">
             <div class="sol-icon"><svg viewBox="0 0 14 14"><path d="M3 11l8-8M8 3h3v3"/></svg></div>
-            <div class="sol-text"><strong>Step 4 — STL export:</strong> High-resolution mesh at 0.001mm surface deviation. Geometry verified clean before handoff to 3D printing stage.</div>
+            <div class="sol-text"><strong>Step 4 — STL export:</strong> High-resolution mesh exported. Geometry verified clean before handoff to 3D printing stage.</div>
           </div>
         </div>
       </div>
@@ -475,7 +466,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       <div class="media-body">
         <img src="https://github.com/panizmazaheri953-sudo/Digital-Manufacturing-/blob/main/Screenshot%202026-04-16%20at%2016.32.27.png?raw=true" alt="Bottom Casing 2D Drawing" style="width:100%; display:block; min-height:180px">
       </div>
-      <div class="media-caption"><strong>Orthographic Drawing:</strong> Fully dimensioned multi-view drawing produced in Fusion 360. All values sourced directly from the client's engineering drawing — no derived inputs.</div>
+      <div class="media-caption"><strong>Orthographic Drawing:</strong> Fully dimensioned multi-view cad drawing . .</div>
     </div>
 
     <div class="media-block">
@@ -486,7 +477,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       <div class="media-body">
         <img src="https://github.com/panizmazaheri953-sudo/Digital-Manufacturing-/blob/main/Screenshot%202026-04-16%20at%2015.54.32.png?raw=true" alt="Bottom Casing 3D Model" style="width:100%; display:block; min-height:180px">
       </div>
-      <div class="media-caption"><strong>Parametric Solid Model:</strong> Completed 3D model with all client-specified features. Depth confirmed at 13mm — critical for FESTO assembly press-fit clearance.</div>
+      <div class="media-caption"><strong>Parametric Solid Model:</strong> Completed 3D model with all client-specified features. </div>
     </div>
   </div>
 
@@ -497,9 +488,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       <div class="dim-row"><span class="dim-name">Overall Height</span><span class="dim-val">114 mm</span><span class="dim-spec">Client drawing</span></div>
       <div class="dim-row"><span class="dim-name">Overall Width</span><span class="dim-val">60 mm</span><span class="dim-spec">Client drawing</span></div>
       <div class="dim-row"><span class="dim-name">Depth (Z)</span><span class="dim-val">13 mm</span><span class="dim-spec">Client drawing — critical</span></div>
-      <div class="dim-row"><span class="dim-name">Wall Thickness</span><span class="dim-val">1.6–2.2 mm</span><span class="dim-spec">Spec range — SPC controlled</span></div>
-      <div class="dim-row"><span class="dim-name">USB Port Recess</span><span class="dim-val">Per drawing</span><span class="dim-spec">Exact from client spec</span></div>
-      <div class="dim-row"><span class="dim-name">Speaker Grille</span><span class="dim-val">Per drawing</span><span class="dim-spec">Exact from client spec</span></div>
+
     </div>
   </div>
 
@@ -514,42 +503,28 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
   <!-- STL EXPORT -->
   <div class="stl-row">
-    <div class="stl-card">
-      <div class="stl-icon"><svg viewBox="0 0 22 22"><path d="M3 16l8-12 8 12H3z"/><path d="M6 16v4h10v-4"/></svg></div>
-      <div class="stl-info">
-        <div class="stl-title">bottom_casing_v2_final.stl</div>
-        <div class="stl-desc">High-resolution STL mesh exported from Fusion 360. Fully validated against client drawing dimensions. Zero mesh errors. Slicer import successful on first attempt.</div>
-        <div class="stl-meta">
-          <div class="stl-tag">STL</div>
-          <div class="stl-tag">Fusion 360</div>
-          <div class="stl-tag">Print Ready</div>
-        </div>
+  <div class="stl-card" style="grid-column: span 2;">
+    <div class="stl-icon"><svg viewBox="0 0 22 22"><path d="M3 16l8-12 8 12H3z"/><path d="M6 16v4h10v-4"/></svg></div>
+    <div class="stl-info" style="flex:1;">
+      <div class="stl-title">Bottom Case Final.stl</div>
+      <div class="stl-desc">High-resolution STL mesh exported from Fusion 360. Geometry validated in Bambu Studio before printing. Zero mesh errors detected on final export. Format: STL: Compatible with Bambu P1S slicer profile.</div>
+      <div class="stl-meta">
+        <div class="stl-tag">STL</div>
+        <div class="stl-tag">Print Ready</div>
       </div>
-    </div>
-    <div class="stl-card">
-      <div class="stl-icon"><svg viewBox="0 0 22 22"><path d="M11 2v14M6 12l5 5 5-5"/><path d="M3 18h16"/></svg></div>
-      <div class="stl-info">
-        <div class="stl-title">Export Settings — Bottom Casing</div>
-        <div class="stl-desc">Format: Binary STL — Surface deviation: 0.001mm — Normal deviation: 1° — Refinement: High — Compatible with Bambu P1S slicer profile.</div>
-        <div class="stl-meta">
-          <div class="stl-tag">Binary STL</div>
-          <div class="stl-tag">0.001mm Tolerance</div>
-        </div>
+      <div style="margin-top: 1rem;">
+        <a href="https://raw.githubusercontent.com/panizmazaheri953-sudo/DigitalManufacturingBlog/main/Bottom%20Case%20Final.stl" style="display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--fm); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); text-decoration: none; border: 1px solid var(--cyan); padding: 0.5rem 1rem; transition: all 0.2s;" onmouseover="this.style.background='var(--cyan)'; this.style.color='var(--navy)';" onmouseout="this.style.background='transparent'; this.style.color='var(--cyan)';">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0-3-3m3 3 3-3M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2"/></svg>
+          DOWNLOAD STL FILE
+        </a>
       </div>
     </div>
   </div>
 </div>
-
 <footer>
-  <div class="f-logo">PANIZ<span>.</span></div>
+  <div class="f-logo">ENCLOS3D<span>.</span></div>
   <div class="f-copy">© 2026 — Digital Manufacturing Portfolio</div>
-  <div class="f-links">
-    <a href="project.html">Project</a>
-    <a href="pfmea.html">PFMEA</a>
-    <a href="printing.html">3D Printing</a>
-    <a href="quality.html">Quality</a>
-    <a href="simulation.html">Simulation</a>
-  </div>
+
 </footer>
 
 <script>
