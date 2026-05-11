@@ -20,12 +20,14 @@ body{font-family:var(--ff);background:var(--navy);color:var(--white);overflow-x:
 #cursor-ring{position:fixed;top:0;left:0;width:34px;height:34px;border:1px solid var(--cyan);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.4}
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.02;pointer-events:none;z-index:9990}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 4%;height:62px;border-bottom:1px solid var(--border);background:rgba(5,13,26,0.95);backdrop-filter:blur(12px)}
-.logo{font-family:var(--fd);font-size:1.4rem;letter-spacing:.06em;color:var(--white);text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 4%;height:62px;border-bottom:1px solid var(--border);background:rgba(5,13,26,0.92);backdrop-filter:blur(12px)}
+.logo{font-family:var(--fd);font-size:1.55rem;letter-spacing:.06em;color:var(--white)}
 .logo span{color:var(--cyan)}
 .nav-links{display:flex;list-style:none}
-.nav-links a{font-family:var(--fm);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.4rem .8rem;height:62px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
-.nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan)}
+.nav-links a{font-family:var(--fm);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.4rem .9rem;transition:color .2s;height:62px;display:flex;align-items:center;border-bottom:2px solid transparent}
+.nav-links a:hover{color:var(--cyan);border-bottom-color:var(--cyan)}
+.nav-pill{font-family:var(--fm);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--cyan);color:var(--cyan);padding:.45rem 1.2rem;text-decoration:none;transition:all .2s;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%)}
+.nav-pill:hover{background:var(--cyan);color:var(--navy)}
 
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:translateY(0)}
@@ -159,17 +161,18 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
 <div id="cursor-ring"></div>
 
 <nav>
-  <a class="logo" href="index.html">PANIZ<span>.</span></a>
+  <span class="logo">ENCLOS3D<span>.</span></span>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
+    <li><a href="industry.html">Industry challenge</a></li>
     <li><a href="project.html">Project</a></li>
     <li><a href="design.html">Design</a></li>
     <li><a href="pfmea.html">PFMEA</a></li>
     <li><a href="MSD.html">MSD</a></li>
     <li><a href="printing.html">3D Printing</a></li>
-    <li><a href="quality.html" class="active">Quality</a></li>
+    <li><a href="quality.html">Quality</a></li>
     <li><a href="simulation.html">Simulation</a></li>
-    <li><a href="iot.html">IoT</a></li>
+    <li><a href="iot.html">IoT and Digital Twin</a></li>
   </ul>
 </nav>
 
