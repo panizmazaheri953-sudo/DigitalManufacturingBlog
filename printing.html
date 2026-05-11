@@ -342,7 +342,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
         <div class="pc-spec-row"><span class="pc-sk">Total attempts</span><span class="pc-sv fail">~20 — none fully passed</span></div>
         <div class="verdict-strip">
           <div class="verdict-icon fail"><span style="color:var(--red);font-size:.9rem">✗</span></div>
-          <div class="verdict-text"><strong>Retired.</strong> The open-frame design caused consistent temperature gradients, leading to warping and a wall thickness of 1.18mm — well below the 1.6–2.2mm specification. No Ultimaker print passed FESTO Station 2.</div>
+          <div class="verdict-text"><strong>Retired.</strong> The open-frame design caused consistent temperature gradients, leading to warping and a wall thickness of  well below the 1.6–2.2mm specification. No Ultimaker print passed FESTO Station 2 and was visually acceptable at the same time.</div>
         </div>
         <div class="pc-watermark">RETIRED</div>
       </div>
@@ -367,31 +367,40 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
     </div>
 
     <!-- Printer photos -->
-    <div style="margin-top:1.5rem">
-      <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">The Printers — In the Lab</div>
-      <div class="photo-grid photo-grid-4">
-        <div class="photo-cell">
-          <!-- ADD: photo of Ultimaker printer itself -->
-          <img src="YOUR_ULTIMAKER_PRINTER_PHOTO.jpg" alt="Ultimaker printer" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8M12 8v8\'/></svg><span>Ultimaker Printer</span></div>'">
-          <div class="photo-label"><strong>Ultimaker</strong>Open-frame FDM printer<span class="photo-pill fail">Retired</span></div>
-        </div>
-        <div class="photo-cell">
-          <!-- ADD: photo of Ultimaker starting to print -->
-          <img src="YOUR_ULTIMAKER_PRINTING_PHOTO.jpg" alt="Ultimaker printing" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8M12 8v8\'/></svg><span>Ultimaker — Printing</span></div>'">
-          <div class="photo-label"><strong>Ultimaker — Starting a Print</strong>Early trials<span class="photo-pill warn">Phase 1</span></div>
-        </div>
-        <div class="photo-cell">
-          <!-- ADD: photo of Bambu P1S printer itself -->
-          <img src="YOUR_BAMBU_PRINTER_PHOTO.jpg" alt="Bambu P1S printer" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8M12 8v8\'/></svg><span>Bambu P1S Printer</span></div>'">
-          <div class="photo-label"><strong>Bambu P1S</strong>Enclosed production printer<span class="photo-pill pass">Active</span></div>
-        </div>
-        <div class="photo-cell">
-          <!-- ADD: photo of Bambu starting to print -->
-          <img src="YOUR_BAMBU_PRINTING_PHOTO.jpg" alt="Bambu P1S printing" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8M12 8v8\'/></svg><span>Bambu — Printing</span></div>'">
-          <div class="photo-label"><strong>Bambu P1S — First Print</strong>Immediate success<span class="photo-pill pass">Pass</span></div>
-        </div>
-      </div>
+<div style="margin-top:1.5rem">
+  <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">The Printers — In the Lab</div>
+  <div class="photo-grid photo-grid-4">
+    
+    <!-- Cell 1: Photo of Ultimaker printer -->
+    <div class="photo-cell">
+      <img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/Screenshot%202026-05-11%20at%2013.21.11.png?raw=true" alt="Ultimaker printer" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8M12 8v8\'/></svg><span>Ultimaker Printer</span></div>'">
+      <div class="photo-label"><strong>Ultimaker</strong>Open-frame FDM printer<span class="photo-pill fail">Retired</span></div>
     </div>
+
+    <!-- Cell 2: VIDEO of Ultimaker starting to print -->
+    <div class="photo-cell">
+      <video controls style="width:100%; height:100%; object-fit:cover;">
+        <source src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/raw/refs/heads/main/IMG_4480.mp4" type="video/mp4">
+        Your browser does not support video.
+      </video>
+      <div class="photo-label"><strong>Ultimaker — Starting a Print</strong>Early trials<span class="photo-pill warn">Phase 1</span></div>
+    </div>
+
+    <!-- Cell 3: Photo of Bambu P1S printer -->
+    <div class="photo-cell">
+      <img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/IMG_4306.jpg?raw=true" alt="Bambu P1S printer" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8M12 8v8\'/></svg><span>Bambu P1S Printer</span></div>'">
+      <div class="photo-label"><strong>Bambu P1S</strong>Enclosed production printer<span class="photo-pill pass">Active</span></div>
+    </div>
+
+    <!-- Cell 4: VIDEO of Bambu starting to print -->
+    <div class="photo-cell">
+     <video controls style="width:100%; height:120%; object-fit:cover;">
+        <source src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/raw/refs/heads/main/IMG_4307.mp4" type="video/mp4">
+        Your browser does not support video.
+      </video>
+      <div class="photo-label"><strong>Bambu P1S — First Print</strong>Immediate success<span class="photo-pill pass">Pass</span></div>
+    </div>
+
   </div>
 </div>
 
@@ -406,7 +415,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
       <div><div style="font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem">From</div><div class="sc-label from">Ultimaker</div></div>
       <div class="sc-mid">
         <div class="sc-mid-title">⚡ Platform Switch — Data-Driven</div>
-        <div class="sc-mid-text">20 prints. 0 passed FESTO Station 2. Wall consistently at 1.18mm vs 1.6–2.2mm spec. The data was unambiguous — the platform had to change.</div>
+        <div class="sc-mid-text">20 prints. 0 passed FESTO Station 2 and looked visually satisfactory at the same time. Measurement was out of 1.6–2.2mm spec. The data was unambiguous and the platform had to change.</div>
       </div>
       <div><div style="font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem">To</div><div class="sc-label to">Bambu P1S</div></div>
     </div>
@@ -416,7 +425,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
         <div style="display:flex;flex-direction:column;gap:.5rem">
           <div style="padding:.7rem .9rem;background:rgba(255,68,68,0.05);border:1px solid rgba(255,68,68,0.15);border-left:2px solid var(--red)">
             <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--red);margin-bottom:.3rem">Root Cause 1</div>
-            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Open frame = temperature gradients.</strong> Without an enclosure, ambient air cooled different parts of the print unevenly, causing layer warping and inconsistent extrusion — directly resulting in the 1.18mm wall measurement.</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Open frame = temperature gradients.</strong> Without an enclosure, ambient air cooled different parts of the print unevenly, causing layer warping and inconsistent extrusion which directly resulting in the 1.18mm wall measurement.</div>
           </div>
           <div style="padding:.7rem .9rem;background:rgba(255,68,68,0.05);border:1px solid rgba(255,68,68,0.15);border-left:2px solid var(--red)">
             <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--red);margin-bottom:.3rem">Root Cause 2</div>
@@ -426,23 +435,88 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
             <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--red);margin-bottom:.3rem">Root Cause 3</div>
             <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Hardware reliability.</strong> Multiple mid-print failures due to filament sensor errors, nozzle clogs, and calibration drift across ~20 attempts. Unacceptable for a 50,000/year production commitment.</div>
           </div>
+                    <div style="padding:.7rem .9rem;background:rgba(255,68,68,0.05);border:1px solid rgba(255,68,68,0.15);border-left:2px solid var(--red)">
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--red);margin-bottom:.3rem">Root Cause 4</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Insufficient brim size.</strong> A wider brim helps the print stay attached to the bed and prevents warping and more importantly, it can prevent nozzle clogging, which is difficult to repair on the Ultimaker. This setting was not optimised in early PrintCity trials.</div>
+          </div>
+                    <div style="padding:.7rem .9rem;background:rgba(255,68,68,0.05);border:1px solid rgba(255,68,68,0.15);border-left:2px solid var(--red)">
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--red);margin-bottom:.3rem">Mid Print Failure</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Unreliable filament detection.</strong> The Ultimaker's filament sensor triggered false positives multiple times, stopping prints mid way for no reason. Each stop wasted 1 to 2 hours of print time and 50g to 100g of PLA. Restarting required manual intervention and recalibration.</div>
+          </div>
+          
+          <div style="padding:.7rem .9rem;background:rgba(255,68,68,0.05);border:1px solid rgba(255,68,68,0.15);border-left:2px solid var(--red)">
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--red);margin-bottom:.3rem">Mid Print Failure </div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Partial and full clogs stopped multiple prints.</strong> The Bowden tube extruder is prone to pressure buildup, leading to clogs. Clearing a clog required a cold pull procedure, recalibration of the extruder, and often a complete print restart. This alone caused the loss of several casings.</div>
+          </div>
+          
+          <div style="padding:.7rem .9rem;background:rgba(255,68,68,0.05);border:1px solid rgba(255,68,68,0.15);border-left:2px solid var(--red)">
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--red);margin-bottom:.3rem">Poor Final Print Quality </div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Corners lifted from the print bed.</strong> Without an enclosure, the bottom layers cooled faster than the upper layers. This thermal gradient caused the corners of the phone casing to curl upward, creating a warped final part that could not be used in assembly.</div>
+          </div>
+          
+          <div style="padding:.7rem .9rem;background:rgba(255,68,68,0.05);border:1px solid rgba(255,68,68,0.15);border-left:2px solid var(--red)">
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--red);margin-bottom:.3rem">Dimensional Inaccuracy</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">1.18mm measured vs 1.6mm CAD minimum.</strong> The CAD model specified a wall thickness of 2mm. The Ultimaker consistently printed walls at wrong dimensions like 1.18 which is 26 percent below the design minimum. This was not a CAD error; the same file printed correctly on the Bambu P1S at 1.9mm.</div>
+          </div>
+          
+         
+                    <div style="padding:.7rem .9rem;background:rgba(255,68,68,0.05);border:1px solid rgba(255,68,68,0.15);border-left:2px solid var(--red)">
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--red);margin-bottom:.3rem">Pre Print Setup including Bed Leveling and Filament Changes</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Manual bed leveling was slow and unreliable.</strong> Before every print, the Ultimaker required manual bed leveling using a piece of paper to set the nozzle height. This process was imprecise and often took 15 to 20 minutes. If the leveling was slightly off, the first layer would fail and the whole process had to restart. Changing filament was also a hassle; unloading the old PLA required heating the nozzle, manually feeding the new filament, and waiting for the extruder to purge properly. Each filament change added another 10 to 15 minutes of setup time. Combined, these pre print steps meant every Ultimaker print took 1 to 2 hours just to get the printer ready before the actual print could even start. For a production environment aiming at 50,000 units per year, this manual overhead was completely unacceptable.</div>
+          </div>
         </div>
       </div>
-      <div>
+           <div>
         <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">Why Bambu P1S Solved It</div>
         <div style="display:flex;flex-direction:column;gap:.5rem">
+          
           <div style="padding:.7rem .9rem;background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.15);border-left:2px solid var(--cyan)">
-            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem">Solution 1</div>
-            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Fully enclosed chamber.</strong> Eliminates temperature gradients entirely. The entire print environment is thermally stable, preventing the differential cooling that caused warping on the Ultimaker.</div>
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem">Solution 1 — Fully Enclosed Chamber</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Stable thermal environment.</strong> The fully enclosed chamber significantly reduces temperature gradients and prevents the uneven cooling that caused warping and delamination on the Ultimaker. This is essential for consistent thin wall printing.</div>
           </div>
+          
           <div style="padding:.7rem .9rem;background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.15);border-left:2px solid var(--cyan)">
-            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem">Solution 2</div>
-            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Direct drive extruder.</strong> Filament motor sits directly above the nozzle — precise retraction, consistent extrusion pressure, and reliable thin-wall printing. Achieved 1.9mm wall first attempt.</div>
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem">Solution 2 — Direct Drive Extruder</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Precise filament control.</strong> The filament motor sits directly above the nozzle, providing precise retraction and consistent extrusion pressure. This eliminated the pressure lag and inconsistent extrusion that plagued the Ultimaker Bowden system, achieving a 1.9mm wall thickness on the first successful print.</div>
           </div>
+          
           <div style="padding:.7rem .9rem;background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.15);border-left:2px solid var(--cyan)">
-            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem">Solution 3</div>
-            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">500mm/s speed + reliability.</strong> Faster print cycle (2.5h for both casings), cloud monitoring, and auto-calibration dramatically improve hardware stability and enable 24/7 unattended operation.</div>
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem">Solution 3 — High Speed and Reliability</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">500mm/s capability with cloud monitoring.</strong> The Bambu P1S can print at up to 500mm/s, reducing the print cycle for both casings to 2.5 hours. Bambu Cloud enables remote monitoring and alerts, and the auto calibration system dramatically improves hardware stability, enabling 24/7 unattended operation.</div>
           </div>
+          
+          <div style="padding:.7rem .9rem;background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.15);border-left:2px solid var(--cyan)">
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem">Solution 4 — Automatic Bed Leveling</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Fast and precise leveling.</strong> The Bambu P1S uses a load cell sensor to automatically level the bed before every print. The process takes approximately 2 minutes and requires no manual adjustment. First layer adhesion is consistently excellent, eliminating the unreliable paper based leveling of the Ultimaker.</div>
+          </div>
+          
+          <div style="padding:.7rem .9rem;background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.15);border-left:2px solid var(--cyan)">
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem">Solution 5 — Reliable Filament System</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Accurate filament detection.</strong> The filament sensor in the Bambu P1S is generally reliable. For production environments, the optional AMS (Automatic Material System) provides automatic filament changes and runout handling without operator intervention. Together these features significantly reduce mid print failures.</div>
+          </div>
+          
+          <div style="padding:.7rem .9rem;background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.15);border-left:2px solid var(--cyan)">
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem">Solution 6 — Nozzle Clog Prevention</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Direct drive reduces clogs.</strong> The direct drive extruder eliminates the pressure buildup that causes clogs in Bowden systems. For abrasive filaments, a hardened steel nozzle is recommended. Clearing a clog when it does occur is also simpler due to the accessible extruder design.</div>
+          </div>
+          
+          <div style="padding:.7rem .9rem;background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.15);border-left:2px solid var(--cyan)">
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem">Solution 7 — Dimensional Accuracy</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Consistent and predictable shrinkage.</strong> The enclosed chamber maintains a stable temperature throughout the print, so shrinkage is consistent from part to part. With proper calibration and suitable filament settings, the Bambu P1S can achieve dimensional accuracy within ±0.1mm. The same CAD file that measured 1.18mm on the Ultimaker measured 1.9mm on the Bambu.</div>
+          </div>
+          
+          <div style="padding:.7rem .9rem;background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.15);border-left:2px solid var(--cyan)">
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem">Solution 8 — Warping Prevention</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Enclosure plus heated bed.</strong> The Bambu P1S keeps the entire print at a consistent elevated temperature, with the bed at 60°C for PLA and the chamber passively reaching 40 to 50°C. This eliminates the temperature gradient that causes corners to lift. Combined with the built in brim settings, warping is almost completely eliminated.</div>
+          </div>
+          
+          <div style="padding:.7rem .9rem;background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.15);border-left:2px solid var(--cyan)">
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem">Solution 9 — Fast Setup and Filament Changes</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Automated loading and unloading.</strong> The Bambu P1S has a built in filament loading and unloading routine. Select Load on the screen, insert filament, and the printer heats the nozzle and feeds the filament automatically. The AMS system makes filament changes even faster. Total filament change time is approximately 2 minutes, compared to 10 to 15 minutes on the Ultimaker.</div>
+          </div>
+
+        </div>
+      </div>
         </div>
       </div>
     </div>
