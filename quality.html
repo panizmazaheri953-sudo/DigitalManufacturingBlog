@@ -3,71 +3,505 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quality | Paniz Manufacturing</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>Quality — Paniz Manufacturing</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  :root{--navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--cyan:#00e5ff;--cyan2:#00b8cc;--white:#f0f4ff;--muted:#7a8fa8;--border:rgba(0,229,255,0.15);--card:rgba(15,32,64,0.6);--ff:'Space Grotesk',sans-serif;--fm:'Space Mono',monospace;}
-  body{font-family:var(--ff);background:var(--navy);color:var(--white);}
-  nav{position:sticky;top:0;z-index:999;background:rgba(5,13,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;}
-  .logo{font-family:var(--fm);font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);}
-  .nav-links{display:flex;gap:0;list-style:none;}
-  .nav-links a{display:block;padding:0 1.2rem;height:64px;line-height:64px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:2px solid transparent;}
-  .nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan);}
-  .page-hero{padding:4rem 5% 3rem;text-align:center;}
-  .hero-badge{font-family:var(--fm);font-size:.7rem;color:var(--cyan);border:1px solid var(--border);padding:.35rem .9rem;display:inline-block;margin-bottom:1.5rem;}
-  .page-hero h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:700;text-transform:uppercase;}
-  .page-hero h1 span{color:var(--cyan);}
-  section{padding:3rem 5%;max-width:1200px;margin:0 auto;}
-  .sec-label{font-family:var(--fm);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem;}
-  .sec-label::after{content:'';flex:0 0 40px;height:1px;background:var(--cyan);}
-  .station-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;}
-  .station{background:var(--card);border:1px solid var(--border);padding:1rem;text-align:center;}
-  .station.pass{border-left:3px solid #4ade80;}
-  .station.fail{border-left:3px solid #f87171;}
-  .station h4{font-size:.9rem;margin-bottom:.5rem;}
-  .measurement-table{width:100%;border-collapse:collapse;margin:2rem 0;background:var(--card);border:1px solid var(--border);}
-  .measurement-table th,.measurement-table td{padding:1rem;text-align:center;border-bottom:1px solid var(--border);}
-  .measurement-table th{color:var(--cyan);}
-  .fail-highlight{color:#f87171;font-weight:700;}
-  .pass-highlight{color:#4ade80;font-weight:700;}
-  footer{background:var(--navy2);border-top:1px solid var(--border);padding:2rem 5%;display:flex;justify-content:space-between;flex-wrap:wrap;}
-  @media(max-width:800px){.nav-links{display:none;}.station-grid{grid-template-columns:1fr;}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--navy4:#152848;
+  --cyan:#00e5ff;--cyan2:#00b8cc;--border:rgba(0,229,255,0.13);
+  --white:#f0f4ff;--muted:#6a7f9a;
+  --red:#ff4444;--amber:#ffb347;--green:#00ff88;
+  --ff:'DM Sans',sans-serif;--fd:'Bebas Neue',sans-serif;--fm:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--navy);color:var(--white);overflow-x:hidden;cursor:none}
+#cursor{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:screen}
+#cursor-ring{position:fixed;top:0;left:0;width:34px;height:34px;border:1px solid var(--cyan);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.4}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.02;pointer-events:none;z-index:9990}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 4%;height:62px;border-bottom:1px solid var(--border);background:rgba(5,13,26,0.95);backdrop-filter:blur(12px)}
+.logo{font-family:var(--fd);font-size:1.4rem;letter-spacing:.06em;color:var(--white);text-decoration:none}
+.logo span{color:var(--cyan)}
+.nav-links{display:flex;list-style:none}
+.nav-links a{font-family:var(--fm);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.4rem .8rem;height:62px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan)}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* HERO */
+.page-hero{padding:6rem 4% 3rem;border-bottom:1px solid var(--border);background:var(--navy2);position:relative;overflow:hidden;margin-top:62px;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.ph-eyebrow{font-family:var(--fm);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem}
+.ph-eyebrow::before{content:'';width:20px;height:1px;background:var(--cyan)}
+.ph-h1{font-family:var(--fd);font-size:clamp(3.5rem,7vw,6.5rem);line-height:.88;text-transform:uppercase;margin-bottom:1.5rem}
+.ph-h1 em{color:var(--cyan);font-style:normal}
+.ph-desc{font-size:.9rem;color:var(--muted);line-height:1.75;font-weight:300;max-width:460px}
+.hero-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem}
+.hk{background:var(--navy3);border:1px solid var(--border);padding:1.1rem;transition:border-color .3s}
+.hk:hover{border-color:var(--cyan)}
+.hk-val{font-family:var(--fd);font-size:2rem;line-height:1}
+.hk-val.green{color:var(--green)}
+.hk-val.red{color:var(--red)}
+.hk-val.cyan{color:var(--cyan)}
+.hk-label{font-family:var(--fm);font-size:.46rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.25rem}
+
+/* MARQUEE */
+.marquee-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:var(--navy3);padding:.55rem 0}
+.marquee-track{display:flex;animation:marquee 28s linear infinite;white-space:nowrap}
+.m-item{font-family:var(--fd);font-size:1rem;letter-spacing:.06em;color:rgba(0,229,255,0.3);padding:0 2rem;display:flex;align-items:center;gap:1.5rem}
+.m-item span{color:var(--cyan);font-size:.7rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* VIDEO CENTREPIECE */
+.video-section{padding:3rem 4%;border-bottom:1px solid var(--border);background:var(--navy)}
+.vs-label{font-family:var(--fm);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:.7rem;margin-bottom:.75rem}
+.vs-label::before{content:'';width:16px;height:1px;background:var(--cyan)}
+.vs-title{font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);text-transform:uppercase;line-height:.92;margin-bottom:.75rem}
+.vs-title em{color:var(--cyan);font-style:normal}
+.vs-sub{font-size:.85rem;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:2rem;max-width:600px}
+.video-frame{width:100%;aspect-ratio:16/9;background:var(--navy2);border:1px solid var(--border);position:relative;overflow:hidden}
+.video-frame video{width:100%;height:100%;object-fit:cover;display:block}
+.video-frame iframe{width:100%;height:100%;border:none;display:block}
+.video-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:var(--navy3)}
+.vp-icon{width:64px;height:64px;border:1.5px solid var(--cyan);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.vp-icon svg{width:24px;height:24px;fill:var(--cyan);margin-left:4px}
+.vp-label{font-family:var(--fm);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.vp-hint{font-family:var(--fm);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(106,127,154,0.5)}
+.video-caption{margin-top:.75rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.vc-text{font-size:.75rem;color:var(--muted);font-weight:300}
+.vc-pill{font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .75rem;border:1px solid rgba(0,255,136,0.3);color:var(--green);background:rgba(0,255,136,0.05)}
+
+/* STATIONS GRID */
+.stations-section{padding:3rem 4%;border-bottom:1px solid var(--border)}
+.ss-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:1rem}
+.ss-title{font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);text-transform:uppercase;line-height:.92}
+.ss-title em{color:var(--cyan);font-style:normal}
+.ss-note{font-family:var(--fm);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.stations-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.station-card{background:var(--navy2);border:1px solid var(--border);overflow:hidden;transition:border-color .3s}
+.station-card:hover{border-color:var(--cyan)}
+.station-card.critical{border-color:rgba(255,68,68,0.3)}
+.station-card.critical:hover{border-color:var(--red)}
+.sc-video{width:100%;aspect-ratio:16/9;background:var(--navy3);position:relative;overflow:hidden}
+.sc-video video{width:100%;height:100%;object-fit:cover;display:block}
+.sc-video-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
+.sc-video-placeholder svg{width:28px;height:28px;stroke:var(--muted);fill:none;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;opacity:.3}
+.sc-video-placeholder span{font-family:var(--fm);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);opacity:.4}
+.sc-body{padding:1rem}
+.sc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem}
+.sc-num{font-family:var(--fd);font-size:1.8rem;color:var(--cyan);line-height:1}
+.sc-num.red{color:var(--red)}
+.sc-status{font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;padding:.22rem .6rem}
+.sc-status.pass{background:rgba(0,255,136,0.1);color:var(--green);border:1px solid rgba(0,255,136,0.25)}
+.sc-status.fail{background:rgba(255,68,68,0.1);color:var(--red);border:1px solid rgba(255,68,68,0.25)}
+.sc-status.critical{background:rgba(255,68,68,0.12);color:var(--red);border:1px solid rgba(255,68,68,0.3)}
+.sc-title{font-family:var(--fm);font-size:.65rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--white);margin-bottom:.3rem}
+.sc-desc{font-size:.72rem;color:var(--muted);font-weight:300;line-height:1.55}
+.sc-time{font-family:var(--fm);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border)}
+.sc-time span{color:var(--cyan)}
+
+/* SCORECARD */
+.scorecard-section{padding:3rem 4%;border-bottom:1px solid var(--border);background:var(--navy2)}
+.sc-section-label{font-family:var(--fm);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:.7rem;margin-bottom:.75rem}
+.sc-section-label::before{content:'';width:16px;height:1px;background:var(--cyan)}
+.sc-section-title{font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);text-transform:uppercase;line-height:.92;margin-bottom:2rem}
+.sc-section-title em{color:var(--cyan);font-style:normal}
+.scorecard{width:100%;border-collapse:collapse}
+.scorecard thead tr{background:var(--navy3)}
+.scorecard th{font-family:var(--fm);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:.75rem 1.1rem;text-align:left;border-bottom:1px solid var(--border);font-weight:400}
+.scorecard th.hl{color:var(--cyan);background:rgba(0,229,255,0.06)}
+.scorecard th.hl2{color:var(--green);background:rgba(0,255,136,0.04)}
+.scorecard td{padding:.7rem 1.1rem;border-bottom:1px solid var(--border);font-size:.78rem;color:var(--muted);font-weight:300;vertical-align:middle}
+.scorecard tr:last-child td{border-bottom:none}
+.scorecard tr:hover td{background:rgba(0,229,255,0.02)}
+.scorecard td.metric{color:var(--white);font-weight:400}
+.scorecard td.pass{font-family:var(--fm);font-size:.7rem;color:var(--cyan)}
+.scorecard td.fail{font-family:var(--fm);font-size:.7rem;color:var(--red)}
+.scorecard td.good{font-family:var(--fm);font-size:.7rem;color:var(--green)}
+.scorecard td.warn{font-family:var(--fm);font-size:.7rem;color:var(--amber)}
+
+/* PRODUCTION DECLARATION */
+.declaration{margin:3rem 4%;border:1px solid rgba(0,255,136,0.2);background:rgba(0,255,136,0.02);padding:2.5rem;position:relative;overflow:hidden}
+.declaration::before{content:'APPROVED';font-family:var(--fd);font-size:10rem;color:rgba(0,255,136,0.04);position:absolute;right:-1rem;bottom:-2rem;line-height:1;pointer-events:none;letter-spacing:.05em}
+.decl-top{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;flex-wrap:wrap}
+.decl-stamp{width:52px;height:52px;border:2px solid var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.decl-stamp svg{width:24px;height:24px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.decl-heading{}
+.decl-tag{font-family:var(--fm);font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:.25rem}
+.decl-title{font-family:var(--fd);font-size:2rem;text-transform:uppercase;line-height:.95;color:var(--white)}
+.decl-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.decl-text{font-size:.85rem;color:var(--muted);line-height:1.75;font-weight:300}
+.decl-text strong{color:var(--white);font-weight:500}
+.decl-rows{display:flex;flex-direction:column;gap:.5rem}
+.decl-row{display:flex;justify-content:space-between;align-items:center;padding:.55rem .75rem;background:var(--navy3);border:1px solid var(--border)}
+.decl-row-key{font-size:.73rem;color:var(--muted);font-weight:300}
+.decl-row-val{font-family:var(--fm);font-size:.7rem}
+.decl-row-val.green{color:var(--green)}
+.decl-row-val.cyan{color:var(--cyan)}
+.decl-sig{margin-top:2rem;padding-top:1.25rem;border-top:1px solid rgba(0,255,136,0.15);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.decl-sig-label{font-family:var(--fm);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.decl-sig-val{font-family:var(--fd);font-size:1.1rem;color:var(--green)}
+
+/* FOOTER */
+footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem 4%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2rem}
+.f-logo{font-family:var(--fd);font-size:1.3rem;color:var(--white)}
+.f-logo span{color:var(--cyan)}
+.f-copy{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center}
+.f-links{display:flex;gap:1.5rem;justify-content:flex-end}
+.f-links a{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.f-links a:hover{color:var(--cyan)}
 </style>
 </head>
 <body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
 
 <nav>
-  <span class="logo">Paniz Manufacturing</span>
+  <a class="logo" href="index.html">PANIZ<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li><li><a href="project.html">Project</a></li><li><a href="design.html">Design</a></li>
-    <li><a href="pfmea.html">PFMEA</a></li><li><a href="printing.html">3D Printing</a></li>
-    <li><a href="quality.html" class="active">Quality</a></li><li><a href="simulation.html">Simulation</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="project.html">Project</a></li>
+    <li><a href="design.html">Design</a></li>
+    <li><a href="pfmea.html">PFMEA</a></li>
+    <li><a href="MSD.html">MSD</a></li>
+    <li><a href="printing.html">3D Printing</a></li>
+    <li><a href="quality.html" class="active">Quality</a></li>
+    <li><a href="simulation.html">Simulation</a></li>
+    <li><a href="iot.html">IoT</a></li>
   </ul>
-  <a class="nav-cta" href="simulation.html">Capacity</a>
 </nav>
 
-<div class="page-hero"><div class="hero-badge">Metrology & FESTO Validation</div><h1>Quality <span>Control</span></h1></div>
+<!-- HERO -->
+<div class="page-hero reveal">
+  <div>
+    <div class="ph-eyebrow">06 — Quality Control</div>
+    <h1 class="ph-h1">FESTO<br><em>CP LAB.</em><br>VERIFIED.</h1>
+    <p class="ph-desc">The final proof. Both casings run through all 6 FESTO CP Lab stations. Every station documented. Production platform approved.</p>
+  </div>
+  <div>
+    <div class="hero-kpis">
+      <div class="hk"><div class="hk-val green">6/6</div><div class="hk-label">Stations passed — Bambu P1S</div></div>
+      <div class="hk"><div class="hk-val cyan">1.9mm</div><div class="hk-label">Wall thickness — within 1.6–2.2mm spec</div></div>
+      <div class="hk"><div class="hk-val red">0/6</div><div class="hk-label">Ultimaker — failed Station 2 every time</div></div>
+      <div class="hk"><div class="hk-val green">✓</div><div class="hk-label">Bambu P1S approved for production</div></div>
+    </div>
+  </div>
+</div>
 
-<section>
-  <div class="sec-label">FESTO CP Lab — Station Results</div>
-  <div class="station-grid">
-    <div class="station pass"><h4>Station 1</h4><p>Loading / Transfer</p><span style="color:#4ade80;">✓ Pass</span></div>
-    <div class="station fail"><h4>Station 2</h4><p>Laser Measurement</p><span style="color:#f87171;">✗ FAIL (Ultimaker: 1.18mm)</span><br><span style="color:#4ade80;font-size:.7rem;">✓ Pass (Bambu: within 1.6-2.2mm)</span></div>
-    <div class="station pass"><h4>Station 3</h4><p>Component Addition</p><span style="color:#4ade80;">✓ Pass</span></div>
-    <div class="station pass"><h4>Station 4</h4><p>Pressing</p><span style="color:#4ade80;">✓ Pass</span></div>
-    <div class="station pass"><h4>Station 5</h4><p>Curing</p><span style="color:#4ade80;">✓ Pass</span></div>
-    <div class="station pass"><h4>Station 6</h4><p>Robotic Collection</p><span style="color:#4ade80;">✓ Pass</span></div>
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="m-item">FESTO CP LAB — 6 STATIONS <span>✦</span></div>
+    <div class="m-item">BAMBU P1S — ALL PASSED <span>✦</span></div>
+    <div class="m-item">STATION 2 LASER — 1.9mm ✓ <span>✦</span></div>
+    <div class="m-item">ULTIMAKER — REJECTED <span>✦</span></div>
+    <div class="m-item">PRODUCTION APPROVED <span>✦</span></div>
+    <div class="m-item">50,000 UNITS / YEAR <span>✦</span></div>
+    <div class="m-item">FESTO CP LAB — 6 STATIONS <span>✦</span></div>
+    <div class="m-item">BAMBU P1S — ALL PASSED <span>✦</span></div>
+    <div class="m-item">STATION 2 LASER — 1.9mm ✓ <span>✦</span></div>
+    <div class="m-item">ULTIMAKER — REJECTED <span>✦</span></div>
+    <div class="m-item">PRODUCTION APPROVED <span>✦</span></div>
+    <div class="m-item">50,000 UNITS / YEAR <span>✦</span></div>
+  </div>
+</div>
+
+<!-- FESTO VIDEO — CENTREPIECE -->
+<div class="video-section reveal">
+  <div class="vs-label">01 — The Proof</div>
+  <div class="vs-title">Full FESTO Run —<br><em>Both Casings.</em></div>
+  <p class="vs-sub">The final Bambu P1S printed casings running through all 6 FESTO CP Lab stations in sequence. This is the definitive quality verification — the same line that rejected every Ultimaker print at Station 2 passed both casings end-to-end.</p>
+
+  <div class="video-frame">
+    <!-- ADD YOUR FESTO VIDEO HERE -->
+    <!-- Option A — local video file: -->
+    <!-- <video controls poster="YOUR_POSTER_IMAGE.jpg">
+      <source src="YOUR_FESTO_VIDEO.mp4" type="video/mp4">
+    </video> -->
+
+    <!-- Option B — YouTube embed: -->
+    <!-- <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe> -->
+
+    <!-- Placeholder shown until you add the src: -->
+    <div class="video-placeholder">
+      <div class="vp-icon">
+        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+      </div>
+      <div class="vp-label">FESTO CP Lab — Full Run Video</div>
+      <div class="vp-hint">Add your video src here</div>
+    </div>
+  </div>
+  <div class="video-caption">
+    <span class="vc-text">Bambu P1S printed casings — both top and bottom — run through all 6 FESTO CP Lab stations in sequence.</span>
+    <span class="vc-pill">✓ Full Pass — All 6 Stations</span>
+  </div>
+</div>
+
+<!-- 6 STATIONS -->
+<div class="stations-section reveal">
+  <div class="ss-header">
+    <div>
+      <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:.7rem;margin-bottom:.5rem"><span style="width:16px;height:1px;background:var(--cyan);display:inline-block"></span>02 — Station Breakdown</div>
+      <div class="ss-title">6 Stations.<br><em>Documented.</em></div>
+    </div>
+    <div class="ss-note">Add video or image per station below</div>
   </div>
 
-  <div class="sec-label">Laser Measurement Results</div>
-  <table class="measurement-table">
-    <tr><th>Printer</th><th>Measurement (mm)</th><th>Spec Required</th><th>Result</th></tr>
-    <tr><td>Ultimaker S5</td><td class="fail-highlight">1.18 mm</td><td>1.6 — 2.2 mm</td><td class="fail-highlight">FAIL</td></tr>
-    <tr><td>Bambu P1S</td><td class="pass-highlight">1.85 mm</td><td>1.6 — 2.2 mm</td><td class="pass-highlight">PASS</td></tr>
-  </table>
-</section>
+  <div class="stations-grid">
 
-<footer><div><div class="f-logo">Paniz Manufacturing Co.</div></div><div class="f-links"><a href="printing.html">3D Printing</a><a href="simulation.html">Simulation</a></div></footer>
+    <!-- STATION 1 -->
+    <div class="station-card">
+      <div class="sc-video">
+        <!-- ADD: video or image of Station 1 -->
+        <!-- <video controls><source src="YOUR_STATION_1_VIDEO.mp4" type="video/mp4"></video> -->
+        <!-- <img src="YOUR_STATION_1_IMG.jpg" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="sc-video-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><polygon points="10,8 16,12 10,16"/></svg>
+          <span>Station 1 — Add media</span>
+        </div>
+      </div>
+      <div class="sc-body">
+        <div class="sc-top">
+          <div class="sc-num">01</div>
+          <div class="sc-status pass">✓ Pass</div>
+        </div>
+        <div class="sc-title">Front Magazine / Part ID</div>
+        <div class="sc-desc">Part loaded and identified. Batch and traceability data verified before the casing enters the assembly sequence.</div>
+        <div class="sc-time">Cycle time: <span>7 seconds</span></div>
+      </div>
+    </div>
+
+    <!-- STATION 2 — CRITICAL -->
+    <div class="station-card critical">
+      <div class="sc-video">
+        <!-- ADD: video or image of Station 2 laser measurement -->
+        <!-- <video controls><source src="YOUR_STATION_2_VIDEO.mp4" type="video/mp4"></video> -->
+        <div class="sc-video-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><polygon points="10,8 16,12 10,16"/></svg>
+          <span>Station 2 — Add media</span>
+        </div>
+      </div>
+      <div class="sc-body">
+        <div class="sc-top">
+          <div class="sc-num red">02</div>
+          <div class="sc-status critical">⚠ Critical Station</div>
+        </div>
+        <div class="sc-title">Laser Measurement</div>
+        <div class="sc-desc">Laser measures wall depth. Ultimaker: 1.18mm — failed every time. Bambu P1S: 1.9mm — passed. Spec: 1.6–2.2mm.</div>
+        <div class="sc-time">Cycle time: <span>8 seconds</span> · <span style="color:var(--green)">Bambu: ✓ Pass</span> · <span style="color:var(--red)">Ultimaker: ✗ Fail</span></div>
+      </div>
+    </div>
+
+    <!-- STATION 3 -->
+    <div class="station-card">
+      <div class="sc-video">
+        <!-- ADD: video or image of Station 3 iPick -->
+        <!-- <video controls><source src="YOUR_STATION_3_VIDEO.mp4" type="video/mp4"></video> -->
+        <div class="sc-video-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><polygon points="10,8 16,12 10,16"/></svg>
+          <span>Station 3 — Add media</span>
+        </div>
+      </div>
+      <div class="sc-body">
+        <div class="sc-top">
+          <div class="sc-num">03</div>
+          <div class="sc-status pass">✓ Pass</div>
+        </div>
+        <div class="sc-title">iPick — Manual Assembly</div>
+        <div class="sc-desc">Operator manually picks and places the casing halves for alignment before press-fitting. The most hands-on station in the sequence.</div>
+        <div class="sc-time">Cycle time: <span>27 seconds</span> · Manual operator</div>
+      </div>
+    </div>
+
+    <!-- STATION 4 -->
+    <div class="station-card">
+      <div class="sc-video">
+        <!-- ADD: video or image of Station 4 press fit -->
+        <!-- <video controls><source src="YOUR_STATION_4_VIDEO.mp4" type="video/mp4"></video> -->
+        <div class="sc-video-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><polygon points="10,8 16,12 10,16"/></svg>
+          <span>Station 4 — Add media</span>
+        </div>
+      </div>
+      <div class="sc-body">
+        <div class="sc-top">
+          <div class="sc-num">04</div>
+          <div class="sc-status pass">✓ Pass</div>
+        </div>
+        <div class="sc-title">Press Fit</div>
+        <div class="sc-desc">Automated press clamps the two casing halves together. Validates that the mating geometry produces a secure, interchangeable assembly.</div>
+        <div class="sc-time">Cycle time: <span>11 seconds</span></div>
+      </div>
+    </div>
+
+    <!-- STATION 5 -->
+    <div class="station-card">
+      <div class="sc-video">
+        <!-- ADD: video or image of Station 5 oven -->
+        <!-- <video controls><source src="YOUR_STATION_5_VIDEO.mp4" type="video/mp4"></video> -->
+        <div class="sc-video-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><polygon points="10,8 16,12 10,16"/></svg>
+          <span>Station 5 — Add media</span>
+        </div>
+      </div>
+      <div class="sc-body">
+        <div class="sc-top">
+          <div class="sc-num">05</div>
+          <div class="sc-status pass">✓ Pass</div>
+        </div>
+        <div class="sc-title">Oven</div>
+        <div class="sc-desc">Heat treatment stage. The longest single station at 35 seconds — identified as the FESTO line bottleneck in capacity analysis, but within the 150s takt time.</div>
+        <div class="sc-time">Cycle time: <span style="color:var(--amber)">35 seconds</span> · Line bottleneck</div>
+      </div>
+    </div>
+
+    <!-- STATION 6 -->
+    <div class="station-card">
+      <div class="sc-video">
+        <!-- ADD: video or image of Station 6 final output -->
+        <!-- <video controls><source src="YOUR_STATION_6_VIDEO.mp4" type="video/mp4"></video> -->
+        <div class="sc-video-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><polygon points="10,8 16,12 10,16"/></svg>
+          <span>Station 6 — Add media</span>
+        </div>
+      </div>
+      <div class="sc-body">
+        <div class="sc-top">
+          <div class="sc-num">06</div>
+          <div class="sc-status pass">✓ Pass</div>
+        </div>
+        <div class="sc-title">Final Output & Sign-off</div>
+        <div class="sc-desc">Final quality gate. Pass/fail logged against batch ID. Successful parts dispatched. Complete traceability record closed.</div>
+        <div class="sc-time">Cycle time: <span>11 seconds</span> · <span style="color:var(--green)">Approved ✓</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- QUALITY SCORECARD -->
+<div class="scorecard-section reveal">
+  <div class="sc-section-label">03 — Quality Summary</div>
+  <div class="sc-section-title">Quality<br><em>Scorecard.</em></div>
+  <div style="overflow-x:auto">
+    <table class="scorecard">
+      <thead>
+        <tr>
+          <th>Quality Metric</th>
+          <th>Specification</th>
+          <th class="hl">Ultimaker Result</th>
+          <th class="hl2">Bambu P1S Result</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="metric">Wall Thickness</td>
+          <td>1.6–2.2mm</td>
+          <td class="fail">1.18mm — Out of spec</td>
+          <td class="good">1.9mm — Within spec</td>
+          <td class="good">✓ Bambu approved</td>
+        </tr>
+        <tr>
+          <td class="metric">Dimensional Tolerance</td>
+          <td>±0.15mm max</td>
+          <td class="fail">±0.4mm — Out of spec</td>
+          <td class="good">±0.1mm — Within spec</td>
+          <td class="good">✓ Bambu approved</td>
+        </tr>
+        <tr>
+          <td class="metric">FESTO Station 2 (Laser)</td>
+          <td>Pass required</td>
+          <td class="fail">0% pass rate</td>
+          <td class="good">100% pass rate</td>
+          <td class="good">✓ Bambu approved</td>
+        </tr>
+        <tr>
+          <td class="metric">FESTO Full Line (6 stations)</td>
+          <td>All stations pass</td>
+          <td class="fail">Failed — Station 2</td>
+          <td class="good">All 6 passed</td>
+          <td class="good">✓ Bambu approved</td>
+        </tr>
+        <tr>
+          <td class="metric">Print Success Rate</td>
+          <td>Target: maximise</td>
+          <td class="fail">~0% full pass</td>
+          <td class="good">80% (4/5 prints)</td>
+          <td class="good">✓ Acceptable for production</td>
+        </tr>
+        <tr>
+          <td class="metric">Cycle Time (both casings)</td>
+          <td>Within takt (150s)</td>
+          <td class="warn">N/A — retired</td>
+          <td class="good">2.5h print — within plan</td>
+          <td class="good">✓ On schedule</td>
+        </tr>
+        <tr>
+          <td class="metric">Production Platform</td>
+          <td>Approved for 50K/yr</td>
+          <td class="fail">Retired — not approved</td>
+          <td class="good">Approved</td>
+          <td class="good">✓ Bambu P1S selected</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PRODUCTION DECLARATION -->
+<div class="declaration reveal">
+  <div class="decl-top">
+    <div class="decl-stamp">
+      <svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>
+    </div>
+    <div class="decl-heading">
+      <div class="decl-tag">Quality Sign-off — Paniz Manufacturing Co.</div>
+      <div class="decl-title">Production Platform Approved</div>
+    </div>
+  </div>
+  <div class="decl-grid">
+    <div>
+      <p class="decl-text">Based on FESTO CP Lab verification, SPC dimensional analysis, and 5 physical print trials, the <strong>Bambu P1S is hereby approved as the sole production platform</strong> for the Phones-R-Us casing contract.<br><br>All quality specifications have been met. The production line configuration — 25 Bambu P1S printers, weekdays 24/7 and weekends 8h/day — is validated to deliver <strong>50,000 interchangeable casing pairs per year</strong> at the required dimensional tolerances.</p>
+    </div>
+    <div class="decl-rows">
+      <div class="decl-row"><span class="decl-row-key">Client</span><span class="decl-row-val cyan">Phones-R-Us</span></div>
+      <div class="decl-row"><span class="decl-row-key">Production platform</span><span class="decl-row-val green">Bambu P1S — Approved ✓</span></div>
+      <div class="decl-row"><span class="decl-row-key">Retired platform</span><span class="decl-row-val" style="color:var(--red)">Ultimaker — Rejected ✗</span></div>
+      <div class="decl-row"><span class="decl-row-key">FESTO verification</span><span class="decl-row-val green">All 6 stations passed ✓</span></div>
+      <div class="decl-row"><span class="decl-row-key">Annual capacity</span><span class="decl-row-val cyan">50,000 pairs/year</span></div>
+      <div class="decl-row"><span class="decl-row-key">Wall thickness</span><span class="decl-row-val green">1.9mm — within 1.6–2.2mm ✓</span></div>
+      <div class="decl-row"><span class="decl-row-key">Portfolio year</span><span class="decl-row-val cyan">2026</span></div>
+    </div>
+  </div>
+  <div class="decl-sig">
+    <div><div class="decl-sig-label">Manufacturer</div><div class="decl-sig-val">Paniz Manufacturing Co.</div></div>
+    <div><div class="decl-sig-label">Verification method</div><div class="decl-sig-val">FESTO CP Lab — 6 Station Assembly Line</div></div>
+    <div><div class="decl-sig-label">Decision</div><div class="decl-sig-val">✓ Approved for 50,000 units/year</div></div>
+  </div>
+</div>
+
+<footer>
+  <div class="f-logo">PANIZ<span>.</span></div>
+  <div class="f-copy">© 2026 — Digital Manufacturing Portfolio</div>
+  <div class="f-links">
+    <a href="project.html">Project</a><a href="printing.html">3D Printing</a>
+    <a href="MSD.html">MSD</a><a href="simulation.html">Simulation</a>
+  </div>
+</footer>
+
+<script>
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+let rx=0,ry=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
+(function animRing(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';ring.style.opacity='0'});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.opacity='.4'});
+});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')}),{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
