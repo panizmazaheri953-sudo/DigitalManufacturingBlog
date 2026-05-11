@@ -524,6 +524,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
 </div>
 
 <!-- SECTION 3: FAILURES INTERACTIVE -->
+<!-- SECTION 3: FAILURES INTERACTIVE -->
 <div class="sec-wrap reveal">
   <div class="sec-head">
     <div class="sec-label-col"><div class="sec-tag">03 — What Went Wrong</div><div class="sec-big-num">FAIL</div></div>
@@ -531,6 +532,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   </div>
   <div class="sec-body">
     <div class="failures-layout">
+      <!-- LEFT SIDEBAR WITH BUTTONS -->
       <div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1rem">
           <div style="background:var(--navy3);border:1px solid var(--border);padding:1rem;text-align:center">
@@ -542,198 +544,168 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
             <div style="font-family:var(--fm);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.25rem">Fully passed both tests</div>
           </div>
         </div>
+        
         <div class="failure-list" id="failureList">
-          <button class="fail-btn active" data-fail="midprint" onclick="showFail('midprint')">
+          <button class="fail-btn active" data-fail="midprint" onclick="showFailSection('midprint')">
             <div class="fail-num">01</div>
-            <div class="fail-info"><div class="fail-title">Mid-Print Failures</div><div class="fail-meta">Multiple stops · Filament sensor · Layer shift</div></div>
+            <div class="fail-info"><div class="fail-title">Mid Print Stops</div><div class="fail-meta">Filament sensor · Clogs · Layer shift</div></div>
           </button>
-          <button class="fail-btn" data-fail="nozzle" onclick="showFail('nozzle')">
+          <button class="fail-btn" data-fail="visual" onclick="showFailSection('visual')">
             <div class="fail-num">02</div>
-            <div class="fail-info"><div class="fail-title">Nozzle Clogging</div><div class="fail-meta">Blocked nozzle · Under-extrusion</div></div>
-          </button>
-          <button class="fail-btn" data-fail="layerchange" onclick="showFail('layerchange')">
-            <div class="fail-num">03</div>
-            <div class="fail-info"><div class="fail-title">Layer Change Defects</div><div class="fail-meta">Visible layer shifts · Poor adhesion mid-print</div></div>
-          </button>
-          <button class="fail-btn" data-fail="wallthick" onclick="showFail('wallthick')">
-            <div class="fail-num">04</div>
-            <div class="fail-info"><div class="fail-title">Wall Thickness Failure</div><div class="fail-meta">1.18mm vs 1.6–2.2mm spec · FESTO Station 2</div></div>
-          </button>
-          <button class="fail-btn" data-fail="visualfail" onclick="showFail('visualfail')">
-            <div class="fail-num">05</div>
             <div class="fail-info"><div class="fail-title">Visual Failures</div><div class="fail-meta">Warping · Surface defects · Delamination</div></div>
+          </button>
+          <button class="fail-btn" data-fail="dimensional" onclick="showFailSection('dimensional')">
+            <div class="fail-num">03</div>
+            <div class="fail-info"><div class="fail-title">Dimensional Inaccuracy</div><div class="fail-meta">1.18mm vs CAD · Shrinkage · Z height</div></div>
+          </button>
+          <button class="fail-btn" data-fail="setup" onclick="showFailSection('setup')">
+            <div class="fail-num">04</div>
+            <div class="fail-info"><div class="fail-title">Pre Print Setup Issues</div><div class="fail-meta">Bed leveling · Filament changes · Brim size</div></div>
           </button>
         </div>
       </div>
 
+      <!-- RIGHT SIDE: CONTENT PANELS -->
       <div id="failurePanel">
-        <!-- PANEL: MID PRINT -->
+        
+        <!-- PANEL 1: MID PRINT FAILURES -->
         <div class="fail-panel active" id="fail-midprint">
           <div class="fp-tag">Failure 01 — Ultimaker</div>
-          <div class="fp-title">Mid-Print<br><em>Failures.</em></div>
+          <div class="fp-title">Mid Print<br><em>Failures.</em></div>
+          
           <div class="fp-photos">
-            <div class="fp-photo">
-              <!-- ADD: photo of failed mid-print Ultimaker (print stopped part way through) -->
-              <img src="YOUR_MIDPRINT_FAIL_1.jpg" alt="Mid-print failure" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Add photo</span></div>'">
-              <div class="fp-photo-label">Stopped mid-print</div>
-            </div>
-            <div class="fp-photo">
-              <!-- ADD: another mid-print failure photo -->
-              <img src="YOUR_MIDPRINT_FAIL_2.jpg" alt="Print stopped" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Add photo</span></div>'">
-              <div class="fp-photo-label">Incomplete part</div>
-            </div>
-            <div class="fp-photo">
-              <!-- ADD: photo of Ultimaker screen showing error or failed print on bed -->
-              <img src="YOUR_MIDPRINT_FAIL_3.jpg" alt="Error screen" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Add photo</span></div>'">
-              <div class="fp-photo-label">Machine error state</div>
-            </div>
+            <div class="fp-photo"><img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/IMG_7673.jpg?raw=true" alt="Printer stopped" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📸</span></div>'"><div class="fp-photo-label">Printer stopped mid print</div></div>
+            <div class="fp-photo"><img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/IMG_7674.jpg?raw=true" alt="Print stopped" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📸</span></div>'"><div class="fp-photo-label">Print stopped on bed</div></div>
+            <div class="fp-photo"><img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/IMG_7675.jpg?raw=true" alt="Incomplete" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📸</span></div>'"><div class="fp-photo-label">Incomplete print</div></div>
           </div>
-          <div class="fp-desc">Across approximately <strong>20 Ultimaker attempts</strong>, multiple prints stopped mid-way through. Causes included filament sensor triggers, layer adhesion failures causing the part to detach from the bed mid-print, and calibration drift between print jobs. Each failure meant a wasted 1–2 hours and material loss.</div>
+          <div class="fp-photos" style="margin-top:.6rem">
+            <div class="fp-photo"><img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/IMG_7678.jpg?raw=true" alt="Another stop" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📸</span></div>'"><div class="fp-photo-label">Another stopped print</div></div>
+            <div class="fp-photo"><img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/IMG_7679.jpg?raw=true" alt="Clogged nozzle" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>🔧</span></div>'"><div class="fp-photo-label">Clogged nozzle</div></div>
+     <div class="fp-photo"><img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/IMG_7672.jpg?raw=true" alt="9 failed" style="width:100%; height:100%; object-fit:contain; background:var(--navy);" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>9❌</span></div>'"><div class="fp-photo-label">9 failed prints on table</div></div>
+          </div>
+          
+          <div class="fp-desc">Across approximately <strong>20 Ultimaker attempts</strong>, multiple prints stopped mid way through. Causes included filament sensor triggers, layer adhesion failures causing the part to detach from the bed, and calibration drift between print jobs. Each failure meant wasted 1 to 2 hours of print time and material loss.</div>
+          
           <div class="fp-fix">
-            <div class="fp-fix-label">Why this kept happening</div>
-            <div class="fp-fix-text">The Ultimaker's open-frame design means any vibration, temperature change, or filament inconsistency directly affects the print. <strong>No auto-calibration, no closed-loop feedback</strong> — operator had to manually re-level and restart every time.</div>
+            <div class="fp-fix-label">Root Causes of Mid Print Stops</div>
+            <div class="fp-fix-text">
+              <strong>Filament sensor errors.</strong> The Ultimaker's filament sensor triggered false positives multiple times, stopping prints for no reason. Each stop required manual intervention and recalibration.<br><br>
+              <strong>Partial and full nozzle clogs.</strong> The Bowden tube extruder is prone to pressure buildup, leading to clogs. Clearing a clog required a cold pull procedure and often a complete print restart.<br><br>
+              <strong>Poor bed adhesion.</strong> The part detached from the build plate during printing. Without the part staying firmly attached, the printer continued moving but the part shifted, causing layer shifting or complete detachment.<br><br>
+              <strong>Dirty or greasy build plate.</strong> Oils from fingers or old glue residue reduced adhesion. Cleaning the plate with isopropyl alcohol was essential before every print, adding another 5 minutes to setup time.<br><br>
+              <strong>Layer height issues.</strong> Using a layer height too large for the nozzle diameter reduced inter layer bonding. The Ultimaker struggled with consistent extrusion at finer layer heights due to Bowden tube pressure lag.
+            </div>
           </div>
         </div>
 
-        <!-- PANEL: NOZZLE CLOG -->
-        <div class="fail-panel" id="fail-nozzle">
+               <!-- PANEL 2: VISUAL FAILURES -->
+        <div class="fail-panel" id="fail-visual">
           <div class="fp-tag">Failure 02 — Ultimaker</div>
-          <div class="fp-title">Nozzle<br><em>Clogging.</em></div>
+          <div class="fp-title">Visual &<br><em>Measurement Failures.</em></div>
+          
           <div class="fp-photos">
-            <div class="fp-photo">
-              <!-- ADD: close-up photo of clogged nozzle -->
-              <img src="YOUR_NOZZLE_CLOG_1.jpg" alt="Clogged nozzle" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Add nozzle photo</span></div>'">
-              <div class="fp-photo-label">Blocked nozzle</div>
-            </div>
-            <div class="fp-photo">
-              <!-- ADD: photo showing under-extrusion effect on a printed part -->
-              <img src="YOUR_NOZZLE_CLOG_2.jpg" alt="Under-extrusion result" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Add photo</span></div>'">
-              <div class="fp-photo-label">Under-extrusion on print</div>
-            </div>
-            <div class="fp-photo">
-              <!-- ADD: another nozzle or failed print photo -->
-              <img src="YOUR_NOZZLE_CLOG_3.jpg" alt="Nozzle failure" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Add photo</span></div>'">
-              <div class="fp-photo-label">Failed casing — nozzle clog</div>
+            <div class="fp-photo"><img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/IMG_7680.jpg?raw=true" alt="Casing pair 1" style="width:100%; height:100%; object-fit:contain; background:var(--navy);" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📷</span></div>'"><div class="fp-photo-label">Pair 1 — failed visual or FESTO</div></div>
+            <div class="fp-photo"><img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/IMG_7681.jpg?raw=true" alt="Casing pair 2" style="width:100%; height:100%; object-fit:contain; background:var(--navy);" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📷</span></div>'"><div class="fp-photo-label">Pair 2 — rejected</div></div>
+            <div class="fp-photo"><img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/IMG_7682.jpg?raw=true" alt="Casing pair 3" style="width:100%; height:100%; object-fit:contain; background:var(--navy);" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📷</span></div>'"><div class="fp-photo-label">Pair 3 — failed FESTO or visual</div></div>
+          </div>
+          <div class="fp-photos" style="margin-top:.6rem">
+            <div class="fp-photo"><img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/IMG_7683.jpg?raw=true" alt="Casing pair 4" style="width:100%; height:100%; object-fit:contain; background:var(--navy);" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📷</span></div>'"><div class="fp-photo-label">Pair 4 — completed but rejected</div></div>
+            <div class="fp-photo"><img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/IMG_7684.jpg?raw=true" alt="Casing pair 5" style="width:100%; height:100%; object-fit:contain; background:var(--navy);" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📷</span></div>'"><div class="fp-photo-label">Pair 5 — failed inspection</div></div>
+        
+          </div>
+          
+          <div class="fp-desc"><strong>Around 10 complete casing pairs</strong> printed successfully on the Ultimaker (These 5 are visual examples) but every single pair failed either visual inspection, FESTO Station 2 measurement, or both. Some looked acceptable but measured wrong;y. Others showed warping, surface defects, or layer shifting that made them unsuitable for client delivery. Not a single pair passed both tests.</div>
+          
+          <div class="fp-fix">
+            <div class="fp-fix-label">Why These Pairs Failed — Visual & Measurement</div>
+            <div class="fp-fix-text">
+              <strong>Warping from temperature gradients.</strong> Without an enclosure, the bottom layers cooled faster than the upper layers. This thermal gradient caused the corners of the phone casings to curl upward, creating warped parts that could not be submitted.<br><br>
+              <strong>Wall thickness below CAD specification.</strong> The Ultimaker consistently printed walls at 1.18mm instead of the required 1.6 to 2.2mm range. This was not visible to the eye and the parts looked acceptable but failed FESTO laser measurement at Station 2.<br><br>
+              <strong>Layer shifting from stepper motor skips.</strong> The open frame amplifies vibration. Loose belts or excessive speed caused the print head to lose position, resulting in visible horizontal shifts across the casing walls.<br><br>
+              <strong>Poor inter layer adhesion and delamination.</strong> Layers cooled too fast in the open air environment before the next layer could bond properly. This created weak bonds that separated under light mechanical force.<br><br>
+              <strong>Surface defects from inconsistent extrusion.</strong> The Bowden tube extruder created pressure lag, causing uneven flow and rough surface finish on the casing exterior.<br><br>
+              <strong>Incorrect slicing settings.</strong> Wrong retraction settings caused stringing and blobs. Z hop settings that were too low caused the nozzle to drag through the print, scarring the top surface.
             </div>
           </div>
-          <div class="fp-desc">Nozzle clogs occurred repeatedly across the Ultimaker trials. A partial blockage causes <strong>under-extrusion</strong> — the printer attempts to deposit filament but the reduced flow rate means walls are thinner than specified. This directly contributed to the 1.18mm wall measurement. Full clogs stopped prints entirely.</div>
+          
+          <div class="fp-fix" style="margin-top:.75rem; border-left-color: var(--cyan); background: rgba(0,229,255,0.03);">
+            <div class="fp-fix-label" style="color:var(--cyan)">Why the Bambu P1S Fixed These Problems</div>
+            <div class="fp-fix-text">
+              The Bambu P1S eliminates all of these issues. The first successful Bambu print achieved a wall thickness of 1.9mm — directly in the middle of the specification — and passed FESTO Station 2 immediately. The enclosed chamber prevents warping, the direct drive extruder provides consistent extrusion, and the surface finish is smooth and professional.
+            </div>
+          </div>
+        </div>
+        <!-- PANEL 3: DIMENSIONAL INACCURACY -->
+        <div class="fail-panel" id="fail-dimensional">
+          <div class="fp-tag">Failure 03 — Critical — FESTO Station 2</div>
+          <div class="fp-title">Dimensional<br><em>Inaccuracy.</em></div>
+          
+          <div class="fp-photos">
+            <div class="fp-photo"><video controls style="width:100%;height:100%;object-fit:contain; background:var(--navy);"><source src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/raw/refs/heads/main/IMG_4255%202%20(1).mp4" type="video/mp4"></video><div class="fp-photo-label">Bottom casing — looked fine, failed measurement</div></div>
+            <div class="fp-photo"><video controls style="width:100%; height:100%; object-fit:contain; background:var(--navy);"><source src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/raw/refs/heads/main/IMG_4258%202.mp4" type="video/mp4"></video><div class="fp-photo-label">Bottom casing — looked fine, failed measurement</div></div>
+            <div class="fp-photo" style="background:rgba(255,68,68,0.05);border:1px solid rgba(255,68,68,0.2);display:flex;align-items:center;justify-content:center;flex-direction:column">
+            
+            </div>
+          </div>
+          
+          <div class="fp-desc">This was the <strong>decisive failure</strong>. Several Ultimaker prints looked visually acceptable had smooth surface, correct shape. But every single one failed at <strong>FESTO Station 2</strong> laser measurement. The wall was consistently out of specification. The part looked right but measured wrong.</div>
+          
           <div class="fp-fix">
-            <div class="fp-fix-label">Root cause</div>
-            <div class="fp-fix-text">The Ultimaker's Bowden tube extruder creates pressure inconsistencies in the filament path. Any small debris or heat creep in the tube can build pressure until the nozzle partially blocks. <strong>Required manual cold-pull cleaning and recalibration</strong> between affected prints.</div>
+            <div class="fp-fix-label">Root Causes of Dimensional Inaccuracy</div>
+            <div class="fp-fix-text">
+              <strong>Wall thickness deviation from CAD.</strong> The CAD model specified a wall thickness of 2mm. The Ultimaker consistently printed walls wrong. This was not a CAD error but error on the setting and layering and changing the layering ended up causing other failures in printing; the same file printed correctly on the Bambu P1S at 1.9mm.<br><br>
+              <strong>Partial nozzle clog and under extrusion.</strong> Small debris or heat creep built up inside the nozzle. Flow became inconsistent. Walls printed thinner than specified because the reduced flow rate meant less filament was being deposited.<br><br>
+              <strong>Temperature fluctuations.</strong> The open frame design allowed cold drafts to hit the print. Uneven thermal contraction meant different parts of the same print shrank by different amounts, distorting critical dimensions.
+            </div>
           </div>
         </div>
 
-        <!-- PANEL: LAYER CHANGE -->
-        <div class="fail-panel" id="fail-layerchange">
-          <div class="fp-tag">Failure 03 — Ultimaker</div>
-          <div class="fp-title">Layer Change<br><em>Defects.</em></div>
-          <div class="fp-photos">
-            <div class="fp-photo">
-              <!-- ADD: photo showing visible layer shift / offset on a casing -->
-              <img src="YOUR_LAYER_CHANGE_1.jpg" alt="Layer shift" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Add photo</span></div>'">
-              <div class="fp-photo-label">Layer shift — visible offset</div>
-            </div>
-            <div class="fp-photo">
-              <!-- ADD: photo showing poor layer adhesion / delamination -->
-              <img src="YOUR_LAYER_CHANGE_2.jpg" alt="Poor layer adhesion" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Add photo</span></div>'">
-              <div class="fp-photo-label">Delamination between layers</div>
-            </div>
-            <div class="fp-photo">
-              <!-- ADD: side view showing the layer change line or gap in the casing wall -->
-              <img src="YOUR_LAYER_CHANGE_3.jpg" alt="Layer adhesion gap" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Add photo</span></div>'">
-              <div class="fp-photo-label">Visible gap in wall</div>
+               <!-- PANEL 4: PRE PRINT SETUP ISSUES -->
+        
+            
+            <!-- PANEL 4: PRE PRINT SETUP ISSUES -->
+        <div class="fail-panel" id="fail-setup">
+          <div class="fp-tag">Failure 04 — Ultimaker</div>
+          <div class="fp-title">Pre Print<br><em>Setup Issues.</em></div>
+          
+          <div class="fp-photos" style="grid-template-columns: repeat(2, 1fr); gap: 0.8rem;">
+            <div class="fp-photo" style="aspect-ratio: 3/2;"><img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/IMG_7685.jpg?raw=true" alt="Failed top cases front" style="width:100%; height:100%; object-fit:contain; background:var(--navy);" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📷</span></div>'"><div class="fp-photo-label">Failed top casings — front view</div></div>
+            <div class="fp-photo" style="aspect-ratio: 3/2;"><img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/IMG_7686.jpg?raw=true" alt="Failed top cases back" style="width:100%; height:100%; object-fit:contain; background:var(--navy);" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📷</span></div>'"><div class="fp-photo-label">Failed top casings — back side</div></div>
+          </div>
+          <div class="fp-photos" style="margin-top:.6rem; grid-template-columns: repeat(2, 1fr); gap: 0.8rem;">
+            <div class="fp-photo" style="aspect-ratio: 3/2;"><img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/IMG_7687.jpg?raw=true" alt="Failed bottom cases front" style="width:100%; height:100%; object-fit:contain; background:var(--navy);" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📷</span></div>'"><div class="fp-photo-label">Failed bottom casings — front view</div></div>
+            <div class="fp-photo" style="aspect-ratio: 3/2;"><img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/IMG_7688.jpg?raw=true" alt="Failed bottom cases back" style="width:100%; height:100%; object-fit:contain; background:var(--navy);" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📷</span></div>'"><div class="fp-photo-label">Failed bottom casings — back side</div></div>
+          </div>
+          
+          <div class="fp-desc">These casings printed fully on the Ultimaker — they did not stop mid print. However, every single one failed either visual inspection, FESTO Station 2 measurement, or both. The top and bottom casings shown here represent the best results the Ultimaker could achieve, yet none were acceptable for production. Before any of these prints could even start, the Ultimaker required 1 to 2 hours of manual setup time.</div>
+          
+          <div class="fp-fix">
+            <div class="fp-fix-label">Root Causes — Pre Print Setup Overhead</div>
+            <div class="fp-fix-text">
+              <strong>Manual bed leveling was slow and unreliable.</strong> Before every print, the Ultimaker required manual bed leveling using a piece of paper to set the nozzle height. This process was imprecise and often took 15 to 20 minutes. If the leveling was slightly off, the first layer would fail and the whole process had to restart.<br><br>
+              <strong>Filament changes were a hassle.</strong> Unloading the old PLA required heating the nozzle, manually feeding the new filament, and waiting for the extruder to purge properly. Each filament change added another 10 to 15 minutes of setup time.<br><br>
+              <strong>Insufficient brim size.</strong> A wider brim helps the print stay attached to the bed and prevents warping. More importantly, it can prevent nozzle clogging by maintaining consistent filament flow. This setting was not optimised in early PrintCity trials.<br><br>
+              <strong>Poor support settings — bottom cases failed on the back.</strong> Several bottom casings failed because the back surface required supports that were either not enabled or incorrectly configured in the slicer. Without proper supports, overhangs sagged and created rough, unusable surfaces. After switching to the Bambu P1S, support settings were optimised and the back surfaces printed cleanly.<br><br>
+              <strong>QR code printed directly on the casing failed.</strong> Initial attempts to print the QR code directly onto the phone casing using the Ultimaker failed consistently. The small details of the QR code could not be resolved reliably, resulting in unreadable codes. This is why ENCLOS3D switched to using adhesive QR stickers instead — a more reliable solution for traceability at Station 1.<br><br>
+              <strong>Combined pre print overhead.</strong> Combined, these pre print steps meant every Ultimaker print took 1 to 2 hours just to get the printer ready before the actual print could even start. For a production environment aiming at 50,000 units per year, this manual overhead was completely unacceptable.<br><br>
+              <strong>Even successful prints failed quality checks.</strong> As shown in the photos above, even when the Ultimaker successfully completed a print without stopping, the results were still rejected due to warping, surface defects, or wall thickness being out of specification (1.18mm instead of 1.6 to 2.2mm).
             </div>
           </div>
-          <div class="fp-desc">Several Ultimaker prints showed clear <strong>layer shifting</strong> — where the upper portion of the print is offset horizontally from the lower portion, creating a visible step in the casing wall. Separately, <strong>poor inter-layer adhesion</strong> caused delamination, where layers separated under light mechanical force.</div>
-          <div class="fp-fix">
-            <div class="fp-fix-label">Why this happens on the Ultimaker</div>
-            <div class="fp-fix-text">Layer shifts occur when the stepper motor skips steps — typically from excessive print speed, belt tension issues, or vibration. The open frame amplifies vibration. <strong>Poor layer adhesion</strong> results from layers cooling too fast in the open-air environment before the next layer bonds properly.</div>
+          
+          <div class="fp-fix" style="margin-top:.75rem; border-left-color: var(--cyan); background: rgba(0,229,255,0.03);">
+            <div class="fp-fix-label" style="color:var(--cyan)">Why the Bambu P1S Fixed These Problems</div>
+            <div class="fp-fix-text">
+              The Bambu P1S eliminates the pre print overhead entirely. Automatic bed leveling takes 2 minutes with no paper or guesswork. Filament changes are automated via the AMS system or a simple one button routine. Support settings in Bambu Studio produce clean overhangs, eliminating the back surface issues seen on the Ultimaker bottom casings. QR codes are now applied as adhesive stickers at Station 1, bypassing the unreliable direct printing method. The enclosed chamber and direct drive extruder produce consistent, high quality prints that pass FESTO Station 2 on the first attempt — no 1 to 2 hour setup required.
+            </div>
           </div>
         </div>
 
-        <!-- PANEL: WALL THICKNESS -->
-        <div class="fail-panel" id="fail-wallthick">
-          <div class="fp-tag">Failure 04 — Critical — FESTO Station 2</div>
-          <div class="fp-title">Wall Thickness<br><em>Failure.</em></div>
-          <div class="fp-photos">
-            <div class="fp-photo">
-              <!-- ADD: photo of visually-passed Ultimaker top casing (looks okay but failed measurement) -->
-              <img src="YOUR_ULTIMAKER_TOP_PASS_VISUAL.jpg" alt="Ultimaker top — visual pass" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Ultimaker top — visual pass</span></div>'">
-              <div class="fp-photo-label">Top casing — visual pass but measurement fail</div>
-            </div>
-            <div class="fp-photo">
-              <!-- ADD: photo of visually-passed Ultimaker top casing backside -->
-              <img src="YOUR_ULTIMAKER_TOP_BACKSIDE.jpg" alt="Ultimaker top backside" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Top casing — backside</span></div>'">
-              <div class="fp-photo-label">Top casing — backside</div>
-            </div>
-            <div class="fp-photo">
-              <!-- ADD: photo of visually-passed Ultimaker bottom casing -->
-              <img src="YOUR_ULTIMAKER_BOTTOM_PASS_VISUAL.jpg" alt="Ultimaker bottom — visual pass" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Bottom casing — visual pass</span></div>'">
-              <div class="fp-photo-label">Bottom casing — visual pass</div>
-            </div>
-          </div>
-          <div class="fp-photos" style="margin-top:.5rem">
-            <div class="fp-photo">
-              <!-- ADD: photo of Ultimaker bottom casing backside -->
-              <img src="YOUR_ULTIMAKER_BOTTOM_BACKSIDE.jpg" alt="Ultimaker bottom backside" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Bottom — backside</span></div>'">
-              <div class="fp-photo-label">Bottom casing — backside</div>
-            </div>
-            <div class="fp-photo" style="background:rgba(255,68,68,0.05);border:1px solid rgba(255,68,68,0.2)">
-              <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;padding:1rem">
-                <div style="font-family:var(--fd);font-size:2.5rem;color:var(--red);line-height:1">1.18mm</div>
-                <div style="font-family:var(--fm);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--red)">Measured wall</div>
-                <div style="font-family:var(--fm);font-size:.46rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Required: 1.6–2.2mm</div>
-                <div style="font-family:var(--fm);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-top:.25rem">FESTO Station 2 — FAIL</div>
-              </div>
-            </div>
-            <div class="fp-photo" style="background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.2)">
-              <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;padding:1rem">
-                <div style="font-family:var(--fd);font-size:2.5rem;color:var(--cyan);line-height:1">1.9mm</div>
-                <div style="font-family:var(--fm);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan)">Bambu — Measured wall</div>
-                <div style="font-family:var(--fm);font-size:.46rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Required: 1.6–2.2mm</div>
-                <div style="font-family:var(--fm);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-top:.25rem">FESTO Station 2 — PASS ✓</div>
-              </div>
-            </div>
-          </div>
-          <div class="fp-desc">This was the <strong>decisive failure</strong>. Several Ultimaker prints looked visually acceptable — smooth surface, correct shape. But every single one failed at <strong>FESTO Station 2</strong> (laser measurement). The wall was consistently 1.18mm — below the 1.6mm minimum specification. The part looked right but measured wrong.</div>
-          <div class="fp-fix">
-            <div class="fp-fix-label">Why this is a critical failure, not a cosmetic one</div>
-            <div class="fp-fix-text">The wall thickness specification is not aesthetic — it determines <strong>structural rigidity, press-fit force at Station 4, and long-term durability</strong> in a phone assembly. A 1.18mm wall is 26% below minimum specification. No amount of post-processing could fix this — it required a new print on a better machine.</div>
-          </div>
-        </div>
-
-        <!-- PANEL: VISUAL FAILS -->
-        <div class="fail-panel" id="fail-visualfail">
-          <div class="fp-tag">Failure 05 — Ultimaker</div>
-          <div class="fp-title">Visual<br><em>Failures.</em></div>
-          <div class="fp-photos">
-            <div class="fp-photo">
-              <!-- ADD: photo of warped Ultimaker casing -->
-              <img src="YOUR_VISUAL_FAIL_1.jpg" alt="Warped casing" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Warped casing</span></div>'">
-              <div class="fp-photo-label">Warped bottom casing</div>
-            </div>
-            <div class="fp-photo">
-              <!-- ADD: photo of surface defects on failed print -->
-              <img src="YOUR_VISUAL_FAIL_2.jpg" alt="Surface defects" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Surface defects</span></div>'">
-              <div class="fp-photo-label">Surface defects</div>
-            </div>
-            <div class="fp-photo">
-              <!-- ADD: photo of another visually failed part -->
-              <img src="YOUR_VISUAL_FAIL_3.jpg" alt="Failed print" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Failed casing</span></div>'">
-              <div class="fp-photo-label">Rejected casing</div>
-            </div>
-          </div>
-          <div class="fp-desc">A significant proportion of Ultimaker prints failed at <strong>visual inspection</strong> before even reaching FESTO — warped edges, delaminated surface layers, stringing between features, and incomplete sections from mid-print failures. These were rejected immediately and the prints restarted.</div>
-          <div class="fp-fix">
-            <div class="fp-fix-label">Underlying cause</div>
-            <div class="fp-fix-text">Warping is caused by <strong>differential thermal contraction</strong> — the bottom of the print cools and shrinks while the top is still being deposited at high temperature. The open-frame Ultimaker has no way to prevent this. The Bambu's enclosed chamber keeps the entire part at a consistent elevated temperature throughout the print.</div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 </div>
 
+      
 <!-- SECTION 4: SLICER SETTINGS TIMELINE -->
 <div class="sec-wrap reveal">
   <div class="sec-head">
@@ -1133,6 +1105,24 @@ function openReason(id){
 function closeReason(){document.getElementById('reasonModal').classList.remove('open')}
 document.getElementById('reasonModal').addEventListener('click',e=>{if(e.target===document.getElementById('reasonModal'))closeReason()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeReason()});
+  function showFailSection(sectionId) {
+  // Update active button styling
+  document.querySelectorAll('.fail-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  event.currentTarget.classList.add('active');
+  
+  // Hide all panels
+  document.querySelectorAll('.fail-panel').forEach(panel => {
+    panel.classList.remove('active');
+  });
+  
+  // Show selected panel
+  const activePanel = document.getElementById('fail-' + sectionId);
+  if (activePanel) {
+    activePanel.classList.add('active');
+  }
+}
 </script>
 </body>
 </html>
