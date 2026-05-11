@@ -3,83 +3,1062 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3D Printing | Paniz Manufacturing</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>3D Printing — Paniz Manufacturing</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  :root{--navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--cyan:#00e5ff;--cyan2:#00b8cc;--white:#f0f4ff;--muted:#7a8fa8;--border:rgba(0,229,255,0.15);--card:rgba(15,32,64,0.6);--ff:'Space Grotesk',sans-serif;--fm:'Space Mono',monospace;}
-  body{font-family:var(--ff);background:var(--navy);color:var(--white);}
-  nav{position:sticky;top:0;z-index:999;background:rgba(5,13,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;}
-  .logo{font-family:var(--fm);font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);}
-  .nav-links{display:flex;gap:0;list-style:none;}
-  .nav-links a{display:block;padding:0 1.2rem;height:64px;line-height:64px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:2px solid transparent;}
-  .nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan);}
-  .nav-cta{font-family:var(--fm);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--cyan);color:var(--cyan);padding:.45rem 1.1rem;text-decoration:none;}
-  .page-hero{padding:4rem 5% 3rem;text-align:center;}
-  .hero-badge{font-family:var(--fm);font-size:.7rem;color:var(--cyan);border:1px solid var(--border);padding:.35rem .9rem;display:inline-block;margin-bottom:1.5rem;}
-  .page-hero h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:700;text-transform:uppercase;}
-  .page-hero h1 span{color:var(--cyan);}
-  section{padding:3rem 5%;max-width:1200px;margin:0 auto;}
-  .sec-label{font-family:var(--fm);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem;}
-  .sec-label::after{content:'';flex:0 0 40px;height:1px;background:var(--cyan);}
-  .comparison-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0;}
-  .printer-card{background:var(--card);border:1px solid var(--border);padding:1.5rem;transition:all .3s;}
-  .printer-card:hover{transform:translateY(-4px);border-color:var(--cyan);}
-  .printer-card h3{color:var(--cyan);font-size:1.2rem;margin-bottom:.25rem;}
-  .metric-row{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--border);font-size:.85rem;}
-  .metric-pass{color:#4ade80;font-weight:600;}
-  .metric-fail{color:#f87171;font-weight:600;}
-  .settings-table{width:100%;border-collapse:collapse;margin:2rem 0;background:var(--card);border:1px solid var(--border);}
-  .settings-table th,.settings-table td{padding:.75rem;text-align:left;border-bottom:1px solid var(--border);}
-  .settings-table th{color:var(--cyan);font-family:var(--fm);}
-  footer{background:var(--navy2);border-top:1px solid var(--border);padding:2rem 5%;display:flex;justify-content:space-between;flex-wrap:wrap;}
-  @media(max-width:800px){.nav-links{display:none;}.comparison-grid{grid-template-columns:1fr;}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--navy4:#152848;
+  --cyan:#00e5ff;--cyan2:#00b8cc;--border:rgba(0,229,255,0.13);
+  --white:#f0f4ff;--muted:#6a7f9a;
+  --red:#ff4444;--amber:#ffb347;--green:#00ff88;
+  --ff:'DM Sans',sans-serif;--fd:'Bebas Neue',sans-serif;--fm:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--navy);color:var(--white);overflow-x:hidden;cursor:none}
+#cursor{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:screen}
+#cursor-ring{position:fixed;top:0;left:0;width:34px;height:34px;border:1px solid var(--cyan);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.4}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.02;pointer-events:none;z-index:9990}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 4%;height:62px;border-bottom:1px solid var(--border);background:rgba(5,13,26,0.95);backdrop-filter:blur(12px)}
+.logo{font-family:var(--fd);font-size:1.4rem;letter-spacing:.06em;color:var(--white);text-decoration:none}
+.logo span{color:var(--cyan)}
+.nav-links{display:flex;list-style:none}
+.nav-links a{font-family:var(--fm);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.4rem .9rem;height:62px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan)}
+.nav-pill{font-family:var(--fm);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--cyan);color:var(--cyan);padding:.45rem 1.2rem;text-decoration:none;transition:all .2s;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%)}
+.nav-pill:hover{background:var(--cyan);color:var(--navy)}
+
+/* HERO */
+.page-hero{padding:6rem 4% 3rem;border-bottom:1px solid var(--border);background:var(--navy2);position:relative;overflow:hidden;margin-top:62px;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.ph-eyebrow{font-family:var(--fm);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem}
+.ph-eyebrow::before{content:'';width:20px;height:1px;background:var(--cyan)}
+.ph-h1{font-family:var(--fd);font-size:clamp(3.5rem,7vw,6.5rem);line-height:.88;text-transform:uppercase;margin-bottom:1.5rem}
+.ph-h1 em{color:var(--cyan);font-style:normal}
+.ph-desc{font-size:.9rem;color:var(--muted);line-height:1.75;font-weight:300;max-width:460px}
+.hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem}
+.hs{background:var(--navy3);border:1px solid var(--border);padding:1.1rem;transition:border-color .3s}
+.hs:hover{border-color:var(--cyan)}
+.hs-val{font-family:var(--fd);font-size:2rem;color:var(--cyan);line-height:1}
+.hs-val.red{color:var(--red)}
+.hs-val.green{color:var(--green)}
+.hs-label{font-family:var(--fm);font-size:.46rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.25rem}
+
+/* MARQUEE */
+.marquee-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:var(--navy3);padding:.55rem 0}
+.marquee-track{display:flex;animation:marquee 25s linear infinite;white-space:nowrap}
+.m-item{font-family:var(--fd);font-size:1rem;letter-spacing:.06em;color:rgba(0,229,255,0.3);padding:0 2rem;display:flex;align-items:center;gap:1.5rem}
+.m-item span{color:var(--cyan);font-size:.7rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* SECTION STRUCTURE */
+.sec-wrap{border-bottom:1px solid var(--border)}
+.sec-head{display:grid;grid-template-columns:220px 1fr;border-bottom:1px solid var(--border)}
+.sec-label-col{padding:2.5rem;border-right:1px solid var(--border);background:var(--navy2);display:flex;flex-direction:column;justify-content:space-between}
+.sec-tag{font-family:var(--fm);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.4rem}
+.sec-big-num{font-family:var(--fd);font-size:4rem;color:var(--navy4);line-height:1;user-select:none}
+.sec-title-block{padding:2.5rem 3rem;display:flex;align-items:flex-end;justify-content:space-between}
+.sec-title-block h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);line-height:.92;text-transform:uppercase}
+.sec-title-block h2 em{color:var(--cyan);font-style:normal}
+.sec-body{padding:2.5rem 3rem}
+
+/* PRINTER COMPARISON CARDS */
+.printer-compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border)}
+.pc-card{padding:2.5rem;position:relative;overflow:hidden}
+.pc-card:first-child{border-right:1px solid var(--border);background:var(--navy)}
+.pc-card:last-child{background:var(--navy2)}
+.pc-badge{font-family:var(--fm);font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1.25rem}
+.pc-dot{width:7px;height:7px;border-radius:50%;display:inline-block}
+.pc-dot.dead{background:var(--red)}
+.pc-dot.live{background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+.pc-name{font-family:var(--fd);font-size:2.8rem;line-height:.92;text-transform:uppercase;margin-bottom:.25rem}
+.pc-sub{font-family:var(--fm);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.75rem}
+.pc-spec-row{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid var(--border)}
+.pc-spec-row:last-of-type{border-bottom:none}
+.pc-sk{font-size:.73rem;color:var(--muted);font-weight:300}
+.pc-sv{font-family:var(--fm);font-size:.7rem;color:var(--white)}
+.pc-sv.pass{color:var(--cyan)}
+.pc-sv.fail{color:var(--red)}
+.pc-watermark{position:absolute;bottom:1rem;right:1.5rem;font-family:var(--fd);font-size:5rem;opacity:.04;line-height:1;pointer-events:none;text-transform:uppercase}
+.verdict-strip{display:flex;align-items:center;gap:.75rem;margin-top:1.5rem;padding:1rem;background:var(--navy3);border:1px solid var(--border)}
+.verdict-icon{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.verdict-icon.fail{background:rgba(255,68,68,0.15);border:1px solid var(--red)}
+.verdict-icon.pass{background:rgba(0,229,255,0.1);border:1px solid var(--cyan)}
+.verdict-text{font-size:.78rem;color:var(--muted);font-weight:300;line-height:1.5}
+.verdict-text strong{color:var(--white);font-weight:500}
+
+/* PHOTO GRID */
+.photo-grid{display:grid;gap:1rem}
+.photo-grid-2{grid-template-columns:1fr 1fr}
+.photo-grid-3{grid-template-columns:repeat(3,1fr)}
+.photo-grid-4{grid-template-columns:repeat(4,1fr)}
+.photo-cell{position:relative;overflow:hidden;background:var(--navy3);border:1px solid var(--border);aspect-ratio:4/3;transition:border-color .3s;cursor:pointer}
+.photo-cell:hover{border-color:var(--cyan)}
+.photo-cell.tall{aspect-ratio:3/4}
+.photo-cell.wide{grid-column:span 2;aspect-ratio:16/9}
+.photo-cell img,.photo-cell video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.photo-cell:hover img,.photo-cell:hover video{transform:scale(1.03)}
+.photo-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(5,13,26,0.9));padding:1.5rem .75rem .75rem;font-family:var(--fm);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.photo-label strong{color:var(--white);display:block;font-size:.6rem;margin-bottom:.15rem}
+.photo-label .photo-pill{display:inline-flex;align-items:center;gap:.3rem;font-size:.45rem;padding:.12rem .4rem;border-radius:1px;text-transform:uppercase;letter-spacing:.08em;margin-top:.25rem}
+.photo-pill.pass{background:rgba(0,229,255,0.15);color:var(--cyan);border:1px solid rgba(0,229,255,0.3)}
+.photo-pill.fail{background:rgba(255,68,68,0.15);color:var(--red);border:1px solid rgba(255,68,68,0.3)}
+.photo-pill.warn{background:rgba(255,179,71,0.15);color:var(--amber);border:1px solid rgba(255,179,71,0.3)}
+.photo-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;background:var(--navy3)}
+.photo-placeholder svg{width:32px;height:32px;stroke:var(--muted);fill:none;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;opacity:.4}
+.photo-placeholder span{font-family:var(--fm);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);opacity:.5}
+
+/* FAILURES INTERACTIVE */
+.failures-layout{display:grid;grid-template-columns:320px 1fr;gap:1.5rem}
+.failure-list{display:flex;flex-direction:column;gap:.5rem}
+.fail-btn{padding:1rem 1.1rem;background:var(--navy2);border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;gap:.8rem;transition:all .2s;text-align:left;width:100%}
+.fail-btn:hover{border-color:var(--cyan);background:var(--navy3)}
+.fail-btn.active{border-color:var(--red);background:rgba(255,68,68,0.05);border-left:3px solid var(--red)}
+.fail-num{font-family:var(--fd);font-size:1.8rem;color:var(--red);line-height:1;width:36px;flex-shrink:0}
+.fail-info{}
+.fail-title{font-family:var(--fm);font-size:.6rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--white);margin-bottom:.15rem}
+.fail-meta{font-family:var(--fm);font-size:.5rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.fail-panel{background:var(--navy2);border:1px solid var(--border);padding:2rem;display:none;animation:fadeIn .3s ease}
+.fail-panel.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.fp-tag{font-family:var(--fm);font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:.5rem}
+.fp-title{font-family:var(--fd);font-size:2rem;text-transform:uppercase;line-height:.95;margin-bottom:1rem}
+.fp-title em{color:var(--red);font-style:normal}
+.fp-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:1.25rem}
+.fp-photo{aspect-ratio:4/3;background:var(--navy3);border:1px solid var(--border);overflow:hidden;position:relative}
+.fp-photo img{width:100%;height:100%;object-fit:cover}
+.fp-photo-label{position:absolute;bottom:0;left:0;right:0;background:rgba(5,13,26,0.85);padding:.4rem .5rem;font-family:var(--fm);font-size:.44rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.fp-desc{font-size:.82rem;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:1rem}
+.fp-desc strong{color:var(--white);font-weight:500}
+.fp-fix{background:var(--navy3);border:1px solid var(--border);padding:1rem;border-left:2px solid var(--cyan)}
+.fp-fix-label{font-family:var(--fm);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:.4rem}
+.fp-fix-text{font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300}
+.fp-fix-text strong{color:var(--white)}
+
+/* CONFIGURATION TIMELINE */
+.config-timeline-wrap{overflow:hidden;position:relative}
+.config-nav{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem}
+.cnav-btn{width:36px;height:36px;background:var(--navy2);border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .2s;flex-shrink:0}
+.cnav-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.cnav-btn:disabled{opacity:.3;cursor:not-allowed}
+.cnav-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cnav-info{font-family:var(--fm);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.config-scroll{overflow:hidden}
+.config-track{display:flex;gap:.75rem;transition:transform .45s cubic-bezier(.4,0,.2,1)}
+.config-card{flex:0 0 240px;background:var(--navy2);border:1px solid var(--border);padding:1.25rem;position:relative;transition:border-color .3s}
+.config-card.fail{border-top:2px solid var(--red)}
+.config-card.warn{border-top:2px solid var(--amber)}
+.config-card.pass{border-top:2px solid var(--green)}
+.config-card.machine-err{border-top:2px solid var(--red);background:rgba(255,68,68,0.04)}
+.config-card:hover{border-color:var(--cyan)}
+.cc-num{font-family:var(--fd);font-size:2rem;line-height:1;margin-bottom:.25rem}
+.cc-num.fail{color:var(--red)}
+.cc-num.warn{color:var(--amber)}
+.cc-num.pass{color:var(--green)}
+.cc-printer{font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+.cc-rows{display:flex;flex-direction:column;gap:.35rem}
+.cc-row{display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem}
+.cc-key{font-size:.65rem;color:var(--muted);font-weight:300;flex:1}
+.cc-val{font-family:var(--fm);font-size:.62rem;color:var(--white);text-align:right;flex-shrink:0}
+.cc-result{margin-top:.75rem;padding:.5rem .65rem;font-family:var(--fm);font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;border-radius:1px}
+.cc-result.fail{background:rgba(255,68,68,0.1);color:var(--red);border:1px solid rgba(255,68,68,0.2)}
+.cc-result.warn{background:rgba(255,179,71,0.1);color:var(--amber);border:1px solid rgba(255,179,71,0.2)}
+.cc-result.pass{background:rgba(0,255,136,0.08);color:var(--green);border:1px solid rgba(0,255,136,0.2)}
+.machine-err-body{padding:.75rem 0;text-align:center}
+.me-icon{font-size:1.5rem;margin-bottom:.5rem}
+.me-title{font-family:var(--fm);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:.5rem}
+.me-details{display:flex;flex-direction:column;gap:.2rem}
+.me-detail{font-size:.65rem;color:var(--muted);font-weight:300}
+
+/* WHY CHANGE BUTTON */
+.why-change{width:100%;margin-top:.75rem;padding:.5rem;background:transparent;border:1px solid var(--border);cursor:pointer;font-family:var(--fm);font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.4rem}
+.why-change:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,229,255,0.04)}
+.why-change span{font-size:.65rem}
+
+/* REASONING MODAL */
+.reason-modal{display:none;position:fixed;inset:0;background:rgba(5,13,26,0.96);z-index:1000;align-items:center;justify-content:center;padding:2rem}
+.reason-modal.open{display:flex}
+.rm-content{background:var(--navy2);border:1px solid var(--border);width:100%;max-width:680px;max-height:90vh;overflow-y:auto}
+.rm-header{padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--navy3);position:sticky;top:0}
+.rm-title{font-family:var(--fd);font-size:1.5rem;text-transform:uppercase;line-height:.95}
+.rm-title em{color:var(--cyan);font-style:normal}
+.rm-close{background:none;border:1px solid var(--border);color:var(--muted);width:32px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all .2s;flex-shrink:0}
+.rm-close:hover{border-color:var(--red);color:var(--red)}
+.rm-body{padding:1.5rem}
+.rm-section{margin-bottom:1.25rem}
+.rm-section-title{font-family:var(--fm);font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.5rem;padding-bottom:.3rem;border-bottom:1px solid var(--border)}
+.rm-text{font-size:.8rem;color:var(--muted);line-height:1.65;font-weight:300}
+.rm-text strong{color:var(--white);font-weight:500}
+.rm-block{padding:.85rem 1rem;margin:.5rem 0;font-size:.78rem;line-height:1.55;font-weight:300}
+.rm-block.fail{background:rgba(255,68,68,0.06);border-left:2px solid var(--red);color:var(--muted)}
+.rm-block.fix{background:rgba(0,229,255,0.05);border-left:2px solid var(--cyan);color:var(--muted)}
+.rm-block.outcome{background:var(--navy3);border-left:2px solid var(--green);color:var(--muted)}
+.rm-block strong{color:var(--white)}
+
+/* RESULTS COMPARISON TABLE */
+.results-table{width:100%;border-collapse:collapse}
+.results-table th{font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:.6rem 1rem;text-align:left;border-bottom:1px solid var(--border);font-weight:400;background:var(--navy2)}
+.results-table th.highlight{color:var(--cyan);background:rgba(0,229,255,0.06)}
+.results-table td{padding:.65rem 1rem;border-bottom:1px solid var(--border);font-size:.75rem;color:var(--muted);font-weight:300;vertical-align:middle}
+.results-table tr:hover td{background:var(--navy2)}
+.results-table tr:last-child td{border-bottom:none}
+.results-table td.label{color:var(--white);font-weight:400}
+.results-table td.pass{font-family:var(--fm);font-size:.68rem;color:var(--cyan)}
+.results-table td.fail{font-family:var(--fm);font-size:.68rem;color:var(--red)}
+.results-table td.warn{font-family:var(--fm);font-size:.68rem;color:var(--amber)}
+.score-wrap{display:flex;align-items:center;gap:.5rem}
+.score-track{flex:1;height:4px;background:var(--navy3)}
+.score-fill{height:100%;background:var(--cyan)}
+.score-fill.red{background:var(--red)}
+.score-fill.amber{background:var(--amber)}
+.score-fill.green{background:var(--green)}
+.score-num{font-family:var(--fm);font-size:.6rem;color:var(--muted);min-width:28px;text-align:right}
+
+/* FINAL VERDICT */
+.final-verdict{border:1px solid rgba(0,255,136,0.25);background:rgba(0,255,136,0.03);padding:2rem;margin-top:1.5rem}
+.fv-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.fv-badge{font-family:var(--fm);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;background:var(--green);color:var(--navy);padding:.3rem .75rem;display:inline-block;font-weight:600}
+.fv-title{font-family:var(--fd);font-size:2rem;text-transform:uppercase;line-height:.95;color:var(--white)}
+.fv-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.fv-text{font-size:.82rem;color:var(--muted);line-height:1.7;font-weight:300}
+.fv-text strong{color:var(--white);font-weight:500}
+.fv-stats{background:var(--navy3);border:1px solid var(--border);padding:1.25rem}
+.fv-stat-row{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid var(--border)}
+.fv-stat-row:last-child{border-bottom:none}
+.fv-sk{font-size:.72rem;color:var(--muted);font-weight:300}
+.fv-sv{font-family:var(--fm);font-size:.7rem;color:var(--cyan)}
+
+/* PLATFORM SWITCH CALLOUT */
+.switch-callout{background:var(--navy3);border:1px solid var(--border);padding:2rem;margin:1.5rem 0;display:grid;grid-template-columns:auto 1fr auto;gap:2rem;align-items:center}
+.sc-label{font-family:var(--fd);font-size:3rem;line-height:1;text-transform:uppercase}
+.sc-label.from{color:var(--red)}
+.sc-label.to{color:var(--cyan)}
+.sc-arrow{font-size:2rem;color:var(--muted);text-align:center}
+.sc-mid{text-align:center}
+.sc-mid-title{font-family:var(--fm);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);margin-bottom:.4rem}
+.sc-mid-text{font-size:.78rem;color:var(--muted);line-height:1.5;font-weight:300;max-width:260px;margin:0 auto}
+
+/* SLICER SETTINGS BOX */
+.slicer-box{background:var(--navy3);border:1px solid var(--border);padding:1.25rem}
+.slicer-box-title{font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.9rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.5rem}
+.slicer-box-title::before{content:'';width:6px;height:6px;background:var(--cyan);border-radius:50%}
+.slicer-rows{display:flex;flex-direction:column;gap:.4rem}
+.sr{display:flex;justify-content:space-between;align-items:flex-start;gap.5rem;padding:.4rem 0;border-bottom:1px solid rgba(0,229,255,0.06)}
+.sr:last-child{border-bottom:none}
+.sr-key{font-size:.72rem;color:var(--muted);font-weight:300;flex:1}
+.sr-val{font-family:var(--fm);font-size:.68rem;color:var(--white);text-align:right;flex-shrink:0;max-width:120px}
+.sr-val.pass{color:var(--cyan)}
+.slicer-boxes-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+
+/* FOOTER */
+footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem 4%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2rem}
+.f-logo{font-family:var(--fd);font-size:1.3rem;color:var(--white)}
+.f-logo span{color:var(--cyan)}
+.f-copy{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center}
+.f-links{display:flex;gap:1.5rem;justify-content:flex-end}
+.f-links a{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.f-links a:hover{color:var(--cyan)}
 </style>
 </head>
 <body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
 
 <nav>
-  <span class="logo">Paniz Manufacturing</span>
+  <span class="logo">ENCLOS3D<span>.</span></span>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li><li><a href="project.html">Project</a></li><li><a href="design.html">Design</a></li>
-    <li><a href="pfmea.html">PFMEA</a></li><li><a href="printing.html" class="active">3D Printing</a></li>
-    <li><a href="quality.html">Quality</a></li><li><a href="simulation.html">Simulation</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="industry.html">Industry challenge</a></li>
+    <li><a href="project.html">Project</a></li>
+    <li><a href="design.html">Design</a></li>
+    <li><a href="pfmea.html">PFMEA</a></li>
+    <li><a href="MSD.html">MSD</a></li>
+    <li><a href="printing.html">3D Printing</a></li>
+    <li><a href="quality.html">Quality</a></li>
+    <li><a href="simulation.html">Simulation</a></li>
+    <li><a href="iot.html">IoT and Digital Twin</a></li>
   </ul>
-  <a class="nav-cta" href="simulation.html">50K Target</a>
 </nav>
 
-<div class="page-hero"><div class="hero-badge">FDM Additive Manufacturing</div><h1>3D Printing <span>Comparison</span></h1></div>
-
-<section>
-  <div class="sec-label">Ultimaker vs Bambu</div>
-  <div class="comparison-grid">
-    <div class="printer-card"><h3>Ultimaker S3 / S5 Extended</h3><p style="font-size:.7rem;color:var(--muted);margin-bottom:1rem;">15 prints · Initial trials</p>
-      <div class="metric-row"><span>FESTO Pass Rate</span><span class="metric-fail">0% (0/15)</span></div>
-      <div class="metric-row"><span>Layer Shifting</span><span class="metric-fail">Frequent</span></div>
-      <div class="metric-row"><span>Clogging</span><span class="metric-fail">Multiple incidents</span></div>
-      <div class="metric-row"><span>Dimensional Accuracy</span><span class="metric-fail">Out of spec (1.18mm vs 1.6-2.2mm)</span></div>
-    </div>
-    <div class="printer-card"><h3>Bambu Lab P1S</h3><p style="font-size:.7rem;color:var(--muted);margin-bottom:1rem;">5 prints · Final production</p>
-      <div class="metric-row"><span>FESTO Pass Rate</span><span class="metric-pass">80% (4/5 passed)</span></div>
-      <div class="metric-row"><span>Layer Shifting</span><span class="metric-pass">None</span></div>
-      <div class="metric-row"><span>Clogging</span><span class="metric-pass">None</span></div>
-      <div class="metric-row"><span>Dimensional Accuracy</span><span class="metric-pass">Within spec</span></div>
+<!-- HERO -->
+<div class="page-hero reveal">
+  <div>
+    <div class="ph-eyebrow">05 — 3D Printing</div>
+    <h1 class="ph-h1">PRINT.<br><em>FAIL.</em><br>LEARN.<br>REPEAT.</h1>
+    <p class="ph-desc">20 Ultimaker attempts. Every single one failed — either visually, dimensionally, or at FESTO Station 2. Then 5 Bambu P1S prints: 4 passed, 2 were outstanding. Here's exactly what happened and why.</p>
+  </div>
+  <div>
+    <div class="hero-stats">
+      <div class="hs"><div class="hs-val red">20</div><div class="hs-label">Ultimaker attempts — 0 fully passed</div></div>
+      <div class="hs"><div class="hs-val green">80%</div><div class="hs-label">Bambu P1S pass rate</div></div>
+      <div class="hs"><div class="hs-val">5</div><div class="hs-label">Bambu prints total</div></div>
+      <div class="hs"><div class="hs-val green">2</div><div class="hs-label">Outstanding results — both casings</div></div>
     </div>
   </div>
+</div>
 
-  <div class="sec-label">Final Print Settings (Bambu P1S)</div>
-  <table class="settings-table">
-    <tr><th>Parameter</th><th>Value</th></tr>
-    <tr><td>Layer Height</td><td>0.15 mm</td></tr>
-    <tr><td>Infill</td><td>25%</td></tr>
-    <tr><td>Nozzle Temperature</td><td>205°C</td></tr>
-    <tr><td>Bed Temperature</td><td>60°C</td></tr>
-    <tr><td>Print Speed</td><td>45 mm/s</td></tr>
-    <tr><td>Material</td><td>White PLA</td></tr>
-    <tr><td>Print Time (both casings)</td><td>2.5 hours</td></tr>
-  </table>
-</section>
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="m-item">20 ULTIMAKER TRIALS — 0 PASSED <span>✦</span></div>
+    <div class="m-item">BAMBU P1S — 80% SUCCESS RATE <span>✦</span></div>
+    <div class="m-item">1.18mm WALL FAIL → 1.9mm PASS <span>✦</span></div>
+    <div class="m-item">NOZZLE CLOGS · LAYER SHIFTS · PLATFORM SWITCH <span>✦</span></div>
+    <div class="m-item">FESTO STATION 2 — THE CRITICAL TEST <span>✦</span></div>
+    <div class="m-item">PLA · £20/KG · 100g PER PAIR <span>✦</span></div>
+    <div class="m-item">20 ULTIMAKER TRIALS — 0 PASSED <span>✦</span></div>
+    <div class="m-item">BAMBU P1S — 80% SUCCESS RATE <span>✦</span></div>
+    <div class="m-item">1.18mm WALL FAIL → 1.9mm PASS <span>✦</span></div>
+    <div class="m-item">NOZZLE CLOGS · LAYER SHIFTS · PLATFORM SWITCH <span>✦</span></div>
+    <div class="m-item">FESTO STATION 2 — THE CRITICAL TEST <span>✦</span></div>
+    <div class="m-item">PLA · £20/KG · 100g PER PAIR <span>✦</span></div>
+  </div>
+</div>
 
-<footer><div><div class="f-logo">Paniz Manufacturing Co.</div></div><div class="f-links"><a href="design.html">Design</a><a href="quality.html">Quality</a></div></footer>
+<!-- SECTION 1: PRINTER SPECS -->
+<div class="sec-wrap reveal">
+  <div class="sec-head">
+    <div class="sec-label-col"><div class="sec-tag">01 — The Machines</div><div class="sec-big-num">HW</div></div>
+    <div class="sec-title-block"><h2>Printer<br><em>Specs.</em></h2><div style="font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Head-to-head</div></div>
+  </div>
+  <div class="sec-body">
+    <div class="printer-compare">
+      <div class="pc-card">
+        <div class="pc-badge"><span class="pc-dot dead"></span><span style="font-family:var(--fm);font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:var(--red)">Retired — Failed All Tests</span></div>
+        <div class="pc-name">Ultimaker</div>
+        <div class="pc-sub">FDM Open Frame — Phase 1</div>
+        <div class="pc-spec-row"><span class="pc-sk">Architecture</span><span class="pc-sv fail">Open frame — no enclosure</span></div>
+        <div class="pc-spec-row"><span class="pc-sk">Max print speed</span><span class="pc-sv">~80mm/s</span></div>
+        <div class="pc-spec-row"><span class="pc-sk">Build volume</span><span class="pc-sv">330×240×300mm</span></div>
+        <div class="pc-spec-row"><span class="pc-sk">Extruder type</span><span class="pc-sv">Bowden tube</span></div>
+        <div class="pc-spec-row"><span class="pc-sk">Temperature control</span><span class="pc-sv fail">Open air — inconsistent</span></div>
+        <div class="pc-spec-row"><span class="pc-sk">Wall thickness achieved</span><span class="pc-sv fail">1.18mm — OUT OF SPEC</span></div>
+        <div class="pc-spec-row"><span class="pc-sk">FESTO Station 2</span><span class="pc-sv fail">0% pass rate</span></div>
+        <div class="pc-spec-row"><span class="pc-sk">Total attempts</span><span class="pc-sv fail">~20 — none fully passed</span></div>
+        <div class="verdict-strip">
+          <div class="verdict-icon fail"><span style="color:var(--red);font-size:.9rem">✗</span></div>
+          <div class="verdict-text"><strong>Retired.</strong> The open-frame design caused consistent temperature gradients, leading to warping and a wall thickness of 1.18mm — well below the 1.6–2.2mm specification. No Ultimaker print passed FESTO Station 2.</div>
+        </div>
+        <div class="pc-watermark">RETIRED</div>
+      </div>
+      <div class="pc-card">
+        <div class="pc-badge"><span class="pc-dot live"></span><span style="font-family:var(--fm);font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan)">Active — Production Platform</span></div>
+        <div class="pc-name">Bambu P1S</div>
+        <div class="pc-sub">High-Speed FDM Enclosed — Phase 2</div>
+        <div class="pc-spec-row"><span class="pc-sk">Architecture</span><span class="pc-sv pass">Fully enclosed chamber</span></div>
+        <div class="pc-spec-row"><span class="pc-sk">Max print speed</span><span class="pc-sv pass">500mm/s</span></div>
+        <div class="pc-spec-row"><span class="pc-sk">Build volume</span><span class="pc-sv">256×256×256mm</span></div>
+        <div class="pc-spec-row"><span class="pc-sk">Extruder type</span><span class="pc-sv pass">Direct drive</span></div>
+        <div class="pc-spec-row"><span class="pc-sk">Temperature control</span><span class="pc-sv pass">Enclosed — stable thermal environment</span></div>
+        <div class="pc-spec-row"><span class="pc-sk">Wall thickness achieved</span><span class="pc-sv pass">1.9mm — WITHIN SPEC ✓</span></div>
+        <div class="pc-spec-row"><span class="pc-sk">FESTO Station 2</span><span class="pc-sv pass">100% pass rate</span></div>
+        <div class="pc-spec-row"><span class="pc-sk">Fleet cost</span><span class="pc-sv">25 × £470 = £11,750</span></div>
+        <div class="verdict-strip">
+          <div class="verdict-icon pass"><span style="color:var(--cyan);font-size:.9rem">✓</span></div>
+          <div class="verdict-text"><strong>Selected for production.</strong> The enclosed chamber eliminates thermal gradients. Direct drive extruder gives precise filament control. First print achieved 1.9mm wall thickness — passing FESTO Station 2 immediately. 80% yield across all trials.</div>
+        </div>
+        <div class="pc-watermark" style="color:rgba(0,229,255,0.06)">ACTIVE</div>
+      </div>
+    </div>
+
+    <!-- Printer photos -->
+    <div style="margin-top:1.5rem">
+      <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">The Printers — In the Lab</div>
+      <div class="photo-grid photo-grid-4">
+        <div class="photo-cell">
+          <!-- ADD: photo of Ultimaker printer itself -->
+          <img src="YOUR_ULTIMAKER_PRINTER_PHOTO.jpg" alt="Ultimaker printer" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8M12 8v8\'/></svg><span>Ultimaker Printer</span></div>'">
+          <div class="photo-label"><strong>Ultimaker</strong>Open-frame FDM printer<span class="photo-pill fail">Retired</span></div>
+        </div>
+        <div class="photo-cell">
+          <!-- ADD: photo of Ultimaker starting to print -->
+          <img src="YOUR_ULTIMAKER_PRINTING_PHOTO.jpg" alt="Ultimaker printing" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8M12 8v8\'/></svg><span>Ultimaker — Printing</span></div>'">
+          <div class="photo-label"><strong>Ultimaker — Starting a Print</strong>Early trials<span class="photo-pill warn">Phase 1</span></div>
+        </div>
+        <div class="photo-cell">
+          <!-- ADD: photo of Bambu P1S printer itself -->
+          <img src="YOUR_BAMBU_PRINTER_PHOTO.jpg" alt="Bambu P1S printer" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8M12 8v8\'/></svg><span>Bambu P1S Printer</span></div>'">
+          <div class="photo-label"><strong>Bambu P1S</strong>Enclosed production printer<span class="photo-pill pass">Active</span></div>
+        </div>
+        <div class="photo-cell">
+          <!-- ADD: photo of Bambu starting to print -->
+          <img src="YOUR_BAMBU_PRINTING_PHOTO.jpg" alt="Bambu P1S printing" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8M12 8v8\'/></svg><span>Bambu — Printing</span></div>'">
+          <div class="photo-label"><strong>Bambu P1S — First Print</strong>Immediate success<span class="photo-pill pass">Pass</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: PLATFORM SWITCH -->
+<div class="sec-wrap reveal">
+  <div class="sec-head">
+    <div class="sec-label-col"><div class="sec-tag">02 — The Decision</div><div class="sec-big-num">WHY</div></div>
+    <div class="sec-title-block"><h2>Why We<br><em>Switched.</em></h2></div>
+  </div>
+  <div class="sec-body">
+    <div class="switch-callout">
+      <div><div style="font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem">From</div><div class="sc-label from">Ultimaker</div></div>
+      <div class="sc-mid">
+        <div class="sc-mid-title">⚡ Platform Switch — Data-Driven</div>
+        <div class="sc-mid-text">20 prints. 0 passed FESTO Station 2. Wall consistently at 1.18mm vs 1.6–2.2mm spec. The data was unambiguous — the platform had to change.</div>
+      </div>
+      <div><div style="font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem">To</div><div class="sc-label to">Bambu P1S</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem">
+      <div>
+        <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:.75rem">Why Ultimaker Failed</div>
+        <div style="display:flex;flex-direction:column;gap:.5rem">
+          <div style="padding:.7rem .9rem;background:rgba(255,68,68,0.05);border:1px solid rgba(255,68,68,0.15);border-left:2px solid var(--red)">
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--red);margin-bottom:.3rem">Root Cause 1</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Open frame = temperature gradients.</strong> Without an enclosure, ambient air cooled different parts of the print unevenly, causing layer warping and inconsistent extrusion — directly resulting in the 1.18mm wall measurement.</div>
+          </div>
+          <div style="padding:.7rem .9rem;background:rgba(255,68,68,0.05);border:1px solid rgba(255,68,68,0.15);border-left:2px solid var(--red)">
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--red);margin-bottom:.3rem">Root Cause 2</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Bowden tube extruder.</strong> The longer filament path between motor and nozzle reduces retraction precision and introduces pressure lag, causing inconsistent extrusion particularly in thin-wall sections.</div>
+          </div>
+          <div style="padding:.7rem .9rem;background:rgba(255,68,68,0.05);border:1px solid rgba(255,68,68,0.15);border-left:2px solid var(--red)">
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--red);margin-bottom:.3rem">Root Cause 3</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Hardware reliability.</strong> Multiple mid-print failures due to filament sensor errors, nozzle clogs, and calibration drift across ~20 attempts. Unacceptable for a 50,000/year production commitment.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">Why Bambu P1S Solved It</div>
+        <div style="display:flex;flex-direction:column;gap:.5rem">
+          <div style="padding:.7rem .9rem;background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.15);border-left:2px solid var(--cyan)">
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem">Solution 1</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Fully enclosed chamber.</strong> Eliminates temperature gradients entirely. The entire print environment is thermally stable, preventing the differential cooling that caused warping on the Ultimaker.</div>
+          </div>
+          <div style="padding:.7rem .9rem;background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.15);border-left:2px solid var(--cyan)">
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem">Solution 2</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">Direct drive extruder.</strong> Filament motor sits directly above the nozzle — precise retraction, consistent extrusion pressure, and reliable thin-wall printing. Achieved 1.9mm wall first attempt.</div>
+          </div>
+          <div style="padding:.7rem .9rem;background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.15);border-left:2px solid var(--cyan)">
+            <div style="font-family:var(--fm);font-size:.56rem;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem">Solution 3</div>
+            <div style="font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300"><strong style="color:var(--white)">500mm/s speed + reliability.</strong> Faster print cycle (2.5h for both casings), cloud monitoring, and auto-calibration dramatically improve hardware stability and enable 24/7 unattended operation.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: FAILURES INTERACTIVE -->
+<div class="sec-wrap reveal">
+  <div class="sec-head">
+    <div class="sec-label-col"><div class="sec-tag">03 — What Went Wrong</div><div class="sec-big-num">FAIL</div></div>
+    <div class="sec-title-block"><h2>Ultimaker<br><em>Failures.</em></h2><div style="font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Click a failure to see photos</div></div>
+  </div>
+  <div class="sec-body">
+    <div class="failures-layout">
+      <div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1rem">
+          <div style="background:var(--navy3);border:1px solid var(--border);padding:1rem;text-align:center">
+            <div style="font-family:var(--fd);font-size:2.5rem;color:var(--red);line-height:1">~20</div>
+            <div style="font-family:var(--fm);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.25rem">Total Ultimaker attempts</div>
+          </div>
+          <div style="background:var(--navy3);border:1px solid var(--border);padding:1rem;text-align:center">
+            <div style="font-family:var(--fd);font-size:2.5rem;color:var(--red);line-height:1">0</div>
+            <div style="font-family:var(--fm);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.25rem">Fully passed both tests</div>
+          </div>
+        </div>
+        <div class="failure-list" id="failureList">
+          <button class="fail-btn active" data-fail="midprint" onclick="showFail('midprint')">
+            <div class="fail-num">01</div>
+            <div class="fail-info"><div class="fail-title">Mid-Print Failures</div><div class="fail-meta">Multiple stops · Filament sensor · Layer shift</div></div>
+          </button>
+          <button class="fail-btn" data-fail="nozzle" onclick="showFail('nozzle')">
+            <div class="fail-num">02</div>
+            <div class="fail-info"><div class="fail-title">Nozzle Clogging</div><div class="fail-meta">Blocked nozzle · Under-extrusion</div></div>
+          </button>
+          <button class="fail-btn" data-fail="layerchange" onclick="showFail('layerchange')">
+            <div class="fail-num">03</div>
+            <div class="fail-info"><div class="fail-title">Layer Change Defects</div><div class="fail-meta">Visible layer shifts · Poor adhesion mid-print</div></div>
+          </button>
+          <button class="fail-btn" data-fail="wallthick" onclick="showFail('wallthick')">
+            <div class="fail-num">04</div>
+            <div class="fail-info"><div class="fail-title">Wall Thickness Failure</div><div class="fail-meta">1.18mm vs 1.6–2.2mm spec · FESTO Station 2</div></div>
+          </button>
+          <button class="fail-btn" data-fail="visualfail" onclick="showFail('visualfail')">
+            <div class="fail-num">05</div>
+            <div class="fail-info"><div class="fail-title">Visual Failures</div><div class="fail-meta">Warping · Surface defects · Delamination</div></div>
+          </button>
+        </div>
+      </div>
+
+      <div id="failurePanel">
+        <!-- PANEL: MID PRINT -->
+        <div class="fail-panel active" id="fail-midprint">
+          <div class="fp-tag">Failure 01 — Ultimaker</div>
+          <div class="fp-title">Mid-Print<br><em>Failures.</em></div>
+          <div class="fp-photos">
+            <div class="fp-photo">
+              <!-- ADD: photo of failed mid-print Ultimaker (print stopped part way through) -->
+              <img src="YOUR_MIDPRINT_FAIL_1.jpg" alt="Mid-print failure" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Add photo</span></div>'">
+              <div class="fp-photo-label">Stopped mid-print</div>
+            </div>
+            <div class="fp-photo">
+              <!-- ADD: another mid-print failure photo -->
+              <img src="YOUR_MIDPRINT_FAIL_2.jpg" alt="Print stopped" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Add photo</span></div>'">
+              <div class="fp-photo-label">Incomplete part</div>
+            </div>
+            <div class="fp-photo">
+              <!-- ADD: photo of Ultimaker screen showing error or failed print on bed -->
+              <img src="YOUR_MIDPRINT_FAIL_3.jpg" alt="Error screen" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Add photo</span></div>'">
+              <div class="fp-photo-label">Machine error state</div>
+            </div>
+          </div>
+          <div class="fp-desc">Across approximately <strong>20 Ultimaker attempts</strong>, multiple prints stopped mid-way through. Causes included filament sensor triggers, layer adhesion failures causing the part to detach from the bed mid-print, and calibration drift between print jobs. Each failure meant a wasted 1–2 hours and material loss.</div>
+          <div class="fp-fix">
+            <div class="fp-fix-label">Why this kept happening</div>
+            <div class="fp-fix-text">The Ultimaker's open-frame design means any vibration, temperature change, or filament inconsistency directly affects the print. <strong>No auto-calibration, no closed-loop feedback</strong> — operator had to manually re-level and restart every time.</div>
+          </div>
+        </div>
+
+        <!-- PANEL: NOZZLE CLOG -->
+        <div class="fail-panel" id="fail-nozzle">
+          <div class="fp-tag">Failure 02 — Ultimaker</div>
+          <div class="fp-title">Nozzle<br><em>Clogging.</em></div>
+          <div class="fp-photos">
+            <div class="fp-photo">
+              <!-- ADD: close-up photo of clogged nozzle -->
+              <img src="YOUR_NOZZLE_CLOG_1.jpg" alt="Clogged nozzle" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Add nozzle photo</span></div>'">
+              <div class="fp-photo-label">Blocked nozzle</div>
+            </div>
+            <div class="fp-photo">
+              <!-- ADD: photo showing under-extrusion effect on a printed part -->
+              <img src="YOUR_NOZZLE_CLOG_2.jpg" alt="Under-extrusion result" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Add photo</span></div>'">
+              <div class="fp-photo-label">Under-extrusion on print</div>
+            </div>
+            <div class="fp-photo">
+              <!-- ADD: another nozzle or failed print photo -->
+              <img src="YOUR_NOZZLE_CLOG_3.jpg" alt="Nozzle failure" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Add photo</span></div>'">
+              <div class="fp-photo-label">Failed casing — nozzle clog</div>
+            </div>
+          </div>
+          <div class="fp-desc">Nozzle clogs occurred repeatedly across the Ultimaker trials. A partial blockage causes <strong>under-extrusion</strong> — the printer attempts to deposit filament but the reduced flow rate means walls are thinner than specified. This directly contributed to the 1.18mm wall measurement. Full clogs stopped prints entirely.</div>
+          <div class="fp-fix">
+            <div class="fp-fix-label">Root cause</div>
+            <div class="fp-fix-text">The Ultimaker's Bowden tube extruder creates pressure inconsistencies in the filament path. Any small debris or heat creep in the tube can build pressure until the nozzle partially blocks. <strong>Required manual cold-pull cleaning and recalibration</strong> between affected prints.</div>
+          </div>
+        </div>
+
+        <!-- PANEL: LAYER CHANGE -->
+        <div class="fail-panel" id="fail-layerchange">
+          <div class="fp-tag">Failure 03 — Ultimaker</div>
+          <div class="fp-title">Layer Change<br><em>Defects.</em></div>
+          <div class="fp-photos">
+            <div class="fp-photo">
+              <!-- ADD: photo showing visible layer shift / offset on a casing -->
+              <img src="YOUR_LAYER_CHANGE_1.jpg" alt="Layer shift" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Add photo</span></div>'">
+              <div class="fp-photo-label">Layer shift — visible offset</div>
+            </div>
+            <div class="fp-photo">
+              <!-- ADD: photo showing poor layer adhesion / delamination -->
+              <img src="YOUR_LAYER_CHANGE_2.jpg" alt="Poor layer adhesion" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Add photo</span></div>'">
+              <div class="fp-photo-label">Delamination between layers</div>
+            </div>
+            <div class="fp-photo">
+              <!-- ADD: side view showing the layer change line or gap in the casing wall -->
+              <img src="YOUR_LAYER_CHANGE_3.jpg" alt="Layer adhesion gap" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Add photo</span></div>'">
+              <div class="fp-photo-label">Visible gap in wall</div>
+            </div>
+          </div>
+          <div class="fp-desc">Several Ultimaker prints showed clear <strong>layer shifting</strong> — where the upper portion of the print is offset horizontally from the lower portion, creating a visible step in the casing wall. Separately, <strong>poor inter-layer adhesion</strong> caused delamination, where layers separated under light mechanical force.</div>
+          <div class="fp-fix">
+            <div class="fp-fix-label">Why this happens on the Ultimaker</div>
+            <div class="fp-fix-text">Layer shifts occur when the stepper motor skips steps — typically from excessive print speed, belt tension issues, or vibration. The open frame amplifies vibration. <strong>Poor layer adhesion</strong> results from layers cooling too fast in the open-air environment before the next layer bonds properly.</div>
+          </div>
+        </div>
+
+        <!-- PANEL: WALL THICKNESS -->
+        <div class="fail-panel" id="fail-wallthick">
+          <div class="fp-tag">Failure 04 — Critical — FESTO Station 2</div>
+          <div class="fp-title">Wall Thickness<br><em>Failure.</em></div>
+          <div class="fp-photos">
+            <div class="fp-photo">
+              <!-- ADD: photo of visually-passed Ultimaker top casing (looks okay but failed measurement) -->
+              <img src="YOUR_ULTIMAKER_TOP_PASS_VISUAL.jpg" alt="Ultimaker top — visual pass" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Ultimaker top — visual pass</span></div>'">
+              <div class="fp-photo-label">Top casing — visual pass but measurement fail</div>
+            </div>
+            <div class="fp-photo">
+              <!-- ADD: photo of visually-passed Ultimaker top casing backside -->
+              <img src="YOUR_ULTIMAKER_TOP_BACKSIDE.jpg" alt="Ultimaker top backside" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Top casing — backside</span></div>'">
+              <div class="fp-photo-label">Top casing — backside</div>
+            </div>
+            <div class="fp-photo">
+              <!-- ADD: photo of visually-passed Ultimaker bottom casing -->
+              <img src="YOUR_ULTIMAKER_BOTTOM_PASS_VISUAL.jpg" alt="Ultimaker bottom — visual pass" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Bottom casing — visual pass</span></div>'">
+              <div class="fp-photo-label">Bottom casing — visual pass</div>
+            </div>
+          </div>
+          <div class="fp-photos" style="margin-top:.5rem">
+            <div class="fp-photo">
+              <!-- ADD: photo of Ultimaker bottom casing backside -->
+              <img src="YOUR_ULTIMAKER_BOTTOM_BACKSIDE.jpg" alt="Ultimaker bottom backside" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Bottom — backside</span></div>'">
+              <div class="fp-photo-label">Bottom casing — backside</div>
+            </div>
+            <div class="fp-photo" style="background:rgba(255,68,68,0.05);border:1px solid rgba(255,68,68,0.2)">
+              <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;padding:1rem">
+                <div style="font-family:var(--fd);font-size:2.5rem;color:var(--red);line-height:1">1.18mm</div>
+                <div style="font-family:var(--fm);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--red)">Measured wall</div>
+                <div style="font-family:var(--fm);font-size:.46rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Required: 1.6–2.2mm</div>
+                <div style="font-family:var(--fm);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-top:.25rem">FESTO Station 2 — FAIL</div>
+              </div>
+            </div>
+            <div class="fp-photo" style="background:rgba(0,229,255,0.04);border:1px solid rgba(0,229,255,0.2)">
+              <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;padding:1rem">
+                <div style="font-family:var(--fd);font-size:2.5rem;color:var(--cyan);line-height:1">1.9mm</div>
+                <div style="font-family:var(--fm);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan)">Bambu — Measured wall</div>
+                <div style="font-family:var(--fm);font-size:.46rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Required: 1.6–2.2mm</div>
+                <div style="font-family:var(--fm);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-top:.25rem">FESTO Station 2 — PASS ✓</div>
+              </div>
+            </div>
+          </div>
+          <div class="fp-desc">This was the <strong>decisive failure</strong>. Several Ultimaker prints looked visually acceptable — smooth surface, correct shape. But every single one failed at <strong>FESTO Station 2</strong> (laser measurement). The wall was consistently 1.18mm — below the 1.6mm minimum specification. The part looked right but measured wrong.</div>
+          <div class="fp-fix">
+            <div class="fp-fix-label">Why this is a critical failure, not a cosmetic one</div>
+            <div class="fp-fix-text">The wall thickness specification is not aesthetic — it determines <strong>structural rigidity, press-fit force at Station 4, and long-term durability</strong> in a phone assembly. A 1.18mm wall is 26% below minimum specification. No amount of post-processing could fix this — it required a new print on a better machine.</div>
+          </div>
+        </div>
+
+        <!-- PANEL: VISUAL FAILS -->
+        <div class="fail-panel" id="fail-visualfail">
+          <div class="fp-tag">Failure 05 — Ultimaker</div>
+          <div class="fp-title">Visual<br><em>Failures.</em></div>
+          <div class="fp-photos">
+            <div class="fp-photo">
+              <!-- ADD: photo of warped Ultimaker casing -->
+              <img src="YOUR_VISUAL_FAIL_1.jpg" alt="Warped casing" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Warped casing</span></div>'">
+              <div class="fp-photo-label">Warped bottom casing</div>
+            </div>
+            <div class="fp-photo">
+              <!-- ADD: photo of surface defects on failed print -->
+              <img src="YOUR_VISUAL_FAIL_2.jpg" alt="Surface defects" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Surface defects</span></div>'">
+              <div class="fp-photo-label">Surface defects</div>
+            </div>
+            <div class="fp-photo">
+              <!-- ADD: photo of another visually failed part -->
+              <img src="YOUR_VISUAL_FAIL_3.jpg" alt="Failed print" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--navy3);flex-direction:column;gap:.3rem\'><span style=\'font-size:1.5rem;opacity:.3\'>📸</span><span style=\'font-family:var(--fm);font-size:.44rem;color:var(--muted)\'>Failed casing</span></div>'">
+              <div class="fp-photo-label">Rejected casing</div>
+            </div>
+          </div>
+          <div class="fp-desc">A significant proportion of Ultimaker prints failed at <strong>visual inspection</strong> before even reaching FESTO — warped edges, delaminated surface layers, stringing between features, and incomplete sections from mid-print failures. These were rejected immediately and the prints restarted.</div>
+          <div class="fp-fix">
+            <div class="fp-fix-label">Underlying cause</div>
+            <div class="fp-fix-text">Warping is caused by <strong>differential thermal contraction</strong> — the bottom of the print cools and shrinks while the top is still being deposited at high temperature. The open-frame Ultimaker has no way to prevent this. The Bambu's enclosed chamber keeps the entire part at a consistent elevated temperature throughout the print.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: SLICER SETTINGS TIMELINE -->
+<div class="sec-wrap reveal">
+  <div class="sec-head">
+    <div class="sec-label-col"><div class="sec-tag">04 — Print Configurations</div><div class="sec-big-num">CFG</div></div>
+    <div class="sec-title-block"><h2>Slicer<br><em>Settings.</em></h2><div style="font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">← → scroll through configs</div></div>
+  </div>
+  <div class="sec-body">
+    <div style="font-size:.82rem;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:1.5rem">Every print configuration documented from first Ultimaker attempt to final Bambu success. Click <strong style="color:var(--cyan)">⚡ Why changed?</strong> to understand the reasoning behind each adjustment.</div>
+    <div class="config-nav">
+      <button class="cnav-btn" id="cfgPrev" onclick="scrollCfg(-1)" disabled><svg viewBox="0 0 14 14"><polyline points="9,2 4,7 9,12"/></svg></button>
+      <span class="cnav-info" id="cfgInfo">Showing 1–4 of 10</span>
+      <button class="cnav-btn" id="cfgNext" onclick="scrollCfg(1)"><svg viewBox="0 0 14 14"><polyline points="5,2 10,7 5,12"/></svg></button>
+    </div>
+    <div class="config-scroll">
+      <div class="config-track" id="configTrack">
+
+        <!-- C1 -->
+        <div class="config-card fail">
+          <div class="cc-num fail">C1</div>
+          <div class="cc-printer">Ultimaker · Cura Slicer</div>
+          <div class="cc-rows">
+            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Print speed</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Nozzle temp</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val">ADD YOURS</span></div>
+          </div>
+          <div class="cc-result fail">❌ Failed — visual defects</div>
+          <button class="why-change" onclick="openReason('c1_c2')"><span>⚡</span> Why changed?</button>
+        </div>
+
+        <!-- C2 Machine Error -->
+        <div class="config-card machine-err">
+          <div class="cc-num fail">C2</div>
+          <div class="cc-printer">Ultimaker · Machine Error</div>
+          <div class="machine-err-body">
+            <div class="me-icon">🖨️⚡</div>
+            <div class="me-title">Machine Error</div>
+            <div class="me-details">
+              <div class="me-detail">Filament sensor failure</div>
+              <div class="me-detail">Print stopped mid-way</div>
+            </div>
+          </div>
+          <div class="cc-result fail">❌ Hardware failure</div>
+          <button class="why-change" onclick="openReason('c2_c3')"><span>⚡</span> Why changed?</button>
+        </div>
+
+        <!-- C3 -->
+        <div class="config-card warn">
+          <div class="cc-num warn">C3</div>
+          <div class="cc-printer">Ultimaker · Cura Slicer</div>
+          <div class="cc-rows">
+            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Print speed</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Brim</span><span class="cc-val">ADD YOURS</span></div>
+          </div>
+          <div class="cc-result warn">⚠ Partial — still failed FESTO</div>
+          <button class="why-change" onclick="openReason('c3_c4')"><span>⚡</span> Why changed?</button>
+        </div>
+
+        <!-- C4 Machine Error -->
+        <div class="config-card machine-err">
+          <div class="cc-num fail">C4</div>
+          <div class="cc-printer">Ultimaker · Machine Error</div>
+          <div class="machine-err-body">
+            <div class="me-icon">🖨️⚡</div>
+            <div class="me-title">Machine Error</div>
+            <div class="me-details">
+              <div class="me-detail">Calibration error</div>
+              <div class="me-detail">Nozzle clogged</div>
+              <div class="me-detail">Print stopped x2</div>
+            </div>
+          </div>
+          <div class="cc-result fail">❌ Hardware failure</div>
+          <button class="why-change" onclick="openReason('c4_c5')"><span>⚡</span> Why changed?</button>
+        </div>
+
+        <!-- C5 -->
+        <div class="config-card warn">
+          <div class="cc-num warn">C5</div>
+          <div class="cc-printer">Ultimaker · Cura Slicer</div>
+          <div class="cc-rows">
+            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Print speed</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Ironing</span><span class="cc-val">ADD YOURS</span></div>
+          </div>
+          <div class="cc-result warn">⚠ Better but wall still thin</div>
+          <button class="why-change" onclick="openReason('c5_switch')"><span>⚡</span> Why switched printer?</button>
+        </div>
+
+        <!-- PLATFORM SWITCH CARD -->
+        <div class="config-card" style="border:1px solid var(--amber);background:rgba(255,179,71,0.04);flex:0 0 200px">
+          <div style="text-align:center;padding:.5rem 0">
+            <div style="font-family:var(--fd);font-size:1.8rem;color:var(--red)">ULTIMAKER</div>
+            <div style="font-size:1.5rem;color:var(--amber);margin:.25rem 0">↓</div>
+            <div style="font-family:var(--fd);font-size:1.8rem;color:var(--cyan)">BAMBU P1S</div>
+            <div style="font-family:var(--fm);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-top:.5rem">Platform Switch</div>
+            <div style="font-size:.68rem;color:var(--muted);margin-top:.5rem;line-height:1.5;font-weight:300">20 attempts.<br>0 passed FESTO.<br>Data-driven decision.</div>
+          </div>
+        </div>
+
+        <!-- C6 Bambu first -->
+        <div class="config-card fail">
+          <div class="cc-num fail">C6</div>
+          <div class="cc-printer">Bambu P1S · Bambu Studio</div>
+          <div class="cc-rows">
+            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Print speed</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val">ADD YOURS</span></div>
+          </div>
+          <div class="cc-result fail">❌ Print stopped mid-run</div>
+          <button class="why-change" onclick="openReason('c6_c7')"><span>⚡</span> Why changed?</button>
+        </div>
+
+        <!-- C7 Bambu - pass -->
+        <div class="config-card pass">
+          <div class="cc-num pass">C7</div>
+          <div class="cc-printer">Bambu P1S · Bambu Studio</div>
+          <div class="cc-rows">
+            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Print speed</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Wall thickness</span><span class="cc-val" style="color:var(--cyan)">1.9mm ✓</span></div>
+          </div>
+          <div class="cc-result pass">✓ PASSED — FESTO Station 2</div>
+        </div>
+
+        <!-- C8 Bambu - pass -->
+        <div class="config-card pass">
+          <div class="cc-num pass">C8</div>
+          <div class="cc-printer">Bambu P1S · Bambu Studio</div>
+          <div class="cc-rows">
+            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Print speed</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Wall thickness</span><span class="cc-val" style="color:var(--cyan)">1.9mm ✓</span></div>
+          </div>
+          <div class="cc-result pass">✓ PASSED — excellent result</div>
+        </div>
+
+        <!-- C9 Bambu - best -->
+        <div class="config-card pass" style="border:1px solid var(--green);background:rgba(0,255,136,0.04)">
+          <div class="cc-num pass" style="color:var(--green)">C9 ★</div>
+          <div class="cc-printer">Bambu P1S · FINAL SETTINGS</div>
+          <div class="cc-rows">
+            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val" style="color:var(--green)">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val" style="color:var(--green)">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Print speed</span><span class="cc-val" style="color:var(--green)">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val" style="color:var(--green)">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Wall thickness</span><span class="cc-val" style="color:var(--green)">1.9mm ✓</span></div>
+            <div class="cc-row"><span class="cc-key">Cycle time</span><span class="cc-val" style="color:var(--green)">2.5h both casings</span></div>
+          </div>
+          <div class="cc-result pass" style="border-color:rgba(0,255,136,0.3);background:rgba(0,255,136,0.08);color:var(--green)">★ PRODUCTION SETTINGS LOCKED</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Slicer settings detail boxes -->
+    <div style="margin-top:2rem">
+      <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">Final Production Settings — Bambu P1S</div>
+      <div class="slicer-boxes-grid">
+        <div class="slicer-box">
+          <div class="slicer-box-title">Print Quality Settings</div>
+          <div class="slicer-rows">
+            <div class="sr"><span class="sr-key">Layer height</span><span class="sr-val pass">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">First layer height</span><span class="sr-val">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Line width</span><span class="sr-val">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Infill pattern</span><span class="sr-val">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Infill density</span><span class="sr-val pass">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Wall count</span><span class="sr-val">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Top/bottom layers</span><span class="sr-val">ADD YOURS</span></div>
+          </div>
+        </div>
+        <div class="slicer-box">
+          <div class="slicer-box-title">Speed & Temperature Settings</div>
+          <div class="slicer-rows">
+            <div class="sr"><span class="sr-key">Print speed</span><span class="sr-val pass">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">First layer speed</span><span class="sr-val">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Travel speed</span><span class="sr-val">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Nozzle temperature</span><span class="sr-val">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Bed temperature</span><span class="sr-val">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Fan speed</span><span class="sr-val">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Cooling</span><span class="sr-val">ADD YOURS</span></div>
+          </div>
+        </div>
+        <div class="slicer-box">
+          <div class="slicer-box-title">Support & Adhesion Settings</div>
+          <div class="slicer-rows">
+            <div class="sr"><span class="sr-key">Supports</span><span class="sr-val pass">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Support type</span><span class="sr-val">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Brim</span><span class="sr-val">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Skirt</span><span class="sr-val">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Retraction distance</span><span class="sr-val">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Retraction speed</span><span class="sr-val">ADD YOURS</span></div>
+          </div>
+        </div>
+        <div class="slicer-box">
+          <div class="slicer-box-title">Material & Machine Settings</div>
+          <div class="slicer-rows">
+            <div class="sr"><span class="sr-key">Material</span><span class="sr-val pass">PLA</span></div>
+            <div class="sr"><span class="sr-key">Filament cost</span><span class="sr-val">£20/kg</span></div>
+            <div class="sr"><span class="sr-key">Weight per pair</span><span class="sr-val">~100g</span></div>
+            <div class="sr"><span class="sr-key">Cost per pair (material)</span><span class="sr-val pass">£2.00</span></div>
+            <div class="sr"><span class="sr-key">Nozzle diameter</span><span class="sr-val">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Cycle time (both)</span><span class="sr-val pass">2.5 hours</span></div>
+            <div class="sr"><span class="sr-key">Slicer software</span><span class="sr-val">Bambu Studio</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: SUCCESSFUL PRINTS GALLERY -->
+<div class="sec-wrap reveal">
+  <div class="sec-head">
+    <div class="sec-label-col"><div class="sec-tag">05 — Results Gallery</div><div class="sec-big-num">OK</div></div>
+    <div class="sec-title-block"><h2>Successful<br><em>Prints.</em></h2></div>
+  </div>
+  <div class="sec-body">
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">Bambu P1S — 4 Successful Prints (80% pass rate)</div>
+    <div class="photo-grid photo-grid-4" style="margin-bottom:1rem">
+      <div class="photo-cell">
+        <!-- ADD: photo of passed Bambu top casing (front) -->
+        <img src="YOUR_BAMBU_TOP_FRONT.jpg" alt="Bambu top casing" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8\'/></svg><span>Bambu Top — Front</span></div>'">
+        <div class="photo-label"><strong>Top Casing — Front</strong>Bambu P1S print<span class="photo-pill pass">✓ Pass</span></div>
+      </div>
+      <div class="photo-cell">
+        <!-- ADD: photo of passed Bambu top casing (back) -->
+        <img src="YOUR_BAMBU_TOP_BACK.jpg" alt="Bambu top casing back" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8\'/></svg><span>Bambu Top — Back</span></div>'">
+        <div class="photo-label"><strong>Top Casing — Back</strong>Bambu P1S print<span class="photo-pill pass">✓ Pass</span></div>
+      </div>
+      <div class="photo-cell">
+        <!-- ADD: photo of passed Bambu bottom casing (front) -->
+        <img src="YOUR_BAMBU_BOTTOM_FRONT.jpg" alt="Bambu bottom casing" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8\'/></svg><span>Bambu Bottom — Front</span></div>'">
+        <div class="photo-label"><strong>Bottom Casing — Front</strong>Bambu P1S print<span class="photo-pill pass">✓ Pass</span></div>
+      </div>
+      <div class="photo-cell">
+        <!-- ADD: photo of passed Bambu bottom casing (back) -->
+        <img src="YOUR_BAMBU_BOTTOM_BACK.jpg" alt="Bambu bottom casing back" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8\'/></svg><span>Bambu Bottom — Back</span></div>'">
+        <div class="photo-label"><strong>Bottom Casing — Back</strong>Bambu P1S print<span class="photo-pill pass">✓ Pass</span></div>
+      </div>
+    </div>
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;margin-top:1.5rem">Cases on the Print Bed — During & After Printing</div>
+    <div class="photo-grid photo-grid-3">
+      <div class="photo-cell wide">
+        <!-- ADD: wide photo or video of cases sitting in the Bambu P1S on the print bed -->
+        <img src="YOUR_CASES_IN_BAMBU.jpg" alt="Cases in Bambu printer" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8M12 8v8\'/></svg><span>Cases in Bambu P1S — on bed</span></div>'">
+        <div class="photo-label"><strong>Both Casings on Print Bed</strong>Bambu P1S — mid print<span class="photo-pill pass">2.5h cycle</span></div>
+      </div>
+      <div class="photo-cell">
+        <!-- ADD: photo of the final printed pair with QR code visible -->
+        <img src="YOUR_FINAL_WITH_QR.jpg" alt="Final print with QR" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'8\' height=\'8\'/><rect x=\'13\' y=\'3\' width=\'8\' height=\'8\'/><rect x=\'3\' y=\'13\' width=\'8\' height=\'8\'/><path d=\'M13 13h2v2h-2zM15 15h2v2h-2zM17 13h2v2h-2zM13 17h2v2h-2z\'/></svg><span>Final Print — with QR code</span></div>'">
+        <div class="photo-label"><strong>Final Production Print</strong>With QR traceability code<span class="photo-pill pass">✓ Production Ready</span></div>
+      </div>
+    </div>
+
+    <!-- Final Verdict -->
+    <div class="final-verdict">
+      <div class="fv-header">
+        <div class="fv-badge">★ Production Platform Confirmed</div>
+        <div class="fv-title">Bambu P1S — 80% Pass Rate</div>
+      </div>
+      <div class="fv-grid">
+        <div>
+          <div class="fv-text">After <strong>~20 Ultimaker attempts with 0 full passes</strong>, switching to the Bambu P1S delivered an immediate transformation. The first successful Bambu print achieved a wall thickness of <strong>1.9mm</strong> — directly in the middle of the 1.6–2.2mm specification — and passed FESTO Station 2 on first attempt.<br><br>Of 5 Bambu prints, <strong>4 passed and 2 were outstanding</strong> — suitable for production documentation and client delivery. The 1 failure was a mid-print stop unrelated to dimensional accuracy. The Bambu P1S is confirmed as the <strong>sole production platform</strong> for the 50,000/year commitment.</div>
+        </div>
+        <div class="fv-stats">
+          <div class="fv-stat-row"><span class="fv-sk">Ultimaker attempts</span><span style="font-family:var(--fm);font-size:.7rem;color:var(--red)">~20 — 0 passed</span></div>
+          <div class="fv-stat-row"><span class="fv-sk">Bambu P1S attempts</span><span class="fv-sv">5 prints</span></div>
+          <div class="fv-stat-row"><span class="fv-sk">Bambu pass rate</span><span style="font-family:var(--fm);font-size:.7rem;color:var(--green)">80% (4/5)</span></div>
+          <div class="fv-stat-row"><span class="fv-sk">Outstanding prints</span><span style="font-family:var(--fm);font-size:.7rem;color:var(--green)">2 — both casings</span></div>
+          <div class="fv-stat-row"><span class="fv-sk">Wall thickness achieved</span><span class="fv-sv">1.9mm ✓</span></div>
+          <div class="fv-stat-row"><span class="fv-sk">FESTO Station 2</span><span style="font-family:var(--fm);font-size:.7rem;color:var(--green)">100% pass rate</span></div>
+          <div class="fv-stat-row"><span class="fv-sk">Cycle time (both casings)</span><span class="fv-sv">2.5 hours</span></div>
+          <div class="fv-stat-row"><span class="fv-sk">Material cost per pair</span><span class="fv-sv">£2.00 (100g @ £20/kg)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="f-logo">PANIZ<span>.</span></div>
+  <div class="f-copy">© 2026 — Digital Manufacturing Portfolio</div>
+  <div class="f-links">
+    <a href="project.html">Project</a><a href="design.html">Design</a>
+    <a href="MSD.html">MSD</a><a href="quality.html">Quality</a><a href="simulation.html">Simulation</a>
+  </div>
+</footer>
+
+<!-- REASONING MODAL -->
+<div class="reason-modal" id="reasonModal">
+  <div class="rm-content">
+    <div class="rm-header">
+      <div class="rm-title" id="rmTitle">Why <em>Changed?</em></div>
+      <button class="rm-close" onclick="closeReason()">✕</button>
+    </div>
+    <div class="rm-body" id="rmBody"></div>
+  </div>
+</div>
+
+<script>
+// CURSOR
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+let rx=0,ry=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
+(function animRing(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';ring.style.opacity='0'});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.opacity='.4'});
+});
+
+// REVEAL
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')}),{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// FAILURE PANEL
+function showFail(id){
+  document.querySelectorAll('.fail-btn').forEach(b=>b.classList.toggle('active',b.dataset.fail===id));
+  document.querySelectorAll('.fail-panel').forEach(p=>p.classList.toggle('active',p.id==='fail-'+id));
+}
+// init
+showFail('midprint');
+
+// CONFIG TIMELINE SCROLL
+let cfgOffset=0;
+const cardW=256; // 240px card + 16px gap
+const visibleCards=4;
+function getCards(){return document.querySelectorAll('.config-card')}
+function scrollCfg(dir){
+  const cards=getCards();
+  const maxOffset=Math.max(0,(cards.length-visibleCards)*cardW);
+  cfgOffset=Math.max(0,Math.min(cfgOffset+dir*cardW,maxOffset));
+  document.getElementById('configTrack').style.transform=`translateX(-${cfgOffset}px)`;
+  document.getElementById('cfgPrev').disabled=cfgOffset===0;
+  document.getElementById('cfgNext').disabled=cfgOffset>=maxOffset;
+  const cur=Math.round(cfgOffset/cardW);
+  const total=cards.length;
+  document.getElementById('cfgInfo').textContent=`Showing ${cur+1}–${Math.min(cur+visibleCards,total)} of ${total}`;
+}
+
+// REASONING DATA
+const reasons={
+  c1_c2:{title:'C1 → C2',from:'Configuration 1',to:'Configuration 2',
+    fail:'The first print showed significant layer adhesion problems and visible surface defects. The settings were too aggressive for the geometry of the phone casings.',
+    analysis:'The high print speed caused insufficient time for each layer to fuse properly with the previous one. The open-frame Ultimaker amplified this — ambient air was cooling layers faster than the nozzle could compensate. The result was a brittle, visually poor print.',
+    changes:['Reduced print speed','Adjusted layer settings','Changed adhesion strategy'],
+    outcome:'Mid-print failure — filament sensor error stopped the print before completion. Hardware issue, not settings-related.'},
+  c2_c3:{title:'C2 → C3',from:'Configuration 2 (Machine Error)',to:'Configuration 3',
+    fail:'C2 never completed — filament sensor failure stopped it mid-way. No dimensional data could be gathered.',
+    analysis:'After the machine error was resolved (filament path cleared, sensor reset), the opportunity was taken to also adjust settings. The working hypothesis was that a higher infill percentage would improve dimensional stability by creating a more uniform internal structure.',
+    changes:['Increased infill for structural stability','Adjusted speed to Normal mode','Added brim for better bed adhesion'],
+    outcome:'Partial success — the print completed but still failed FESTO Station 2. Wall thickness remained below the 1.6mm minimum.'},
+  c3_c4:{title:'C3 → C4',from:'Configuration 3',to:'Configuration 4 (Machine Error)',
+    fail:'C3 completed but wall thickness was still insufficient. The internal geometry also needed adjustment (separate CAD issue). Another machine error then stopped C4 before it could provide data.',
+    analysis:'Nozzle clogging caused C4 to stop. This was a recurring reliability issue with the Ultimaker — the Bowden tube extruder creates pressure inconsistencies that can cause partial clogs, especially after multiple back-to-back prints. The nozzle had to be cold-pulled and the machine recalibrated.',
+    changes:['Nozzle cleaned and recalibrated','Adjusted retraction settings to reduce clogging risk','Infill reduced to test if structural density was the issue'],
+    outcome:'Machine error — nozzle clog and calibration drift caused two separate print failures.'},
+  c4_c5:{title:'C4 → C5',from:'Configuration 4',to:'Configuration 5',
+    fail:'Multiple machine errors across C2 and C4 indicated the Ultimaker was unreliable for this production requirement. Even when prints completed, wall thickness was consistently below spec.',
+    analysis:'After further attempts with varied settings, it became clear the Ultimaker has a fundamental limitation for this application: the open frame creates temperature gradients that cause differential cooling, warping, and thin walls regardless of slicer settings. This is not a parameter problem — it is a hardware limitation.',
+    changes:['Continued Ultimaker trials with adjusted parameters','Simultaneously evaluated Bambu P1S as alternative platform'],
+    outcome:'Partial success — print completed but wall thickness still measured at 1.18mm. Decision made to trial Bambu P1S.'},
+  c5_switch:{title:'Ultimaker → Bambu P1S',from:'All Ultimaker Configurations',to:'Bambu P1S Platform',
+    fail:'After approximately 20 Ultimaker attempts across multiple configurations, not a single print passed FESTO Station 2. Wall thickness was consistently 1.18mm regardless of settings. The platform itself was the limiting factor.',
+    analysis:'The Ultimaker\'s open-frame design fundamentally cannot maintain the thermal environment needed for consistent thin-wall FDM printing. No slicer setting compensates for ambient temperature variation. The Bambu P1S enclosed chamber eliminates this variable entirely. The decision was data-driven: 20 attempts, 0 passes — switch the platform.',
+    changes:['Platform switched from Ultimaker to Bambu P1S','Slicer changed from Cura to Bambu Studio','All settings re-profiled for new machine'],
+    outcome:'The platform switch was the correct decision. First completed Bambu print achieved 1.9mm wall thickness and passed FESTO Station 2.'},
+  c6_c7:{title:'C6 → C7 (Bambu)',from:'Configuration 6 — Bambu (Failed)',to:'Configuration 7 — Bambu (Passed)',
+    fail:'C6 stopped mid-print — hardware fault unrelated to settings. The print was lost but no dimensional data was lost since it was incomplete.',
+    analysis:'After C6\'s mid-print failure, the settings from the eventual successful prints were refined. The Bambu P1S direct drive extruder gives much better control over extrusion than the Ultimaker\'s Bowden system. Fine-tuning focused on optimising the settings for the phone casing geometry.',
+    changes:['Refined retraction settings for direct drive','Optimised speed profile for casing geometry','Adjusted temperature profile'],
+    outcome:'✓ SUCCESS — C7 passed. Wall thickness 1.9mm within 1.6–2.2mm spec. FESTO Station 2 passed. Settings locked for production.'}
+};
+
+function openReason(id){
+  const d=reasons[id];
+  if(!d)return;
+  document.getElementById('rmTitle').innerHTML=`Why <em>Changed?</em> — ${d.title}`;
+  document.getElementById('rmBody').innerHTML=`
+    <div class="rm-section"><div class="rm-section-title">What failed / why change?</div><div class="rm-block fail">${d.fail}</div></div>
+    <div class="rm-section"><div class="rm-section-title">Analysis</div><div class="rm-text">${d.analysis}</div></div>
+    <div class="rm-section"><div class="rm-section-title">Changes made</div><div class="rm-block fix"><ul style="list-style:none;display:flex;flex-direction:column;gap:.3rem">${d.changes.map(c=>`<li style="font-size:.75rem;color:var(--muted);font-weight:300;padding-left:.75rem;position:relative"><span style="position:absolute;left:0;color:var(--cyan)">→</span>${c}</li>`).join('')}</ul></div></div>
+    <div class="rm-section"><div class="rm-section-title">Outcome</div><div class="rm-block outcome">${d.outcome}</div></div>
+  `;
+  document.getElementById('reasonModal').classList.add('open');
+}
+function closeReason(){document.getElementById('reasonModal').classList.remove('open')}
+document.getElementById('reasonModal').addEventListener('click',e=>{if(e.target===document.getElementById('reasonModal'))closeReason()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeReason()});
+</script>
 </body>
 </html>
