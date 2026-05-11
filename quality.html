@@ -154,6 +154,49 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
 .f-links{display:flex;gap:1.5rem;justify-content:flex-end}
 .f-links a{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
 .f-links a:hover{color:var(--cyan)}
+  /* MAKE STATION CARDS LONGER */
+.station-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensures cards in same row match height */
+}
+
+.sc-video {
+  height: 400px; /* Fixed height — much taller than before */
+  width: 100%;
+  background: var(--navy3);
+}
+
+.sc-body {
+  padding: 1.25rem; /* Increased from 1rem */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.sc-title {
+  font-size: 0.75rem; /* Slightly larger from 0.65rem */
+  margin-bottom: 0.5rem;
+}
+
+.sc-desc {
+  font-size: 0.78rem; /* Increased from 0.72rem */
+  line-height: 1.65;
+  margin-bottom: 0.5rem;
+}
+
+.sc-time {
+  margin-top: auto; /* Pushes time to bottom of card */
+  padding-top: 0.75rem;
+}
+
+.sc-top {
+  margin-bottom: 0.75rem;
+}
+
+.sc-num {
+  font-size: 2rem; /* Increased from 1.8rem */
+}
 </style>
 </head>
 <body>
@@ -216,21 +259,18 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   <div class="vs-title">Full FESTO Run —<br><em>Both Casings.</em></div>
   <p class="vs-sub">The final Bambu P1S printed casings running through all 6 FESTO CP Lab stations in sequence. This is the definitive quality verification — the same line that rejected every Ultimaker print at Station 2 passed both casings end-to-end.</p>
 
-  <div class="video-frame">
-    <!-- ADD YOUR FESTO VIDEO HERE -->
-    <!-- Option A — local video file: -->
-    <!-- <video controls poster="YOUR_POSTER_IMAGE.jpg">
-      <source src="YOUR_FESTO_VIDEO.mp4" type="video/mp4">
-    </video> -->
-
-    <!-- Option B — YouTube embed: -->
-    <!-- <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe> -->
-
-    <!-- Placeholder shown until you add the src: -->
-    <div class="video-placeholder">
-      <div class="vp-icon">
-        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-      </div>
+ <div class="video-frame">
+  <iframe 
+    width="100%" 
+    height="450" 
+    src="https://www.youtube.com/embed/yj_IzwdSqDY" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+  </iframe>
+</div>
+    
       <div class="vp-label">FESTO CP Lab — Full Run Video</div>
       <div class="vp-hint">Add your video src here</div>
     </div>
@@ -254,131 +294,116 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   <div class="stations-grid">
 
     <!-- STATION 1 -->
-    <div class="station-card">
-      <div class="sc-video">
-        <!-- ADD: video or image of Station 1 -->
-        <!-- <video controls><source src="YOUR_STATION_1_VIDEO.mp4" type="video/mp4"></video> -->
-        <!-- <img src="YOUR_STATION_1_IMG.jpg" style="width:100%;height:100%;object-fit:cover"> -->
-        <div class="sc-video-placeholder">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><polygon points="10,8 16,12 10,16"/></svg>
-          <span>Station 1 — Add media</span>
-        </div>
-      </div>
-      <div class="sc-body">
-        <div class="sc-top">
-          <div class="sc-num">01</div>
-          <div class="sc-status pass">✓ Pass</div>
-        </div>
-        <div class="sc-title">Front Magazine </div>
-        <div class="sc-desc">Part loaded and identified. Batch and traceability data verified before the casing enters the assembly sequence.</div>
-        <div class="sc-time">Cycle time: <span>7 seconds</span></div>
-      </div>
+<!-- STATION 1 -->
+<div class="station-card">
+  <div class="sc-video">
+    <video controls width="100%" height="100%" style="object-fit: cover;">
+      <source src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/raw/refs/heads/main/Station1.mov" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="sc-body">
+    <div class="sc-top">
+      <div class="sc-num">01</div>
+      <div class="sc-status pass">✓ Pass</div>
     </div>
-
+    <div class="sc-title">Front Magazine</div>
+    <div class="sc-desc">Part loaded and identified. Batch and traceability data verified before the casing enters the assembly sequence.</div>
+    <div class="sc-time">Cycle time: <span>7 seconds</span></div>
+  </div>
+</div>
     <!-- STATION 2 — CRITICAL -->
-    <div class="station-card critical">
-      <div class="sc-video">
-        <!-- ADD: video or image of Station 2 laser measurement -->
-        <!-- <video controls><source src="YOUR_STATION_2_VIDEO.mp4" type="video/mp4"></video> -->
-        <div class="sc-video-placeholder">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><polygon points="10,8 16,12 10,16"/></svg>
-          <span>Station 2 — Add media</span>
-        </div>
-      </div>
-      <div class="sc-body">
-        <div class="sc-top">
-          <div class="sc-num red">02</div>
-          <div class="sc-status critical">⚠ Critical Station</div>
-        </div>
-        <div class="sc-title">Laser Measurement</div>
-        <div class="sc-desc">Laser measures wall depth. Ultimaker: 1.18mm — failed every time. Bambu P1S: 1.9mm — passed. Spec: 1.6–2.2mm.</div>
-        <div class="sc-time">Cycle time: <span>8 seconds</span> · <span style="color:var(--green)">Bambu: ✓ Pass</span> · <span style="color:var(--red)">Ultimaker: ✗ Fail</span></div>
-      </div>
+<div class="station-card critical">
+  <div class="sc-video">
+    <video controls width="100%" height="100%" style="object-fit: cover;">
+      <source src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/raw/refs/heads/main/station2.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="sc-body">
+    <div class="sc-top">
+      <div class="sc-num red">02</div>
+      <div class="sc-status critical">⚠ Critical Station</div>
     </div>
-
+    <div class="sc-title">Laser Measurement</div>
+    <div class="sc-desc">Laser measures wall depth. Ultimaker: 1.18mm — failed every time. Bambu P1S: 1.9mm — passed. Spec: 1.6–2.2mm.</div>
+    <div class="sc-time">Cycle time: <span>8 seconds</span> · <span style="color:var(--cyan)">Bambu: ✓ Pass</span> · <span style="color:#ff6b6b">Ultimaker: ✗ Fail</span></div>
+  </div>
+</div>
     <!-- STATION 3 -->
-    <div class="station-card">
-      <div class="sc-video">
-        <!-- ADD: video or image of Station 3 iPick -->
-        <!-- <video controls><source src="YOUR_STATION_3_VIDEO.mp4" type="video/mp4"></video> -->
-        <div class="sc-video-placeholder">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><polygon points="10,8 16,12 10,16"/></svg>
-          <span>Station 3 — Add media</span>
-        </div>
-      </div>
-      <div class="sc-body">
-        <div class="sc-top">
-          <div class="sc-num">03</div>
-          <div class="sc-status pass">✓ Pass</div>
-        </div>
-        <div class="sc-title">iPick — Manual Assembly</div>
-        <div class="sc-desc">Operator manually picks and places the casing halves for alignment before press-fitting. The most hands-on station in the sequence.</div>
-        <div class="sc-time">Cycle time: <span>27 seconds</span> · Manual operator</div>
-      </div>
+<div class="station-card">
+  <div class="sc-video">
+    <video controls width="100%" height="100%" style="object-fit: cover;">
+      <source src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/raw/refs/heads/main/station3.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="sc-body">
+    <div class="sc-top">
+      <div class="sc-num">03</div>
+      <div class="sc-status pass">✓ Pass</div>
     </div>
+    <div class="sc-title">iPick — Manual Assembly</div>
+    <div class="sc-desc">Operator manually picks and places the casing halves for alignment before press-fitting. The most hands-on station in the sequence.</div>
+    <div class="sc-time">Cycle time: <span>27 seconds</span> · Manual operator</div>
+  </div>
+</div>
 
     <!-- STATION 4 -->
-    <div class="station-card">
-      <div class="sc-video">
-        <!-- ADD: video or image of Station 4 press fit -->
-        <!-- <video controls><source src="YOUR_STATION_4_VIDEO.mp4" type="video/mp4"></video> -->
-        <div class="sc-video-placeholder">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><polygon points="10,8 16,12 10,16"/></svg>
-          <span>Station 4 — Add media</span>
-        </div>
-      </div>
-      <div class="sc-body">
-        <div class="sc-top">
-          <div class="sc-num">04</div>
-          <div class="sc-status pass">✓ Pass</div>
-        </div>
-        <div class="sc-title">Press Fit</div>
-        <div class="sc-desc">Automated press clamps the two casing halves together. Validates that the mating geometry produces a secure, interchangeable assembly.</div>
-        <div class="sc-time">Cycle time: <span>11 seconds</span></div>
-      </div>
+   <div class="station-card">
+  <div class="sc-video">
+    <video controls width="100%" height="100%" style="object-fit: cover;">
+      <source src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/raw/refs/heads/main/station4.mov" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="sc-body">
+    <div class="sc-top">
+      <div class="sc-num">04</div>
+      <div class="sc-status pass">✓ Pass</div>
     </div>
+    <div class="sc-title">Press Fit</div>
+    <div class="sc-desc">Automated press clamps the two casing halves together. Validates that the mating geometry produces a secure, interchangeable assembly.</div>
+    <div class="sc-time">Cycle time: <span>11 seconds</span></div>
+  </div>
+</div>
 
     <!-- STATION 5 -->
-    <div class="station-card">
-      <div class="sc-video">
-        <!-- ADD: video or image of Station 5 oven -->
-        <!-- <video controls><source src="YOUR_STATION_5_VIDEO.mp4" type="video/mp4"></video> -->
-        <div class="sc-video-placeholder">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><polygon points="10,8 16,12 10,16"/></svg>
-          <span>Station 5 — Add media</span>
-        </div>
-      </div>
-      <div class="sc-body">
-        <div class="sc-top">
-          <div class="sc-num">05</div>
-          <div class="sc-status pass">✓ Pass</div>
-        </div>
-        <div class="sc-title">Oven</div>
-        <div class="sc-desc">Heat treatment stage. The longest single station at 35 seconds — identified as the FESTO line bottleneck in capacity analysis, but within the 150s takt time.</div>
-        <div class="sc-time">Cycle time: <span style="color:var(--amber)">35 seconds</span> · Line bottleneck</div>
-      </div>
+<div class="station-card">
+  <div class="sc-video">
+    <video controls width="100%" height="100%" style="object-fit: cover;">
+      <source src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/raw/refs/heads/main/station5.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="sc-body">
+    <div class="sc-top">
+      <div class="sc-num">05</div>
+      <div class="sc-status pass">✓ Pass</div>
     </div>
-
+    <div class="sc-title">Oven</div>
+    <div class="sc-desc">Heat treatment stage. The longest single station at 35 seconds — identified as the FESTO line bottleneck in capacity analysis, but within the 150s takt time.</div>
+    <div class="sc-time">Cycle time: <span style="color:var(--amber)">35 seconds</span> · Line bottleneck</div>
+  </div>
+</div>
     <!-- STATION 6 -->
-    <div class="station-card">
-      <div class="sc-video">
-        <!-- ADD: video or image of Station 6 final output -->
-        <!-- <video controls><source src="YOUR_STATION_6_VIDEO.mp4" type="video/mp4"></video> -->
-        <div class="sc-video-placeholder">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><polygon points="10,8 16,12 10,16"/></svg>
-          <span>Station 6 — Add media</span>
-        </div>
-      </div>
-      <div class="sc-body">
-        <div class="sc-top">
-          <div class="sc-num">06</div>
-          <div class="sc-status pass">✓ Pass</div>
-        </div>
-        <div class="sc-title">Final Output (Pick and Place)</div>
-        <div class="sc-desc">Final quality gate. Gripper picks the fully assembled case and places it on the trays.</div>
-        <div class="sc-time">Cycle time: <span>11 seconds</span> · <span style="color:var(--green)">Approved ✓</span></div>
-      </div>
+<div class="station-card">
+  <div class="sc-video">
+    <video controls width="100%" height="100%" style="object-fit: cover;">
+      <source src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/raw/refs/heads/main/IMG_4459%208.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="sc-body">
+    <div class="sc-top">
+      <div class="sc-num">06</div>
+      <div class="sc-status pass">✓ Pass</div>
     </div>
+    <div class="sc-title">Final Output (Pick and Place)</div>
+    <div class="sc-desc">Final quality gate. Gripper picks the fully assembled case and places it on the trays.</div>
+    <div class="sc-time">Cycle time: <span>11 seconds</span> · <span style="color:var(--green)">Approved ✓</span></div>
+  </div>
+</div>
 
   </div>
 </div>
@@ -460,7 +485,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
       <svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>
     </div>
     <div class="decl-heading">
-      <div class="decl-tag">Quality Sign-off — ENCLOS3D Manufacturing Co.</div>
+      <div class="decl-tag">Quality Sign-off — Paniz Manufacturing Co.</div>
       <div class="decl-title">Production Platform Approved</div>
     </div>
   </div>
@@ -479,14 +504,14 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
     </div>
   </div>
   <div class="decl-sig">
-    <div><div class="decl-sig-label">Manufacturer</div><div class="decl-sig-val">ENCLOS3D Manufacturing Co.</div></div>
+    <div><div class="decl-sig-label">Manufacturer</div><div class="decl-sig-val">Paniz Manufacturing Co.</div></div>
     <div><div class="decl-sig-label">Verification method</div><div class="decl-sig-val">FESTO CP Lab — 6 Station Assembly Line</div></div>
     <div><div class="decl-sig-label">Decision</div><div class="decl-sig-val">✓ Approved for 50,000 units/year</div></div>
   </div>
 </div>
 
 <footer>
-  <div class="f-logo">ENCLOS3D<span>.</span></div>
+  <div class="f-logo">PANIZ<span>.</span></div>
   <div class="f-copy">© 2026 — Digital Manufacturing Portfolio</div>
   <div class="f-links">
     <a href="project.html">Project</a><a href="printing.html">3D Printing</a>
