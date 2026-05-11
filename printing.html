@@ -723,80 +723,88 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
       <div class="config-track" id="configTrack">
 
         <!-- C1 -->
-        <div class="config-card fail">
+           <div class="config-card fail">
           <div class="cc-num fail">C1</div>
-          <div class="cc-printer">Ultimaker · Cura Slicer</div>
+          <div class="cc-printer">Ultimaker S5 · Cura Slicer</div>
           <div class="cc-rows">
-            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Print speed</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Nozzle temp</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val">0.2mm</span></div>
+            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val">20% / Zigzag</span></div>
+            <div class="cc-row"><span class="cc-key">Print speed</span><span class="cc-val">50mm/s</span></div>
+            <div class="cc-row"><span class="cc-key">Nozzle temp</span><span class="cc-val">200°C</span></div>
+            <div class="cc-row"><span class="cc-key">Wall thickness</span><span class="cc-val">1.2mm</span></div>
+            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val">None</span></div>
+            <div class="cc-row"><span class="cc-key">Adhesion</span><span class="cc-val">None</span></div>
           </div>
-          <div class="cc-result fail">❌ Failed — visual defects</div>
+          <div class="cc-result fail">❌ Warping + poor surface finish</div>
           <button class="why-change" onclick="openReason('c1_c2')"><span>⚡</span> Why changed?</button>
         </div>
 
         <!-- C2 Machine Error -->
-        <div class="config-card machine-err">
+         <div class="config-card machine-err">
           <div class="cc-num fail">C2</div>
-          <div class="cc-printer">Ultimaker · Machine Error</div>
+          <div class="cc-printer">Ultimaker S3 · Machine Error</div>
           <div class="machine-err-body">
             <div class="me-icon">🖨️⚡</div>
             <div class="me-title">Machine Error</div>
             <div class="me-details">
               <div class="me-detail">Filament sensor failure</div>
               <div class="me-detail">Print stopped mid-way</div>
+              <div class="me-detail">Nozzle clog detected</div>
             </div>
           </div>
-          <div class="cc-result fail">❌ Hardware failure</div>
+          <div class="cc-result fail">❌ Hardware failure — print stopped</div>
           <button class="why-change" onclick="openReason('c2_c3')"><span>⚡</span> Why changed?</button>
         </div>
 
         <!-- C3 -->
-        <div class="config-card warn">
+       <div class="config-card warn">
           <div class="cc-num warn">C3</div>
-          <div class="cc-printer">Ultimaker · Cura Slicer</div>
+          <div class="cc-printer">Ultimaker S5 · Cura Slicer</div>
           <div class="cc-rows">
-            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Print speed</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Brim</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val">0.1mm</span></div>
+            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val">25% / Gyroid</span></div>
+            <div class="cc-row"><span class="cc-key">Print speed</span><span class="cc-val">40mm/s</span></div>
+            <div class="cc-row"><span class="cc-key">Nozzle temp</span><span class="cc-val">210°C</span></div>
+            <div class="cc-row"><span class="cc-key">Wall thickness</span><span class="cc-val">1.2mm</span></div>
+            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val">Enabled — overhangs only</span></div>
+            <div class="cc-row"><span class="cc-key">Adhesion</span><span class="cc-val">Brim added</span></div>
           </div>
-          <div class="cc-result warn">⚠ Partial — still failed FESTO</div>
+          <div class="cc-result warn">⚠ Better adhesion but wall still thin (1.18mm)</div>
           <button class="why-change" onclick="openReason('c3_c4')"><span>⚡</span> Why changed?</button>
         </div>
 
         <!-- C4 Machine Error -->
-        <div class="config-card machine-err">
+         <div class="config-card machine-err">
           <div class="cc-num fail">C4</div>
-          <div class="cc-printer">Ultimaker · Machine Error</div>
+          <div class="cc-printer">Ultimaker S3 · Machine Error</div>
           <div class="machine-err-body">
             <div class="me-icon">🖨️⚡</div>
             <div class="me-title">Machine Error</div>
             <div class="me-details">
-              <div class="me-detail">Calibration error</div>
-              <div class="me-detail">Nozzle clogged</div>
-              <div class="me-detail">Print stopped x2</div>
+              <div class="me-detail">Nozzle clogged mid‑print</div>
+              <div class="me-detail">Under‑extrusion detected</div>
+              <div class="me-detail">Print restarted twice</div>
             </div>
           </div>
-          <div class="cc-result fail">❌ Hardware failure</div>
+          <div class="cc-result fail">❌ Nozzle clog — print lost</div>
           <button class="why-change" onclick="openReason('c4_c5')"><span>⚡</span> Why changed?</button>
         </div>
 
         <!-- C5 -->
-        <div class="config-card warn">
+          <div class="config-card warn">
           <div class="cc-num warn">C5</div>
-          <div class="cc-printer">Ultimaker · Cura Slicer</div>
+          <div class="cc-printer">Ultimaker S5 · Cura Slicer</div>
           <div class="cc-rows">
-            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Print speed</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Ironing</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val">0.1mm</span></div>
+            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val">40% / Triangles</span></div>
+            <div class="cc-row"><span class="cc-key">Print speed</span><span class="cc-val">35mm/s</span></div>
+            <div class="cc-row"><span class="cc-key">Nozzle temp</span><span class="cc-val">215°C</span></div>
+            <div class="cc-row"><span class="cc-key">Wall thickness</span><span class="cc-val">1.2mm</span></div>
+            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val">Enabled + interface layer</span></div>
+            <div class="cc-row"><span class="cc-key">Ironing</span><span class="cc-val">Top surface only</span></div>
+            <div class="cc-row"><span class="cc-key">Adhesion</span><span class="cc-val">Brim — wide</span></div>
           </div>
-          <div class="cc-result warn">⚠ Better but wall still thin</div>
+          <div class="cc-result warn">⚠ Better surface finish — wall still 1.18mm</div>
           <button class="why-change" onclick="openReason('c5_switch')"><span>⚡</span> Why switched printer?</button>
         </div>
 
@@ -812,31 +820,36 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
         </div>
 
         <!-- C6 Bambu first -->
-        <div class="config-card fail">
-          <div class="cc-num fail">C6</div>
+          <div class="config-card pass">
+          <div class="cc-num pass">C6</div>
           <div class="cc-printer">Bambu P1S · Bambu Studio</div>
           <div class="cc-rows">
-            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Print speed</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val">0.16mm</span></div>
+            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val">15% / Grid</span></div>
+            <div class="cc-row"><span class="cc-key">Print speed</span><span class="cc-val">Standard (Bambu default)</span></div>
+            <div class="cc-row"><span class="cc-key">Ironing</span><span class="cc-val">Topmost surface enabled</span></div>
+            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val">Enabled</span></div>
+            <div class="cc-row"><span class="cc-key">Bed leveling</span><span class="cc-val">Auto calibration</span></div>
+            <div class="cc-row"><span class="cc-key">Wall thickness</span><span class="cc-val" style="color:var(--cyan)">1.8mm ✓</span></div>
           </div>
-          <div class="cc-result fail">❌ Print stopped mid-run</div>
+          <div class="cc-result pass">✓ PASSED — FESTO Station 2 first attempt</div>
           <button class="why-change" onclick="openReason('c6_c7')"><span>⚡</span> Why changed?</button>
         </div>
 
         <!-- C7 Bambu - pass -->
-        <div class="config-card pass">
-          <div class="cc-num pass">C7</div>
+      <div class="config-card fail">
+          <div class="cc-num fail">C7</div>
           <div class="cc-printer">Bambu P1S · Bambu Studio</div>
           <div class="cc-rows">
-            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Print speed</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Wall thickness</span><span class="cc-val" style="color:var(--cyan)">1.9mm ✓</span></div>
+            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val">0.16mm</span></div>
+            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val">15% / Grid</span></div>
+            <div class="cc-row"><span class="cc-key">Print speed</span><span class="cc-val">Standard (Bambu default)</span></div>
+            <div class="cc-row"><span class="cc-key">Ironing</span><span class="cc-val">Topmost surface enabled</span></div>
+            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val">Enabled</span></div>
+            <div class="cc-row"><span class="cc-key">Bed leveling</span><span class="cc-val">Auto calibration</span></div>
           </div>
-          <div class="cc-result pass">✓ PASSED — FESTO Station 2</div>
+          <div class="cc-result fail">❌ USB interruption — print stopped mid-run</div>
+          <button class="why-change" onclick="openReason('c7_c8')"><span>⚡</span> Why changed?</button>
         </div>
 
         <!-- C8 Bambu - pass -->
@@ -844,70 +857,75 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
           <div class="cc-num pass">C8</div>
           <div class="cc-printer">Bambu P1S · Bambu Studio</div>
           <div class="cc-rows">
-            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Print speed</span><span class="cc-val">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val">0.12mm (High Quality)</span></div>
+            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val">20% / Gyroid</span></div>
+            <div class="cc-row"><span class="cc-key">Print orientation</span><span class="cc-val">Angled — not flat on bed</span></div>
+            <div class="cc-row"><span class="cc-key">Ironing</span><span class="cc-val">Enabled</span></div>
+            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val">Enabled — optimised</span></div>
+            <div class="cc-row"><span class="cc-key">Bed leveling</span><span class="cc-val">Auto calibration</span></div>
             <div class="cc-row"><span class="cc-key">Wall thickness</span><span class="cc-val" style="color:var(--cyan)">1.9mm ✓</span></div>
           </div>
-          <div class="cc-result pass">✓ PASSED — excellent result</div>
+          <div class="cc-result pass">✓ PASSED — excellent surface finish</div>
+          <button class="why-change" onclick="openReason('c8_c9')"><span>⚡</span> Why changed?</button>
         </div>
 
         <!-- C9 Bambu - best -->
-        <div class="config-card pass" style="border:1px solid var(--green);background:rgba(0,255,136,0.04)">
+       <div class="config-card pass" style="border:1px solid var(--green);background:rgba(0,255,136,0.04)">
           <div class="cc-num pass" style="color:var(--green)">C9 ★</div>
           <div class="cc-printer">Bambu P1S · FINAL SETTINGS</div>
           <div class="cc-rows">
-            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val" style="color:var(--green)">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val" style="color:var(--green)">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Print speed</span><span class="cc-val" style="color:var(--green)">ADD YOURS</span></div>
-            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val" style="color:var(--green)">ADD YOURS</span></div>
+            <div class="cc-row"><span class="cc-key">Layer height</span><span class="cc-val" style="color:var(--green)">0.12mm</span></div>
+            <div class="cc-row"><span class="cc-key">Infill</span><span class="cc-val" style="color:var(--green)">30% / Gyroid</span></div>
+            <div class="cc-row"><span class="cc-key">Print orientation</span><span class="cc-val" style="color:var(--green)">Angled (optimised)</span></div>
+            <div class="cc-row"><span class="cc-key">Ironing</span><span class="cc-val" style="color:var(--green)">Enabled — top surface</span></div>
+            <div class="cc-row"><span class="cc-key">Supports</span><span class="cc-val" style="color:var(--green)">Enabled + interface layer</span></div>
+            <div class="cc-row"><span class="cc-key">Bed leveling</span><span class="cc-val" style="color:var(--green)">Auto calibration</span></div>
             <div class="cc-row"><span class="cc-key">Wall thickness</span><span class="cc-val" style="color:var(--green)">1.9mm ✓</span></div>
             <div class="cc-row"><span class="cc-key">Cycle time</span><span class="cc-val" style="color:var(--green)">2.5h both casings</span></div>
           </div>
           <div class="cc-result pass" style="border-color:rgba(0,255,136,0.3);background:rgba(0,255,136,0.08);color:var(--green)">★ PRODUCTION SETTINGS LOCKED</div>
         </div>
-
       </div>
     </div>
 
-    <!-- Slicer settings detail boxes -->
+       <!-- Slicer settings detail boxes -->
     <div style="margin-top:2rem">
       <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">Final Production Settings — Bambu P1S</div>
       <div class="slicer-boxes-grid">
         <div class="slicer-box">
           <div class="slicer-box-title">Print Quality Settings</div>
           <div class="slicer-rows">
-            <div class="sr"><span class="sr-key">Layer height</span><span class="sr-val pass">ADD YOURS</span></div>
-            <div class="sr"><span class="sr-key">First layer height</span><span class="sr-val">ADD YOURS</span></div>
-            <div class="sr"><span class="sr-key">Line width</span><span class="sr-val">ADD YOURS</span></div>
-            <div class="sr"><span class="sr-key">Infill pattern</span><span class="sr-val">ADD YOURS</span></div>
-            <div class="sr"><span class="sr-key">Infill density</span><span class="sr-val pass">ADD YOURS</span></div>
-            <div class="sr"><span class="sr-key">Wall count</span><span class="sr-val">ADD YOURS</span></div>
-            <div class="sr"><span class="sr-key">Top/bottom layers</span><span class="sr-val">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Layer height</span><span class="sr-val pass">0.12mm</span></div>
+            <div class="sr"><span class="sr-key">First layer height</span><span class="sr-val">0.2mm</span></div>
+            <div class="sr"><span class="sr-key">Line width</span><span class="sr-val">0.4mm</span></div>
+            <div class="sr"><span class="sr-key">Infill pattern</span><span class="sr-val pass">Gyroid</span></div>
+            <div class="sr"><span class="sr-key">Infill density</span><span class="sr-val pass">30%</span></div>
+            <div class="sr"><span class="sr-key">Wall count</span><span class="sr-val">3</span></div>
+            <div class="sr"><span class="sr-key">Top/bottom layers</span><span class="sr-val">4</span></div>
           </div>
         </div>
         <div class="slicer-box">
           <div class="slicer-box-title">Speed & Temperature Settings</div>
           <div class="slicer-rows">
-            <div class="sr"><span class="sr-key">Print speed</span><span class="sr-val pass">ADD YOURS</span></div>
-            <div class="sr"><span class="sr-key">First layer speed</span><span class="sr-val">ADD YOURS</span></div>
-            <div class="sr"><span class="sr-key">Travel speed</span><span class="sr-val">ADD YOURS</span></div>
-            <div class="sr"><span class="sr-key">Nozzle temperature</span><span class="sr-val">ADD YOURS</span></div>
-            <div class="sr"><span class="sr-key">Bed temperature</span><span class="sr-val">ADD YOURS</span></div>
-            <div class="sr"><span class="sr-key">Fan speed</span><span class="sr-val">ADD YOURS</span></div>
-            <div class="sr"><span class="sr-key">Cooling</span><span class="sr-val">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Print speed</span><span class="sr-val pass">Normal (Bambu default)</span></div>
+            <div class="sr"><span class="sr-key">First layer speed</span><span class="sr-val">30mm/s</span></div>
+            <div class="sr"><span class="sr-key">Travel speed</span><span class="sr-val">500mm/s</span></div>
+            <div class="sr"><span class="sr-key">Nozzle temperature</span><span class="sr-val">220°C</span></div>
+            <div class="sr"><span class="sr-key">Bed temperature</span><span class="sr-val">60°C</span></div>
+            <div class="sr"><span class="sr-key">Fan speed</span><span class="sr-val">100%</span></div>
+            <div class="sr"><span class="sr-key">Cooling</span><span class="sr-val">Enabled after first 3 layers</span></div>
           </div>
         </div>
         <div class="slicer-box">
           <div class="slicer-box-title">Support & Adhesion Settings</div>
           <div class="slicer-rows">
-            <div class="sr"><span class="sr-key">Supports</span><span class="sr-val pass">ADD YOURS</span></div>
-            <div class="sr"><span class="sr-key">Support type</span><span class="sr-val">ADD YOURS</span></div>
-            <div class="sr"><span class="sr-key">Brim</span><span class="sr-val">ADD YOURS</span></div>
-            <div class="sr"><span class="sr-key">Skirt</span><span class="sr-val">ADD YOURS</span></div>
-            <div class="sr"><span class="sr-key">Retraction distance</span><span class="sr-val">ADD YOURS</span></div>
-            <div class="sr"><span class="sr-key">Retraction speed</span><span class="sr-val">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Supports</span><span class="sr-val pass">Enabled</span></div>
+            <div class="sr"><span class="sr-key">Support type</span><span class="sr-val">Tree (organic)</span></div>
+            <div class="sr"><span class="sr-key">Support interface</span><span class="sr-val">Enabled</span></div>
+            <div class="sr"><span class="sr-key">Brim</span><span class="sr-val">Enabled — 5mm</span></div>
+            <div class="sr"><span class="sr-key">Skirt</span><span class="sr-val">Disabled</span></div>
+            <div class="sr"><span class="sr-key">Retraction distance</span><span class="sr-val">0.8mm</span></div>
+            <div class="sr"><span class="sr-key">Retraction speed</span><span class="sr-val">40mm/s</span></div>
           </div>
         </div>
         <div class="slicer-box">
@@ -917,16 +935,71 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
             <div class="sr"><span class="sr-key">Filament cost</span><span class="sr-val">£20/kg</span></div>
             <div class="sr"><span class="sr-key">Weight per pair</span><span class="sr-val">~100g</span></div>
             <div class="sr"><span class="sr-key">Cost per pair (material)</span><span class="sr-val pass">£2.00</span></div>
-            <div class="sr"><span class="sr-key">Nozzle diameter</span><span class="sr-val">ADD YOURS</span></div>
+            <div class="sr"><span class="sr-key">Nozzle diameter</span><span class="sr-val">0.4mm</span></div>
+            <div class="sr"><span class="sr-key">Print orientation</span><span class="sr-val pass">Angled (not flat)</span></div>
+            <div class="sr"><span class="sr-key">Ironing</span><span class="sr-val pass">Enabled — top surface</span></div>
             <div class="sr"><span class="sr-key">Cycle time (both)</span><span class="sr-val pass">2.5 hours</span></div>
             <div class="sr"><span class="sr-key">Slicer software</span><span class="sr-val">Bambu Studio</span></div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+         <!-- Final Bambu Print — Software Screenshot -->
+           <!-- 4 BOXES: PROGRESSION FROM ULTIMAKER TO BAMBU -->
+      <div style="margin-top:2rem; display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;">
+        
+        <!-- BOX 1: ULTIMAKER FIRST SLICER (C1) -->
+        <div style="flex: 1; min-width: 500px; max-width: 900px;">
+          <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem;text-align:center">Ultimaker First — C1</div>
+          <div class="photo-cell" style="aspect-ratio: 16/9; max-height: 350px; background:var(--navy2); border:1px solid var(--border);">
+            <img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/Screenshot%202026-05-11%20at%2019.22.26.png?raw=true" alt="Ultimaker first settings" style="width:100%; height:100%; object-fit:contain; background:var(--navy);" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\' style=\'height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column\'><svg viewBox=\'0 0 24 24\' width=\'40\' height=\'40\'><rect x=\'2\' y=\'2\' width=\'20\' height=\'20\' rx=\'2\'/><path d=\'M7 7h10M7 12h10M7 17h6\'/></svg><span style=\'margin-top:.5rem;font-size:.45rem\'>Screenshot</span></div>'">
+            <div class="photo-label" style="padding:.4rem .6rem; font-size:.5rem;"><strong>C1 — First Attempt</strong>0.2mm · 20% Zigzag · No supports<span class="photo-pill fail" style="font-size:.42rem;">Failed</span></div>
+          </div>
+          <div style="margin-top:.6rem; font-size:.7rem; color:var(--muted); line-height:1.5; text-align:center">
+            0.2mm layer height · 20% Zigzag infill · No supports · 200°C
+          </div>
+        </div>
 
+        <!-- BOX 2: ULTIMAKER LAST SLICER (C5) -->
+        <div style="flex: 1; min-width: 500px; max-width: 900px;">
+          <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:.6rem;text-align:center">Ultimaker Last — C5</div>
+          <div class="photo-cell" style="aspect-ratio: 16/9; max-height: 350px; background:var(--navy2); border:1px solid var(--border);">
+            <img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/Screenshot%202026-05-11%20at%2019.24.29.png?raw=true" alt="Ultimaker last settings" style="width:100%; height:100%; object-fit:contain; background:var(--navy);" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\' style=\'height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column\'><svg viewBox=\'0 0 24 24\' width=\'40\' height=\'40\'><rect x=\'2\' y=\'2\' width=\'20\' height=\'20\' rx=\'2\'/><path d=\'M7 7h10M7 12h10M7 17h6\'/></svg><span style=\'margin-top:.5rem;font-size:.45rem\'>Screenshot</span></div>'">
+            <div class="photo-label" style="padding:.4rem .6rem; font-size:.5rem;"><strong>C5 — Last Ultimaker</strong>0.1mm · 40% Triangles · Ironing<span class="photo-pill warn" style="font-size:.42rem;">Still Failed</span></div>
+          </div>
+          <div style="margin-top:.6rem; font-size:.7rem; color:var(--muted); line-height:1.5; text-align:center">
+            0.1mm layer height · 40% Triangles infill · Ironing · 215°C · Wall still 1.18mm
+          </div>
+        </div>
+
+        <!-- BOX 3: BAMBU FIRST SLICER (C6) -->
+        <div style="flex: 1; min-width: 500px; max-width: 900px;">
+          <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:.6rem;text-align:center">Bambu First — C6</div>
+          <div class="photo-cell" style="aspect-ratio: 16/9; max-height: 350px; background:var(--navy2); border:1px solid var(--border);">
+            <img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/Screenshot%202026-05-11%20at%2019.13.25.png?raw=true" alt="Bambu first settings" style="width:100%; height:100%; object-fit:contain; background:var(--navy);" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\' style=\'height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column\'><svg viewBox=\'0 0 24 24\' width=\'40\' height=\'40\'><rect x=\'2\' y=\'2\' width=\'20\' height=\'20\' rx=\'2\'/><path d=\'M7 7h10M7 12h10M7 17h6\'/></svg><span style=\'margin-top:.5rem;font-size:.45rem\'>Screenshot</span></div>'">
+            <div class="photo-label" style="padding:.4rem .6rem; font-size:.5rem;"><strong>C6 — First Bambu</strong>0.16mm · 15% Grid · Ironing<span class="photo-pill pass" style="font-size:.42rem;">Passed ✓</span></div>
+          </div>
+          <div style="margin-top:.6rem; font-size:.7rem; color:var(--muted); line-height:1.5; text-align:center">
+            0.16mm layer height · 15% Grid infill · Ironing · 220°C · Wall 1.9mm ✓
+          </div>
+        </div>
+
+        <!-- BOX 4: BAMBU LAST SLICER (C9) -->
+        <div style="flex: 1; min-width: 500px; max-width: 900px;">
+          <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.6rem;text-align:center">Bambu Last — C9 ★</div>
+          <div class="photo-cell" style="aspect-ratio: 16/9; max-height: 350px; background:var(--navy2); border:1px solid var(--border);">
+            <img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/Screenshot%202026-05-11%20at%2019.15.50.png?raw=true" alt="Bambu final settings" style="width:100%; height:100%; object-fit:contain; background:var(--navy);" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\' style=\'height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column\'><svg viewBox=\'0 0 24 24\' width=\'40\' height=\'40\'><rect x=\'2\' y=\'2\' width=\'20\' height=\'20\' rx=\'2\'/><path d=\'M7 7h10M7 12h10M7 17h6\'/></svg><span style=\'margin-top:.5rem;font-size:.45rem\'>Screenshot</span></div>'">
+            <div class="photo-label" style="padding:.4rem .6rem; font-size:.5rem;"><strong>C9 — Production Locked</strong>0.12mm · 30% Gyroid · Angled<span class="photo-pill pass" style="font-size:.42rem;">★ Best</span></div>
+          </div>
+          <div style="margin-top:.6rem; font-size:.7rem; color:var(--muted); line-height:1.5; text-align:center">
+            0.12mm layer height · 30% Gyroid infill · Angled orientation · Ironing · Locked for all 25 printers
+          </div>
+        </div>
+
+      </div>
+      </div>    
+    </div>
+     </div>      
+  </div>
 <!-- SECTION 5: SUCCESSFUL PRINTS GALLERY -->
 <div class="sec-wrap reveal">
   <div class="sec-head">
@@ -935,42 +1008,47 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   </div>
   <div class="sec-body">
     <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">Bambu P1S — 4 Successful Prints (80% pass rate)</div>
+    
+    <!-- FIRST 4 PICS: TALLER ASPECT RATIO (3/4 instead of 4/3) -->
     <div class="photo-grid photo-grid-4" style="margin-bottom:1rem">
-      <div class="photo-cell">
-        <!-- ADD: photo of passed Bambu top casing (front) -->
-        <img src="YOUR_BAMBU_TOP_FRONT.jpg" alt="Bambu top casing" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8\'/></svg><span>Bambu Top — Front</span></div>'">
+      <div class="photo-cell tall" style="aspect-ratio: 3/4;">
+        <img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/8FAEA89B-A82F-4960-827A-025F182A1F74.jpg?raw=true" alt="Bambu top casing" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8\'/></svg><span>Bambu Top — Front</span></div>'">
         <div class="photo-label"><strong>Top Casing — Front</strong>Bambu P1S print<span class="photo-pill pass">✓ Pass</span></div>
       </div>
-      <div class="photo-cell">
-        <!-- ADD: photo of passed Bambu top casing (back) -->
-        <img src="YOUR_BAMBU_TOP_BACK.jpg" alt="Bambu top casing back" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8\'/></svg><span>Bambu Top — Back</span></div>'">
+      <div class="photo-cell tall" style="aspect-ratio: 3/4;">
+        <img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/CD478E28-59B9-461D-8610-80234D07DE96.jpg?raw=true" alt="Bambu top casing back" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8\'/></svg><span>Bambu Top — Back</span></div>'">
         <div class="photo-label"><strong>Top Casing — Back</strong>Bambu P1S print<span class="photo-pill pass">✓ Pass</span></div>
       </div>
-      <div class="photo-cell">
-        <!-- ADD: photo of passed Bambu bottom casing (front) -->
-        <img src="YOUR_BAMBU_BOTTOM_FRONT.jpg" alt="Bambu bottom casing" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8\'/></svg><span>Bambu Bottom — Front</span></div>'">
+      <div class="photo-cell tall" style="aspect-ratio: 3/4;">
+        <img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/16540CA9-2F53-449F-9948-59D1A217033A%203.jpg?raw=true" alt="Bambu bottom casing" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8\'/></svg><span>Bambu Bottom — Front</span></div>'">
         <div class="photo-label"><strong>Bottom Casing — Front</strong>Bambu P1S print<span class="photo-pill pass">✓ Pass</span></div>
       </div>
-      <div class="photo-cell">
-        <!-- ADD: photo of passed Bambu bottom casing (back) -->
-        <img src="YOUR_BAMBU_BOTTOM_BACK.jpg" alt="Bambu bottom casing back" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8\'/></svg><span>Bambu Bottom — Back</span></div>'">
+      <div class="photo-cell tall" style="aspect-ratio: 3/4;">
+        <img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/CAC05193-2A8D-4A81-8985-8986197F96A8.jpg?raw=true" alt="Bambu bottom casing back" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8\'/></svg><span>Bambu Bottom — Back</span></div>'">
         <div class="photo-label"><strong>Bottom Casing — Back</strong>Bambu P1S print<span class="photo-pill pass">✓ Pass</span></div>
       </div>
     </div>
+    
     <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;margin-top:1.5rem">Cases on the Print Bed — During & After Printing</div>
-    <div class="photo-grid photo-grid-3">
-      <div class="photo-cell wide">
-        <!-- ADD: wide photo or video of cases sitting in the Bambu P1S on the print bed -->
-        <img src="YOUR_CASES_IN_BAMBU.jpg" alt="Cases in Bambu printer" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8M12 8v8\'/></svg><span>Cases in Bambu P1S — on bed</span></div>'">
-        <div class="photo-label"><strong>Both Casings on Print Bed</strong>Bambu P1S — mid print<span class="photo-pill pass">2.5h cycle</span></div>
+    
+            <!-- NEXT 2 PICS: MEDIUM SIZE, SAME AS EACH OTHER -->
+    
+    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-top: 1rem;">
+      <div style="flex: 1; min-width: 350px; max-width: 500px;">
+        <div class="photo-cell" style="aspect-ratio: 4/3;">
+          <img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/IMG_7699.jpg?raw=true" alt="Cases in Bambu printer" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'18\' rx=\'2\'/><path d=\'M8 12h8M12 8v8\'/></svg><span>Cases in Bambu P1S — on bed</span></div>'">
+          <div class="photo-label"><strong>Both Casings on Print Bed</strong>Bambu P1S — mid print<span class="photo-pill pass">2.5h cycle</span></div>
+        </div>
       </div>
-      <div class="photo-cell">
-        <!-- ADD: photo of the final printed pair with QR code visible -->
-        <img src="YOUR_FINAL_WITH_QR.jpg" alt="Final print with QR" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'8\' height=\'8\'/><rect x=\'13\' y=\'3\' width=\'8\' height=\'8\'/><rect x=\'3\' y=\'13\' width=\'8\' height=\'8\'/><path d=\'M13 13h2v2h-2zM15 15h2v2h-2zM17 13h2v2h-2zM13 17h2v2h-2z\'/></svg><span>Final Print — with QR code</span></div>'">
-        <div class="photo-label"><strong>Final Production Print</strong>With QR traceability code<span class="photo-pill pass">✓ Production Ready</span></div>
+      <div style="flex: 1; min-width: 350px; max-width: 500px;">
+        <div class="photo-cell" style="aspect-ratio: 4/3;">
+          <img src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/IMG_7700%202.jpg?raw=true" alt="Final print with QR" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><svg viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'8\' height=\'8\'/><rect x=\'13\' y=\'3\' width=\'8\' height=\'8\'/><rect x=\'3\' y=\'13\' width=\'8\' height=\'8\'/><path d=\'M13 13h2v2h-2zM15 15h2v2h-2zM17 13h2v2h-2zM13 17h2v2h-2z\'/></svg><span>Final Print — with QR code</span></div>'">
+          <div class="photo-label"><strong>Final Production Print</strong>With QR traceability code<span class="photo-pill pass">✓ Production Ready</span></div>
+        </div>
       </div>
     </div>
 
+    
     <!-- Final Verdict -->
     <div class="final-verdict">
       <div class="fv-header">
@@ -1058,36 +1136,136 @@ function scrollCfg(dir){
 
 // REASONING DATA
 const reasons={
-  c1_c2:{title:'C1 → C2',from:'Configuration 1',to:'Configuration 2',
-    fail:'The first print showed significant layer adhesion problems and visible surface defects. The settings were too aggressive for the geometry of the phone casings.',
-    analysis:'The high print speed caused insufficient time for each layer to fuse properly with the previous one. The open-frame Ultimaker amplified this — ambient air was cooling layers faster than the nozzle could compensate. The result was a brittle, visually poor print.',
-    changes:['Reduced print speed','Adjusted layer settings','Changed adhesion strategy'],
-    outcome:'Mid-print failure — filament sensor error stopped the print before completion. Hardware issue, not settings-related.'},
-  c2_c3:{title:'C2 → C3',from:'Configuration 2 (Machine Error)',to:'Configuration 3',
-    fail:'C2 never completed — filament sensor failure stopped it mid-way. No dimensional data could be gathered.',
-    analysis:'After the machine error was resolved (filament path cleared, sensor reset), the opportunity was taken to also adjust settings. The working hypothesis was that a higher infill percentage would improve dimensional stability by creating a more uniform internal structure.',
-    changes:['Increased infill for structural stability','Adjusted speed to Normal mode','Added brim for better bed adhesion'],
-    outcome:'Partial success — the print completed but still failed FESTO Station 2. Wall thickness remained below the 1.6mm minimum.'},
-  c3_c4:{title:'C3 → C4',from:'Configuration 3',to:'Configuration 4 (Machine Error)',
-    fail:'C3 completed but wall thickness was still insufficient. The internal geometry also needed adjustment (separate CAD issue). Another machine error then stopped C4 before it could provide data.',
-    analysis:'Nozzle clogging caused C4 to stop. This was a recurring reliability issue with the Ultimaker — the Bowden tube extruder creates pressure inconsistencies that can cause partial clogs, especially after multiple back-to-back prints. The nozzle had to be cold-pulled and the machine recalibrated.',
-    changes:['Nozzle cleaned and recalibrated','Adjusted retraction settings to reduce clogging risk','Infill reduced to test if structural density was the issue'],
-    outcome:'Machine error — nozzle clog and calibration drift caused two separate print failures.'},
-  c4_c5:{title:'C4 → C5',from:'Configuration 4',to:'Configuration 5',
-    fail:'Multiple machine errors across C2 and C4 indicated the Ultimaker was unreliable for this production requirement. Even when prints completed, wall thickness was consistently below spec.',
-    analysis:'After further attempts with varied settings, it became clear the Ultimaker has a fundamental limitation for this application: the open frame creates temperature gradients that cause differential cooling, warping, and thin walls regardless of slicer settings. This is not a parameter problem — it is a hardware limitation.',
-    changes:['Continued Ultimaker trials with adjusted parameters','Simultaneously evaluated Bambu P1S as alternative platform'],
-    outcome:'Partial success — print completed but wall thickness still measured at 1.18mm. Decision made to trial Bambu P1S.'},
-  c5_switch:{title:'Ultimaker → Bambu P1S',from:'All Ultimaker Configurations',to:'Bambu P1S Platform',
-    fail:'After approximately 20 Ultimaker attempts across multiple configurations, not a single print passed FESTO Station 2. Wall thickness was consistently 1.18mm regardless of settings. The platform itself was the limiting factor.',
-    analysis:'The Ultimaker\'s open-frame design fundamentally cannot maintain the thermal environment needed for consistent thin-wall FDM printing. No slicer setting compensates for ambient temperature variation. The Bambu P1S enclosed chamber eliminates this variable entirely. The decision was data-driven: 20 attempts, 0 passes — switch the platform.',
-    changes:['Platform switched from Ultimaker to Bambu P1S','Slicer changed from Cura to Bambu Studio','All settings re-profiled for new machine'],
-    outcome:'The platform switch was the correct decision. First completed Bambu print achieved 1.9mm wall thickness and passed FESTO Station 2.'},
-  c6_c7:{title:'C6 → C7 (Bambu)',from:'Configuration 6 — Bambu (Failed)',to:'Configuration 7 — Bambu (Passed)',
-    fail:'C6 stopped mid-print — hardware fault unrelated to settings. The print was lost but no dimensional data was lost since it was incomplete.',
-    analysis:'After C6\'s mid-print failure, the settings from the eventual successful prints were refined. The Bambu P1S direct drive extruder gives much better control over extrusion than the Ultimaker\'s Bowden system. Fine-tuning focused on optimising the settings for the phone casing geometry.',
-    changes:['Refined retraction settings for direct drive','Optimised speed profile for casing geometry','Adjusted temperature profile'],
-    outcome:'✓ SUCCESS — C7 passed. Wall thickness 1.9mm within 1.6–2.2mm spec. FESTO Station 2 passed. Settings locked for production.'}
+  c1_c2: {
+    title: 'C1 → C2',
+    from: 'Configuration 1',
+    to: 'Configuration 2 (Machine Error)',
+    fail: 'C1 showed significant warping and poor surface finish. The corners of the phone casing lifted off the bed mid print, and the 0.2mm layer height created visible layer lines. No supports meant the overhangs sagged. The wall thickness was already below the 1.6mm minimum specification.',
+    analysis: 'The warping occurred because the open frame Ultimaker allowed uneven cooling. The 0.2mm layer height was too coarse for the fine details of the phone casing, and the lack of a brim meant the first layer had minimal bed adhesion. The 20% zigzag infill created a weak internal structure that contributed to dimensional instability.',
+    changes: [
+      'Switched to 0.1mm layer height for finer detail',
+      'Changed infill pattern from Zigzag to Gyroid for better strength',
+      'Reduced print speed from 50mm/s to 40mm/s',
+      'Added brim for better bed adhesion',
+      'Increased nozzle temperature from 200°C to 210°C',
+      'Enabled supports for overhangs'
+    ],
+    outcome: 'Partial improvement: adhesion was better and warping reduced, but the print still failed FESTO Station 2. The hardware limitation of the open frame Ultimaker could not be solved by slicer settings alone.'
+  },
+  c2_c3: {
+    title: 'C2 → C3',
+    from: 'Configuration 2 (Machine Error)',
+    to: 'Configuration 3',
+    fail: 'C2 never completed. The filament sensor triggered a false positive mid print, stopping the job. After clearing the error and restarting, the same print stopped again due to a partial nozzle clog. Two attempts failed before any dimensional data could be collected.',
+    analysis: 'The Ultimaker filament sensor is known to be unreliable, especially with matte or textured PLA. The Bowden tube extruder creates pressure buildup over time, leading to partial clogs that the printer does not detect until extrusion stops completely. This hardware unreliability alone made the Ultimaker unsuitable for production.',
+    changes: [
+      'Cleared filament sensor error and recalibrated',
+      'Cold pull performed to clear partial nozzle clog',
+      'Increased nozzle temperature to 210°C to improve flow',
+      'Reduced print speed to 35mm/s to reduce clogging risk',
+      'Added wider brim for extra bed adhesion'
+    ],
+    outcome: 'The print completed, but the wall thickness remained wrong. The hardware reliability issues persisted and the printer required constant attention and would likely fail again on subsequent prints.'
+  },
+ c3_c4: {
+    title: 'C3 → C4',
+    from: 'Configuration 3',
+    to: 'Configuration 4 (Machine Error)',
+    fail: 'C3 completed but the wall thickness was still 1.18mm which is 26 percent below the required 1.6mm minimum. The back surface of the bottom casing showed sagging overhangs where supports had not been properly configured. The print was rejected at visual inspection.',
+    analysis: 'The 0.1mm layer height improved surface quality, but the 1.2mm wall thickness was insufficient. The open frame allowed temperature fluctuations that caused inconsistent extrusion, particularly in thin wall sections. The Bowden tube extruder could not maintain consistent pressure for fine features.',
+    changes: [
+      'Increased infill density to 40% with Triangles pattern',
+      'Reduced print speed further to 35mm/s',
+      'Added support interface layer for better overhang quality',
+      'Increased wall thickness to 1.2mm (CAD specified 1.6mm minimum)',
+      'Attempted to compensate for Ultimaker limitations through aggressive settings'
+    ],
+    outcome: 'Machine error — mid print nozzle clog stopped the printer again. Multiple restarts were attempted but all failed. This confirmed that the Ultimaker Bowden extruder is fundamentally unreliable for production work.'
+  },
+  c4_c5: {
+    title: 'C4 → C5',
+    from: 'Configuration 4 (Machine Error)',
+    to: 'Configuration 5',
+    fail: 'Multiple machine errors across C2 and C4 indicated the Ultimaker was unreliable for production. The nozzle clogged repeatedly, requiring cold pull procedures between every few prints. Even when prints completed, wall thickness was wrong regardless of settings.',
+    analysis: 'After four failed attempts with different slicer settings, it became clear the Ultimaker has fundamental limitations: the open frame creates temperature gradients causing warping; the Bowden extruder causes clogs and inconsistent extrusion; the filament sensor is unreliable. No slicer setting could fix these hardware problems.',
+    changes: [
+      'Added ironing to top surface to improve finish',
+      'Tested higher infill densities (40% to 60%) with Triangles pattern',
+      'Optimised support placement for bottom casing overhangs',
+      'Adjusted retraction settings to reduce clogging risk',
+      'Continued attempting to salvage the Ultimaker platform'
+    ],
+    outcome: 'Partial improvement — surface finish was better and warping was reduced. However, the wall thickness remained at 1.18mm and FESTO Station 2 failure was still 100 percent. The conclusive data point: the same CAD file printed on the Bambu P1S achieved 1.9mm wall thickness on the first attempt.'
+  },
+c5_switch: {
+  title: 'C5 → Platform Switch',
+  from: 'All Ultimaker Configurations (C1 to C5)',
+  to: 'Bambu P1S Platform',
+  fail: 'After approximately 20 Ultimaker attempts across multiple configurations including 0.1mm layer height, 0.2mm, various infill densities (20% to 60%), different patterns (Zigzag, Gyroid, Triangles), supports enabled and disabled, ironing on and off, brims added — not a single print passed FESTO Station 2. Wall thickness was consistently  below or above the required 1.6 to 2.2mm specification. The CAD design was confirmed correct; the platform was the problem.',
+  analysis: 'The Ultimaker open frame design fundamentally cannot maintain the thermal environment needed for consistent thin wall FDM printing. No slicer setting compensates for ambient temperature variation. The Bowden tube extruder cannot match the precision of a direct drive system. The hardware unreliability (filament sensor errors, nozzle clogs, calibration drift) is unacceptable for a 50,000 unit per year production commitment. The decision was purely data driven: 20 attempts, 0 passes — switch the platform.',
+  changes: [
+    'Platform switched from Ultimaker to Bambu P1S',
+    'Slicer changed from Cura to Bambu Studio',
+    'First Bambu print settings: 0.16mm layer height (High Quality preset)',
+    'Infill: 15% with Grid pattern (Rectilinear style)',
+    'Topmost surface ironing enabled for smooth finish',
+    'Supports enabled where needed',
+    'Default Bambu speeds and temperatures used',
+    'Auto bed leveling enabled and no manual paper calibration required'
+  ],
+  outcome: 'The platform switch was the correct decision. The first Bambu print (0.16mm layer height, 15% Grid infill, top surface ironing) achieved a wall thickness of 1.9mm  directly in the middle of the 1.6 to 2.2mm specification  and passed FESTO Station 2 on first attempt. The enclosed chamber eliminated warping, the direct drive extruder provided consistent extrusion, and auto bed leveling removed the 15 to 20 minute manual setup time.'
+},
+    c6_c7: {
+    title: 'C6 → C7',
+    from: 'Configuration 6 (Bambu P1S — First Success)',
+    to: 'Configuration 7 (Bambu P1S — USB Interruption)',
+    fail: 'C6 was the first Bambu P1S print. It passed FESTO Station 2 immediately with a wall thickness of 1.9mm. The platform clearly worked. C7 used the exact same settings but stopped mid print due to a USB interruption — the printer could not read the file from the flash drive. The failed print was not a quality issue, just a hardware communication error.',
+    analysis: 'The Bambu P1S proved its capability on the very first attempt. The 1.9mm wall thickness was directly in the middle of the 1.6 to 2.2mm specification, something the Ultimaker never achieved. The USB interruption on C7 was a file read error, not a problem with the print settings or the printer mechanics.',
+    changes: [
+      'Same settings as C6 (0.16mm layer height, 15% Grid infill, ironing enabled)',
+      'USB flash drive swapped to rule out drive corruption',
+      'Print restarted from same file',
+      'No slicer setting changes were needed because the failure was hardware related'
+    ],
+    outcome: 'The USB failure was isolated and easily fixed. After switching to cloud printing via Bambu Cloud, the issue was eliminated entirely. The Bambu P1S platform is reliable and the settings from C6 remained the baseline for production.'
+    },
+   c7_c8: {
+    title: 'C7 → C8',
+    from: 'Configuration 7 (Bambu P1S — USB Interruption)',
+    to: 'Configuration 8 (Bambu P1S — Angled Orientation)',
+    fail: 'C7 failed due to USB interruption, not print quality. The same settings that worked on C6 were used, so no failure analysis was needed for the print itself. The goal for C8 was to improve surface finish and eliminate visible layer lines, not to fix a failure.',
+    analysis: 'Printing the case flat on the bed left visible layer lines on the top surface. To achieve a smoother finish, the print orientation was changed from flat to angled. This reduces the visible stepping effect on curved surfaces because the layer height transition is distributed across a larger area. The angled orientation also required more support material but produced a much cleaner final part.',
+    changes: [
+      'Layer height reduced from 0.16mm to 0.12mm (High Quality preset)',
+      'Infill pattern changed from Grid to Gyroid for better strength to weight ratio',
+      'Infill density increased from 15% to 20%',
+      'Print orientation changed from flat on bed to angled',
+      'Ironing remained enabled',
+      'Supports optimised for angled orientation'
+    ],
+    outcome: 'C8 passed FESTO Station 2 with 1.9mm wall thickness. The angled orientation produced a noticeably smoother surface finish with less visible layer lines. This confirmed that orientation matters significantly for appearance, even though dimensional accuracy was already achieved on C6.'
+  },
+
+  c8_c9: {
+    title: 'C8 → C9',
+    from: 'Configuration 8 (Bambu P1S — Angled 0.12mm)',
+    to: 'Configuration 9 (Bambu P1S — Final Production Settings)',
+    fail: 'C8 had excellent surface finish and passed all tests. No failure occurred. The iteration from C8 to C9 was about optimising infill density for strength while maintaining the same high quality surface finish achieved with the angled orientation.',
+    analysis: 'The 20% gyroid infill on C8 was sufficient, but for production parts that will be handled and assembled thousands of times, a slightly higher infill density adds structural rigidity without significantly increasing print time or material cost. Gyroid infill was chosen because it provides uniform strength in all directions and creates less vibration during printing than Grid or Triangles patterns.',
+    changes: [
+      'Layer height kept at 0.12mm',
+      'Infill density increased from 20% to 30% for extra strength',
+      'Infill pattern kept as Gyroid',
+      'Print orientation kept as angled (optimised position)',
+      'Ironing kept enabled on top surface',
+      'Support interface layer added for cleaner overhang removal',
+      'Settings locked as production standard for all 25 printers'
+    ],
+    outcome: 'C9 is the final production configuration. 0.12mm layer height, 30% gyroid infill, angled orientation, ironing enabled, and supports with interface layer. The print cycle time for both casings is 2.5 hours. Every subsequent print on the Bambu P1S fleet will use these locked settings.'
+  }
+  
+  
+  
 };
 
 function openReason(id){
