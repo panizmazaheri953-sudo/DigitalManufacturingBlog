@@ -191,7 +191,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   <div>
     <div class="ph-eyebrow">07 — Plant Simulation</div>
     <h1 class="ph-h1">TECNOMATIX<br><em>PLANT</em><br>SIMULATION.</h1>
-    <p class="ph-desc">A Discrete Event Simulation built step by step — first the FESTO CP Lab, then the robot, then the full 25-printer fleet. The result: 50,000 units per year, validated digitally before a single production printer was bought.</p>
+    <p class="ph-desc">A Discrete Event Simulation built step by step. First the FESTO CP Lab, then the robot, then the full 25-printer fleet. The result: 70,000 units per year, validated digitally before a single production printer was bought.</p>
   </div>
   <div>
     <div class="hero-kpis">
@@ -235,7 +235,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
       <div class="des-card">
         <div class="des-card-icon"><svg viewBox="0 0 18 18"><rect x="2" y="2" width="14" height="14" rx="1"/><path d="M6 9h6M9 6v6"/></svg></div>
         <div class="des-card-title">Discrete Event Simulation (DES)</div>
-        <div class="des-card-text">A method of modelling a production system where <strong>each event is processed in sequence</strong> — parts move through stations, machines start and stop, queues build up. Tecnomatix simulates thousands of production cycles in seconds, revealing bottlenecks and capacity limits before any physical investment is made.</div>
+        <div class="des-card-text">A method of modelling a production system where <strong>each event is processed in sequence</strong>, parts move through stations, machines start and stop, queues build up. Tecnomatix simulates thousands of production cycles in seconds, revealing bottlenecks and capacity limits before any physical investment is made.</div>
       </div>
       <div class="des-card">
         <div class="des-card-icon"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="7"/><path d="M9 5v4l3 2"/></svg></div>
@@ -245,12 +245,12 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
       <div class="des-card">
         <div class="des-card-icon"><svg viewBox="0 0 18 18"><path d="M2 14l4-4 3 3 4-5 3 3"/></svg></div>
         <div class="des-card-title">Why Simulation Before Production?</div>
-        <div class="des-card-text">Buying 25 Bambu P1S printers (£11,750 capital) without first validating they can hit 50,000 units/year would be a significant financial risk. <strong>DES removes that uncertainty</strong> — the simulation proves the fleet size, schedule, and layout before any physical commitment is made.</div>
+        <div class="des-card-text">Buying 25 Bambu P1S printers (£11,750 capital) without first validating they can hit 50,000 units/year would be a significant financial risk. <strong>DES removes that uncertainty</strong>and the simulation proves the fleet size, schedule, and layout before any physical commitment is made.</div>
       </div>
       <div class="des-card">
         <div class="des-card-icon"><svg viewBox="0 0 18 18"><rect x="2" y="5" width="14" height="10" rx="1"/><path d="M6 5V3a3 3 0 0 1 6 0v2"/></svg></div>
         <div class="des-card-title">Build-Then-Validate Approach</div>
-        <div class="des-card-text">Rather than modelling everything at once, the simulation was <strong>built incrementally</strong> — FESTO CP Lab first, then robot material handling, then the full printer fleet. Each stage was validated before the next was added, ensuring the model was accurate at every layer.</div>
+        <div class="des-card-text">Rather than modelling everything at once, the simulation was <strong>built incrementally</strong> meaning FESTO CP Lab first, then robot material handling, then the full printer fleet. Each stage was validated before the next was added, ensuring the model was accurate at every layer.</div>
       </div>
     </div>
     <div class="why-box">
@@ -267,7 +267,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
     <div class="sec-title-block"><h2>Step by Step<br><em>Build Process.</em></h2><div style="font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Delete unused stages</div></div>
   </div>
   <div class="sec-body">
-    <p class="stages-intro">The simulation was not built all at once. Starting with the FESTO CP Lab and adding complexity layer by layer meant each stage could be validated independently. This is good simulation engineering practice — <strong>build incrementally, validate at each step, avoid compounding errors</strong>.</p>
+    <p class="stages-intro">The simulation was not built all at once. Starting with the FESTO CP Lab and adding complexity layer by layer meant each stage could be validated independently. This is good simulation engineering practice to <strong>build incrementally, validate at each step, avoid compounding errors</strong>.</p>
 
     <!-- ============================================================ -->
     <!-- STAGE 1 — DELETE THIS ENTIRE <div class="stage"> BLOCK IF NOT NEEDED -->
@@ -275,12 +275,11 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
     <div class="stage reveal">
       <div class="stage-screenshot">
         <!-- ADD your Stage 1 screenshot here -->
-        <!-- <img src="YOUR_STAGE_1_SCREENSHOT.png" alt="Stage 1 — FESTO stations"> -->
-        <div class="ss-placeholder">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          <span class="ss-placeholder-label">Stage 1 Screenshot</span>
-          <span class="ss-placeholder-hint">Replace src above to add image</span>
-        </div>
+       <img 
+  src="https://raw.githubusercontent.com/panizmazaheri953-sudo/DigitalManufacturingBlog/main/Picture1.png" 
+  alt="Stage 1 — FESTO stations"
+  style="width: auto; height: auto; max-width: 100%; max-height: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+>
         <div class="stage-watermark">01</div>
       </div>
       <div class="stage-content">
@@ -295,6 +294,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
             <div class="sf-row">Station 4 (Press) at <strong>11 seconds</strong></div>
             <div class="sf-row">Station 5 (Oven) at <strong>35 seconds</strong> — immediately flagged as bottleneck</div>
             <div class="sf-row">Station 6 (Output) at <strong>11 seconds</strong></div>
+            <div class="sf-row">Total cases printed withing a day: <strong>2466 pairs</strong></div>
             <div class="sf-row">Total FESTO cycle: <strong>99 seconds</strong> — within 150s takt ✓</div>
           </div>
         </div>
@@ -315,22 +315,21 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
     <div class="stage reveal">
       <div class="stage-screenshot">
         <!-- ADD your Stage 2 screenshot here -->
-        <!-- <img src="YOUR_STAGE_2_SCREENSHOT.png" alt="Stage 2 — Robot added"> -->
-        <div class="ss-placeholder">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          <span class="ss-placeholder-label">Stage 2 Screenshot</span>
-          <span class="ss-placeholder-hint">Replace src above to add image</span>
-        </div>
+     <img 
+  src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/Picture3.png?raw=true" 
+  alt="Stage 1 — FESTO stations"
+  style="width: auto; height: auto; max-width: 100%; max-height: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+>
         <div class="stage-watermark">02</div>
       </div>
       <div class="stage-content">
         <div class="stage-top">
           <div class="stage-num-badge"><span class="dot"></span>Stage 02 of 06</div>
           <div class="stage-title">Robot<br><em>Added.</em></div>
-          <p class="stage-desc">A <strong>robotic handler</strong> was added to the simulation to manage material flow — specifically picking finished cases from the output of the print area and feeding them into the FESTO CP Lab sequence. This automated the transfer step that an operator would otherwise perform manually.</p>
+          <p class="stage-desc">A <strong>pick and place robot</strong> was added to the simulation to manage material flow specifically picking finished cases from the output of the output station and placing them pn the final destination. This automated the transfer step that an operator would otherwise perform manually.</p>
           <div class="stage-findings">
-            <div class="sf-row">Robot picks <strong>completed casing pairs</strong> from print output area</div>
-            <div class="sf-row">Feeds parts into <strong>FESTO Station 1</strong> input buffer</div>
+            <div class="sf-row">Robot picks <strong>completed casing pairs</strong> from  output station</div>
+            <div class="sf-row">Places parts on <strong>Final location</strong> input buffer</div>
             <div class="sf-row">Eliminates manual transfer time — <strong>reduces non-value-added waiting</strong></div>
             <div class="sf-row">Robot cycle time modelled to match FESTO input rate</div>
             <div class="sf-row">Buffer sizing validated — no starvation of FESTO line</div>
@@ -347,45 +346,79 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
       </div>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- STAGE 3 — DELETE THIS ENTIRE <div class="stage"> BLOCK IF NOT NEEDED -->
-    <!-- ============================================================ -->
-    <div class="stage reveal">
+   <!-- ============================================================ -->
+<!-- STAGE 3 — FESTO CP Lab Full Layout + Bottleneck Analysis -->
+<!-- ============================================================ -->
+  <div class="stage reveal">
       <div class="stage-screenshot">
-        <!-- ADD your Stage 3 screenshot here -->
-        <!-- <img src="YOUR_STAGE_3_SCREENSHOT.png" alt="Stage 3 — Printer fleet added"> -->
-        <div class="ss-placeholder">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          <span class="ss-placeholder-label">Stage 3 Screenshot</span>
-          <span class="ss-placeholder-hint">Replace src above to add image</span>
-        </div>
-        <div class="stage-watermark">03</div>
-      </div>
-      <div class="stage-content">
-        <div class="stage-top">
-          <div class="stage-num-badge"><span class="dot"></span>Stage 03 of 06</div>
-          <div class="stage-title">Printer Fleet<br><em>Integrated.</em></div>
-          <p class="stage-desc">The <strong>25 Bambu P1S printers</strong> were added to the simulation with their real parameters — 2.5h cycle time per pair, 80% success rate, scheduled downtime for maintenance. The full production system was now connected end-to-end.</p>
-          <div class="stage-findings">
-            <div class="sf-row"><strong>25 Bambu P1S</strong> printers modelled simultaneously</div>
-            <div class="sf-row">Cycle time: <strong>2.5 hours per pair</strong> per printer</div>
-            <div class="sf-row">80% yield rate applied — <strong>20% failure absorption</strong> built in</div>
-            <div class="sf-row">Schedule: <strong>weekdays 24/7, weekends 8h/day</strong></div>
-            <div class="sf-row">Planned maintenance downtime modelled at <strong>15% of hours</strong></div>
-            <div class="sf-row">Output feeds robot → FESTO → dispatch in one connected flow</div>
-          </div>
-        </div>
-        <div class="stage-bottom">
-          <div class="stage-tag-row">
-            <span class="stage-tag cyan">25× Bambu P1S</span>
-            <span class="stage-tag cyan">2.5h Cycle Time</span>
-            <span class="stage-tag amber">80% Yield Rate</span>
-            <span class="stage-tag">Full System Connected</span>
-          </div>
-        </div>
+        <!-- ADD your Stage 2 screenshot here -->
+     <img 
+  src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/Picture4.png?raw=true" 
+  alt="Stage 1 — FESTO stations"
+  style="width: auto; height: auto; max-width: 100%; max-height: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+>
+    <div class="stage-watermark">03</div>
+  </div>
+  <div class="stage-content">
+    <div class="stage-top">
+      <div class="stage-num-badge"><span class="dot"></span>Stage 03 of 06</div>
+      <div class="stage-title">FESTO CP Lab<br><em>Full Layout + Bottleneck Analysis.</em></div>
+      <p class="stage-desc"> <strong></strong>  A dedicated bottleneck analyzer was integrated to identify throughput constraints in real-time, with the Oven station (S5) consistently flagged as the primary bottleneck at <strong>35 seconds</strong> cycle time.</p>
+      <div class="stage-findings">
+        <div class="sf-row"><strong>6-Station Layout</strong> — S1 (7s) → S2 (8s) → S3 (27s) → S4 (11s) → S5 (35s) → S6 (11s)</div>
+        <div class="sf-row"><strong>Bottleneck Analyzer</strong> — Real-time tracking identifies slowest station automatically</div>
+        <div class="sf-row"><strong>Bottleneck Chart</strong> — Visual comparison of all 6 cycle times vs. 150s takt target</div>
       </div>
     </div>
-
+    <div class="stage-bottom">
+      <div class="stage-tag-row">
+        <span class="stage-tag cyan">6 Stations Visualized</span>
+        <span class="stage-tag cyan">Bottleneck Analyzer Active</span>
+        <span class="stage-tag amber">S5 Oven: 35s 🔴</span>
+        <span class="stage-tag">S3 iPick: 27s 🟡</span>
+        <span class="stage-tag">99s Total ✓</span>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- ============================================================ -->
+<!-- STAGE 4 — Bottleneck Analyzer & Cycle Time Chart -->
+<!-- ============================================================ -->
+<div class="stage reveal">
+      <div class="stage-screenshot">
+        <!-- ADD your Stage 2 screenshot here -->
+     <img 
+  src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/Picture5.png?raw=true" 
+  alt="Stage 1 — FESTO stations"
+  style="width: auto; height: auto; max-width: 100%; max-height: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+>
+    <div class="stage-watermark">04</div>
+  </div>
+  <div class="stage-content">
+    <div class="stage-top">
+      <div class="stage-num-badge"><span class="dot"></span>Stage 04 of 06</div>
+      <div class="stage-title">Bottleneck Analysis<br><em>S5 Oven Identified.</em></div>
+      <p class="stage-desc"> <strong></strong>  The chart clearly identifies <strong>Station 5 (Oven)</strong> as the primary bottleneck at 35 seconds  significantly higher than all other stations.</p>
+      <div class="stage-findings">
+        <div class="sf-row"><strong>🔴 Primary Bottleneck: S5 Oven — 35 seconds</strong> (53% longer than next highest station)</div>
+        <div class="sf-row"><strong>🟡 Secondary Constraint: S3 iPick — 27 seconds</strong> (manual operation limits speed)</div>
+        <div class="sf-row">S5 creates <strong>WIP backlog</strong> — parts queue before oven while downstream stations sit idle</div>
+        <div class="sf-row">Bottleneck analyzer updates in <strong>real-time</strong> as parameters change</div>
+        <div class="sf-row"><strong>Visual chart</strong> compares all 6 station cycle times vs. 150s takt target</div>
+        <div class="sf-row"><strong>Recommendation:</strong> Reduce S5 oven time OR add parallel oven unit to increase throughput</div>
+      </div>
+    </div>
+    <div class="stage-bottom">
+      <div class="stage-tag-row">
+        <span class="stage-tag cyan">Bottleneck Analyzer</span>
+        <span class="stage-tag amber">🔴 S5 Oven: 35s</span>
+        <span class="stage-tag amber">🟡 S3 iPick: 27s</span>
+        <span class="stage-tag">Real-time Chart</span>
+        <span class="stage-tag">Parallel Oven Recommended</span>
+      </div>
+    </div>
+  </div>
+</div>
     <!-- ============================================================ -->
     <!-- STAGE 4 — DELETE THIS ENTIRE <div class="stage"> BLOCK IF NOT NEEDED -->
     <!-- ============================================================ -->
