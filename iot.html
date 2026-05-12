@@ -1,1 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IoT & Digital Twin — Paniz Manufacturing</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--navy4:#152848;
+  --cyan:#00e5ff;--cyan2:#00b8cc;--border:rgba(0,229,255,0.13);
+  --white:#f0f4ff;--muted:#6a7f9a;
+  --red:#ff4444;--amber:#ffb347;--green:#00ff88;
+  --ff:'DM Sans',sans-serif;--fd:'Bebas Neue',sans-serif;--fm:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--navy);color:var(--white);overflow-x:hidden;cursor:none}
+#cursor{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:screen}
+#cursor-ring{position:fixed;top:0;left:0;width:34px;height:34px;border:1px solid var(--cyan);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.4}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.02;pointer-events:none;z-index:9990}
 
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 4%;height:62px;border-bottom:1px solid var(--border);background:rgba(5,13,26,0.95);backdrop-filter:blur(12px)}
+.logo{font-family:var(--fd);font-size:1.4rem;letter-spacing:.06em;color:var(--white);text-decoration:none}
+.logo span{color:var(--cyan)}
+.nav-links{display:flex;list-style:none}
+.nav-links a{font-family:var(--fm);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.4rem .8rem;height:62px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* HERO */
+.page-hero{padding:6rem 4% 3rem;border-bottom:1px solid var(--border);background:var(--navy2);position:relative;overflow:hidden;margin-top:62px;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.ph-eyebrow{font-family:var(--fm);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem}
+.ph-eyebrow::before{content:'';width:20px;height:1px;background:var(--cyan)}
+.ph-h1{font-family:var(--fd);font-size:clamp(3rem,6vw,5.5rem);line-height:.88;text-transform:uppercase;margin-bottom:1.5rem}
+.ph-h1 em{color:var(--cyan);font-style:normal}
+.ph-desc{font-size:.9rem;color:var(--muted);line-height:1.75;font-weight:300;max-width:460px}
+.hero-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem}
+.hk{background:var(--navy3);border:1px solid var(--border);padding:1.1rem;transition:border-color .3s}
+.hk:hover{border-color:var(--cyan)}
+.hk-val{font-family:var(--fd);font-size:1.8rem;line-height:1;color:var(--cyan)}
+.hk-val.green{color:var(--green)}
+.hk-label{font-family:var(--fm);font-size:.46rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.25rem}
+
+/* MARQUEE */
+.marquee-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:var(--navy3);padding:.55rem 0}
+.marquee-track{display:flex;animation:marquee 30s linear infinite;white-space:nowrap}
+.m-item{font-family:var(--fd);font-size:1rem;letter-spacing:.06em;color:rgba(0,229,255,0.3);padding:0 2rem;display:flex;align-items:center;gap:1.5rem}
+.m-item span{color:var(--cyan);font-size:.7rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION */
+.sec-wrap{border-bottom:1px solid var(--border)}
+.sec-head{display:grid;grid-template-columns:220px 1fr;border-bottom:1px solid var(--border)}
+.sec-label-col{padding:2.5rem;border-right:1px solid var(--border);background:var(--navy2);display:flex;flex-direction:column;justify-content:space-between}
+.sec-tag{font-family:var(--fm);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.4rem}
+.sec-big-num{font-family:var(--fd);font-size:4rem;color:var(--navy4);line-height:1;user-select:none}
+.sec-title-block{padding:2.5rem 3rem;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.sec-title-block h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);line-height:.92;text-transform:uppercase}
+.sec-title-block h2 em{color:var(--cyan);font-style:normal}
+.sec-body{padding:2.5rem 3rem}
+
+/* THE LOOP DIAGRAM */
+.loop-diagram{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);margin-bottom:1.5rem;position:relative}
+.loop-step{padding:1.75rem 1.5rem;border-right:1px solid var(--border);position:relative;overflow:hidden;transition:background .25s}
+.loop-step:last-child{border-right:none}
+.loop-step:hover{background:var(--navy3)}
+.loop-step::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--cyan);transition:width .4s}
+.loop-step:hover::after{width:100%}
+.loop-step-num{font-family:var(--fd);font-size:2.5rem;color:var(--navy4);line-height:1;margin-bottom:.5rem}
+.loop-step-arrow{position:absolute;top:50%;right:-1px;transform:translateY(-50%);width:20px;height:20px;background:var(--navy);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;z-index:1}
+.loop-step-arrow svg{width:10px;height:10px;stroke:var(--cyan);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.loop-step-icon{width:32px;height:32px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:.75rem}
+.loop-step-icon svg{width:16px;height:16px;stroke:var(--cyan);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.loop-step-title{font-family:var(--fm);font-size:.62rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--white);margin-bottom:.4rem}
+.loop-step-label{font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:.5rem}
+.loop-step-desc{font-size:.72rem;color:var(--muted);line-height:1.55;font-weight:300}
+.loop-step-desc strong{color:var(--white);font-weight:500}
+.loop-step-tag{display:inline-flex;align-items:center;gap:.3rem;font-family:var(--fm);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;padding:.18rem .5rem;border:1px solid rgba(0,229,255,0.3);color:var(--cyan);background:rgba(0,229,255,0.05);margin-top:.5rem}
+
+/* WHAT WAS DONE GRID */
+.done-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.done-card{background:var(--navy2);border:1px solid var(--border);padding:1.5rem;transition:border-color .3s;position:relative;overflow:hidden}
+.done-card:hover{border-color:var(--cyan)}
+.done-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--cyan);transition:height .4s}
+.done-card:hover::before{height:100%}
+.done-card-tag{font-family:var(--fm);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:.6rem}
+.done-card-title{font-family:var(--fm);font-size:.65rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--white);margin-bottom:.5rem}
+.done-card-text{font-size:.75rem;color:var(--muted);line-height:1.6;font-weight:300}
+.done-card-text strong{color:var(--white);font-weight:500}
+.done-list{list-style:none;display:flex;flex-direction:column;gap:.35rem;margin-top:.6rem}
+.done-list li{font-size:.72rem;color:var(--muted);font-weight:300;padding-left:.75rem;position:relative;line-height:1.5}
+.done-list li::before{content:'→';position:absolute;left:0;color:var(--cyan);font-family:var(--fm);font-size:.6rem;line-height:1.5}
+.done-list li strong{color:var(--white);font-weight:500}
+
+/* SCREENSHOT SLOTS */
+.screenshot-slot{width:100%;background:var(--navy3);border:1px solid var(--border);overflow:hidden;position:relative;transition:border-color .3s}
+.screenshot-slot:hover{border-color:var(--cyan)}
+.screenshot-slot img{width:100%;display:block;transition:transform .4s}
+.screenshot-slot:hover img{transform:scale(1.02)}
+.ss-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;padding:3rem 2rem}
+.ss-ph svg{width:36px;height:36px;stroke:var(--muted);fill:none;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;opacity:.25}
+.ss-ph-label{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);opacity:.45;text-align:center}
+.ss-ph-hint{font-family:var(--fm);font-size:.44rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);opacity:.25;text-align:center}
+.ss-caption{padding:.75rem 1rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.4rem}
+.ss-caption-text{font-size:.72rem;color:var(--muted);font-weight:300}
+.ss-caption-text strong{color:var(--white);font-weight:500}
+.ss-pill{font-family:var(--fm);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .55rem;border:1px solid rgba(0,229,255,0.3);color:var(--cyan);background:rgba(0,229,255,0.05)}
+
+/* SCREENSHOTS GRID */
+.ss-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.ss-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem}
+.ss-grid-1{margin-bottom:1.5rem}
+
+/* STEP PROCESS */
+.step-process{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);margin-bottom:1.5rem}
+.sp-row{display:grid;grid-template-columns:60px 1fr;border-bottom:1px solid var(--border);transition:background .25s}
+.sp-row:last-child{border-bottom:none}
+.sp-row:hover{background:var(--navy3)}
+.sp-num{padding:1.25rem 1rem;border-right:1px solid var(--border);display:flex;align-items:flex-start;justify-content:center;font-family:var(--fd);font-size:1.5rem;color:var(--cyan);line-height:1;background:var(--navy2)}
+.sp-content{padding:1.25rem 1.5rem}
+.sp-title{font-family:var(--fm);font-size:.6rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--white);margin-bottom:.3rem}
+.sp-desc{font-size:.75rem;color:var(--muted);line-height:1.55;font-weight:300}
+.sp-desc strong{color:var(--white);font-weight:500}
+.sp-code{font-family:var(--fm);font-size:.6rem;color:rgba(0,229,255,0.6);background:var(--navy3);border:1px solid var(--border);padding:.3rem .6rem;margin-top:.4rem;display:inline-block;letter-spacing:.06em}
+
+/* AI SECTION */
+.ai-box{background:var(--navy3);border:1px solid var(--border);border-left:2px solid var(--amber);padding:1.5rem;margin-bottom:1.5rem}
+.ai-box-tag{font-family:var(--fm);font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem}
+.ai-box-tag::before{content:'⚡';font-size:.7rem}
+.ai-box-title{font-family:var(--fm);font-size:.65rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--white);margin-bottom:.5rem}
+.ai-box-text{font-size:.78rem;color:var(--muted);line-height:1.65;font-weight:300}
+.ai-box-text strong{color:var(--white);font-weight:500}
+.ai-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:1rem}
+.ai-step{background:var(--navy2);border:1px solid var(--border);padding:1rem}
+.ai-step-num{font-family:var(--fd);font-size:1.5rem;color:var(--amber);line-height:1;margin-bottom:.3rem}
+.ai-step-title{font-family:var(--fm);font-size:.56rem;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--white);margin-bottom:.3rem}
+.ai-step-text{font-size:.68rem;color:var(--muted);line-height:1.5;font-weight:300}
+
+/* ARCHITECTURE DIAGRAM */
+.arch{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem;position:relative}
+.arch-node{background:var(--navy2);border:1px solid var(--border);padding:1.25rem;text-align:center;position:relative;transition:border-color .3s}
+.arch-node:hover{border-color:var(--cyan)}
+.arch-node-icon{width:40px;height:40px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem}
+.arch-node-icon svg{width:18px;height:18px;stroke:var(--cyan);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.arch-node-title{font-family:var(--fm);font-size:.6rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--white);margin-bottom:.25rem}
+.arch-node-sub{font-family:var(--fm);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);margin-bottom:.5rem}
+.arch-node-desc{font-size:.68rem;color:var(--muted);line-height:1.5;font-weight:300}
+.arch-arrow{display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.5rem;color:rgba(0,229,255,0.3)}
+.arch-row{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:.5rem;align-items:center;margin-bottom:.75rem}
+.arch-arrow-vert{display:flex;align-items:center;justify-content:center;padding:.5rem 0;font-family:var(--fd);font-size:1.2rem;color:rgba(0,229,255,0.3);grid-column:span 5}
+
+/* KEY TERMS */
+.terms-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem}
+.term{background:var(--navy2);border:1px solid var(--border);padding:1rem;display:grid;grid-template-columns:auto 1fr;gap:.75rem;align-items:start;transition:border-color .3s}
+.term:hover{border-color:var(--cyan)}
+.term-key{font-family:var(--fm);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);white-space:nowrap;padding-top:.05rem}
+.term-val{font-size:.75rem;color:var(--muted);line-height:1.5;font-weight:300}
+.term-val strong{color:var(--white);font-weight:500}
+
+/* LIVE MONITORING NODES */
+.monitor-nodes{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
+.mn{display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;background:var(--navy2);border:1px solid var(--border);transition:border-color .3s}
+.mn:hover{border-color:var(--cyan)}
+.mn-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.mn-dot.live{background:var(--cyan);box-shadow:0 0 8px var(--cyan);animation:pulse 2s infinite}
+.mn-dot.amber{background:var(--amber);box-shadow:0 0 8px var(--amber);animation:pulse 2s infinite}
+.mn-dot.green{background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2.5s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.mn-content{flex:1}
+.mn-title{font-size:.78rem;color:var(--white);font-weight:500;margin-bottom:.1rem}
+.mn-desc{font-size:.68rem;color:var(--muted);font-weight:300;line-height:1.4}
+.mn-status{font-family:var(--fm);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);flex-shrink:0}
+.mn-status.amber{color:var(--amber)}
+.mn-status.green{color:var(--green)}
+
+/* INFO BOX */
+.info-box{background:var(--navy3);border:1px solid var(--border);border-left:2px solid var(--cyan);padding:1.25rem;margin-bottom:1rem}
+.info-box-label{font-family:var(--fm);font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.4rem}
+.info-box-text{font-size:.78rem;color:var(--muted);line-height:1.65;font-weight:300}
+.info-box-text strong{color:var(--white);font-weight:500}
+
+/* FOOTER */
+footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem 4%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2rem}
+.f-logo{font-family:var(--fd);font-size:1.3rem;color:var(--white)}
+.f-logo span{color:var(--cyan)}
+.f-copy{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center}
+.f-links{display:flex;gap:1.5rem;justify-content:flex-end}
+.f-links a{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.f-links a:hover{color:var(--cyan)}
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<nav>
+  <a class="logo" href="index.html">PANIZ<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="project.html">Project</a></li>
+    <li><a href="design.html">Design</a></li>
+    <li><a href="pfmea.html">PFMEA</a></li>
+    <li><a href="MSD.html">MSD</a></li>
+    <li><a href="printing.html">3D Printing</a></li>
+    <li><a href="quality.html">Quality</a></li>
+    <li><a href="simulation.html">Simulation</a></li>
+    <li><a href="iot.html" class="active">IoT & Digital Twin</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero reveal">
+  <div>
+    <div class="ph-eyebrow">08 — IoT & Digital Twin</div>
+    <h1 class="ph-h1">CLOSING<br>THE<br><em>LOOP.</em></h1>
+    <p class="ph-desc">Physical FESTO CP Lab → Siemens Insights Hub → Tecnomatix Plant Simulation → back to Insights Hub. A complete Industry 4.0 digital thread — real data flowing into a live simulation, continuously improving the model of our production system.</p>
+  </div>
+  <div>
+    <div class="hero-kpis">
+      <div class="hk"><div class="hk-val">IIoT</div><div class="hk-label">Siemens Insights Hub — live telemetry</div></div>
+      <div class="hk"><div class="hk-val green">6</div><div class="hk-label">FESTO stations connected — real PLC data</div></div>
+      <div class="hk"><div class="hk-val">AI</div><div class="hk-label">AI-enhanced SimTalk code — experiment optimisation</div></div>
+      <div class="hk"><div class="hk-val green">DT</div><div class="hk-label">Digital Twin — Factory Twin closes the loop</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="m-item">SIEMENS INSIGHTS HUB <span>✦</span></div>
+    <div class="m-item">MINDCONNECT NANO — PLC DATA <span>✦</span></div>
+    <div class="m-item">FACTORY TWIN — DIGITAL TWIN <span>✦</span></div>
+    <div class="m-item">AI-ENHANCED PLANT SIMULATION <span>✦</span></div>
+    <div class="m-item">6 FESTO STATIONS — LIVE DATA <span>✦</span></div>
+    <div class="m-item">SIMTALK + AI OPTIMISATION <span>✦</span></div>
+    <div class="m-item">24/7 MONITORING — SAFETY SYSTEMS <span>✦</span></div>
+    <div class="m-item">INDUSTRY 4.0 — CLOSED LOOP <span>✦</span></div>
+    <div class="m-item">SIEMENS INSIGHTS HUB <span>✦</span></div>
+    <div class="m-item">MINDCONNECT NANO — PLC DATA <span>✦</span></div>
+    <div class="m-item">FACTORY TWIN — DIGITAL TWIN <span>✦</span></div>
+    <div class="m-item">AI-ENHANCED PLANT SIMULATION <span>✦</span></div>
+    <div class="m-item">6 FESTO STATIONS — LIVE DATA <span>✦</span></div>
+    <div class="m-item">SIMTALK + AI OPTIMISATION <span>✦</span></div>
+    <div class="m-item">24/7 MONITORING — SAFETY SYSTEMS <span>✦</span></div>
+    <div class="m-item">INDUSTRY 4.0 — CLOSED LOOP <span>✦</span></div>
+  </div>
+</div>
+
+<!-- SECTION 1: THE FULL LOOP -->
+<div class="sec-wrap reveal">
+  <div class="sec-head">
+    <div class="sec-label-col"><div class="sec-tag">01 — The Big Picture</div><div class="sec-big-num">LOOP</div></div>
+    <div class="sec-title-block"><h2>The Industry 4.0<br><em>Closed Loop.</em></h2></div>
+  </div>
+  <div class="sec-body">
+    <p style="font-size:.85rem;color:var(--muted);font-weight:300;line-height:1.75;margin-bottom:1.5rem;max-width:700px">This is what separates digital manufacturing from traditional manufacturing. The physical FESTO CP Lab produces real data. That data flows into Siemens Insights Hub. Insights Hub feeds into Plant Simulation. The simulation results go back into Insights Hub. The loop is closed — the digital model improves continuously as the physical system runs.</p>
+
+    <div class="loop-diagram">
+      <div class="loop-step">
+        <div class="loop-step-arrow"><svg viewBox="0 0 10 10"><polyline points="3,2 7,5 3,8"/></svg></div>
+        <div class="loop-step-num">01</div>
+        <div class="loop-step-icon"><svg viewBox="0 0 18 18"><rect x="2" y="4" width="14" height="10" rx="1"/><path d="M6 4V3a3 3 0 0 1 6 0v1"/><path d="M6 9h6"/></svg></div>
+        <div class="loop-step-label">Physical World</div>
+        <div class="loop-step-title">FESTO CP Lab</div>
+        <div class="loop-step-desc">6 stations running physical assembly. Each station has a <strong>PLC (Programmable Logic Controller)</strong> generating real process data — start times, end times, positions.</div>
+        <div class="loop-step-tag">Real hardware</div>
+      </div>
+      <div class="loop-step">
+        <div class="loop-step-arrow"><svg viewBox="0 0 10 10"><polyline points="3,2 7,5 3,8"/></svg></div>
+        <div class="loop-step-num">02</div>
+        <div class="loop-step-icon"><svg viewBox="0 0 18 18"><path d="M9 2v14M4 7l5-5 5 5"/><path d="M4 16h10"/></svg></div>
+        <div class="loop-step-label">Gateway</div>
+        <div class="loop-step-title">MindConnect Nano</div>
+        <div class="loop-step-desc">The <strong>MindConnect Nano</strong> is the cloud gateway. It reads PLC datapoints from each station via IP address and streams the data to Siemens Insights Hub in real-time at a 1-second cycle.</div>
+        <div class="loop-step-tag">1s data cycle</div>
+      </div>
+      <div class="loop-step">
+        <div class="loop-step-arrow"><svg viewBox="0 0 10 10"><polyline points="3,2 7,5 3,8"/></svg></div>
+        <div class="loop-step-num">03</div>
+        <div class="loop-step-icon"><svg viewBox="0 0 18 18"><rect x="2" y="2" width="14" height="14" rx="2"/><path d="M6 9h6M9 6v6"/></svg></div>
+        <div class="loop-step-label">Cloud Platform</div>
+        <div class="loop-step-title">Insights Hub</div>
+        <div class="loop-step-desc"><strong>Siemens Insights Hub</strong> stores and processes the live data. Virtual assets mirror each physical FESTO station. Factory Twin maps the data to the Plant Simulation model via calculated recipes.</div>
+        <div class="loop-step-tag">Live cloud data</div>
+      </div>
+      <div class="loop-step">
+        <div class="loop-step-num">04</div>
+        <div class="loop-step-icon"><svg viewBox="0 0 18 18"><path d="M2 14l4-4 3 3 4-5 3 3"/><rect x="2" y="2" width="14" height="14" rx="1"/></svg></div>
+        <div class="loop-step-label">Simulation</div>
+        <div class="loop-step-title">Plant Simulation</div>
+        <div class="loop-step-desc">Real processing times from Insights Hub are loaded into <strong>Tecnomatix Plant Simulation</strong>, updating the model with actual data. The simulation now reflects how the real system is performing, not just planned values.</div>
+        <div class="loop-step-tag">Loop closed ✓</div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-label">Why this matters for the Phones-R-Us contract</div>
+      <div class="info-box-text">When 25 Bambu P1S printers are running 24/7, the IoT system doesn't just monitor — it <strong>enables safe unattended operation</strong>. Fire detection, security alarms, printer failure alerts, and performance monitoring all feed into the same connected ecosystem. If a printer fails at 3am, the system detects it, logs it, and alerts the engineer. The digital twin means the simulation is continuously updated with real production data, so capacity planning stays accurate as the system runs.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: INSIGHTS HUB — WHAT WAS DONE -->
+<div class="sec-wrap reveal">
+  <div class="sec-head">
+    <div class="sec-label-col"><div class="sec-tag">02 — Siemens Insights Hub</div><div class="sec-big-num">IH</div></div>
+    <div class="sec-title-block"><h2>Insights Hub<br><em>Setup.</em></h2><div style="font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Week 9 Workshop</div></div>
+  </div>
+  <div class="sec-body">
+    <div class="done-grid">
+      <div class="done-card">
+        <div class="done-card-tag">Step 1 — Virtual Representation</div>
+        <div class="done-card-title">Aspect Types & Asset Types</div>
+        <div class="done-card-text">Created the <strong>virtual structure</strong> of each FESTO station in Insights Hub's Asset Manager. Each station gets an Aspect Type (contains variables), an Asset Type (template), and an Asset (the actual virtual station).</div>
+        <ul class="done-list">
+          <li>Created <strong>Aspect Type</strong> with 3 variables per station (start, end, position)</li>
+          <li>Created <strong>Asset Type</strong> from the aspect template</li>
+          <li>Created <strong>Asset</strong> — virtual twin of each physical station</li>
+          <li>Named using MMU convention: <span style="font-family:var(--fm);font-size:.62rem;color:var(--cyan)">DM26_CPL_Station_X</span></li>
+        </ul>
+      </div>
+      <div class="done-card">
+        <div class="done-card-tag">Step 2 — Physical Connection</div>
+        <div class="done-card-title">MindConnect Nano</div>
+        <div class="done-card-text">Connected the <strong>physical FESTO PLC</strong> to Insights Hub via the MindConnect Nano gateway. Each station's IP address was mapped to a data source, with 3 datapoints per station streaming at 1-second intervals.</div>
+        <ul class="done-list">
+          <li>Configured data sources using <strong>PLC IP addresses</strong> per station</li>
+          <li>Station 1 (Front Magazine): <span style="font-family:var(--fm);font-size:.6rem;color:var(--cyan)">172.21.1.1</span></li>
+          <li>Station 2 (Measurement): <span style="font-family:var(--fm);font-size:.6rem;color:var(--cyan)">172.21.2.1</span></li>
+          <li>Stations 3–6 mapped at respective IP addresses</li>
+          <li>Data acquisition mode set to <strong>READ, 1s cycle time</strong></li>
+        </ul>
+      </div>
+      <div class="done-card">
+        <div class="done-card-tag">Step 3 — Data Mapping</div>
+        <div class="done-card-title">Joining Physical to Virtual</div>
+        <div class="done-card-text">Mapped the <strong>physical datapoints</strong> (from MindConnect) to the <strong>virtual variables</strong> (in the Asset). This completes the connection — real PLC data now appears as virtual asset variables in the cloud.</div>
+        <ul class="done-list">
+          <li>Linked each physical datapoint to its corresponding virtual variable</li>
+          <li>All 6 stations mapped: <strong>FM, Measurement, iPick, Output, Press, Oven</strong></li>
+          <li>Data now visible as live time-series in Insights Hub</li>
+          <li>Foundation for Factory Twin and Digital Twin built on top of this</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Screenshot slots for Insights Hub -->
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">Insights Hub — Screenshots</div>
+    <div class="ss-grid-3">
+      <div class="screenshot-slot">
+        <!-- ADD: screenshot of Insights Hub Asset Manager showing your created assets -->
+        <!-- <img src="YOUR_INSIGHTS_HUB_ASSETS.png" alt="Insights Hub Assets"> -->
+        <div class="ss-ph">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span class="ss-ph-label">Insights Hub — Asset Manager</span>
+          <span class="ss-ph-hint">Add screenshot src</span>
+        </div>
+        <div class="ss-caption"><span class="ss-caption-text"><strong>Asset Manager</strong> — virtual station assets</span><span class="ss-pill">Insights Hub</span></div>
+      </div>
+      <div class="screenshot-slot">
+        <!-- ADD: screenshot of MindConnect data mapping screen -->
+        <!-- <img src="YOUR_MINDCONNECT_MAPPING.png" alt="MindConnect Mapping"> -->
+        <div class="ss-ph">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span class="ss-ph-label">MindConnect — Data Mapping</span>
+          <span class="ss-ph-hint">Add screenshot src</span>
+        </div>
+        <div class="ss-caption"><span class="ss-caption-text"><strong>MindConnect Nano</strong> — PLC to cloud mapping</span><span class="ss-pill">MindConnect</span></div>
+      </div>
+      <div class="screenshot-slot">
+        <!-- ADD: screenshot of live data streaming in Insights Hub (time-series chart) -->
+        <!-- <img src="YOUR_LIVE_DATA.png" alt="Live data stream"> -->
+        <div class="ss-ph">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span class="ss-ph-label">Live Data Stream</span>
+          <span class="ss-ph-hint">Add screenshot src</span>
+        </div>
+        <div class="ss-caption"><span class="ss-caption-text"><strong>Live telemetry</strong> — real-time station data</span><span class="ss-pill">Live Data</span></div>
+      </div>
+    </div>
+
+    <!-- Live monitoring nodes -->
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">What's Being Monitored — 24/7 Production</div>
+    <div class="monitor-nodes">
+      <div class="mn"><div class="mn-dot live"></div><div class="mn-content"><div class="mn-title">FESTO CP Lab — All 6 Stations</div><div class="mn-desc">Real PLC data streaming at 1-second intervals. Start time, end time, position variables per station. Processing time calculated by Factory Twin recipe.</div></div><div class="mn-status">Live</div></div>
+      <div class="mn"><div class="mn-dot live"></div><div class="mn-content"><div class="mn-title">Bambu P1S Fleet — Bambu Cloud</div><div class="mn-desc">Remote monitoring via Bambu Cloud. Print progress, temperature, failure detection, and job management accessible from anywhere. Alerts on failure.</div></div><div class="mn-status">Connected</div></div>
+      <div class="mn"><div class="mn-dot green"></div><div class="mn-content"><div class="mn-title">Fire & Smoke Detection</div><div class="mn-desc">Integrated with printer auto-shutoff. If triggered overnight, the system stops adjacent machines and issues a facility-wide alert to the on-call engineer.</div></div><div class="mn-status green">Armed</div></div>
+      <div class="mn"><div class="mn-dot green"></div><div class="mn-content"><div class="mn-title">Security Alarm System</div><div class="mn-desc">24/7 perimeter monitoring for the production facility. Essential for unmanned overnight print runs — no staff on-site between midnight and 6am shifts.</div></div><div class="mn-status green">Active</div></div>
+      <div class="mn"><div class="mn-dot amber"></div><div class="mn-content"><div class="mn-title">Predictive Maintenance Signals</div><div class="mn-desc">Print hours, nozzle wear cycles, bed condition, and filament levels tracked. System flags maintenance before failure occurs — avoiding unplanned downtime during overnight runs.</div></div><div class="mn-status amber">Monitoring</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: AI + PLANT SIMULATION -->
+<div class="sec-wrap reveal">
+  <div class="sec-head">
+    <div class="sec-label-col"><div class="sec-tag">03 — AI-Enhanced Simulation</div><div class="sec-big-num">AI</div></div>
+    <div class="sec-title-block"><h2>AI Running<br><em>Experiments.</em></h2><div style="font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Week 6 Workshop</div></div>
+  </div>
+  <div class="sec-body">
+    <div class="ai-box">
+      <div class="ai-box-tag">AI-Enhanced Workflow</div>
+      <div class="ai-box-title">Using AI to generate SimTalk code and optimise the simulation</div>
+      <div class="ai-box-text">Rather than writing all the Tecnomatix SimTalk code manually, <strong>AI was used to accelerate the simulation build</strong>. The production system was described in detail to the AI — station processing times, worker shifts, parallel stations — and the AI generated the SimTalk code for setting up experiments and parameter tables. The outputs were then <strong>critically verified and adjusted</strong> before being applied, following good engineering practice.</div>
+      <div class="ai-steps">
+        <div class="ai-step">
+          <div class="ai-step-num">01</div>
+          <div class="ai-step-title">Describe the system</div>
+          <div class="ai-step-text">Full production model described to AI — station processing times, worker pools, shifts, parallel stations, bottleneck analyser locations</div>
+        </div>
+        <div class="ai-step">
+          <div class="ai-step-num">02</div>
+          <div class="ai-step-title">AI generates SimTalk</div>
+          <div class="ai-step-text">AI produces SimTalk code for the Init method, parameter table structure, and experiment manager configuration — accelerating the build significantly</div>
+        </div>
+        <div class="ai-step">
+          <div class="ai-step-num">03</div>
+          <div class="ai-step-title">Verify & apply</div>
+          <div class="ai-step-text">AI output critically reviewed, tested, and corrected before applying. Not blindly accepted — engineering judgement applied to validate every output</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">What the Experiment Manager Was Used For</div>
+    <div class="done-grid">
+      <div class="done-card">
+        <div class="done-card-tag">Experiment 1</div>
+        <div class="done-card-title">How Many Workers?</div>
+        <div class="done-card-text">The Experiment Manager was used to test different numbers of workers against throughput output. The simulation was run multiple times with the <strong>numWorkers variable</strong> set to different values, identifying the minimum worker count that still achieves the production target.</div>
+        <ul class="done-list">
+          <li>Variable: <strong>numWorkers</strong> tested across a range</li>
+          <li>Output: <strong>drain.StatNumIn</strong> — total parts completed</li>
+          <li>5 observations per experiment for statistical validity</li>
+          <li>Result: optimal worker number identified from data</li>
+        </ul>
+      </div>
+      <div class="done-card">
+        <div class="done-card-tag">Experiment 2</div>
+        <div class="done-card-title">Parameter Optimisation</div>
+        <div class="done-card-text">A <strong>parameter table</strong> was built to test multiple variables simultaneously — processing times, setup times, parallel station configurations. AI generated the SimTalk Init method to read from the parameter table and apply values to each station.</div>
+        <ul class="done-list">
+          <li>Parameter table: processing times, setup times per station</li>
+          <li>AI-generated SimTalk reads table and applies to model</li>
+          <li>Multiple configurations tested in batch mode</li>
+          <li>Bottleneck analyser output compared across runs</li>
+        </ul>
+      </div>
+      <div class="done-card">
+        <div class="done-card-tag">Experiment 3</div>
+        <div class="done-card-title">Bottleneck Analysis</div>
+        <div class="done-card-text">Each station was linked to a <strong>bottleneck analyser</strong> in the simulation. Running experiments across different configurations revealed where throughput was most constrained — confirming Station 5 (Oven, 35s) as the FESTO line bottleneck.</div>
+        <ul class="done-list">
+          <li>Bottleneck analyser connected to every station</li>
+          <li>Station 5 Oven (35s) confirmed as primary constraint</li>
+          <li>Data confirmed total FESTO cycle within 150s takt</li>
+          <li>Simulation matched physical FESTO measurements ✓</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Screenshot slots for AI simulation -->
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">AI + Plant Simulation — Screenshots</div>
+    <div class="ss-grid-3">
+      <div class="screenshot-slot">
+        <!-- ADD: screenshot of Experiment Manager in Plant Simulation -->
+        <!-- <img src="YOUR_EXPERIMENT_MANAGER.png" alt="Experiment Manager"> -->
+        <div class="ss-ph">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span class="ss-ph-label">Experiment Manager</span>
+          <span class="ss-ph-hint">Add screenshot src</span>
+        </div>
+        <div class="ss-caption"><span class="ss-caption-text"><strong>Experiment Manager</strong> — worker optimisation</span><span class="ss-pill">Plant Simulation</span></div>
+      </div>
+      <div class="screenshot-slot">
+        <!-- ADD: screenshot of the parameter table or SimTalk code -->
+        <!-- <img src="YOUR_PARAMETER_TABLE.png" alt="Parameter table"> -->
+        <div class="ss-ph">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span class="ss-ph-label">Parameter Table + SimTalk</span>
+          <span class="ss-ph-hint">Add screenshot src</span>
+        </div>
+        <div class="ss-caption"><span class="ss-caption-text"><strong>AI-generated SimTalk</strong> — parameter optimisation</span><span class="ss-pill">SimTalk + AI</span></div>
+      </div>
+      <div class="screenshot-slot">
+        <!-- ADD: screenshot of experiment results / bottleneck analysis output -->
+        <!-- <img src="YOUR_EXPERIMENT_RESULTS.png" alt="Experiment results"> -->
+        <div class="ss-ph">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span class="ss-ph-label">Experiment Results</span>
+          <span class="ss-ph-hint">Add screenshot src</span>
+        </div>
+        <div class="ss-caption"><span class="ss-caption-text"><strong>Bottleneck analysis</strong> — simulation output</span><span class="ss-pill">Results</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: DIGITAL TWIN — FACTORY TWIN -->
+<div class="sec-wrap reveal">
+  <div class="sec-head">
+    <div class="sec-label-col"><div class="sec-tag">04 — Digital Twin</div><div class="sec-big-num">DT</div></div>
+    <div class="sec-title-block"><h2>Factory Twin —<br><em>Closing the Loop.</em></h2><div style="font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Week 9 Workshop</div></div>
+  </div>
+  <div class="sec-body">
+    <p style="font-size:.85rem;color:var(--muted);font-weight:300;line-height:1.75;margin-bottom:1.5rem;max-width:700px">The Digital Twin is the most advanced element of this project. <strong>Factory Twin</strong> is a Siemens Insights Hub application that creates a live two-way connection between the physical FESTO CP Lab and the Tecnomatix Plant Simulation model — the loop is fully closed.</p>
+
+    <div class="step-process">
+      <div class="sp-row">
+        <div class="sp-num">01</div>
+        <div class="sp-content">
+          <div class="sp-title">Generate the Mapping File from Plant Simulation</div>
+          <div class="sp-desc">The <strong>MindSphereInterface</strong> library was added to the Plant Simulation model. The interface was configured to select the FESTO stations and map their <strong>processing time (ProcTime)</strong> as the key variable. A JSON mapping file was generated — this tells Factory Twin exactly which simulation objects correspond to which Insights Hub assets.</div>
+          <div class="sp-code">MindSphereInterface → Property Mapping → Select Objects → ProcTime → Export JSON</div>
+        </div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-num">02</div>
+        <div class="sp-content">
+          <div class="sp-title">Create Digital Twin Model in Factory Twin</div>
+          <div class="sp-desc">The JSON mapping file was imported into the <strong>Factory Twin application</strong> in Insights Hub. For each FESTO station, a <strong>recipe</strong> was written to calculate processing time — using the "Calculate Process Time" pre-defined recipe which takes the time difference between the part arriving at the first proximity sensor and the end proximity sensor.</div>
+          <div class="sp-code">Factory Twin → Create Digital Twin Model → Upload JSON → Add Mapping → Calculate Process Time Recipe</div>
+        </div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-num">03</div>
+        <div class="sp-content">
+          <div class="sp-title">Create a Study and Simulation Run</div>
+          <div class="sp-desc">A <strong>Study</strong> was created within Factory Twin specifying which variables to monitor. A <strong>Simulation Run</strong> was then configured — specifying the time range of real FESTO data to use (e.g. 04/03/2024, 12:00–14:00) and running the simulation against that real data window.</div>
+          <div class="sp-code">Studies → Create Study → Simulation Runs → Set Time Range → Simulate</div>
+        </div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-num">04</div>
+        <div class="sp-content">
+          <div class="sp-title">Load Real Data into Plant Simulation</div>
+          <div class="sp-desc">The Digital Twin model access token was copied from Insights Hub and pasted into the <strong>MindSphere Interface in Plant Simulation</strong>. The real processing times from the physical FESTO run were loaded into Plant Simulation via <strong>Model State: Restore</strong>. The simulation now runs with actual measured station times, not planned estimates.</div>
+          <div class="sp-code">Plant Simulation → MindSphere Interface → Set Access Token → Load → Restore Model State</div>
+        </div>
+      </div>
+      <div class="sp-row">
+        <div class="sp-num">05</div>
+        <div class="sp-content">
+          <div class="sp-title">Upload Simulation Results Back to Insights Hub</div>
+          <div class="sp-desc">After running the simulation with real data, the results were <strong>uploaded back to Insights Hub</strong>. This closes the loop — real data improved the simulation, and the simulation results are now stored alongside the real data in the cloud for comparison, reporting, and continuous improvement.</div>
+          <div class="sp-code">Event Controller → Start Simulation → Give Result Name → Upload to Insights Hub</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Screenshot slots for Digital Twin -->
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">Digital Twin — Screenshots</div>
+    <div class="ss-grid-3">
+      <div class="screenshot-slot">
+        <!-- ADD: screenshot of Factory Twin model in Insights Hub -->
+        <!-- <img src="YOUR_FACTORY_TWIN.png" alt="Factory Twin model"> -->
+        <div class="ss-ph">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span class="ss-ph-label">Factory Twin Model</span>
+          <span class="ss-ph-hint">Add screenshot src</span>
+        </div>
+        <div class="ss-caption"><span class="ss-caption-text"><strong>Factory Twin</strong> — digital twin model</span><span class="ss-pill">Insights Hub</span></div>
+      </div>
+      <div class="screenshot-slot">
+        <!-- ADD: screenshot of simulation run / study results -->
+        <!-- <img src="YOUR_SIMULATION_RUN.png" alt="Simulation run results"> -->
+        <div class="ss-ph">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span class="ss-ph-label">Simulation Run Results</span>
+          <span class="ss-ph-hint">Add screenshot src</span>
+        </div>
+        <div class="ss-caption"><span class="ss-caption-text"><strong>Simulation Run</strong> — real data input</span><span class="ss-pill">Factory Twin</span></div>
+      </div>
+      <div class="screenshot-slot">
+        <!-- ADD: screenshot of Plant Simulation with real data loaded -->
+        <!-- <img src="YOUR_PLANT_SIM_REAL_DATA.png" alt="Plant Simulation with real data"> -->
+        <div class="ss-ph">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span class="ss-ph-label">Plant Simulation — Real Data</span>
+          <span class="ss-ph-hint">Add screenshot src</span>
+        </div>
+        <div class="ss-caption"><span class="ss-caption-text"><strong>Plant Simulation</strong> — updated with real processing times</span><span class="ss-pill">Closed Loop ✓</span></div>
+      </div>
+    </div>
+
+    <!-- Key Terms -->
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;margin-top:1rem">Key Terms — Industry 4.0 Glossary</div>
+    <div class="terms-grid">
+      <div class="term"><span class="term-key">Virtual Asset</span><span class="term-val"><strong>Digital representation</strong> of a physical machine or station in Insights Hub. Stores variables that mirror real sensor data.</span></div>
+      <div class="term"><span class="term-key">Physical Asset</span><span class="term-val">Represents the <strong>connection method</strong> between physical hardware (PLC) and Insights Hub — in this case the MindConnect Nano gateway.</span></div>
+      <div class="term"><span class="term-key">Aspect Type</span><span class="term-val">A <strong>template containing variables</strong> — e.g. FM_start, FM_end, FM_position for the Front Magazine station.</span></div>
+      <div class="term"><span class="term-key">MindConnect Nano</span><span class="term-val">The <strong>cloud gateway device</strong> that reads PLC datapoints from physical FESTO stations and streams them to Insights Hub at 1-second intervals.</span></div>
+      <div class="term"><span class="term-key">Factory Twin</span><span class="term-val">An Insights Hub application that <strong>maps physical assets to Plant Simulation objects</strong>, enabling real data to drive simulation updates automatically.</span></div>
+      <div class="term"><span class="term-key">SimTalk</span><span class="term-val">The <strong>programming language</strong> used inside Tecnomatix Plant Simulation. Used here with AI assistance to write Init methods and experiment parameter tables.</span></div>
+      <div class="term"><span class="term-key">Digital Twin</span><span class="term-val">A <strong>live virtual model</strong> of the physical system — updated with real data so the simulation reflects actual production performance, not just planned values.</span></div>
+      <div class="term"><span class="term-key">Closed Loop</span><span class="term-val">Physical system → Data → Cloud → Simulation → Results → back to Cloud. The <strong>complete Industry 4.0 cycle</strong> — implemented in this project.</span></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="f-logo">PANIZ<span>.</span></div>
+  <div class="f-copy">© 2026 — Digital Manufacturing Portfolio</div>
+  <div class="f-links">
+    <a href="simulation.html">Simulation</a>
+    <a href="quality.html">Quality</a>
+    <a href="project.html">Project</a>
+    <a href="index.html">Home</a>
+  </div>
+</footer>
+
+<script>
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+let rx=0,ry=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
+(function animRing(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';ring.style.opacity='0'});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.opacity='.4'});
+});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')}),{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
