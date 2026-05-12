@@ -3,70 +3,612 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simulation | Paniz Manufacturing</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>Simulation — Paniz Manufacturing</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  :root{--navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--cyan:#00e5ff;--cyan2:#00b8cc;--white:#f0f4ff;--muted:#7a8fa8;--border:rgba(0,229,255,0.15);--card:rgba(15,32,64,0.6);--ff:'Space Grotesk',sans-serif;--fm:'Space Mono',monospace;}
-  body{font-family:var(--ff);background:var(--navy);color:var(--white);}
-  nav{position:sticky;top:0;z-index:999;background:rgba(5,13,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;}
-  .logo{font-family:var(--fm);font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);}
-  .nav-links{display:flex;gap:0;list-style:none;}
-  .nav-links a{display:block;padding:0 1.2rem;height:64px;line-height:64px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:2px solid transparent;}
-  .nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan);}
-  .page-hero{padding:4rem 5% 3rem;text-align:center;}
-  .hero-badge{font-family:var(--fm);font-size:.7rem;color:var(--cyan);border:1px solid var(--border);padding:.35rem .9rem;display:inline-block;margin-bottom:1.5rem;}
-  .page-hero h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:700;text-transform:uppercase;}
-  .page-hero h1 span{color:var(--cyan);}
-  section{padding:3rem 5%;max-width:1200px;margin:0 auto;}
-  .sec-label{font-family:var(--fm);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem;}
-  .sec-label::after{content:'';flex:0 0 40px;height:1px;background:var(--cyan);}
-  .calc-box{background:var(--card);border:1px solid var(--border);padding:2rem;margin:2rem 0;}
-  .calc-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;}
-  .calc-input{flex:1;min-width:150px;}
-  .calc-input label{display:block;font-size:.7rem;color:var(--muted);margin-bottom:.25rem;}
-  .calc-input input,.calc-input select{width:100%;padding:.5rem;background:var(--navy);border:1px solid var(--border);color:white;font-family:var(--fm);}
-  .result-box{background:var(--navy3);padding:1.5rem;margin-top:1.5rem;text-align:center;}
-  .result-number{font-family:var(--fm);font-size:2.5rem;color:var(--cyan);}
-  .capacity-table{width:100%;border-collapse:collapse;margin:2rem 0;background:var(--card);border:1px solid var(--border);}
-  .capacity-table th,.capacity-table td{padding:1rem;text-align:center;border-bottom:1px solid var(--border);}
-  .capacity-table th{color:var(--cyan);}
-  .recommend{background:rgba(0,229,255,0.1);border:1px solid var(--cyan);padding:1rem;text-align:center;margin-top:1rem;}
-  footer{background:var(--navy2);border-top:1px solid var(--border);padding:2rem 5%;display:flex;justify-content:space-between;flex-wrap:wrap;}
-  @media(max-width:800px){.nav-links{display:none;}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#050d1a;--navy2:#0a1628;--navy3:#0f2040;--navy4:#152848;
+  --cyan:#00e5ff;--cyan2:#00b8cc;--border:rgba(0,229,255,0.13);
+  --white:#f0f4ff;--muted:#6a7f9a;
+  --red:#ff4444;--amber:#ffb347;--green:#00ff88;
+  --ff:'DM Sans',sans-serif;--fd:'Bebas Neue',sans-serif;--fm:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);background:var(--navy);color:var(--white);overflow-x:hidden;cursor:none}
+#cursor{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:screen}
+#cursor-ring{position:fixed;top:0;left:0;width:34px;height:34px;border:1px solid var(--cyan);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.4}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.02;pointer-events:none;z-index:9990}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 4%;height:62px;border-bottom:1px solid var(--border);background:rgba(5,13,26,0.95);backdrop-filter:blur(12px)}
+.logo{font-family:var(--fd);font-size:1.4rem;letter-spacing:.06em;color:var(--white);text-decoration:none}
+.logo span{color:var(--cyan)}
+.nav-links{display:flex;list-style:none}
+.nav-links a{font-family:var(--fm);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.4rem .8rem;height:62px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan);border-bottom-color:var(--cyan)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* HERO */
+.page-hero{padding:6rem 4% 3rem;border-bottom:1px solid var(--border);background:var(--navy2);position:relative;overflow:hidden;margin-top:62px;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.ph-eyebrow{font-family:var(--fm);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem}
+.ph-eyebrow::before{content:'';width:20px;height:1px;background:var(--cyan)}
+.ph-h1{font-family:var(--fd);font-size:clamp(3.5rem,7vw,6.5rem);line-height:.88;text-transform:uppercase;margin-bottom:1.5rem}
+.ph-h1 em{color:var(--cyan);font-style:normal}
+.ph-desc{font-size:.9rem;color:var(--muted);line-height:1.75;font-weight:300;max-width:460px}
+.hero-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem}
+.hk{background:var(--navy3);border:1px solid var(--border);padding:1.1rem;transition:border-color .3s}
+.hk:hover{border-color:var(--cyan)}
+.hk-val{font-family:var(--fd);font-size:2rem;line-height:1;color:var(--cyan)}
+.hk-val.green{color:var(--green)}
+.hk-val.amber{color:var(--amber)}
+.hk-label{font-family:var(--fm);font-size:.46rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.25rem}
+
+/* MARQUEE */
+.marquee-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:var(--navy3);padding:.55rem 0}
+.marquee-track{display:flex;animation:marquee 28s linear infinite;white-space:nowrap}
+.m-item{font-family:var(--fd);font-size:1rem;letter-spacing:.06em;color:rgba(0,229,255,0.3);padding:0 2rem;display:flex;align-items:center;gap:1.5rem}
+.m-item span{color:var(--cyan);font-size:.7rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION STRUCTURE */
+.sec-wrap{border-bottom:1px solid var(--border)}
+.sec-head{display:grid;grid-template-columns:220px 1fr;border-bottom:1px solid var(--border)}
+.sec-label-col{padding:2.5rem;border-right:1px solid var(--border);background:var(--navy2);display:flex;flex-direction:column;justify-content:space-between}
+.sec-tag{font-family:var(--fm);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.4rem}
+.sec-big-num{font-family:var(--fd);font-size:4rem;color:var(--navy4);line-height:1;user-select:none}
+.sec-title-block{padding:2.5rem 3rem;display:flex;align-items:flex-end;justify-content:space-between}
+.sec-title-block h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);line-height:.92;text-transform:uppercase}
+.sec-title-block h2 em{color:var(--cyan);font-style:normal}
+.sec-body{padding:2.5rem 3rem}
+
+/* WHAT IS DES */
+.des-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+.des-card{background:var(--navy2);border:1px solid var(--border);padding:1.5rem;transition:border-color .3s}
+.des-card:hover{border-color:var(--cyan)}
+.des-card-icon{width:36px;height:36px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:.9rem}
+.des-card-icon svg{width:18px;height:18px;stroke:var(--cyan);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.des-card-title{font-family:var(--fm);font-size:.62rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--white);margin-bottom:.4rem}
+.des-card-text{font-size:.78rem;color:var(--muted);line-height:1.6;font-weight:300}
+.des-card-text strong{color:var(--white);font-weight:500}
+.why-box{background:var(--navy3);border:1px solid var(--border);border-left:2px solid var(--cyan);padding:1.25rem}
+.why-box-title{font-family:var(--fm);font-size:.54rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.6rem}
+.why-box-text{font-size:.8rem;color:var(--muted);line-height:1.65;font-weight:300}
+.why-box-text strong{color:var(--white);font-weight:500}
+
+/* BUILD STAGES */
+.stages-intro{font-size:.85rem;color:var(--muted);line-height:1.75;font-weight:300;margin-bottom:2rem;max-width:700px}
+.stages-intro strong{color:var(--white);font-weight:500}
+
+.stage{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);margin-bottom:1.5rem;position:relative;overflow:hidden;transition:border-color .3s}
+.stage:hover{border-color:rgba(0,229,255,0.3)}
+.stage.completed .stage-num-badge{background:rgba(0,229,255,0.1);border-color:rgba(0,229,255,0.3)}
+.stage-screenshot{background:var(--navy3);border-right:1px solid var(--border);position:relative;min-height:280px;overflow:hidden}
+.stage-screenshot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.stage:hover .stage-screenshot img{transform:scale(1.02)}
+.ss-placeholder{width:100%;height:100%;min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;padding:2rem}
+.ss-placeholder svg{width:36px;height:36px;stroke:var(--muted);fill:none;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;opacity:.3}
+.ss-placeholder-label{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);opacity:.5;text-align:center}
+.ss-placeholder-hint{font-family:var(--fm);font-size:.44rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);opacity:.3;text-align:center}
+.stage-content{padding:2rem;display:flex;flex-direction:column;justify-content:space-between}
+.stage-top{}
+.stage-num-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--fm);font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);border:1px solid var(--border);padding:.3rem .7rem;margin-bottom:1rem}
+.stage-num-badge .dot{width:5px;height:5px;border-radius:50%;background:var(--cyan)}
+.stage-title{font-family:var(--fd);font-size:2rem;text-transform:uppercase;line-height:.95;margin-bottom:.75rem}
+.stage-title em{color:var(--cyan);font-style:normal}
+.stage-desc{font-size:.82rem;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:1rem}
+.stage-desc strong{color:var(--white);font-weight:500}
+.stage-findings{display:flex;flex-direction:column;gap:.4rem}
+.sf-row{display:flex;align-items:flex-start;gap:.6rem;font-size:.75rem;color:var(--muted);font-weight:300;line-height:1.5}
+.sf-row::before{content:'→';color:var(--cyan);font-family:var(--fm);font-size:.62rem;flex-shrink:0;margin-top:.05rem}
+.sf-row strong{color:var(--white);font-weight:500}
+.stage-bottom{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border)}
+.stage-tag-row{display:flex;flex-wrap:wrap;gap:.4rem}
+.stage-tag{font-family:var(--fm);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .55rem;border:1px solid var(--border);color:var(--muted)}
+.stage-tag.cyan{border-color:rgba(0,229,255,0.3);color:var(--cyan);background:rgba(0,229,255,0.04)}
+.stage-tag.green{border-color:rgba(0,255,136,0.3);color:var(--green);background:rgba(0,255,136,0.04)}
+.stage-tag.amber{border-color:rgba(255,179,71,0.3);color:var(--amber);background:rgba(255,179,71,0.04)}
+
+/* Stage number watermark */
+.stage-watermark{position:absolute;bottom:-1rem;right:1rem;font-family:var(--fd);font-size:6rem;opacity:.04;line-height:1;pointer-events:none;color:var(--cyan)}
+
+/* VIDEO SECTION */
+.video-wrap{width:100%;aspect-ratio:16/9;background:var(--navy3);border:1px solid var(--border);position:relative;overflow:hidden;margin-bottom:.75rem}
+.video-wrap video{width:100%;height:100%;object-fit:cover;display:block}
+.video-wrap iframe{width:100%;height:100%;border:none;display:block}
+.video-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem}
+.vp-btn{width:60px;height:60px;border:1.5px solid var(--cyan);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.vp-btn svg{width:22px;height:22px;fill:var(--cyan);margin-left:4px}
+.vp-label{font-family:var(--fm);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.vp-hint{font-family:var(--fm);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(106,127,154,0.4)}
+.video-caption{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.vc-text{font-size:.75rem;color:var(--muted);font-weight:300}
+.vc-pill{font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .75rem;border:1px solid rgba(0,229,255,0.3);color:var(--cyan);background:rgba(0,229,255,0.05)}
+
+/* WHAT IT PROVED */
+.proved-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem}
+.proved-card{background:var(--navy2);border:1px solid var(--border);padding:1.5rem;transition:border-color .3s;position:relative;overflow:hidden}
+.proved-card:hover{border-color:var(--cyan)}
+.proved-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--cyan);transition:width .4s}
+.proved-card:hover::after{width:100%}
+.proved-val{font-family:var(--fd);font-size:2.2rem;color:var(--cyan);line-height:1;margin-bottom:.3rem}
+.proved-val.green{color:var(--green)}
+.proved-val.amber{color:var(--amber)}
+.proved-label{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.proved-desc{font-size:.72rem;color:var(--muted);line-height:1.5;font-weight:300}
+.proved-desc strong{color:var(--white);font-weight:500}
+
+/* DIGITAL TWIN LINK */
+.dt-strip{background:var(--navy3);border:1px solid var(--border);padding:1.5rem;display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;align-items:center;margin-top:1.5rem}
+.dt-icon{width:48px;height:48px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dt-icon svg{width:22px;height:22px;stroke:var(--cyan);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.dt-text{}
+.dt-label{font-family:var(--fm);font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.3rem}
+.dt-title{font-size:.85rem;color:var(--white);font-weight:500;margin-bottom:.25rem}
+.dt-desc{font-size:.75rem;color:var(--muted);line-height:1.5;font-weight:300}
+.dt-link{font-family:var(--fm);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);text-decoration:none;border:1px solid var(--border);padding:.45rem 1rem;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:.4rem;flex-shrink:0}
+.dt-link:hover{border-color:var(--cyan);background:rgba(0,229,255,0.06)}
+.arr{width:10px;height:10px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg);flex-shrink:0}
+
+/* FOOTER */
+footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem 4%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2rem}
+.f-logo{font-family:var(--fd);font-size:1.3rem;color:var(--white)}
+.f-logo span{color:var(--cyan)}
+.f-copy{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center}
+.f-links{display:flex;gap:1.5rem;justify-content:flex-end}
+.f-links a{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.f-links a:hover{color:var(--cyan)}
 </style>
 </head>
 <body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
 
 <nav>
-  <span class="logo">Paniz Manufacturing</span>
+  <a class="logo" href="index.html">PANIZ<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li><li><a href="project.html">Project</a></li><li><a href="design.html">Design</a></li>
-    <li><a href="pfmea.html">PFMEA</a></li><li><a href="printing.html">3D Printing</a></li>
-    <li><a href="quality.html">Quality</a></li><li><a href="simulation.html" class="active">Simulation</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="project.html">Project</a></li>
+    <li><a href="design.html">Design</a></li>
+    <li><a href="pfmea.html">PFMEA</a></li>
+    <li><a href="MSD.html">MSD</a></li>
+    <li><a href="printing.html">3D Printing</a></li>
+    <li><a href="quality.html">Quality</a></li>
+    <li><a href="simulation.html" class="active">Simulation</a></li>
+    <li><a href="iot.html">IoT</a></li>
   </ul>
-  <a class="nav-cta" href="#calculator">Calculate</a>
 </nav>
 
-<div class="page-hero"><div class="hero-badge">Tecnomatix Plant Simulation</div><h1>Capacity <span>Planning</span></h1></div>
-
-<section>
-  <div class="sec-label">50,000 Units/Year Target</div>
-  
-  <div class="calc-box" id="calculator">
-    <h3 style="color:var(--cyan);margin-bottom:1rem;">📊 Production Capacity Calculator</h3>
-    <div class="calc-row">
-      <div class="calc-input"><label>Target (phones/year)</label><input type="number" id="target" value="50000"></div>
-      <div class="calc-input"><label>Print time for 2 casings (hours)</label><input type="number" id="printTime" value="2.5" step="0.1"></div>
-      <div class="calc-input"><label>Success Rate (%)</label><input type="number" id="successRate" value="80"></div>
-      <div class="calc-input"><label>Operating Hours/Day</label><select id="hours"><option value="8">8 hours (single shift)</option><option value="16">16 hours (two shifts)</option><option value="24" selected>24/7 operation</option></select></div>
-    </div>
-    <div class="result-box" id="result"><div class="result-number">Calculating...</div></div>
+<!-- HERO -->
+<div class="page-hero reveal">
+  <div>
+    <div class="ph-eyebrow">07 — Plant Simulation</div>
+    <h1 class="ph-h1">TECNOMATIX<br><em>PLANT</em><br>SIMULATION.</h1>
+    <p class="ph-desc">A Discrete Event Simulation built step by step — first the FESTO CP Lab, then the robot, then the full 25-printer fleet. The result: 50,000 units per year, validated digitally before a single production printer was bought.</p>
   </div>
+  <div>
+    <div class="hero-kpis">
+      <div class="hk"><div class="hk-val">DES</div><div class="hk-label">Discrete Event Simulation — Tecnomatix</div></div>
+      <div class="hk"><div class="hk-val green">50K</div><div class="hk-label">Units/year — capacity confirmed</div></div>
+      <div class="hk"><div class="hk-val">3</div><div class="hk-label">Build stages — FESTO → Robot → Printers</div></div>
+      <div class="hk"><div class="hk-val amber">S5</div><div class="hk-label">Bottleneck identified — Oven (35s)</div></div>
+    </div>
+  </div>
+</div>
 
-  <div class="sec-label">Scenario Comparison</div>
-  <table class="capacity-table">
-    <tr><th>Operating Scenario</th><th>Daily Target</th><th>Prints Needed (80%)</th><th>Printers Required</th></tr>
-    <tr><td>8-hour shift (9-5)</td><td>192 phones</td><td>240 prints</td><td>75 printers</td></tr>
-    <tr><td>16-hour shift (two shifts)</td><td>192 phones</td><td>240 prints</td><td>38 printers</td></tr>
-    <tr><td style="color:var(--cyan);">24/7 operation (
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="m-item">TECNOMATIX PLANT SIMULATION <span>✦</span></div>
+    <div class="m-item">DISCRETE EVENT SIMULATION <span>✦</span></div>
+    <div class="m-item">50,000 UNITS / YEAR VALIDATED <span>✦</span></div>
+    <div class="m-item">FESTO CP LAB MODELLED <span>✦</span></div>
+    <div class="m-item">ROBOT MATERIAL HANDLING <span>✦</span></div>
+    <div class="m-item">25 BAMBU P1S FLEET <span>✦</span></div>
+    <div class="m-item">BOTTLENECK — STATION 5 OVEN <span>✦</span></div>
+    <div class="m-item">DIGITAL TWIN <span>✦</span></div>
+    <div class="m-item">TECNOMATIX PLANT SIMULATION <span>✦</span></div>
+    <div class="m-item">DISCRETE EVENT SIMULATION <span>✦</span></div>
+    <div class="m-item">50,000 UNITS / YEAR VALIDATED <span>✦</span></div>
+    <div class="m-item">FESTO CP LAB MODELLED <span>✦</span></div>
+    <div class="m-item">ROBOT MATERIAL HANDLING <span>✦</span></div>
+    <div class="m-item">25 BAMBU P1S FLEET <span>✦</span></div>
+    <div class="m-item">BOTTLENECK — STATION 5 OVEN <span>✦</span></div>
+    <div class="m-item">DIGITAL TWIN <span>✦</span></div>
+  </div>
+</div>
+
+<!-- SECTION 1: WHAT IS DES -->
+<div class="sec-wrap reveal">
+  <div class="sec-head">
+    <div class="sec-label-col"><div class="sec-tag">01 — The Method</div><div class="sec-big-num">DES</div></div>
+    <div class="sec-title-block"><h2>What Is<br><em>Plant Simulation?</em></h2></div>
+  </div>
+  <div class="sec-body">
+    <div class="des-grid">
+      <div class="des-card">
+        <div class="des-card-icon"><svg viewBox="0 0 18 18"><rect x="2" y="2" width="14" height="14" rx="1"/><path d="M6 9h6M9 6v6"/></svg></div>
+        <div class="des-card-title">Discrete Event Simulation (DES)</div>
+        <div class="des-card-text">A method of modelling a production system where <strong>each event is processed in sequence</strong> — parts move through stations, machines start and stop, queues build up. Tecnomatix simulates thousands of production cycles in seconds, revealing bottlenecks and capacity limits before any physical investment is made.</div>
+      </div>
+      <div class="des-card">
+        <div class="des-card-icon"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="7"/><path d="M9 5v4l3 2"/></svg></div>
+        <div class="des-card-title">Siemens Tecnomatix Plant Simulation</div>
+        <div class="des-card-text">Industry-standard simulation software used by manufacturers worldwide to <strong>validate production capacity, optimise layouts, and identify bottlenecks</strong> digitally. Used here to confirm the 25-printer Bambu P1S fleet can deliver 50,000 casing pairs per year within the defined schedule.</div>
+      </div>
+      <div class="des-card">
+        <div class="des-card-icon"><svg viewBox="0 0 18 18"><path d="M2 14l4-4 3 3 4-5 3 3"/></svg></div>
+        <div class="des-card-title">Why Simulation Before Production?</div>
+        <div class="des-card-text">Buying 25 Bambu P1S printers (£11,750 capital) without first validating they can hit 50,000 units/year would be a significant financial risk. <strong>DES removes that uncertainty</strong> — the simulation proves the fleet size, schedule, and layout before any physical commitment is made.</div>
+      </div>
+      <div class="des-card">
+        <div class="des-card-icon"><svg viewBox="0 0 18 18"><rect x="2" y="5" width="14" height="10" rx="1"/><path d="M6 5V3a3 3 0 0 1 6 0v2"/></svg></div>
+        <div class="des-card-title">Build-Then-Validate Approach</div>
+        <div class="des-card-text">Rather than modelling everything at once, the simulation was <strong>built incrementally</strong> — FESTO CP Lab first, then robot material handling, then the full printer fleet. Each stage was validated before the next was added, ensuring the model was accurate at every layer.</div>
+      </div>
+    </div>
+    <div class="why-box">
+      <div class="why-box-title">Why Tecnomatix specifically?</div>
+      <div class="why-box-text">Tecnomatix Plant Simulation is part of the <strong>Siemens Digital Industries Software</strong> suite — the same ecosystem used by automotive, aerospace, and electronics manufacturers globally. It integrates directly with IoT platforms like Siemens Insights Hub, making it the natural choice for a project that includes real-time monitoring and digital twin functionality. The simulation outputs can be directly connected to live production data, turning a planning tool into an ongoing operational asset.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: BUILD STAGES -->
+<div class="sec-wrap reveal">
+  <div class="sec-head">
+    <div class="sec-label-col"><div class="sec-tag">02 — How It Was Built</div><div class="sec-big-num">BUILD</div></div>
+    <div class="sec-title-block"><h2>Step by Step<br><em>Build Process.</em></h2><div style="font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Delete unused stages</div></div>
+  </div>
+  <div class="sec-body">
+    <p class="stages-intro">The simulation was not built all at once. Starting with the FESTO CP Lab and adding complexity layer by layer meant each stage could be validated independently. This is good simulation engineering practice — <strong>build incrementally, validate at each step, avoid compounding errors</strong>.</p>
+
+    <!-- ============================================================ -->
+    <!-- STAGE 1 — DELETE THIS ENTIRE <div class="stage"> BLOCK IF NOT NEEDED -->
+    <!-- ============================================================ -->
+    <div class="stage reveal">
+      <div class="stage-screenshot">
+        <!-- ADD your Stage 1 screenshot here -->
+        <!-- <img src="YOUR_STAGE_1_SCREENSHOT.png" alt="Stage 1 — FESTO stations"> -->
+        <div class="ss-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span class="ss-placeholder-label">Stage 1 Screenshot</span>
+          <span class="ss-placeholder-hint">Replace src above to add image</span>
+        </div>
+        <div class="stage-watermark">01</div>
+      </div>
+      <div class="stage-content">
+        <div class="stage-top">
+          <div class="stage-num-badge"><span class="dot"></span>Stage 01 of 06</div>
+          <div class="stage-title">FESTO CP Lab<br><em>6 Stations.</em></div>
+          <p class="stage-desc">The first element modelled was the <strong>FESTO CP Lab assembly line</strong> — all 6 stations entered with their real measured cycle times. This established the baseline throughput of the assembly line before any printers or automation were added.</p>
+          <div class="stage-findings">
+            <div class="sf-row">Station 1 (Part ID) modelled at <strong>7 seconds</strong> cycle time</div>
+            <div class="sf-row">Station 2 (Laser) at <strong>8 seconds</strong> — critical spec check point</div>
+            <div class="sf-row">Station 3 (iPick) at <strong>27 seconds</strong> — manual operator modelled</div>
+            <div class="sf-row">Station 4 (Press) at <strong>11 seconds</strong></div>
+            <div class="sf-row">Station 5 (Oven) at <strong>35 seconds</strong> — immediately flagged as bottleneck</div>
+            <div class="sf-row">Station 6 (Output) at <strong>11 seconds</strong></div>
+            <div class="sf-row">Total FESTO cycle: <strong>99 seconds</strong> — within 150s takt ✓</div>
+          </div>
+        </div>
+        <div class="stage-bottom">
+          <div class="stage-tag-row">
+            <span class="stage-tag cyan">FESTO CP Lab</span>
+            <span class="stage-tag cyan">6 Stations</span>
+            <span class="stage-tag amber">Bottleneck: S5 35s</span>
+            <span class="stage-tag">99s total cycle</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- STAGE 2 — DELETE THIS ENTIRE <div class="stage"> BLOCK IF NOT NEEDED -->
+    <!-- ============================================================ -->
+    <div class="stage reveal">
+      <div class="stage-screenshot">
+        <!-- ADD your Stage 2 screenshot here -->
+        <!-- <img src="YOUR_STAGE_2_SCREENSHOT.png" alt="Stage 2 — Robot added"> -->
+        <div class="ss-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span class="ss-placeholder-label">Stage 2 Screenshot</span>
+          <span class="ss-placeholder-hint">Replace src above to add image</span>
+        </div>
+        <div class="stage-watermark">02</div>
+      </div>
+      <div class="stage-content">
+        <div class="stage-top">
+          <div class="stage-num-badge"><span class="dot"></span>Stage 02 of 06</div>
+          <div class="stage-title">Robot<br><em>Added.</em></div>
+          <p class="stage-desc">A <strong>robotic handler</strong> was added to the simulation to manage material flow — specifically picking finished cases from the output of the print area and feeding them into the FESTO CP Lab sequence. This automated the transfer step that an operator would otherwise perform manually.</p>
+          <div class="stage-findings">
+            <div class="sf-row">Robot picks <strong>completed casing pairs</strong> from print output area</div>
+            <div class="sf-row">Feeds parts into <strong>FESTO Station 1</strong> input buffer</div>
+            <div class="sf-row">Eliminates manual transfer time — <strong>reduces non-value-added waiting</strong></div>
+            <div class="sf-row">Robot cycle time modelled to match FESTO input rate</div>
+            <div class="sf-row">Buffer sizing validated — no starvation of FESTO line</div>
+          </div>
+        </div>
+        <div class="stage-bottom">
+          <div class="stage-tag-row">
+            <span class="stage-tag cyan">Robot Handler</span>
+            <span class="stage-tag cyan">Material Flow</span>
+            <span class="stage-tag green">Automated Transfer</span>
+            <span class="stage-tag">Buffer Sizing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- STAGE 3 — DELETE THIS ENTIRE <div class="stage"> BLOCK IF NOT NEEDED -->
+    <!-- ============================================================ -->
+    <div class="stage reveal">
+      <div class="stage-screenshot">
+        <!-- ADD your Stage 3 screenshot here -->
+        <!-- <img src="YOUR_STAGE_3_SCREENSHOT.png" alt="Stage 3 — Printer fleet added"> -->
+        <div class="ss-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span class="ss-placeholder-label">Stage 3 Screenshot</span>
+          <span class="ss-placeholder-hint">Replace src above to add image</span>
+        </div>
+        <div class="stage-watermark">03</div>
+      </div>
+      <div class="stage-content">
+        <div class="stage-top">
+          <div class="stage-num-badge"><span class="dot"></span>Stage 03 of 06</div>
+          <div class="stage-title">Printer Fleet<br><em>Integrated.</em></div>
+          <p class="stage-desc">The <strong>25 Bambu P1S printers</strong> were added to the simulation with their real parameters — 2.5h cycle time per pair, 80% success rate, scheduled downtime for maintenance. The full production system was now connected end-to-end.</p>
+          <div class="stage-findings">
+            <div class="sf-row"><strong>25 Bambu P1S</strong> printers modelled simultaneously</div>
+            <div class="sf-row">Cycle time: <strong>2.5 hours per pair</strong> per printer</div>
+            <div class="sf-row">80% yield rate applied — <strong>20% failure absorption</strong> built in</div>
+            <div class="sf-row">Schedule: <strong>weekdays 24/7, weekends 8h/day</strong></div>
+            <div class="sf-row">Planned maintenance downtime modelled at <strong>15% of hours</strong></div>
+            <div class="sf-row">Output feeds robot → FESTO → dispatch in one connected flow</div>
+          </div>
+        </div>
+        <div class="stage-bottom">
+          <div class="stage-tag-row">
+            <span class="stage-tag cyan">25× Bambu P1S</span>
+            <span class="stage-tag cyan">2.5h Cycle Time</span>
+            <span class="stage-tag amber">80% Yield Rate</span>
+            <span class="stage-tag">Full System Connected</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- STAGE 4 — DELETE THIS ENTIRE <div class="stage"> BLOCK IF NOT NEEDED -->
+    <!-- ============================================================ -->
+    <div class="stage reveal">
+      <div class="stage-screenshot">
+        <!-- ADD your Stage 4 screenshot here -->
+        <!-- <img src="YOUR_STAGE_4_SCREENSHOT.png" alt="Stage 4"> -->
+        <div class="ss-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span class="ss-placeholder-label">Stage 4 Screenshot</span>
+          <span class="ss-placeholder-hint">Replace src above to add image</span>
+        </div>
+        <div class="stage-watermark">04</div>
+      </div>
+      <div class="stage-content">
+        <div class="stage-top">
+          <div class="stage-num-badge"><span class="dot"></span>Stage 04 of 06</div>
+          <div class="stage-title">Schedule<br><em>Refinement.</em></div>
+          <p class="stage-desc">With the full system running, the <strong>operating schedule was tested and refined</strong>. Different shift patterns were modelled to find the configuration that hits 50,000 units/year without over-specifying the fleet size or running costs.</p>
+          <div class="stage-findings">
+            <div class="sf-row">Weekdays 24/7 alone: <strong>~42,500 pairs/year</strong> — short of target</div>
+            <div class="sf-row">Adding weekend 8h shifts: <strong>~48,250 pairs/year</strong> — within buffer</div>
+            <div class="sf-row">Minor overtime provision closes gap to <strong>50,000 target ✓</strong></div>
+            <div class="sf-row">Single shift scenario would need <strong>75 printers</strong> — 3× the capital cost</div>
+            <div class="sf-row">24/7 with 25 printers confirmed as <strong>optimal configuration</strong></div>
+          </div>
+        </div>
+        <div class="stage-bottom">
+          <div class="stage-tag-row">
+            <span class="stage-tag cyan">Schedule Testing</span>
+            <span class="stage-tag green">50K Confirmed</span>
+            <span class="stage-tag">Weekdays 24/7</span>
+            <span class="stage-tag">Weekends 8h</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- STAGE 5 — DELETE THIS ENTIRE <div class="stage"> BLOCK IF NOT NEEDED -->
+    <!-- ============================================================ -->
+    <div class="stage reveal">
+      <div class="stage-screenshot">
+        <!-- ADD your Stage 5 screenshot here -->
+        <!-- <img src="YOUR_STAGE_5_SCREENSHOT.png" alt="Stage 5 — Bottleneck analysis"> -->
+        <div class="ss-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span class="ss-placeholder-label">Stage 5 Screenshot</span>
+          <span class="ss-placeholder-hint">Replace src above to add image</span>
+        </div>
+        <div class="stage-watermark">05</div>
+      </div>
+      <div class="stage-content">
+        <div class="stage-top">
+          <div class="stage-num-badge"><span class="dot"></span>Stage 05 of 06</div>
+          <div class="stage-title">Bottleneck<br><em>Analysis.</em></div>
+          <p class="stage-desc">With the full simulation running, <strong>bottleneck analysis</strong> identified where parts were queueing and where capacity was being lost. Station 5 (Oven, 35s) was confirmed as the FESTO line constraint — though it remains within the overall takt time.</p>
+          <div class="stage-findings">
+            <div class="sf-row">Station 5 (Oven) at 35s confirmed as <strong>FESTO bottleneck</strong></div>
+            <div class="sf-row">Queue builds at Station 5 input — parts waiting from S4</div>
+            <div class="sf-row">Total FESTO cycle 99s still within <strong>150s takt — no action needed now</strong></div>
+            <div class="sf-row">Recommendation: second oven module if demand exceeds 50K/year</div>
+            <div class="sf-row">Printer fleet not a constraint — output rate matches FESTO input capacity</div>
+          </div>
+        </div>
+        <div class="stage-bottom">
+          <div class="stage-tag-row">
+            <span class="stage-tag amber">Bottleneck: Station 5</span>
+            <span class="stage-tag cyan">35s Oven Cycle</span>
+            <span class="stage-tag green">Within 150s Takt ✓</span>
+            <span class="stage-tag">Future: 2nd Oven</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- STAGE 6 — DELETE THIS ENTIRE <div class="stage"> BLOCK IF NOT NEEDED -->
+    <!-- ============================================================ -->
+    <div class="stage reveal">
+      <div class="stage-screenshot">
+        <!-- ADD your Stage 6 screenshot here — e.g. full completed simulation view -->
+        <!-- <img src="YOUR_STAGE_6_SCREENSHOT.png" alt="Stage 6 — Full simulation"> -->
+        <div class="ss-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span class="ss-placeholder-label">Stage 6 Screenshot</span>
+          <span class="ss-placeholder-hint">Replace src above to add image</span>
+        </div>
+        <div class="stage-watermark">06</div>
+      </div>
+      <div class="stage-content">
+        <div class="stage-top">
+          <div class="stage-num-badge"><span class="dot"></span>Stage 06 of 06</div>
+          <div class="stage-title">Full System<br><em>Complete.</em></div>
+          <p class="stage-desc">The <strong>complete simulation</strong> — printers, robot, FESTO line, schedule, and failure rates — running end-to-end. This is the digital twin of the Paniz Manufacturing production system, validated against the 50,000 units/year contract commitment.</p>
+          <div class="stage-findings">
+            <div class="sf-row">Full system: <strong>25 printers → robot → 6-station FESTO → dispatch</strong></div>
+            <div class="sf-row">Annual output confirmed at <strong>~48,250–50,000 pairs</strong> within schedule</div>
+            <div class="sf-row">80% print yield and 15% downtime both <strong>absorbed within capacity</strong></div>
+            <div class="sf-row">No additional printers needed — <strong>25 is the optimal fleet size</strong></div>
+            <div class="sf-row">Simulation outputs validated against takt time and MSD layout</div>
+            <div class="sf-row">Production system <strong>approved for Phones-R-Us 50K contract ✓</strong></div>
+          </div>
+        </div>
+        <div class="stage-bottom">
+          <div class="stage-tag-row">
+            <span class="stage-tag green">50K Validated ✓</span>
+            <span class="stage-tag cyan">Full Digital Twin</span>
+            <span class="stage-tag green">Production Approved</span>
+            <span class="stage-tag">Phones-R-Us Ready</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 3: FULL SIMULATION VIDEO -->
+<div class="sec-wrap reveal">
+  <div class="sec-head">
+    <div class="sec-label-col"><div class="sec-tag">03 — The Simulation Running</div><div class="sec-big-num">RUN</div></div>
+    <div class="sec-title-block"><h2>Full System<br><em>In Motion.</em></h2></div>
+  </div>
+  <div class="sec-body">
+    <p style="font-size:.85rem;color:var(--muted);font-weight:300;line-height:1.75;margin-bottom:1.5rem;max-width:650px">The complete Tecnomatix simulation running — all 25 printers, the robotic handler, and the full FESTO 6-station line operating in real-time. Parts flow from print bed to dispatch, with queues, failures, and schedule patterns all modelled accurately.</p>
+
+    <div class="video-wrap">
+      <!-- ADD YOUR SIMULATION VIDEO HERE -->
+      <!-- Option A — local file: -->
+      <!-- <video controls poster="YOUR_POSTER.jpg">
+        <source src="YOUR_SIMULATION_VIDEO.mp4" type="video/mp4">
+      </video> -->
+
+      <!-- Option B — YouTube: -->
+      <!-- <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe> -->
+
+      <!-- Placeholder until video is added: -->
+      <div class="video-placeholder">
+        <div class="vp-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="vp-label">Full Simulation Video — Tecnomatix Plant Simulation</div>
+        <div class="vp-hint">Add video src when ready</div>
+      </div>
+    </div>
+    <div class="video-caption">
+      <span class="vc-text">Complete end-to-end simulation — 25 Bambu P1S printers, robot handler, FESTO CP Lab 6 stations. 50,000 units/year validated.</span>
+      <span class="vc-pill">Tecnomatix Plant Simulation — DES</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: WHAT IT PROVED -->
+<div class="sec-wrap reveal">
+  <div class="sec-head">
+    <div class="sec-label-col"><div class="sec-tag">04 — Findings</div><div class="sec-big-num">OUT</div></div>
+    <div class="sec-title-block"><h2>What the Simulation<br><em>Proved.</em></h2></div>
+  </div>
+  <div class="sec-body">
+    <div class="proved-grid">
+      <div class="proved-card">
+        <div class="proved-val green">50K</div>
+        <div class="proved-label">Units/year — confirmed</div>
+        <div class="proved-desc">The 25-printer fleet on the weekday 24/7 + weekend 8h schedule delivers approximately <strong>48,250–50,000 pairs/year</strong> — meeting the Phones-R-Us contract commitment with a small overtime buffer.</div>
+      </div>
+      <div class="proved-card">
+        <div class="proved-val">25</div>
+        <div class="proved-label">Optimal printer fleet size</div>
+        <div class="proved-desc">Simulation confirmed <strong>25 is the right number</strong>. Fewer printers miss the target. More printers add capital cost without proportional output gain. 25 × £470 = £11,750 — justified by simulation.</div>
+      </div>
+      <div class="proved-card">
+        <div class="proved-val amber">S5</div>
+        <div class="proved-label">Bottleneck — FESTO Oven (35s)</div>
+        <div class="proved-desc">Station 5 (Oven) at 35s is the FESTO line constraint. <strong>Currently within the 150s takt</strong> — no action needed. If demand exceeds 50K/year, a second oven module is the recommended investment.</div>
+      </div>
+      <div class="proved-card">
+        <div class="proved-val">99s</div>
+        <div class="proved-label">FESTO total cycle — within takt</div>
+        <div class="proved-desc">The complete FESTO 6-station cycle of 99 seconds comfortably fits within the <strong>150-second takt time</strong>, meaning the assembly line is not the production constraint — the printer fleet is the pacing element.</div>
+      </div>
+      <div class="proved-card">
+        <div class="proved-val green">✓</div>
+        <div class="proved-label">80% yield absorbed in capacity</div>
+        <div class="proved-desc">The 20% print failure rate was built into the simulation from day one. The system still hits 50K because <strong>62,500 print attempts/year produce 50,000 good pairs</strong> — the failure rate is planned for, not an exception.</div>
+      </div>
+      <div class="proved-card">
+        <div class="proved-val">3×</div>
+        <div class="proved-label">Capital saved vs single shift</div>
+        <div class="proved-desc">A single-shift scenario would require <strong>75 printers</strong> to hit 50K/year — three times the fleet and capital cost. Running 25 printers 24/7 is the financially optimal configuration, confirmed by simulation.</div>
+      </div>
+    </div>
+
+    <!-- Digital Twin Link -->
+    <div class="dt-strip">
+      <div class="dt-icon"><svg viewBox="0 0 22 22"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="12" y="2" width="8" height="8" rx="1"/><rect x="2" y="12" width="8" height="8" rx="1"/><rect x="12" y="12" width="8" height="8" rx="1"/><path d="M6 10v2M16 10v2M10 6h2M10 16h2"/></svg></div>
+      <div class="dt-text">
+        <div class="dt-label">Connected System</div>
+        <div class="dt-title">This simulation feeds directly into the IoT & Digital Twin architecture</div>
+        <div class="dt-desc">The Tecnomatix model is not a one-off planning exercise — it forms the baseline digital twin of the production system. Live data from Siemens Insights Hub and Bambu Cloud can be fed back into the simulation to update it as real production data accumulates, creating a continuously improving model of the factory.</div>
+      </div>
+      <a class="dt-link" href="iot.html">IoT Page <span class="arr"></span></a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="f-logo">PANIZ<span>.</span></div>
+  <div class="f-copy">© 2026 — Digital Manufacturing Portfolio</div>
+  <div class="f-links">
+    <a href="MSD.html">MSD</a>
+    <a href="quality.html">Quality</a>
+    <a href="iot.html">IoT</a>
+    <a href="project.html">Project</a>
+  </div>
+</footer>
+
+<script>
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+let rx=0,ry=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
+(function animRing(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing)})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';ring.style.opacity='0'});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.opacity='.4'});
+});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')}),{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
