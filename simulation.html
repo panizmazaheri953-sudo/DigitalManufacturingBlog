@@ -419,6 +419,121 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
     </div>
   </div>
 </div>
+    <div class="stage reveal">
+  <div class="stage-screenshot">
+    <!-- ADD your Stage 5 screenshot here (6 stations + printer integration) -->
+    <img 
+      src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/Picture7.png?raw=true" 
+      alt="Stage 5 — 6 FESTO Stations + Printer (AM Manufacturing) Integration"
+      style="width: auto; height: auto; max-width: 100%; max-height: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+    >
+    <div class="ss-placeholder">
+    
+     
+    </div>
+    <div class="stage-watermark">05</div>
+  </div>
+  <div class="stage-content">
+    <div class="stage-top">
+      <div class="stage-num-badge"><span class="dot"></span>Stage 05 of 06</div>
+      <div class="stage-title">AM Manufacturing Added<br><em>6 Stations + Printer.</em></div>
+      <p class="stage-desc">An <strong>additive manufacturing (AM) printer</strong> was integrated into the existing 6-station FESTO CP Lab assembly line. The printer operates on a <strong>2.5 hour cycle time</strong>, which significantly impacts overall throughput and reduces the number of printed cases.</p>
+      <div class="stage-findings">
+        <div class="sf-row"><strong>Printer cycle time:</strong> 2.5 hours (150 minutes) per batch</div>
+        <div class="sf-row"><strong>Printed cases reduced from 2,466 → 575</strong> due to printer bottleneck</div>
+        <div class="sf-row">Printer now becomes the <strong>primary bottleneck</strong> — much slower than S5 Oven (35s)</div>
+        <div class="sf-row">FESTO stations (99s total) now <strong>waiting idle</strong> for printer output</div>
+        <div class="sf-row">System throughput now <strong>limited by AM printer speed</strong>, not assembly line</div>
+        <div class="sf-row"><strong>Recommendation:</strong> Add parallel printers or reduce print cycle time to balance flow</div>
+      </div>
+    </div>
+    <div class="stage-bottom">
+      <div class="stage-tag-row">
+        <span class="stage-tag cyan">6 FESTO Stations + Printer</span>
+        <span class="stage-tag cyan">2.5h Printer Cycle</span>
+        <span class="stage-tag amber">🔴 575 cases (vs 2,466)</span>
+        <span class="stage-tag">Printer = New Bottleneck</span>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="stage reveal">
+  <div class="stage-screenshot">
+    <!-- ADD your Stage 6 screenshot here (bottleneck analyzer chart showing AM printer as bottleneck) -->
+    <img 
+      src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/Picture6.png?raw=true" 
+      alt="Stage 6 — Bottleneck Analyzer Chart Showing AM Printer as Primary Bottleneck"
+      style="width: auto; height: auto; max-width: 100%; max-height: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+    >
+    <div class="ss-placeholder">
+   
+   
+    </div>
+    <div class="stage-watermark">06</div>
+  </div>
+  <div class="stage-content">
+    <div class="stage-top">
+      <div class="stage-num-badge"><span class="dot"></span>Stage 06 of 06</div>
+      <div class="stage-title">Bottleneck Confirmed<br><em>AM Printer → New Printers Added.</em></div>
+      <p class="stage-desc">The <strong>bottleneck analyzer chart</strong> clearly confirms the AM printer as the primary bottleneck in the system. With a <strong>2.5 hour cycle time</strong>, the printer limits total output to just <strong>575 cases</strong>. To resolve this, additional printers are being added to parallelize production.</p>
+      <div class="stage-findings">
+        <div class="sf-row"><strong>🔴 Bottleneck analyzer confirms:</strong> AM printer is the slowest component in the entire system</div>
+        <div class="sf-row">Printer cycle time: <strong>2.5 hours</strong> vs. FESTO S5 Oven: <strong>35 seconds</strong> → printer is ~257x slower</div>
+        <div class="sf-row">Current output limited to <strong>575 cases</strong> due to single printer constraint</div>
+        <div class="sf-row"><strong>✅ Solution identified:</strong> Add parallel printers to increase throughput</div>
+       
+      </div>
+    </div>
+    <div class="stage-bottom">
+      <div class="stage-tag-row">
+        <span class="stage-tag cyan">Bottleneck Analyzer</span>
+        <span class="stage-tag amber">🔴 AM Printer = Bottleneck</span>
+        <span class="stage-tag">2.5h Cycle → 575 Cases</span>
+        <span class="stage-tag">✅ Solution: Add Printers</span>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="stage reveal">
+  <div class="stage-screenshot">
+    <!-- ADD your Stage 7 screenshot here (25 printers layout with 5 rows, sorter, workers) -->
+    <img 
+      src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/Picture9.png?raw=true" 
+      alt="Stage 7 — 25 Printers (5 Rows) + Sorter + Workers + Broker Setup"
+      style="width: auto; height: auto; max-width: 100%; max-height: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+    >
+    <div class="ss-placeholder">
+    
+    </div>
+    <div class="stage-watermark">07</div>
+  </div>
+  <div class="stage-content">
+    <div class="stage-top">
+      <div class="stage-num-badge"><span class="dot"></span>Stage 07 of 07</div>
+      <div class="stage-title">25 Printers Deployed<br><em>5 Rows × 5 Printers + Sorting + Broker.</em></div>
+      <p class="stage-desc">A full <strong>additive manufacturing cell</strong> was deployed with <strong>25 Bambu P1S printers</strong> arranged in <strong>5 rows of 5 printers each</strong>. Each row includes a dedicated <strong>sorter</strong> where workers collect finished cases. A <strong>broker system</strong> manages job allocation, and a <strong>workstation</strong> handles prep tasks.</p>
+      <div class="stage-findings">
+        <div class="sf-row"><strong> Printer Setup:</strong> 25 Bambu P1S (5 rows × 5 printers) — each printer prints <strong>top + bottom simultaneously = 1 full case</strong> (2 parts/print)</div>
+        <div class="sf-row"><strong> Prep Time:</strong> 30 minutes per shift for workers to prepare printers (cleaning, filament loading, calibration)</div>
+        <div class="sf-row"><strong> Sorter per Row:</strong> Finished cases collected by workers → placed on row sorter → aggregated → transported to FESTO CP Lab input</div>
+        <div class="sf-row"><strong> Broker System:</strong> Manages job distribution across all 25 printers, balances workload, and handles failed print reallocation</div>
+        <div class="sf-row"><strong> Workers:</strong> 2 workers per shift — handle prep (30 min), collect finished cases, operate sorters, transport to FESTO CP Lab</div>
+        <div class="sf-row"><strong> Real Output:</strong> <span class="highlight">225 full cases printed in a full day</span> (with 2 workers, including prep time, break, and transport)</div>
+        <div class="sf-row"><strong> Simulation Simplification:</strong> Each case = 1 unit (top+bottom combined) — reduces complexity when feeding into FESTO CP Lab</div>
+      </div>
+    </div>
+    <div class="stage-bottom">
+      <div class="stage-tag-row">
+        <span class="stage-tag cyan">25 Printers (5×5)</span>
+        <span class="stage-tag cyan">Sorter per Row</span>
+        <span class="stage-tag cyan">Broker System</span>
+        <span class="stage-tag amber"> 30min Prep Time</span>
+        <span class="stage-tag amber"> 2 Workers</span>
+        <span class="stage-tag"> 225 Cases/Day</span>
+      </div>
+    </div>
+  </div>
+</div>
     <!-- ============================================================ -->
     <!-- STAGE 4 — DELETE THIS ENTIRE <div class="stage"> BLOCK IF NOT NEEDED -->
     <!-- ============================================================ -->
