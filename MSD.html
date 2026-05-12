@@ -334,19 +334,28 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
         </div>
       </div>
       <div class="takt-formula">
-        <div class="takt-calc-title">Formula & Worked Example</div>
-        <div class="formula-display">
-          Takt Time = <span class="f-cyan">Available Time per Day</span><br>
-          <span style="font-size:1.5rem;color:var(--border)">────────────────────</span><br>
-          <span class="f-cyan">Customer Demand per Day</span><br><br>
-          <span class="f-muted">= (261 days × 1,440 min × 60s) ÷ 50,000</span><br>
-          <span style="color:var(--cyan);font-size:1.2rem">= 150 seconds per pair</span>
-        </div>
+  <div class="takt-calc-title">Formula & Worked Example</div>
+  <div class="formula-display">
+    Takt Time = <span class="f-cyan">Available Time per Day</span><br>
+    <span style="font-size:1.5rem;color:var(--border)">────────────────────</span><br>
+    <span class="f-cyan">Customer Demand per Day</span><br><br>
+    <span class="f-muted">= (261 days × 1,440 min × 60s) ÷ 50,000</span><br>
+    <span style="color:var(--cyan);font-size:1.2rem">= 150 seconds per pair</span>
+  </div>
+  <div style="margin-top:.8rem; padding:.5rem .6rem; background:rgba(0,229,255,0.05); border-left:2px solid var(--cyan); font-size:.65rem; color:var(--muted); line-height:1.5">
+    📊 <strong>Good pairs needed per weekday (including 80% yield):</strong><br>
+    Weekdays (24h) + Weekends (8h) → total 7,096 operating hours/year.<br>
+    50,000 good pairs × (6,264 weekday hours ÷ 7,096 total hours) = <strong>~44,150 good pairs from weekdays</strong>.<br>
+    44,150 ÷ 261 weekdays = <strong>≈ 170 good pairs per weekday</strong> (FESTO line must output this many).<br>
+    <span style="color:var(--cyan);">Printers run at 408 seconds interval to compensate for the 80% yield.</span>
+  </div>
+</div>
         <div class="takt-compare">
           <div class="tc-row"><span class="tc-key">Working days/year</span><span class="tc-val">261 weekdays</span></div>
           <div class="tc-row"><span class="tc-key">Weekend shifts</span><span class="tc-val">104 days × 8h</span></div>
           <div class="tc-row"><span class="tc-key">Annual demand</span><span class="tc-val">50,000 pairs</span></div>
-          <div class="tc-row"><span class="tc-key">Pairs needed per weekday</span><span class="tc-val">~192</span></div>
+         <div class="tc-row"><span class="tc-key">Good pairs needed per weekday (incl. 80% yield)</span><span class="tc-val">~170</span></div>
+          <div class="tc-row" style="border-left-color: var(--amber);"><span class="tc-key">(Weekend target)</span><span class="tc-val warn">~56 good pairs per weekend day</span></div>
           <div class="tc-row highlight"><span class="tc-key">Takt time</span><span class="tc-val pass">150 seconds</span></div>
           <div class="tc-row highlight"><span class="tc-key">Bottleneck (Stn 5)</span><span class="tc-val warn">35s — within takt ✓</span></div>
         </div>
