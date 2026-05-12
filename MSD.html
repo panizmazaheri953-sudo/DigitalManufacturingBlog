@@ -366,10 +366,17 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   
   
 
-  <div style="margin-bottom:1rem; padding:.6rem .8rem; background:rgba(0,229,255,0.05); border-left:2px solid var(--cyan); font-size:.7rem; color:var(--muted); line-height:1.5">
-    <strong style="color:var(--cyan)">📐 Where 600 comes from:</strong> 
-    (50,000 pairs × 2.5h) ÷ 250 working days ÷ 80% yield 
-    = 125,000 ÷ 250 ÷ 0.8 = <strong style="color:var(--white)">625 hours/day</strong> ≈ <strong style="color:var(--cyan)">600 hours/day</strong> (rounded down)
+    <div style="margin-bottom:1rem; padding:.8rem 1rem; background:rgba(0,229,255,0.05); border-left:2px solid var(--cyan); font-size:.7rem; color:var(--muted); line-height:1.5">
+    <strong style="color:var(--cyan)">📐 Where the 25 printers come from (full calculation):</strong><br><br>
+    <strong>1. Annual good pairs needed</strong> = 50,000<br>
+    <strong>2. Required prints (80% yield)</strong> = 50,000 ÷ 0.8 = <strong>62,500 pairs</strong><br>
+    <strong>3. Print cycle per pair</strong> = 2.5 hours → total print hours needed = 62,500 × 2.5 = <strong>156,250 hours</strong><br><br>
+    <strong>4. Operating hours per printer per year:</strong><br>
+    &nbsp;&nbsp;Weekdays: 261 days × 24h = 6,264 hours<br>
+    &nbsp;&nbsp;Weekends: 104 days × 8h = 832 hours<br>
+    &nbsp;&nbsp;<strong>Total = 7,096 hours/year per printer</strong><br><br>
+    <strong>5. Theoretical printers needed</strong> = 156,250 ÷ 7,096 = <strong>22.0 printers</strong><br>
+    <strong>6. Adding 15% buffer</strong> (maintenance, variation) = 22 × 1.15 = <strong>25.3 → 25 printers</strong> ✅
   </div>
   
   
