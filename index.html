@@ -299,6 +299,32 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
 .reveal.in{opacity:1;transform:translateY(0)}
 
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.02;pointer-events:none;z-index:9990}
+  /* Conveyor animation for moving cases */
+@keyframes conveyorMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(180px); }
+}
+.conveyor-cases {
+  animation: conveyorMove 4s linear infinite;
+}
+
+/* Red pulsing for S5 bottleneck */
+@keyframes pulseRed {
+  0% { filter: drop-shadow(0 0 2px #ff1744); stroke-width: 2; opacity: 1; }
+  100% { filter: drop-shadow(0 0 12px #ff1744); stroke-width: 3; opacity: 0.9; }
+}
+.bottleneck-pulse {
+  animation: pulseRed 1.2s ease-in-out infinite alternate;
+}
+
+/* Small flicker for build plates (optional) */
+@keyframes flicker {
+  0% { opacity: 0.1; }
+  100% { opacity: 0.25; }
+}
+.hero-vis svg rect[fill="rgba(0,229,255,0.15)"] {
+  animation: flicker 2s infinite alternate;
+}
 </style>
 </head>
 <body>
@@ -337,37 +363,134 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     </div>
   </div>
   <div class="hero-right">
-    <div class="grid-bg"></div>
-    <div class="scan-line"></div>
-    <div class="hero-vis">
-      <div class="casing-rig">
-        <div class="phone">
-          <div class="corner-tl"></div><div class="corner-tr"></div>
-          <div class="corner-bl"></div><div class="corner-br"></div>
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="screen-grid">
-              <div class="sg"></div><div class="sg"></div><div class="sg"></div>
-              <div class="sg" style="grid-column:span 3;opacity:.5"></div>
-              <div class="sg"></div><div class="sg" style="opacity:.3"></div><div class="sg"></div>
-              <div class="sg" style="grid-column:span 2;opacity:.4"></div><div class="sg" style="opacity:.2"></div>
-            </div>
-          </div>
-          <div class="phone-btn-r"></div>
-          <div class="phone-btn-l1"></div>
-          <div class="phone-btn-l2"></div>
-          <div class="phone-usb"></div>
-          <div class="dim-h"><div class="dl"></div><span>158mm</span><div class="dl"></div></div>
-          <div class="dim-w"><div class="dl"></div><span>74mm</span><div class="dl"></div></div>
-        </div>
-      </div>
-    </div>
-    <div class="hero-stats-bar">
-      <div class="hstat"><div class="hstat-n">50K</div><div class="hstat-l">Units / Year</div></div>
-      <div class="hstat"><div class="hstat-n">80%</div><div class="hstat-l">Print Yield</div></div>
-      <div class="hstat"><div class="hstat-n">2.5h</div><div class="hstat-l">Cycle Time</div></div>
-    </div>
+  <div class="grid-bg"></div>
+  <div class="scan-line"></div>
+  <div class="hero-vis">
+    <svg viewBox="0 0 520 420" preserveAspectRatio="xMidYMid meet" style="width:100%; height:100%; display:block">
+      <defs>
+        <linearGradient id="beltGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.2"/>
+          <stop offset="50%" stop-color="#00e5ff" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#00e5ff" stop-opacity="0.2"/>
+        </linearGradient>
+        <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="glowRed" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="4" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- Background subtle grid -->
+      <rect width="520" height="420" fill="none" stroke="rgba(0,229,255,0.06)" stroke-width="0.5" stroke-dasharray="4 4"/>
+
+      <!-- LEFT: Printer farm area -->
+      <g transform="translate(15, 50)">
+        <text x="0" y="-8" fill="var(--cyan)" font-family="'DM Mono',monospace" font-size="7" letter-spacing="2">25× BAMBU P1S</text>
+        <!-- 5x5 printer grid -->
+        <g fill="none" stroke="#00e5ff" stroke-width="1.2" opacity="0.8">
+          <!-- Row 0 -->
+          <rect x="0" y="0" width="22" height="26" rx="2"/><rect x="30" y="0" width="22" height="26" rx="2"/><rect x="60" y="0" width="22" height="26" rx="2"/><rect x="90" y="0" width="22" height="26" rx="2"/><rect x="120" y="0" width="22" height="26" rx="2"/>
+          <!-- Row 1 -->
+          <rect x="0" y="32" width="22" height="26" rx="2"/><rect x="30" y="32" width="22" height="26" rx="2"/><rect x="60" y="32" width="22" height="26" rx="2"/><rect x="90" y="32" width="22" height="26" rx="2"/><rect x="120" y="32" width="22" height="26" rx="2"/>
+          <!-- Row 2 -->
+          <rect x="0" y="64" width="22" height="26" rx="2"/><rect x="30" y="64" width="22" height="26" rx="2"/><rect x="60" y="64" width="22" height="26" rx="2"/><rect x="90" y="64" width="22" height="26" rx="2"/><rect x="120" y="64" width="22" height="26" rx="2"/>
+          <!-- Row 3 -->
+          <rect x="0" y="96" width="22" height="26" rx="2"/><rect x="30" y="96" width="22" height="26" rx="2"/><rect x="60" y="96" width="22" height="26" rx="2"/><rect x="90" y="96" width="22" height="26" rx="2"/><rect x="120" y="96" width="22" height="26" rx="2"/>
+          <!-- Row 4 -->
+          <rect x="0" y="128" width="22" height="26" rx="2"/><rect x="30" y="128" width="22" height="26" rx="2"/><rect x="60" y="128" width="22" height="26" rx="2"/><rect x="90" y="128" width="22" height="26" rx="2"/><rect x="120" y="128" width="22" height="26" rx="2"/>
+        </g>
+        <!-- Glowing build plates (cyan fill on each printer) -->
+        <g fill="rgba(0,229,255,0.15)">
+          <rect x="2" y="18" width="18" height="6" rx="1"/><rect x="32" y="18" width="18" height="6" rx="1"/><rect x="62" y="18" width="18" height="6" rx="1"/><rect x="92" y="18" width="18" height="6" rx="1"/><rect x="122" y="18" width="18" height="6" rx="1"/>
+          <rect x="2" y="50" width="18" height="6" rx="1"/><rect x="32" y="50" width="18" height="6" rx="1"/><rect x="62" y="50" width="18" height="6" rx="1"/><rect x="92" y="50" width="18" height="6" rx="1"/><rect x="122" y="50" width="18" height="6" rx="1"/>
+          <rect x="2" y="82" width="18" height="6" rx="1"/><rect x="32" y="82" width="18" height="6" rx="1"/><rect x="62" y="82" width="18" height="6" rx="1"/><rect x="92" y="82" width="18" height="6" rx="1"/><rect x="122" y="82" width="18" height="6" rx="1"/>
+          <rect x="2" y="114" width="18" height="6" rx="1"/><rect x="32" y="114" width="18" height="6" rx="1"/><rect x="62" y="114" width="18" height="6" rx="1"/><rect x="92" y="114" width="18" height="6" rx="1"/><rect x="122" y="114" width="18" height="6" rx="1"/>
+          <rect x="2" y="146" width="18" height="6" rx="1"/><rect x="32" y="146" width="18" height="6" rx="1"/><rect x="62" y="146" width="18" height="6" rx="1"/><rect x="92" y="146" width="18" height="6" rx="1"/><rect x="122" y="146" width="18" height="6" rx="1"/>
+        </g>
+        <!-- Data tag -->
+        <rect x="10" y="168" width="100" height="18" rx="3" fill="var(--navy3)" stroke="var(--cyan)" stroke-width="0.5"/>
+        <text x="60" y="180" fill="var(--cyan)" font-family="'DM Mono',monospace" font-size="7" text-anchor="middle">2.5h cycle · 80% yield</text>
+      </g>
+
+      <!-- CENTER: Conveyor + moving cases -->
+      <g transform="translate(235, 150)">
+        <!-- Belt -->
+        <rect x="0" y="0" width="180" height="14" rx="2" fill="none" stroke="var(--cyan)" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <rect x="0" y="2" width="180" height="10" fill="url(#beltGrad)" opacity="0.4"/>
+        <!-- Animated cases (3 moving left-to-right) -->
+        <g class="conveyor-cases">
+          <rect x="10" y="3" width="14" height="8" rx="1" fill="var(--cyan)" opacity="0.9"/>
+          <rect x="60" y="3" width="14" height="8" rx="1" fill="var(--cyan)" opacity="0.7"/>
+          <rect x="110" y="3" width="14" height="8" rx="1" fill="var(--cyan)" opacity="0.5"/>
+        </g>
+        <!-- Label -->
+        <text x="90" y="27" fill="var(--muted)" font-family="'DM Mono',monospace" font-size="6" text-anchor="middle">225 CASES / DAY</text>
+      </g>
+
+      <!-- RIGHT: FESTO CP LAB 6 stations -->
+      <g transform="translate(290, 50)">
+        <!-- Station boxes -->
+        <!-- S1 Loading -->
+        <rect x="0" y="30" width="28" height="48" rx="3" fill="var(--navy3)" stroke="var(--cyan)" stroke-width="1.2"/>
+        <text x="14" y="44" fill="var(--cyan)" font-family="'DM Mono',monospace" font-size="6" text-anchor="middle">S1</text>
+        <text x="14" y="54" fill="var(--muted)" font-family="'DM Mono',monospace" font-size="5" text-anchor="middle">7s</text>
+        <!-- S2 Laser -->
+        <rect x="34" y="30" width="28" height="48" rx="3" fill="var(--navy3)" stroke="var(--cyan)" stroke-width="1.2"/>
+        <text x="48" y="44" fill="var(--cyan)" font-family="'DM Mono',monospace" font-size="6" text-anchor="middle">S2</text>
+        <text x="48" y="54" fill="var(--muted)" font-family="'DM Mono',monospace" font-size="5" text-anchor="middle">8s</text>
+        <!-- S3 iPick (Amber) -->
+        <rect x="68" y="25" width="28" height="58" rx="3" fill="var(--navy3)" stroke="#ffc400" stroke-width="1.5" filter="url(#glowCyan)"/>
+        <text x="82" y="39" fill="#ffc400" font-family="'DM Mono',monospace" font-size="6" text-anchor="middle">S3</text>
+        <text x="82" y="49" fill="var(--muted)" font-family="'DM Mono',monospace" font-size="5" text-anchor="middle">27s</text>
+        <circle cx="82" cy="65" r="3" fill="#ffc400" opacity="0.6"/>
+        <!-- S4 Press -->
+        <rect x="102" y="30" width="28" height="48" rx="3" fill="var(--navy3)" stroke="var(--cyan)" stroke-width="1.2"/>
+        <text x="116" y="44" fill="var(--cyan)" font-family="'DM Mono',monospace" font-size="6" text-anchor="middle">S4</text>
+        <text x="116" y="54" fill="var(--muted)" font-family="'DM Mono',monospace" font-size="5" text-anchor="middle">11s</text>
+        <!-- S5 Oven (PULSING RED BOTTLENECK) -->
+        <g class="bottleneck-pulse">
+          <rect x="136" y="20" width="32" height="68" rx="4" fill="var(--navy3)" stroke="#ff1744" stroke-width="2.5" filter="url(#glowRed)"/>
+          <rect x="140" y="24" width="24" height="14" rx="2" fill="#ff1744" opacity="0.2"/>
+          <text x="152" y="38" fill="#ff1744" font-family="'DM Mono',monospace" font-size="7" text-anchor="middle" font-weight="bold">S5</text>
+          <text x="152" y="48" fill="var(--muted)" font-family="'DM Mono',monospace" font-size="5" text-anchor="middle">35s</text>
+          <text x="152" y="58" fill="#ff1744" font-family="'DM Mono',monospace" font-size="5" text-anchor="middle">BOTTLENECK</text>
+          <!-- Heat waves -->
+          <path d="M145 68 Q152 64 159 68" stroke="#ff1744" fill="none" stroke-width="1" opacity="0.7"/>
+          <path d="M145 74 Q152 70 159 74" stroke="#ff1744" fill="none" stroke-width="1" opacity="0.4"/>
+        </g>
+        <!-- S6 Pick & Place -->
+        <rect x="174" y="30" width="28" height="48" rx="3" fill="var(--navy3)" stroke="var(--cyan)" stroke-width="1.2"/>
+        <text x="188" y="44" fill="var(--cyan)" font-family="'DM Mono',monospace" font-size="6" text-anchor="middle">S6</text>
+        <text x="188" y="54" fill="var(--muted)" font-family="'DM Mono',monospace" font-size="5" text-anchor="middle">11s</text>
+        <!-- Robot arm at end -->
+        <line x1="205" y1="60" x2="220" y2="50" stroke="var(--cyan)" stroke-width="1.5"/>
+        <line x1="220" y1="50" x2="220" y2="30" stroke="var(--cyan)" stroke-width="1.5"/>
+        <circle cx="220" cy="28" r="3" fill="var(--cyan)"/>
+      </g>
+
+      <!-- Bottom flow bar (integrated into visual) -->
+      <g transform="translate(20, 365)">
+        <rect x="0" y="0" width="480" height="20" rx="10" fill="none" stroke="rgba(0,229,255,0.3)" stroke-width="1"/>
+        <rect x="4" y="4" width="350" height="12" rx="6" fill="var(--cyan)" opacity="0.3">
+          <animate attributeName="width" values="350;380;350" dur="3s" repeatCount="indefinite"/>
+        </rect>
+        <text x="60" y="34" fill="var(--muted)" font-family="'DM Mono',monospace" font-size="7" text-anchor="middle">RAW</text>
+        <text x="180" y="34" fill="var(--muted)" font-family="'DM Mono',monospace" font-size="7" text-anchor="middle">PRINT</text>
+        <text x="300" y="34" fill="var(--muted)" font-family="'DM Mono',monospace" font-size="7" text-anchor="middle">ASSEMBLY</text>
+        <text x="420" y="34" fill="var(--muted)" font-family="'DM Mono',monospace" font-size="7" text-anchor="middle">DISPATCH</text>
+      </g>
+    </svg>
   </div>
+  <!-- Keep existing stats bar -->
+  <div class="hero-stats-bar">
+    <div class="hstat"><div class="hstat-n">50K</div><div class="hstat-l">Units / Year</div></div>
+    <div class="hstat"><div class="hstat-n">80%</div><div class="hstat-l">Print Yield</div></div>
+    <div class="hstat"><div class="hstat-n">2.5h</div><div class="hstat-l">Cycle Time</div></div>
+  </div>
+</div>
 </section>
 
 <div class="marquee-wrap">
