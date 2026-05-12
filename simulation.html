@@ -284,7 +284,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
       </div>
       <div class="stage-content">
         <div class="stage-top">
-          <div class="stage-num-badge"><span class="dot"></span>Stage 01 of 06</div>
+          <div class="stage-num-badge"><span class="dot"></span>Stage 01 of 09</div>
           <div class="stage-title">FESTO CP Lab<br><em>6 Stations.</em></div>
           <p class="stage-desc">The first element modelled was the <strong>FESTO CP Lab assembly line</strong> — all 6 stations entered with their real measured cycle times. This established the baseline throughput of the assembly line before any printers or automation were added.</p>
           <div class="stage-findings">
@@ -324,7 +324,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
       </div>
       <div class="stage-content">
         <div class="stage-top">
-          <div class="stage-num-badge"><span class="dot"></span>Stage 02 of 06</div>
+          <div class="stage-num-badge"><span class="dot"></span>Stage 02 of 09</div>
           <div class="stage-title">Robot<br><em>Added.</em></div>
           <p class="stage-desc">A <strong>pick and place robot</strong> was added to the simulation to manage material flow specifically picking finished cases from the output of the output station and placing them pn the final destination. This automated the transfer step that an operator would otherwise perform manually.</p>
           <div class="stage-findings">
@@ -361,7 +361,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   </div>
   <div class="stage-content">
     <div class="stage-top">
-      <div class="stage-num-badge"><span class="dot"></span>Stage 03 of 06</div>
+      <div class="stage-num-badge"><span class="dot"></span>Stage 03 of 09</div>
       <div class="stage-title">FESTO CP Lab<br><em>Full Layout + Bottleneck Analysis.</em></div>
       <p class="stage-desc"> <strong></strong>  A dedicated bottleneck analyzer was integrated to identify throughput constraints in real-time, with the Oven station (S5) consistently flagged as the primary bottleneck at <strong>35 seconds</strong> cycle time.</p>
       <div class="stage-findings">
@@ -396,7 +396,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   </div>
   <div class="stage-content">
     <div class="stage-top">
-      <div class="stage-num-badge"><span class="dot"></span>Stage 04 of 06</div>
+      <div class="stage-num-badge"><span class="dot"></span>Stage 04 of 09</div>
       <div class="stage-title">Bottleneck Analysis<br><em>S5 Oven Identified.</em></div>
       <p class="stage-desc"> <strong></strong>  The chart clearly identifies <strong>Station 5 (Oven)</strong> as the primary bottleneck at 35 seconds  significantly higher than all other stations.</p>
       <div class="stage-findings">
@@ -435,7 +435,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   </div>
   <div class="stage-content">
     <div class="stage-top">
-      <div class="stage-num-badge"><span class="dot"></span>Stage 05 of 06</div>
+      <div class="stage-num-badge"><span class="dot"></span>Stage 05 of 09</div>
       <div class="stage-title">AM Manufacturing Added<br><em>6 Stations + Printer.</em></div>
       <p class="stage-desc">An <strong>additive manufacturing (AM) printer</strong> was integrated into the existing 6-station FESTO CP Lab assembly line. The printer operates on a <strong>2.5 hour cycle time</strong>, which significantly impacts overall throughput and reduces the number of printed cases.</p>
       <div class="stage-findings">
@@ -473,7 +473,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   </div>
   <div class="stage-content">
     <div class="stage-top">
-      <div class="stage-num-badge"><span class="dot"></span>Stage 06 of 06</div>
+      <div class="stage-num-badge"><span class="dot"></span>Stage 06 of 09</div>
       <div class="stage-title">Bottleneck Confirmed<br><em>AM Printer → New Printers Added.</em></div>
       <p class="stage-desc">The <strong>bottleneck analyzer chart</strong> clearly confirms the AM printer as the primary bottleneck in the system. With a <strong>2.5 hour cycle time</strong>, the printer limits total output to just <strong>575 cases</strong>. To resolve this, additional printers are being added to parallelize production.</p>
       <div class="stage-findings">
@@ -509,9 +509,9 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   </div>
   <div class="stage-content">
     <div class="stage-top">
-      <div class="stage-num-badge"><span class="dot"></span>Stage 07 of 07</div>
+      <div class="stage-num-badge"><span class="dot"></span>Stage 07 of 09</div>
       <div class="stage-title">25 Printers Deployed<br><em>5 Rows × 5 Printers + Sorting + Broker.</em></div>
-      <p class="stage-desc">A full <strong>additive manufacturing cell</strong> was deployed with <strong>25 Bambu P1S printers</strong> arranged in <strong>5 rows of 5 printers each</strong>. Each row includes a dedicated <strong>sorter</strong> where workers collect finished cases. A <strong>broker system</strong> manages job allocation, and a <strong>workstation</strong> handles prep tasks.</p>
+      <p class="stage-desc">A full <strong>additive manufacturing cell</strong> was deployed with <strong>25 Bambu P1S printers</strong> arranged in <strong>5 rows of 5 printers each</strong>. Each row includes a dedicated <strong>sorter</strong> where workers collect finished cases. A <strong>broker system</strong> manages job allocation, and a <strong>workstation</strong> handles prep tasks.<strong>A workplace was al.so added in station 3 for the manual task of festo CP Lab.</strong></p>
       <div class="stage-findings">
         <div class="sf-row"><strong> Printer Setup:</strong> 25 Bambu P1S (5 rows × 5 printers) — each printer prints <strong>top + bottom simultaneously = 1 full case</strong> (2 parts/print)</div>
         <div class="sf-row"><strong> Prep Time:</strong> 30 minutes per shift for workers to prepare printers (cleaning, filament loading, calibration)</div>
@@ -534,120 +534,92 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
     </div>
   </div>
 </div>
+    <div class="stage reveal">
+  <div class="stage-screenshot">
+    <!-- ADD your Stage 8 screenshot here (shift structure + pick and place robot) -->
+    <img 
+      src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/pic1.png?raw=true" 
+      alt="Stage 8 — 3 Shift Structure with 6 Total Operators + Pick and Place Robot at CP Lab Output"
+      style="width: auto; height: auto; max-width: 100%; max-height: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+    >
+    <div class="ss-placeholder">
+    
+    </div>
+    <div class="stage-watermark">08</div>
+  </div>
+  <div class="stage-content">
+    <div class="stage-top">
+      <div class="stage-num-badge"><span class="dot"></span>Stage 08 of 09</div>
+      <div class="stage-title">Shift Structure Deployed<br><em>6 Operators Total + Pick & Place Robot.</em></div>
+      <p class="stage-desc">A <strong>3-shift structure</strong> was implemented to maximize printer utilization across 24 hours. A total of <strong>6 operators</strong> manage the 25 printers. Additionally, a <strong>pick and place robot</strong> was added at the end of the FESTO CP Lab output station to automate case handling.</p>
+      <div class="stage-findings">
+        <div class="sf-row"><strong>Morning Shift:</strong> 06:00 to 14:00 · Monday to Sunday · 2 operators</div>
+        <div class="sf-row"><strong>Afternoon Shift:</strong> 14:00 to 22:00 · Monday to Friday · 2 operators</div>
+        <div class="sf-row"><strong>Night Shift:</strong> 22:00 to 06:00 · Monday to Friday only · 2 operators</div>
+        <div class="sf-row"><strong>Total Operators:</strong> 6 (2 per shift)</div>
+        <div class="sf-row"><strong>Workload per Operator:</strong> Each operator manages 12 to 13 printers — collecting prints every 2.5 hours, cleaning beds, changing filament, starting new jobs, and performing visual quality control</div>
+        <div class="sf-row"><strong>Monitoring System:</strong> IoT alarms and Bambu Cloud handle real-time monitoring; engineers are alerted automatically if any failure occurs during overnight shifts</div>
+        <div class="sf-row"><strong>Pick & Place Robot Added:</strong> Installed at the end of FESTO CP Lab output station — automates case offloading, reduces manual handling, and prepares finished cases for dispatch</div>
+      </div>
+    </div>
+    <div class="stage-bottom">
+      <div class="stage-tag-row">
+        <span class="stage-tag cyan">3 Shifts · 6 Operators</span>
+        <span class="stage-tag cyan">Morning 06:00–14:00</span>
+        <span class="stage-tag cyan">Afternoon 14:00–22:00</span>
+        <span class="stage-tag cyan">Night 22:00–06:00</span>
+        <span class="stage-tag amber">Pick & Place Robot Added</span>
+        <span class="stage-tag">IoT + Bambu Cloud Monitoring</span>
+      </div>
+    </div>
+  </div>
+</div>
+                               <div class="stage reveal">
+  <div class="stage-screenshot">
+    <!-- ADD your Stage 9 screenshot here (final simulation results showing 1375 cases/week) -->
+    <img 
+      src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/pic3.png?raw=true 
+      alt="Stage 8 — 3 Shift Structure with 6 Total Operators + Pick and Place Robot at CP Lab Output"
+      style="width: auto; height: auto; max-width: 100%; max-height: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+    >
+    <div class="ss-placeholder">
+    
+    
+     
+    </div>
+    <div class="stage-watermark">09</div>
+  </div>
+  <div class="stage-content">
+    <div class="stage-top">
+      <div class="stage-num-badge"><span class="dot"></span>Stage 09 of 09</div>
+      <div class="stage-title">Final Simulation Results<br><em>1375 Cases Per Week Achieved.</em></div>
+      <p class="stage-desc">The simulation time parameters were corrected from 1 to 7 to accurately represent a full week of production. This accounts for <strong>5 twenty-four hour shifts (Monday to Friday)</strong> and <strong>2 eight hour shifts (Saturday to Sunday)</strong> per week. The system successfully produced <strong>1375 cases per week</strong>.</p>
+      <div class="stage-findings">
+        <div class="sf-row"><strong>Time Parameter Correction:</strong> Changed from 1 to 7 to reflect full week simulation</div>
+        <div class="sf-row"><strong>Weekday Production:</strong> 5 shifts × 24 hours per day (Monday to Friday)</div>
+        <div class="sf-row"><strong>Weekend Production:</strong> 2 shifts × 8 hours per day (Saturday to Sunday)</div>
+        <div class="sf-row"><strong>Total Weekly Hours:</strong> 136 production hours (120 weekday + 16 weekend)</div>
+        <div class="sf-row"><strong>Final Output Achieved:</strong> <span class="highlight">1375 full cases printed per week</span></div>
+        <div class="sf-row"><strong>Daily Average:</strong> Approximately 196 cases per day across the full week</div>
+        <div class="sf-row"><strong>System Efficiency:</strong> 25 printers × 2.5h cycle time × 80% yield × shift structure = validated against real output</div>
+        <div class="sf-row"><strong>Validation:</strong> Simulation results match MSD page calculations with corrected timing parameters ✓</div>
+      </div>
+    </div>
+    <div class="stage-bottom">
+      <div class="stage-tag-row">
+        <span class="stage-tag cyan">Time Parameter: 1 → 7</span>
+        <span class="stage-tag cyan">5 × 24h Weekdays</span>
+        <span class="stage-tag cyan">2 × 8h Weekends</span>
+        <span class="stage-tag amber">📦 1375 Cases/Week</span>
+        <span class="stage-tag">✓ Simulation Validated</span>
+      </div>
+    </div>
+  </div>
+</div>
     <!-- ============================================================ -->
     <!-- STAGE 4 — DELETE THIS ENTIRE <div class="stage"> BLOCK IF NOT NEEDED -->
     <!-- ============================================================ -->
-    <div class="stage reveal">
-      <div class="stage-screenshot">
-        <!-- ADD your Stage 4 screenshot here -->
-        <!-- <img src="YOUR_STAGE_4_SCREENSHOT.png" alt="Stage 4"> -->
-        <div class="ss-placeholder">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          <span class="ss-placeholder-label">Stage 4 Screenshot</span>
-          <span class="ss-placeholder-hint">Replace src above to add image</span>
-        </div>
-        <div class="stage-watermark">04</div>
-      </div>
-      <div class="stage-content">
-        <div class="stage-top">
-          <div class="stage-num-badge"><span class="dot"></span>Stage 04 of 06</div>
-          <div class="stage-title">Schedule<br><em>Refinement.</em></div>
-          <p class="stage-desc">With the full system running, the <strong>operating schedule was tested and refined</strong>. Different shift patterns were modelled to find the configuration that hits 50,000 units/year without over-specifying the fleet size or running costs.</p>
-          <div class="stage-findings">
-            <div class="sf-row">Weekdays 24/7 alone: <strong>~42,500 pairs/year</strong> — short of target</div>
-            <div class="sf-row">Adding weekend 8h shifts: <strong>~48,250 pairs/year</strong> — within buffer</div>
-            <div class="sf-row">Minor overtime provision closes gap to <strong>50,000 target ✓</strong></div>
-            <div class="sf-row">Single shift scenario would need <strong>75 printers</strong> — 3× the capital cost</div>
-            <div class="sf-row">24/7 with 25 printers confirmed as <strong>optimal configuration</strong></div>
-          </div>
-        </div>
-        <div class="stage-bottom">
-          <div class="stage-tag-row">
-            <span class="stage-tag cyan">Schedule Testing</span>
-            <span class="stage-tag green">50K Confirmed</span>
-            <span class="stage-tag">Weekdays 24/7</span>
-            <span class="stage-tag">Weekends 8h</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- STAGE 5 — DELETE THIS ENTIRE <div class="stage"> BLOCK IF NOT NEEDED -->
-    <!-- ============================================================ -->
-    <div class="stage reveal">
-      <div class="stage-screenshot">
-        <!-- ADD your Stage 5 screenshot here -->
-        <!-- <img src="YOUR_STAGE_5_SCREENSHOT.png" alt="Stage 5 — Bottleneck analysis"> -->
-        <div class="ss-placeholder">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          <span class="ss-placeholder-label">Stage 5 Screenshot</span>
-          <span class="ss-placeholder-hint">Replace src above to add image</span>
-        </div>
-        <div class="stage-watermark">05</div>
-      </div>
-      <div class="stage-content">
-        <div class="stage-top">
-          <div class="stage-num-badge"><span class="dot"></span>Stage 05 of 06</div>
-          <div class="stage-title">Bottleneck<br><em>Analysis.</em></div>
-          <p class="stage-desc">With the full simulation running, <strong>bottleneck analysis</strong> identified where parts were queueing and where capacity was being lost. Station 5 (Oven, 35s) was confirmed as the FESTO line constraint — though it remains within the overall takt time.</p>
-          <div class="stage-findings">
-            <div class="sf-row">Station 5 (Oven) at 35s confirmed as <strong>FESTO bottleneck</strong></div>
-            <div class="sf-row">Queue builds at Station 5 input — parts waiting from S4</div>
-            <div class="sf-row">Total FESTO cycle 99s still within <strong>150s takt — no action needed now</strong></div>
-            <div class="sf-row">Recommendation: second oven module if demand exceeds 50K/year</div>
-            <div class="sf-row">Printer fleet not a constraint — output rate matches FESTO input capacity</div>
-          </div>
-        </div>
-        <div class="stage-bottom">
-          <div class="stage-tag-row">
-            <span class="stage-tag amber">Bottleneck: Station 5</span>
-            <span class="stage-tag cyan">35s Oven Cycle</span>
-            <span class="stage-tag green">Within 150s Takt ✓</span>
-            <span class="stage-tag">Future: 2nd Oven</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- STAGE 6 — DELETE THIS ENTIRE <div class="stage"> BLOCK IF NOT NEEDED -->
-    <!-- ============================================================ -->
-    <div class="stage reveal">
-      <div class="stage-screenshot">
-        <!-- ADD your Stage 6 screenshot here — e.g. full completed simulation view -->
-        <!-- <img src="YOUR_STAGE_6_SCREENSHOT.png" alt="Stage 6 — Full simulation"> -->
-        <div class="ss-placeholder">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          <span class="ss-placeholder-label">Stage 6 Screenshot</span>
-          <span class="ss-placeholder-hint">Replace src above to add image</span>
-        </div>
-        <div class="stage-watermark">06</div>
-      </div>
-      <div class="stage-content">
-        <div class="stage-top">
-          <div class="stage-num-badge"><span class="dot"></span>Stage 06 of 06</div>
-          <div class="stage-title">Full System<br><em>Complete.</em></div>
-          <p class="stage-desc">The <strong>complete simulation</strong> — printers, robot, FESTO line, schedule, and failure rates — running end-to-end. This is the digital twin of the Paniz Manufacturing production system, validated against the 50,000 units/year contract commitment.</p>
-          <div class="stage-findings">
-            <div class="sf-row">Full system: <strong>25 printers → robot → 6-station FESTO → dispatch</strong></div>
-            <div class="sf-row">Annual output confirmed at <strong>~48,250–50,000 pairs</strong> within schedule</div>
-            <div class="sf-row">80% print yield and 15% downtime both <strong>absorbed within capacity</strong></div>
-            <div class="sf-row">No additional printers needed — <strong>25 is the optimal fleet size</strong></div>
-            <div class="sf-row">Simulation outputs validated against takt time and MSD layout</div>
-            <div class="sf-row">Production system <strong>approved for Phones-R-Us 50K contract ✓</strong></div>
-          </div>
-        </div>
-        <div class="stage-bottom">
-          <div class="stage-tag-row">
-            <span class="stage-tag green">50K Validated ✓</span>
-            <span class="stage-tag cyan">Full Digital Twin</span>
-            <span class="stage-tag green">Production Approved</span>
-            <span class="stage-tag">Phones-R-Us Ready</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <
 
   </div>
 </div>
