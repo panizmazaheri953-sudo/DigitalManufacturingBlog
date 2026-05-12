@@ -363,6 +363,128 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
     </div>
   </div>
 </div>
+  <!-- SECTION 1.5: PROCESS FLOW DIAGRAM -->
+<div class="sec-wrap reveal">
+  <div class="sec-head">
+    <div class="sec-label"><div class="sec-tag">01.5 — Process Flow</div><div class="sec-big-num">PFD</div></div>
+    <div class="sec-title-block"><h2>Process Flow<br><em>Diagram.</em></h2><div style="font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">End‑to‑end material flow</div></div>
+  </div>
+  <div class="sec-body">
+    <div style="font-size:.82rem;color:var(--muted);font-weight:300;margin-bottom:1.5rem;line-height:1.7">
+      The complete ENCLOS3D production flow — from raw PLA filament to finished phone casing dispatch. 
+      <strong>Manual operations</strong> are highlighted in <span style="color:var(--amber)">amber</span>, the <strong>bottleneck station</strong> in <span style="color:var(--red)">red</span>, 
+      and <strong>automated stations</strong> in <span style="color:var(--cyan)">cyan</span>. 
+      The 20% reject loop is shown as a rework path back to the start of printing.
+    </div>
+
+    <!-- Process Flow Diagram as CSS Grid -->
+    <div style="background:var(--navy2); border:1px solid var(--border); padding:2rem; overflow-x:auto">
+      <div style="min-width: 800px;">
+        
+        <!-- Row 1: Material Flow -->
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem">
+          <div style="background:var(--navy3); border:1px solid var(--border); padding:.75rem 1rem; text-align:center; width:120px">
+            <div style="font-family:var(--fm); font-size:.5rem; color:var(--muted)">STEP 1</div>
+            <div style="font-family:var(--fd); font-size:1.1rem; color:var(--cyan)">Filament Store</div>
+            <div style="font-size:.6rem; color:var(--muted)">PLA @ £20/kg</div>
+          </div>
+          <div style="color:var(--muted)">→</div>
+          <div style="background:var(--navy3); border:1px solid var(--border); padding:.75rem 1rem; text-align:center; width:120px">
+            <div style="font-family:var(--fm); font-size:.5rem; color:var(--muted)">STEP 2</div>
+            <div style="font-family:var(--fd); font-size:1.1rem; color:var(--cyan)">25× Bambu P1S</div>
+            <div style="font-size:.6rem; color:var(--muted)">2.5h print cycle</div>
+          </div>
+          <div style="color:var(--muted)">→</div>
+          <div style="background:var(--navy3); border:1px solid var(--border); padding:.75rem 1rem; text-align:center; width:120px">
+            <div style="font-family:var(--fm); font-size:.5rem; color:var(--muted)">STEP 3</div>
+            <div style="font-family:var(--fd); font-size:1.1rem; color:var(--amber)">Visual QC</div>
+            <div style="font-size:.6rem; color:var(--muted)">Operator inspection</div>
+          </div>
+        </div>
+
+        <!-- Decision diamond for QC -->
+        <div style="display:flex; align-items:center; justify-content:center; margin:1rem 0">
+          <div style="background:var(--navy3); border:1px solid var(--border); padding:.75rem 1rem; text-align:center; width:140px; transform:rotate(0deg)">
+            <div style="font-family:var(--fm); font-size:.5rem; color:var(--muted)">DECISION</div>
+            <div style="font-family:var(--fd); font-size:.9rem; color:var(--cyan)">Pass QC?</div>
+          </div>
+        </div>
+
+        <!-- Two branches: Pass (80%) and Fail (20%) -->
+        <div style="display:flex; align-items:flex-start; justify-content:center; gap:2rem; margin-bottom:1rem">
+          <!-- Pass branch -->
+          <div style="flex:1; text-align:center">
+            <div style="color:var(--green); font-family:var(--fm); font-size:.55rem; margin-bottom:.5rem">✓ PASS (80%)</div>
+            <div style="background:rgba(0,255,136,0.05); border:1px solid rgba(0,255,136,0.3); padding:.75rem; border-radius:4px">
+              <div style="font-family:var(--fd); font-size:1rem; color:var(--green)">Continue to FESTO</div>
+            </div>
+          </div>
+          <!-- Fail branch -->
+          <div style="flex:1; text-align:center">
+            <div style="color:var(--red); font-family:var(--fm); font-size:.55rem; margin-bottom:.5rem">✗ FAIL (20%)</div>
+            <div style="background:rgba(255,68,68,0.05); border:1px solid rgba(255,68,68,0.3); padding:.75rem; border-radius:4px">
+              <div style="font-family:var(--fd); font-size:1rem; color:var(--red)">Rework / Reject</div>
+              <div style="font-size:.6rem; color:var(--muted)">Sent back to printing</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: FESTO Line -->
+        <div style="margin-top:1rem; border-top:1px solid var(--border); padding-top:1rem">
+          <div style="text-align:center; margin-bottom:1rem">
+            <span style="font-family:var(--fm); font-size:.5rem; letter-spacing:.1em; color:var(--cyan)">FESTO CP LAB — 6 STATION ASSEMBLY LINE</span>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.5rem">
+            <div style="background:var(--navy3); border:1px solid var(--border); padding:.5rem .75rem; text-align:center; flex:1">
+              <div style="font-family:var(--fd); font-size:1rem; color:var(--cyan)">S1</div>
+              <div style="font-size:.6rem; color:var(--muted)">Front Magazine</div>
+              <div style="font-size:.55rem; color:var(--cyan)">7s</div>
+            </div>
+            <div style="color:var(--muted)">→</div>
+            <div style="background:var(--navy3); border:1px solid var(--border); padding:.5rem .75rem; text-align:center; flex:1">
+              <div style="font-family:var(--fd); font-size:1rem; color:var(--cyan)">S2</div>
+              <div style="font-size:.6rem; color:var(--muted)">Laser</div>
+              <div style="font-size:.55rem; color:var(--cyan)">8s</div>
+            </div>
+            <div style="color:var(--muted)">→</div>
+            <div style="background:var(--navy3); border:1px solid var(--border); padding:.5rem .75rem; text-align:center; flex:1">
+              <div style="font-family:var(--fd); font-size:1rem; color:var(--amber)">S3</div>
+              <div style="font-size:.6rem; color:var(--muted)">iPick (Manual)</div>
+              <div style="font-size:.55rem; color:var(--amber)">27s</div>
+            </div>
+            <div style="color:var(--muted)">→</div>
+            <div style="background:var(--navy3); border:1px solid var(--border); padding:.5rem .75rem; text-align:center; flex:1">
+              <div style="font-family:var(--fd); font-size:1rem; color:var(--cyan)">S4</div>
+              <div style="font-size:.6rem; color:var(--muted)">Press</div>
+              <div style="font-size:.55rem; color:var(--cyan)">11s</div>
+            </div>
+            <div style="color:var(--muted)">→</div>
+            <div style="background:var(--navy3); border:1px solid var(--border); padding:.5rem .75rem; text-align:center; flex:1; border-color:var(--red)">
+              <div style="font-family:var(--fd); font-size:1rem; color:var(--red)">S5 ⚠</div>
+              <div style="font-size:.6rem; color:var(--muted)">Oven</div>
+              <div style="font-size:.55rem; color:var(--red)">35s</div>
+            </div>
+            <div style="color:var(--muted)">→</div>
+            <div style="background:var(--navy3); border:1px solid var(--border); padding:.5rem .75rem; text-align:center; flex:1">
+              <div style="font-family:var(--fd); font-size:1rem; color:var(--cyan)">S6</div>
+              <div style="font-size:.6rem; color:var(--muted)">Output</div>
+              <div style="font-size:.55rem; color:var(--cyan)">11s</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Final output -->
+        <div style="margin-top:1.5rem; text-align:center">
+          <div style="display:inline-block; background:rgba(0,255,136,0.05); border:1px solid rgba(0,255,136,0.3); padding:.75rem 1.5rem; border-radius:4px">
+            <div style="font-family:var(--fd); font-size:1.2rem; color:var(--green)">✓ Finished Casing Pair</div>
+            <div style="font-size:.6rem; color:var(--muted)">Dispatch to customer</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
 <!-- SECTION 1.6: PRINTER CAPACITY & OPERATING SCENARIOS -->
 <div class="sec-wrap reveal">
   <div class="sec-head">
