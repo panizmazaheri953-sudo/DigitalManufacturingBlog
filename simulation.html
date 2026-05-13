@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simulation — Paniz Manufacturing</title>
+<title>Simulation — ENCLOS3D Manufacturing</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -286,7 +286,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
         <div class="stage-top">
           <div class="stage-num-badge"><span class="dot"></span>Stage 01 of 09</div>
           <div class="stage-title">FESTO CP Lab<br><em>6 Stations.</em></div>
-          <p class="stage-desc">The first element modelled was the <strong>FESTO CP Lab assembly line</strong> — all 6 stations entered with their real measured cycle times. This established the baseline throughput of the assembly line before any printers or automation were added.</p>
+          <p class="stage-desc">The first element modelled was the <strong>FESTO CP Lab assembly line</strong>, all 6 stations entered with their real measured cycle times. This established the baseline throughput of the assembly line before any printers or automation were added.</p>
           <div class="stage-findings">
             <div class="sf-row">Station 1 (Part ID) modelled at <strong>7 seconds</strong> cycle time</div>
             <div class="sf-row">Station 2 (Laser) at <strong>8 seconds</strong> — critical spec check point</div>
@@ -578,7 +578,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   <div class="stage-screenshot">
     <!-- ADD your Stage 9 screenshot here (final simulation results showing 1375 cases/week) -->
     <img 
-      src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/pic3.png?raw=true 
+      src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/pic3.png?raw=true"
       alt="Stage 8 — 3 Shift Structure with 6 Total Operators + Pick and Place Robot at CP Lab Output"
       style="width: auto; height: auto; max-width: 100%; max-height: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
     >
@@ -610,8 +610,50 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
         <span class="stage-tag cyan">Time Parameter: 1 → 7</span>
         <span class="stage-tag cyan">5 × 24h Weekdays</span>
         <span class="stage-tag cyan">2 × 8h Weekends</span>
-        <span class="stage-tag amber">📦 1375 Cases/Week</span>
+        <span class="stage-tag amber"> 1375 Cases/Week</span>
         <span class="stage-tag">✓ Simulation Validated</span>
+      </div>
+    </div>
+  </div>
+</div>
+                                   <div class="stage reveal">
+  <div class="stage-screenshot">
+    <!-- ADD your Stage 9 screenshot here (final simulation results showing 1375 cases/week) -->
+    <img 
+     
+           src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/blob/main/50kmet.png?raw=true"
+      alt="Stage 8 — 3 Shift Structure with 6 Total Operators + Pick and Place Robot at CP Lab Output"
+      style="width: auto; height: auto; max-width: 100%; max-height: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+    >
+    <div class="ss-placeholder">
+    
+    
+     
+    </div>
+    <div class="stage-watermark">09</div>
+  </div>
+  <div class="stage-content">
+    <div class="stage-top">
+      
+      <div class="stage-title">Final Simulation Results<br><em>52,682 Cases in 264 Days.</em></div>
+      <p class="stage-desc">The full simulation was run over <strong>264 operating days</strong> — representing the actual production days within a year after accounting for planned maintenance, holidays, and system downtime. The system successfully produced <strong>52,682 cases</strong>, exceeding the 50,000 target with a built-in buffer.</p>
+      <div class="stage-findings">
+        <div class="sf-row"><strong>Simulation Duration:</strong> 264 operating days (not 365 — accounts for maintenance & downtime)</div>
+        <div class="sf-row"><strong>Total Output Achieved:</strong> <span class="highlight">52,682 full cases</span> (exceeds 50,000 target by 5.4%)</div>
+        <div class="sf-row"><strong>Daily Average Production:</strong> 52,682 ÷ 264 = <strong>~200 cases per operating day</strong></div>
+        <div class="sf-row"><strong>20% Failure Rate Buffer:</strong> Production includes 80% yield — 62,500 print attempts → 50,000 good cases minimum</div>
+        <div class="sf-row"><strong>Unplanned Maintenance Buffer:</strong> 264 days vs 365 leaves <strong>101 days of buffer</strong> for breakdowns, recalibration, and unexpected downtime</div>
+        <div class="sf-row"><strong>Design Requirement Met:</strong> 50,000 cases/year target achieved <strong>with time to spare</strong> — 52,682 cases in 264 days proves system robustness</div>
+        <div class="sf-row"><strong>Validation:</strong> Simulation confirms 25 printers on 24/7 weekdays + 8h weekends schedule <strong>exceeds the Phones-R-Us contract requirement</strong> ✓</div>
+      </div>
+    </div>
+    <div class="stage-bottom">
+      <div class="stage-tag-row">
+        <span class="stage-tag cyan">264 Operating Days</span>
+        <span class="stage-tag cyan">📊 52,682 Cases Produced</span>
+        <span class="stage-tag green">✓ 50,000 Target Exceeded</span>
+        <span class="stage-tag amber">101 Days Buffer for Downtime</span>
+        <span class="stage-tag">20% Failure Rate Absorbed</span>
       </div>
     </div>
   </div>
@@ -631,30 +673,17 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
     <div class="sec-title-block"><h2>Full System<br><em>In Motion.</em></h2></div>
   </div>
   <div class="sec-body">
-    <p style="font-size:.85rem;color:var(--muted);font-weight:300;line-height:1.75;margin-bottom:1.5rem;max-width:650px">The complete Tecnomatix simulation running — all 25 printers, the robotic handler, and the full FESTO 6-station line operating in real-time. Parts flow from print bed to dispatch, with queues, failures, and schedule patterns all modelled accurately.</p>
+    <p style="font-size:.85rem;color:var(--muted);font-weight:300;line-height:1.75;margin-bottom:1.5rem;max-width:650px">The complete Tecnomatix simulation running, all 25 printers, the robotic handler, and the full FESTO 6-station line operating in real-time. Parts flow from print bed to dispatch, with queues, failures, and schedule patterns all modelled accurately.</p>
 
-    <div class="video-wrap">
-      <!-- ADD YOUR SIMULATION VIDEO HERE -->
-      <!-- Option A — local file: -->
-      <!-- <video controls poster="YOUR_POSTER.jpg">
-        <source src="YOUR_SIMULATION_VIDEO.mp4" type="video/mp4">
-      </video> -->
-
-      <!-- Option B — YouTube: -->
-      <!-- <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe> -->
-
-      <!-- Placeholder until video is added: -->
-      <div class="video-placeholder">
-        <div class="vp-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-        <div class="vp-label">Full Simulation Video — Tecnomatix Plant Simulation</div>
-        <div class="vp-hint">Add video src when ready</div>
-      </div>
-    </div>
-    <div class="video-caption">
-      <span class="vc-text">Complete end-to-end simulation — 25 Bambu P1S printers, robot handler, FESTO CP Lab 6 stations. 50,000 units/year validated.</span>
-      <span class="vc-pill">Tecnomatix Plant Simulation — DES</span>
-    </div>
-  </div>
+    <div class="video-wrap" style="aspect-ratio: auto; background: #000;">
+  <video controls style="width: 100%; height: auto; display: block;">
+    <source src="https://github.com/panizmazaheri953-sudo/DigitalManufacturingBlog/raw/refs/heads/main/Video%20Project%208.mp4"type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+<div class="video-caption">
+  <span class="vc-text">Complete end-to-end simulation: 25 Bambu P1S printers, robot handler, FESTO CP Lab 6 stations. 50,000 units/year validated.</span>
+  <span class="vc-pill">Tecnomatix Plant Simulation — DES</span>
 </div>
 
 <!-- SECTION 4: WHAT IT PROVED -->
@@ -666,44 +695,74 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   <div class="sec-body">
     <div class="proved-grid">
       <div class="proved-card">
-        <div class="proved-val green">50K</div>
-        <div class="proved-label">Units/year — confirmed</div>
-        <div class="proved-desc">The 25-printer fleet on the weekday 24/7 + weekend 8h schedule delivers approximately <strong>48,250–50,000 pairs/year</strong> — meeting the Phones-R-Us contract commitment with a small overtime buffer.</div>
+        <div class="proved-val green">73K</div>
+        <div class="proved-label">Annual capacity achieved</div>
+        <div class="proved-desc">The 25 printer fleet running 24/7 weekdays plus 8 hour weekends produced <strong>73,000 cases in 365 days</strong>. The 50,000 target was reached in just <strong>253 days</strong>, leaving 112 days of buffer for unplanned downtime, maintenance, and the 20 percent failure rate .</div>
       </div>
       <div class="proved-card">
         <div class="proved-val">25</div>
         <div class="proved-label">Optimal printer fleet size</div>
-        <div class="proved-desc">Simulation confirmed <strong>25 is the right number</strong>. Fewer printers miss the target. More printers add capital cost without proportional output gain. 25 × £470 = £11,750 — justified by simulation.</div>
-      </div>
-      <div class="proved-card">
-        <div class="proved-val amber">S5</div>
-        <div class="proved-label">Bottleneck — FESTO Oven (35s)</div>
-        <div class="proved-desc">Station 5 (Oven) at 35s is the FESTO line constraint. <strong>Currently within the 150s takt</strong> — no action needed. If demand exceeds 50K/year, a second oven module is the recommended investment.</div>
-      </div>
-      <div class="proved-card">
-        <div class="proved-val">99s</div>
-        <div class="proved-label">FESTO total cycle — within takt</div>
-        <div class="proved-desc">The complete FESTO 6-station cycle of 99 seconds comfortably fits within the <strong>150-second takt time</strong>, meaning the assembly line is not the production constraint — the printer fleet is the pacing element.</div>
+        <div class="proved-desc">Simulation confirmed <strong>25 is the right number</strong>. Fewer printers miss the target. More printers add capital cost without proportional output gain. This finding aligns with established discrete event simulation methodology.</div>
       </div>
       <div class="proved-card">
         <div class="proved-val green">✓</div>
-        <div class="proved-label">80% yield absorbed in capacity</div>
-        <div class="proved-desc">The 20% print failure rate was built into the simulation from day one. The system still hits 50K because <strong>62,500 print attempts/year produce 50,000 good pairs</strong> — the failure rate is planned for, not an exception.</div>
+        <div class="proved-label">80 percent yield absorbed</div>
+        <div class="proved-desc">The 20 percent print failure rate was built into the simulation. The system still hits 50,000 because <strong>62,500 print attempts per year produce 50,000 good pairs</strong>. The failure rate is planned for, not an exception .</div>
       </div>
       <div class="proved-card">
         <div class="proved-val">3×</div>
-        <div class="proved-label">Capital saved vs single shift</div>
-        <div class="proved-desc">A single-shift scenario would require <strong>75 printers</strong> to hit 50K/year — three times the fleet and capital cost. Running 25 printers 24/7 is the financially optimal configuration, confirmed by simulation.</div>
+        <div class="proved-label">Capital saved versus single shift</div>
+        <div class="proved-desc">A single shift scenario would require <strong>75 printers</strong> to hit 50,000 per year, three times the fleet and capital cost. Running 25 printers 24/7 is the financially optimal configuration, confirmed by simulation.</div>
+      </div>
+      <div class="proved-card">
+        <div class="proved-val">2</div>
+        <div class="proved-label">Optimal workers per shift</div>
+        <div class="proved-desc">After running the experiment manager, <strong>2 workers per shift was confirmed as optimal</strong>. Adding more workers (3 or 4 per shift) produced no measurable increase in output. The printers themselves are the real bottleneck, not the operators .</div>
+      </div>
+      <div class="proved-card">
+        <div class="proved-val amber">S5</div>
+        <div class="proved-label">CP Lab bottleneck is the oven</div>
+        <div class="proved-desc">The oven at Station 5 runs at <strong>100 percent utilisation</strong>, making it the CP Lab bottleneck. Pick by Light runs at approximately 70 percent. The printers remain the overall system bottleneck, not Station 5.</div>
+      </div>
+      <div class="proved-card">
+        <div class="proved-val green">✓</div>
+        <div class="proved-label">3 shift pattern validated</div>
+        <div class="proved-desc">The <strong>morning, afternoon, and night shift pattern</strong> worked perfectly in simulation. Handover between shifts was seamless with no production gaps or queue buildup. This validates the shift structure for 24/7 operation.</div>
+      </div>
+      <div class="proved-card">
+        <div class="proved-val green">✓</div>
+        <div class="proved-label">Target met with safety buffer</div>
+        <div class="proved-desc">Fifty thousand cases achieved in <strong>253 days</strong>, not 365. The extra 112 days provide real operational margin for unplanned maintenance, recalibration, and the 20 percent failure rate. The design exceeds the requirement with significant safety buffer .</div>
+      </div>
+    </div>
+
+    <!-- Reference Section for Tecnomatix Plant Simulation Only (Harvard Format) -->
+    <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+      <div style="font-family: var(--fm); font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.75rem;">References</div>
+      <div style="font-size: 0.7rem; color: var(--muted); line-height: 1.6;">
+        
+        <div style="margin-bottom: 0.4rem;"><strong>Bangsow, S. (2020)</strong> <em>Tecnomatix Plant Simulation: Modeling and Programming by Means of Examples</em>, 2nd ed. Cham: Springer. </div>
+        
+        <div style="margin-bottom: 0.4rem;"><strong>Bendowska, K. and Zawadzki, P. (2023)</strong> 'Development and Verification of a Simulation Model of an Automated Assembly Line', <em>Applied Sciences</em>, 13(18), p. 10142.</div>
+        
+        <div style="margin-bottom: 0.4rem;"><strong>Kliment, M., Kronová, J., Pekarčíková, M., Trebuňa, P. and Baluch, M. (2025)</strong> 'The Implementation of Simulation in Designing Production Expansion', <em>Processes</em>, 13(2), p. 299.</div>
+        
+        <div style="margin-bottom: 0.4rem;"><strong>Pekarčíková, M., Trebuňa, P., Dic, M. and Král, Š. (2021)</strong> 'Modelling and Simulation in the Tecnomatix Plant Simulation Environment', <em>Acta Simulatio</em>, 7(1), pp. 1-5. </div>
+        
+        <div style="margin-bottom: 0.4rem;"><strong>Trebuňa, P., Pekarčíková, M. and Edl, M. (2019)</strong> 'Digital Value Stream Mapping Using the Tecnomatix Plant Simulation Software', <em>International Journal of Simulation Modelling</em>, 18(1), pp. 19-32.</div>
+        
+        <div style="margin-bottom: 0.4rem;"><strong>Vuzem, F.J., Pipan, M., Zupan, H., Šimic, M. and Herakovič, N. (2025)</strong> 'Automated Generation of Simulation Models and a Digital Twin Framework for Modular Production', <em>Journal of Manufacturing and Materials Processing</em>, 13(9), p. 800. </div>
+        
+        <div style="margin-top: 0.6rem; padding-top: 0.4rem; border-top: 1px solid var(--border);"><span style="color: var(--cyan);">Note:</span> Tecnomatix Plant Simulation is a discrete event simulation software by Siemens used for modelling, optimisation, and validation of manufacturing systems (Bangsow, 2020). All simulation results presented above were generated using this platform.</div>
       </div>
     </div>
 
     <!-- Digital Twin Link -->
-    <div class="dt-strip">
+    <div class="dt-strip" style="margin-top: 1.5rem;">
       <div class="dt-icon"><svg viewBox="0 0 22 22"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="12" y="2" width="8" height="8" rx="1"/><rect x="2" y="12" width="8" height="8" rx="1"/><rect x="12" y="12" width="8" height="8" rx="1"/><path d="M6 10v2M16 10v2M10 6h2M10 16h2"/></svg></div>
       <div class="dt-text">
         <div class="dt-label">Connected System</div>
-        <div class="dt-title">This simulation feeds directly into the IoT & Digital Twin architecture</div>
-        <div class="dt-desc">The Tecnomatix model is not a one-off planning exercise — it forms the baseline digital twin of the production system. Live data from Siemens Insights Hub and Bambu Cloud can be fed back into the simulation to update it as real production data accumulates, creating a continuously improving model of the factory.</div>
+        <div class="dt-desc">This simulation forms the baseline digital twin of the ENCLOS3D production system. Live data from IoT sensors and Bambu Cloud can be fed back into the model to keep it aligned with real factory performance (Vuzem et al., 2025).</div>
       </div>
       <a class="dt-link" href="iot.html">IoT Page <span class="arr"></span></a>
     </div>
@@ -711,7 +770,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
 </div>
 
 <footer>
-  <div class="f-logo">PANIZ<span>.</span></div>
+  <div class="f-logo">ENCLOS3D<span>.</span></div>
   <div class="f-copy">© 2026 — Digital Manufacturing Portfolio</div>
   <div class="f-links">
     <a href="MSD.html">MSD</a>
