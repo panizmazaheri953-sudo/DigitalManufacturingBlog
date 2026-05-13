@@ -488,7 +488,7 @@ footer{background:var(--navy2);padding:2rem 4%;display:grid;grid-template-column
             <div class="dc-row"><span class="dc-key">Top Casing — Width</span><span class="dc-val">60mm</span></div>
             <div class="dc-row"><span class="dc-key">Top Casing — Depth</span><span class="dc-val">11.7mm</span></div>
             <div class="dc-row"><span class="dc-key">Bottom Casing — Depth</span><span class="dc-val">13mm</span></div>
-            <div class="dc-row"><span class="dc-key">Wall thickness spec</span><span class="dc-val warn">1.6–2.2mm (critical)</span></div>
+            <div class="dc-row"><span class="dc-key">Bottom Case difference measurement spec</span><span class="dc-val warn">1.6–2.2mm (critical)</span></div>
           </div>
         </div>
       </div>
@@ -546,11 +546,11 @@ footer{background:var(--navy2);padding:2rem 4%;display:grid;grid-template-column
     <div class="panel-left">
       <div class="panel-week-tag">Weeks 3–4 — Print Trials (Phase 1)</div>
       <h2 class="panel-title">Ultimaker<br><em>Trials.</em><br>All Failed.</h2>
-      <p class="panel-desc">The first print platform tested was the Ultimaker. Multiple prints were run, tweaking settings each time. Every single one failed either at <strong>FESTO Station 2</strong>, the laser measurement station or their visual quality. The laser consistently measured the wall depth <strong>wrong</strong> against a specification of 1.6–2.2mm.</p>
+      <p class="panel-desc">The first print platform tested was the Ultimaker. Multiple prints were run, tweaking settings each time. Every single one failed either at <strong>FESTO Station 2</strong>, the laser measurement station or their visual quality. The laser consistently measured theBottom Case difference measurement <strong>wrong</strong> against a specification of 1.6–2.2mm.</p>
       <p class="panel-desc">This wasn't a calibration issue it was a fundamental limitation of the Ultimaker's open-frame design causing inconsistent extrusion and warping. The data was clear: <strong>0% pass rate</strong> across all Ultimaker prints at the critical dimension check. A platform pivot was inevitable.</p>
       <div class="outcomes">
         <div class="oc fail"><span class="oc-dot"></span>0% pass rate at FESTO Station 2</div>
-        <div class="oc fail"><span class="oc-dot"></span>1.18mm wall (spec: 1.6–2.2mm)</div>
+        <div class="oc fail"><span class="oc-dot"></span>1.18mm Bottom Case difference measurement (spec: 1.6–2.2mm)</div>
         <div class="oc fail"><span class="oc-dot"></span>Warping on both casings</div>
         <div class="oc warn"><span class="oc-dot"></span>Decision: platform switch required</div>
       </div>
@@ -567,7 +567,7 @@ footer{background:var(--navy2);padding:2rem 4%;display:grid;grid-template-column
       <table class="compare-table">
         <thead><tr><th>Measurement</th><th>Ultimaker</th><th>Spec</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td class="label">Wall Thickness</td><td class="fail">1.18mm</td><td>1.6–2.2mm</td><td class="fail">✗ FAIL</td></tr>
+          <tr><td class="label">Bottom Case difference measurement</td><td class="fail">1.18mm</td><td>1.6–2.2mm</td><td class="fail">✗ FAIL</td></tr>
           <tr><td class="label">Dimensional Acc.</td><td class="fail">±0.4mm</td><td>±0.15mm</td><td class="fail">✗ FAIL</td></tr>
           <tr><td class="label">Station 2 Pass</td><td class="fail">0 / all</td><td>100%</td><td class="fail">✗ FAIL</td></tr>
           <tr><td class="label">Warping observed</td><td class="fail">Yes — all</td><td>None</td><td class="fail">✗ FAIL</td></tr>
@@ -576,7 +576,7 @@ footer{background:var(--navy2);padding:2rem 4%;display:grid;grid-template-column
       </table>
       <div style="background:rgba(255,68,68,0.06);border:1px solid rgba(255,68,68,0.2);padding:.85rem 1rem;margin-top:.75rem">
         <div style="font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:.4rem">⚠ Critical Finding</div>
-        <div style="font-size:.72rem;color:var(--muted);line-height:1.55;font-weight:300">The FESTO laser measurement station provided objective, unambiguous data. No amount of settings tweaking could bring the Ultimaker within the 1.6–2.2mm wall spec. The open-frame design was the root cause.</div>
+        <div style="font-size:.72rem;color:var(--muted);line-height:1.55;font-weight:300">The FESTO laser measurement station provided objective, unambiguous data. No amount of settings tweaking could bring the Ultimaker within the 1.6–2.2mm Bottom Case difference measurement spec. The open-frame design was the root cause.</div>
       </div>
     </div>
   </div>
@@ -589,9 +589,9 @@ footer{background:var(--navy2);padding:2rem 4%;display:grid;grid-template-column
         <div class="panel-week-tag">Weeks 4–5 — Platform Switch</div>
         <h2 class="panel-title">Bambu P1S<br><em>Pivot.</em><br>Problem Solved.</h2>
         <p class="panel-desc">The switch to the <strong>Bambu Lab P1S</strong> was immediate. Its fully enclosed chamber eliminates the temperature gradients that caused warping on the Ultimaker. Print speed of up to 500mm/s meant faster iteration.</p>
-        <p class="panel-desc">First print: <strong>1.9mm wall thickness</strong> — right in the middle of the 1.6–2.2mm spec. FESTO Station 2 passed first time. Settings were locked, documented, and saved as the production profile. The pivot decision was validated by data within 48 hours.</p>
+        <p class="panel-desc">First print: <strong>1.9mm Bottom Case difference measurement</strong> — right in the middle of the 1.6–2.2mm spec. FESTO Station 2 passed first time. Settings were locked, documented, and saved as the production profile. The pivot decision was validated by data within 48 hours.</p>
         <div class="outcomes">
-          <div class="oc pass"><span class="oc-dot"></span>1.9mm wall — within spec ✓</div>
+          <div class="oc pass"><span class="oc-dot"></span>1.9mm Bottom Case difference measurement — within spec ✓</div>
           <div class="oc pass"><span class="oc-dot"></span>FESTO Station 2 passed first time</div>
           <div class="oc pass"><span class="oc-dot"></span>80% success rate across trials</div>
           <div class="oc pass"><span class="oc-dot"></span>Production print profile locked</div>
@@ -605,7 +605,7 @@ footer{background:var(--navy2);padding:2rem 4%;display:grid;grid-template-column
         <table class="compare-table" style="margin-bottom:.75rem">
           <thead><tr><th>Spec</th><th>Ultimaker</th><th>Bambu P1S</th></tr></thead>
           <tbody>
-            <tr><td class="label">Wall thickness</td><td class="fail">1.18mm ✗</td><td class="pass">1.9mm ✓</td></tr>
+            <tr><td class="label">Bottom Case difference measurement</td><td class="fail">1.18mm ✗</td><td class="pass">1.9mm ✓</td></tr>
             <tr><td class="label">Dimensional acc.</td><td class="fail">±0.4mm ✗</td><td class="pass">±0.1mm ✓</td></tr>
             <tr><td class="label">Station 2 pass</td><td class="fail">0% ✗</td><td class="pass">100% ✓</td></tr>
             <tr><td class="label">Print speed</td><td style="color:var(--muted)">~80mm/s</td><td class="pass">500mm/s</td></tr>
@@ -616,7 +616,7 @@ footer{background:var(--navy2);padding:2rem 4%;display:grid;grid-template-column
         </table>
         <div class="stat-cards">
           <div class="sc"><div class="sc-val green">80%</div><div class="sc-label">Bambu success rate</div></div>
-          <div class="sc"><div class="sc-val pass">1.9mm</div><div class="sc-label">Wall thickness achieved</div></div>
+          <div class="sc"><div class="sc-val pass">1.9mm</div><div class="sc-label">Bottom Case difference measurement achieved</div></div>
           <div class="sc"><div class="sc-val pass">£470</div><div class="sc-label">Cost per Bambu P1S</div></div>
           <div class="sc"><div class="sc-val pass">2.5h</div><div class="sc-label">Cycle time per pair</div></div>
         </div>
@@ -785,9 +785,9 @@ footer{background:var(--navy2);padding:2rem 4%;display:grid;grid-template-column
         <div class="decision-card">
           <div class="dc-header">SPC Final Results</div>
           <div class="dc-rows">
-            <div class="dc-row"><span class="dc-key">Bambu — Wall thickness</span><span class="dc-val pass">1.9mm ✓ In spec</span></div>
+            <div class="dc-row"><span class="dc-key">Bambu — Bottom Case difference measurement</span><span class="dc-val pass">1.9mm ✓ In spec</span></div>
             <div class="dc-row"><span class="dc-key">Bambu — Tolerance</span><span class="dc-val pass">±0.1mm (spec ±0.15mm)</span></div>
-            <div class="dc-row"><span class="dc-key">Ultimaker — Wall thickness</span><span class="dc-val fail">1.18mm ✗ Rejected</span></div>
+            <div class="dc-row"><span class="dc-key">Ultimaker —Bottom Case difference measurement</span><span class="dc-val fail">1.18mm ✗ Rejected</span></div>
             <div class="dc-row"><span class="dc-key">Production platform</span><span class="dc-val pass">Bambu P1S — LOCKED</span></div>
             <div class="dc-row"><span class="dc-key">Filament cost verified</span><span class="dc-val">£20/kg → £2.00/pair</span></div>
             <div class="dc-row"><span class="dc-key">Fleet capital verified</span><span class="dc-val">25 × £470 = £11,750</span></div>
