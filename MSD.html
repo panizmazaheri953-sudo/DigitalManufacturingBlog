@@ -994,13 +994,14 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   </div>
 </div>
 
-<!-- SECTION 3: FESTO STATIONS INTERACTIVE -->
+<!-- SECTION 3: FESTO ANALYSIS -->
 <div class="sec-wrap reveal">
   <div class="sec-head">
     <div class="sec-label"><div class="sec-tag">03 — FESTO Analysis</div><div class="sec-big-num">CP</div></div>
-    <div class="sec-title-block"><h2>Station Cycle<br><em>Times.</em></h2><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Click a station to explore</div></div>
+    <div class="sec-title-block"><h2>Station Cycle<br><em>Times.</em></h2><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Bar chart — click bars for details</div></div>
   </div>
   <div class="sec-body">
+    <!-- Bar chart -->
     <div style="margin-bottom:1.5rem">
       <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;display:flex;justify-content:space-between;align-items:center">
         <span>Cycle Time Per Station (seconds)</span>
@@ -1014,10 +1015,11 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
         <span style="color:var(--green)">— All stations within 150s takt ✓</span>
       </div>
     </div>
-    <div class="festo-interactive">
-      <div class="station-selector" id="stationBtns"></div>
-      <div id="stationDetails"></div>
-    </div>
+
+    <!-- Station Details Panel (shows when bar is clicked) -->
+    <div id="stationDetails"></div>
+
+    <!-- Total FESTO CP Lab Summary -->
     <div style="margin-top:1.5rem;background:var(--navy2);border:1px solid var(--border);padding:1.25rem">
       <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">Total FESTO CP Lab Summary</div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem">
@@ -1027,6 +1029,8 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
         <div style="padding:.9rem;background:rgba(0,255,136,0.05);border:1px solid rgba(0,255,136,0.2);text-align:center"><div style="font-family:var(--fd);font-size:2rem;color:var(--green)">✓</div><div style="font-family:var(--fm);font-size:.48rem;text-transform:uppercase;color:var(--muted);margin-top:.2rem">Within 150s takt</div></div>
       </div>
     </div>
+
+    <!-- Pipelined Flow Explanation -->
     <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:rgba(0,229,255,0.05);border-left:3px solid var(--cyan)">
       <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:.5rem">⚙️ How the FESTO Line Actually Works — Pipelined Flow</div>
       <div style="font-size:.75rem;color:var(--muted);line-height:1.6">
@@ -1038,64 +1042,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   </div>
 </div>
 
-<!-- SECTION 4: MANUFACTURING SEQUENCE CHART -->
-<div class="sec-wrap reveal">
-  <div class="sec-head">
-    <div class="sec-label"><div class="sec-tag">04 — Sequence</div><div class="sec-big-num">MSC</div></div>
-    <div class="sec-title-block"><h2>Manufacturing<br><em>Sequence Chart.</em></h2></div>
-  </div>
-  <div class="sec-body">
-    <div style="font-size:.82rem;color:var(--muted);font-weight:300;margin-bottom:1.5rem;line-height:1.7">Every operation mapped in order: Fabrication (changes state), Move (transport), Inspect, Store, and Manual. Time columns represent proportional duration across the production flow.</div>
-    <div class="seq-wrap">
-      <div class="seq-chart">
-        <div class="seq-header" style="background:var(--navy2)">Operation</div>
-        <div class="seq-header">Op 1</div><div class="seq-header">Op 2</div><div class="seq-header">Op 3</div><div class="seq-header">Op 4</div><div class="seq-header">Op 5</div>
-        <div class="seq-header">Op 6</div><div class="seq-header">Op 7</div><div class="seq-header">Op 8</div><div class="seq-header">Op 9</div><div class="seq-header">Op 10</div>
-        <div class="seq-label">Filament Load</div>
-        <div class="seq-cell"><div class="seq-block move" style="left:4%;right:4%">Move</div></div>
-        <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
-        <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
-        <div class="seq-label">Bed Prep</div>
-        <div class="seq-cell"></div>
-        <div class="seq-cell"><div class="seq-block manual" style="left:4%;right:4%">Manual</div></div>
-        <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
-        <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
-        <div class="seq-label">3D Print (2.5h)</div>
-        <div class="seq-cell"></div><div class="seq-cell"></div>
-        <div class="seq-cell"><div class="seq-block fab" style="left:4%;right:4%">Fab</div></div>
-        <div class="seq-cell"><div class="seq-block fab" style="left:4%;right:4%">Fab</div></div>
-        <div class="seq-cell"><div class="seq-block fab" style="left:4%;right:4%">Fab</div></div>
-        <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
-        <div class="seq-label">Collect & Visual QC</div>
-        <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
-        <div class="seq-cell"><div class="seq-block insp" style="left:4%;right:4%">Inspect</div></div>
-        <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
-        <div class="seq-label">Move to FESTO</div>
-        <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
-        <div class="seq-cell"></div>
-        <div class="seq-cell"><div class="seq-block move" style="left:4%;right:4%">Move</div></div>
-        <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
-        <div class="seq-label">FESTO S1–S6</div>
-        <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
-        <div class="seq-cell"></div><div class="seq-cell"></div>
-        <div class="seq-cell"><div class="seq-block fab" style="left:4%;right:4%">Fab</div></div>
-        <div class="seq-cell"><div class="seq-block insp" style="left:4%;right:4%">Inspect</div></div>
-        <div class="seq-cell"></div>
-        <div class="seq-label">Store & Dispatch</div>
-        <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
-        <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
-        <div class="seq-cell"><div class="seq-block store" style="left:4%;right:4%">Store</div></div>
-      </div>
-    </div>
-    <div class="seq-legend">
-      <div class="sl-item"><div class="sl-box" style="background:rgba(0,229,255,0.18);border:1px solid rgba(0,229,255,0.4)"></div>Fabrication — changes state</div>
-      <div class="sl-item"><div class="sl-box" style="background:rgba(106,127,154,0.15);border:1px solid var(--border)"></div>Move — transport</div>
-      <div class="sl-item"><div class="sl-box" style="background:rgba(255,179,71,0.15);border:1px solid rgba(255,179,71,0.3)"></div>Inspect</div>
-      <div class="sl-item"><div class="sl-box" style="background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.2)"></div>Store</div>
-      <div class="sl-item"><div class="sl-box" style="background:rgba(255,179,71,0.2);border:1px solid rgba(255,179,71,0.4)"></div>Manual</div>
-    </div>
-  </div>
-</div>
+
 
 <!-- SECTION 5: OPERATOR MODEL -->
 <div class="sec-wrap reveal">
@@ -1133,7 +1080,80 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
     </div>
   </div>
 </div>
+<!-- SECTION 5.5: MACHINE QUALIFICATION & PROCESS CAPABILITY -->
+<div class="sec-wrap reveal">
+  <div class="sec-head">
+    <div class="sec-label"><div class="sec-tag">05.5 — Qualification</div><div class="sec-big-num">MQ</div></div>
+    <div class="sec-title-block"><h2>Machine Qualification<br><em>& Process Capability.</em></h2><div style="font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">MQ1 · MQ2 · Cp · Cpk</div></div>
+  </div>
+  <div class="sec-body">
+    
+    <!-- MACHINE QUALIFICATION -->
+    <div style="margin-bottom:1.5rem">
+      <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">Machine Qualification for Bambu P1S</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+        <div style="background:var(--navy2);border:1px solid var(--border);padding:1rem">
+          <div style="font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:.5rem">MQ1 — Supplier Acceptance</div>
+          <div style="font-size:.72rem;color:var(--muted);line-height:1.6;font-weight:300">
+            Dimensional accuracy on casing clip features: <strong style="color:var(--cyan)">±0.1mm</strong><br>
+            First layer adhesion pass rate: <strong style="color:var(--cyan)">greater than 99 percent</strong> across test prints<br>
+            Surface finish target: <strong style="color:var(--cyan)">Ra ≤ 0.2mm</strong><br>
+            All 25 printers verified before shipment
+          </div>
+        </div>
+        <div style="background:var(--navy2);border:1px solid var(--border);padding:1rem">
+          <div style="font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:.5rem">MQ2 — On Site Verification</div>
+          <div style="font-size:.72rem;color:var(--muted);line-height:1.6;font-weight:300">
+            <strong>30 print repeatability study</strong> → standard deviation σ = 0.05mm<br>
+            Agreement with prototype quality confirmed<br>
+            CE marking and safety sign off completed<br>
+            All printers passed IQ and OQ before production release
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- PROCESS CAPABILITY -->
+    <div style="margin-bottom:1rem">
+      <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">Process Capability for Casing Wall Thickness</div>
+      <div style="background:var(--navy3);border:1px solid var(--border);padding:1rem;margin-bottom:1rem">
+        <div style="font-family:var(--fm);font-size:.65rem;color:var(--white);margin-bottom:.5rem">Formula according to AIAG and VDA (2019)</div>
+        <div style="font-family:var(--fm);font-size:.7rem;color:var(--cyan);margin-bottom:.75rem">
+          Cp = (USL − LSL) ÷ (6 × σ)<br>
+          Cpk = min[(USL − μ) ÷ (3σ), (μ − LSL) ÷ (3σ)]
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-bottom:.75rem;text-align:center">
+          <div><span style="color:var(--muted);font-size:.6rem">USL (Upper Spec Limit)</span><br><span style="font-family:var(--fd);font-size:1.2rem;color:var(--cyan)">2.2mm</span></div>
+          <div><span style="color:var(--muted);font-size:.6rem">LSL (Lower Spec Limit)</span><br><span style="font-family:var(--fd);font-size:1.2rem;color:var(--cyan)">1.6mm</span></div>
+          <div><span style="color:var(--muted);font-size:.6rem">Target (Nominal)</span><br><span style="font-family:var(--fd);font-size:1.2rem;color:var(--cyan)">1.9mm</span></div>
+          <div><span style="color:var(--muted);font-size:.6rem">Standard Deviation (σ)</span><br><span style="font-family:var(--fd);font-size:1.2rem;color:var(--cyan)">0.05mm</span></div>
+        </div>
+        <div style="background:var(--navy2);padding:.75rem;border-left:2px solid var(--green);margin-bottom:.75rem">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem">
+            <span><span style="color:var(--muted);font-size:.65rem">Cp =</span> <strong style="font-family:var(--fd);font-size:1.3rem;color:var(--green)">2.0</strong> <span style="font-size:.6rem;color:var(--muted)">(Excellent. Process spread fits within specification.)</span></span>
+            <span><span style="color:var(--muted);font-size:.65rem">Cpk =</span> <strong style="font-family:var(--fd);font-size:1.3rem;color:var(--green)">1.87</strong> <span style="font-size:.6rem;color:var(--muted)">(Well centred and capable.)</span></span>
+          </div>
+        </div>
+        <div style="font-size:.68rem;color:var(--muted);line-height:1.5;font-weight:300">
+          Cp = (2.2 − 1.6) ÷ (6 × 0.05) = 0.6 ÷ 0.3 = <strong style="color:var(--green)">2.0</strong>. The process spread is only 50 percent of the specification width.<br>
+          With mean μ = 1.91mm, Cpk = min[(2.2 − 1.91) ÷ 0.15, (1.91 − 1.6) ÷ 0.15] = min[1.93, 2.07] = <strong style="color:var(--green)">1.87</strong>. The process is well centred with no risk of exceeding limits.<br>
+          Both Cp and Cpk are above 1.33, confirming the Bambu P1S fleet is <strong>statistically capable</strong> for the critical wall thickness dimension (Montgomery, 2019).
+        </div>
+      </div>
+    </div>
+
+    <!-- MEASUREMENT VARIATION NOTE -->
+    <div style="background:rgba(255,179,71,0.05);border-left:2px solid var(--amber);padding:.85rem 1rem">
+      <div style="font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:.3rem">📏 Measurement System Variation</div>
+      <div style="font-size:.72rem;color:var(--muted);line-height:1.55;font-weight:300">
+        <strong>Six different operators</strong> measuring the same casing gave a measurement range of <strong>0.12mm</strong>.<br>
+        <strong>One trained operator</strong> performing all quality control measurements reduced variation to <strong>0.04mm</strong>.<br>
+        <strong>Decision:</strong> All wall thickness checks on the FESTO S2 laser station are performed by the same trained operator where possible. Critical measurements are not sacrosanct facts. They are levels of agreement between humans (Lecture 8).
+      </div>
+    </div>
+
+  </div>
+</div>
 <!-- SECTION 6: MACHINE CAPACITY -->
 <div class="sec-wrap reveal">
   <div class="sec-head">
@@ -1329,63 +1349,68 @@ function calcTakt(){
 calcTakt();
 
 // FESTO STATIONS DATA
-const stations=[
-  {num:'01',title:'Front Magazine',time:7,type:'pass',typeLabel:'Automated',desc:'The front magazine holds stacked cases and dispenses them one by one onto the carrier. Cases are then indexed forward into the assembly line.',chips:['automated','traceability','7s','pass']},
-  {num:'02',title:'Laser Measurement',time:8,type:'pass',typeLabel:'Automated',desc:'Laser measures wall depth. Ultimaker failed consistently at 1.18mm. Bambu P1S passes at 1.9mm — within the 1.6–2.2mm specification. This was the critical data point that drove the platform switch.',chips:['laser','critical spec','8s','pass'],highlight:'Ultimaker: 1.18mm FAIL → Bambu: 1.9mm PASS'},
-  {num:'03',title:'iPick — Manual Assembly',time:27,type:'amber',typeLabel:'Manual',desc:'Operator manually picks and aligns the top and bottom casings before press-fitting. The most labour-intensive station — one operator dedicated to this role. Pace must match the 35s bottleneck upstream.',chips:['manual','operator required','27s','monitor pace']},
-  {num:'04',title:'Press Fit',time:11,type:'pass',typeLabel:'Automated',desc:'Automated press clamps the two casing halves together. Validates that the mating geometry from the Fusion 360 CAD model translates correctly into a secure, interchangeable assembly.',chips:['automated','press fit','11s','pass']},
-  {num:'05',title:'Oven — Heat Treatment',time:35,type:'red',typeLabel:'Bottleneck',desc:'The oven cycle is the longest single station at 35 seconds — making it the FESTO line bottleneck. However, as the total FESTO cycle (99s) remains within the 150s takt, this does not currently restrict production. At higher volumes, a second oven module would be recommended.',chips:['bottleneck','35s','longest station','within takt']},
-  {num:'06',title:'Final Output & Sign-off',time:11,type:'pass',typeLabel:'Automated',desc:'The gripper picks each finished case from the carrier and places it onto the left or right tray. A UR robot then picks the case from the tray and moves it to the final dispatch area. Pass/fail results are logged against the casing batch ID, the complete traceability record is closed, and all data is fed back to the IoT dashboard.',chips:['automated','final QC','11s','pass']}
+const stations = [
+  {num:'01', title:'Front Magazine', time:7, type:'pass', typeLabel:'Automated', desc:'The front magazine holds stacked cases and dispenses them one by one onto the carrier. Cases are then indexed forward into the assembly line.', chips:['automated','dispense','7s','pass']},
+  {num:'02', title:'Laser Measurement', time:8, type:'pass', typeLabel:'Automated', desc:'Laser measures wall depth. Ultimaker failed consistently at 1.18mm. Bambu P1S passes at 1.9mm — within the 1.6 to 2.2mm specification. This was the critical data point that drove the platform switch.', chips:['laser','critical spec','8s','pass'], highlight:'Ultimaker: 1.18mm FAIL → Bambu: 1.9mm PASS'},
+  {num:'03', title:'iPick — Manual Assembly', time:27, type:'amber', typeLabel:'Manual', desc:'Operator manually picks and aligns the top and bottom casings before press-fitting. The most labour-intensive station — one operator dedicated to this role. Pace must match the 35 second bottleneck upstream.', chips:['manual','operator required','27s','monitor pace']},
+  {num:'04', title:'Press Fit', time:11, type:'pass', typeLabel:'Automated', desc:'Automated press clamps the two casing halves together. Validates that the mating geometry from the Fusion 360 CAD model translates correctly into a secure, interchangeable assembly.', chips:['automated','press fit','11s','pass']},
+  {num:'05', title:'Oven — Heat Treatment', time:35, type:'red', typeLabel:'Bottleneck', desc:'The oven cycle is the longest single station at 35 seconds — making it the FESTO line bottleneck. However, as the total FESTO cycle of 99 seconds remains within the 150 second takt, this does not currently restrict production. At higher volumes, a second oven module would be recommended.', chips:['bottleneck','35s','longest station','within takt']},
+  {num:'06', title:'Final Output & Sign-off', time:11, type:'pass', typeLabel:'Automated', desc:'The gripper picks each finished case from the carrier and places it onto the left or right tray. A UR robot then picks the case from the tray and moves it to the final dispatch area. Pass or fail results are logged against the casing batch ID, the complete traceability record is closed, and all data is fed back to the IoT dashboard.', chips:['automated','final QC','11s','pass']}
 ];
 
-function buildStationBtns(){
-  const c=document.getElementById('stationBtns');
-  stations.forEach((s,i)=>{
-    const b=document.createElement('div');
-    b.className='s-btn'+(i===0?' active':'')+(s.type==='red'?' bottleneck':s.type==='amber'?' manual':'');
-    b.onclick=()=>selectStation(i);
-    b.innerHTML=`<div class="s-num ${s.type==='red'?'red':s.type==='amber'?'amber':''}">${s.num}</div><div class="s-info"><div class="s-title">${s.title}</div><div class="s-time ${s.type==='red'?'red':s.type==='amber'?'amber':''}">${s.time}s</div></div>`;
-    c.appendChild(b);
-  });
-}
-
+// Build the bar chart only (no buttons)
 function buildStationChart(){
-  const c=document.getElementById('stationChart');
-  const maxT=35;
-  stations.forEach((s,i)=>{
-    const col=document.createElement('div');
-    col.className='sbc-col';
-    const barH=Math.round((s.time/maxT)*110);
-    col.innerHTML=`<div class="sbc-val ${s.type==='red'?'red':s.type==='amber'?'amber':''}">${s.time}s</div><div class="sbc-bar ${s.type==='red'?'bottleneck':s.type==='amber'?'manual':''}" id="sbar${i}" style="height:0px" onclick="selectStation(${i})"></div><div class="sbc-label">Stn ${s.num}</div>`;
-    c.appendChild(col);
-    setTimeout(()=>{document.getElementById('sbar'+i).style.height=barH+'px';},200+i*100);
+  const container = document.getElementById('stationChart');
+  if (!container) return;
+  container.innerHTML = '';
+  const maxT = 35;
+  stations.forEach((s, i) => {
+    const col = document.createElement('div');
+    col.className = 'sbc-col';
+    const barH = Math.round((s.time / maxT) * 110);
+    col.innerHTML = `
+      <div class="sbc-val ${s.type === 'red' ? 'red' : s.type === 'amber' ? 'amber' : ''}">${s.time}s</div>
+      <div class="sbc-bar ${s.type === 'red' ? 'bottleneck' : s.type === 'amber' ? 'manual' : ''}" id="sbar${i}" style="height:0px" onclick="selectStation(${i})"></div>
+      <div class="sbc-label">Stn ${s.num}</div>
+    `;
+    container.appendChild(col);
+    setTimeout(() => {
+      const bar = document.getElementById('sbar' + i);
+      if (bar) bar.style.height = barH + 'px';
+    }, 100 + i * 100);
   });
 }
 
-function selectStation(idx){
-  document.querySelectorAll('.s-btn').forEach((b,i)=>b.classList.toggle('active',i===idx));
-  document.querySelectorAll('.sbc-bar').forEach((b,i)=>b.classList.toggle('active',i===idx));
-  const s=stations[idx];
-  const d=document.getElementById('stationDetails');
-  const barW=Math.round((s.time/35)*100);
-  const barColor=s.type==='red'?'#ff4444':s.type==='amber'?'#ffb347':'var(--cyan)';
-  d.innerHTML=`<div class="station-detail active">
-    <div class="sd-tag">Station ${s.num} — ${s.typeLabel}</div>
-    <div class="sd-title">${s.title}</div>
-    <div class="sd-time-big ${s.type==='red'?'red':s.type==='amber'?'amber':'cyan'}">${s.time}s</div>
-    <div class="sd-time-label">Cycle time · Takt = 150s · ${s.type==='red'?'⚠ Bottleneck':'Within takt ✓'}</div>
-    <div class="sd-bar-wrap"><div class="sd-bar" id="sdbar" style="width:0%;background:${barColor}"></div></div>
-    ${s.highlight?`<div style="background:rgba(0,229,255,0.06);border:1px solid rgba(0,229,255,0.2);padding:.6rem .75rem;margin-bottom:.75rem;font-family:var(--fm);font-size:.6rem;color:var(--cyan);letter-spacing:.05em">${s.highlight}</div>`:''}
-    <div class="sd-desc">${s.desc}</div>
-    <div class="sd-tags" style="margin-top:.75rem">${s.chips.map(c=>`<div class="sd-chip ${s.type==='red'?'red':s.type==='amber'?'amber':'cyan'}">${c}</div>`).join('')}</div>
-  </div>`;
-  setTimeout(()=>{const b=document.getElementById('sdbar');if(b)b.style.width=barW+'%';},100);
+// Show station details when a bar is clicked
+function selectStation(idx) {
+  const s = stations[idx];
+  const d = document.getElementById('stationDetails');
+  if (!d) return;
+  const barW = Math.round((s.time / 35) * 100);
+  const barColor = s.type === 'red' ? '#ff4444' : s.type === 'amber' ? '#ffb347' : 'var(--cyan)';
+  d.innerHTML = `
+    <div class="station-detail active" style="display:block; background:var(--navy2); border:1px solid var(--border); padding:1.5rem; margin-top:1rem;">
+      <div class="sd-tag">Station ${s.num} — ${s.typeLabel}</div>
+      <div class="sd-title">${s.title}</div>
+      <div class="sd-time-big ${s.type === 'red' ? 'red' : s.type === 'amber' ? 'amber' : 'cyan'}">${s.time}s</div>
+      <div class="sd-time-label">Cycle time · Takt = 150s · ${s.type === 'red' ? '⚠ Bottleneck' : 'Within takt ✓'}</div>
+      <div class="sd-bar-wrap"><div class="sd-bar" id="sdbar" style="width:0%;background:${barColor}"></div></div>
+      ${s.highlight ? `<div style="background:rgba(0,229,255,0.06);border:1px solid rgba(0,229,255,0.2);padding:.6rem .75rem;margin-bottom:.75rem;font-family:var(--fm);font-size:.6rem;color:var(--cyan);letter-spacing:.05em">${s.highlight}</div>` : ''}
+      <div class="sd-desc">${s.desc}</div>
+      <div class="sd-tags" style="margin-top:.75rem">${s.chips.map(c => `<div class="sd-chip ${s.type === 'red' ? 'red' : s.type === 'amber' ? 'amber' : 'cyan'}">${c}</div>`).join('')}</div>
+    </div>
+  `;
+  setTimeout(() => {
+    const sdbar = document.getElementById('sdbar');
+    if (sdbar) sdbar.style.width = barW + '%';
+  }, 100);
 }
 
-buildStationBtns();
+// Build the chart when page loads
 buildStationChart();
-selectStation(0);
 
+// Optional: Select first station by default to show initial details
+setTimeout(() => { selectStation(0); }, 300);
 // UTILISATION BARS
 const utils=[
   {label:'Bambu P1S fleet',pct:80,color:'var(--cyan)',note:'80% (yield-adjusted)'},
