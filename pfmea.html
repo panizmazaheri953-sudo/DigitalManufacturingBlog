@@ -319,7 +319,7 @@ tr.hidden-row{display:none}
 <section id="hero">
   <div class="hero-label reveal">
     <div>
-      <div class="sec-tag">04 — Risk Analysis</div>
+      <div class="sec-tag">03 — Risk Analysis</div>
       <div class="sec-big-num">04</div>
     </div>
     <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Based on Actual Trial Data<br>25+ Prints · 10 FESTO Runs</div>
@@ -336,9 +336,9 @@ tr.hidden-row{display:none}
       <p class="hero-sub" style="font-size: 1rem; line-height: 1.8; max-width: 620px;">
   <strong style="color: var(--cyan); font-size: 1.05rem;">For the Phones-R-Us project, our company — ENCLOS3D — conducted a full Process FMEA</strong> because we needed to identify every possible failure mode before committing to 50,000 units of annual production. <strong>We couldn't afford to discover problems on the assembly line.</strong>
   <br><br>
-  Following the <strong style="color: var(--cyan);">AIAG & VDA FMEA Handbook (2019)</strong> and <strong style="color: var(--cyan);">ISO 9001:2015</strong> risk-based thinking requirements, we analysed our entire manufacturing workflow — from 3D printer platform selection through FESTO CP Lab assembly. Each failure mode was scored using <strong style="color: var(--cyan);">RPN = Severity × Occurrence × Detection</strong>, giving us a clear, quantitative priority list for action.
+  Following the <strong style="color: var(--cyan);">AIAG & VDA FMEA Handbook (2019)</strong> and <strong style="color: var(--cyan);">ISO 9001:2015</strong> risk-based thinking requirements, we analysed our entire manufacturing workflow, from 3D printer platform selection through FESTO CP Lab assembly. Each failure mode was scored using <strong style="color: var(--cyan);">RPN = Severity × Occurrence × Detection</strong>, giving us a clear, quantitative priority list for action.
   <br><br>
-  <strong style="color: var(--cyan); font-size: 1.05rem;">At ENCLOS3D, we believe PFMEA is not a document — it's a prevention strategy.</strong> Every failure mode on this register has been identified, scored, and actioned before it could reach Phones-R-Us production.
+  <strong style="color: var(--cyan); font-size: 1.05rem;">At ENCLOS3D, we believe PFMEA is not a document but a prevention strategy.</strong> Every failure mode on this register has been identified, scored, and actioned before it could reach Phones-R-Us production.
 </p>
     <div style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap">
       <div class="formula-box">
@@ -856,7 +856,7 @@ tr.hidden-row{display:none}
     <div class="trial-name">Bambu P1S</div>
     <div class="trial-sub">Phase 2 — High-Speed FDM Production</div>
     <div class="trial-stat-row"><div class="tstat"><div class="tstat-n pass">5</div><div class="tstat-l">Total Prints</div></div><div class="tstat"><div class="tstat-n pass">4</div><div class="tstat-l">Successful</div></div><div class="tstat"><div class="tstat-n pass">80%</div><div class="tstat-l">Success Rate</div></div><div class="tstat"><div class="tstat-n pass">3</div><div class="tstat-l">Perfect Prints</div></div></div>
-    <div class="trial-insight"><strong>Key Finding:</strong> 3 prints were dimensionally perfect — passing all FESTO stations. 1 additional print passed with minor variation. Only 1 failure occurred due to a <strong>USB interruption</strong> (not a print quality issue) — eliminated by switching to cloud printing. Wall thickness achieved: <strong>1.9mm ✓</strong> — comfortably within the 1.6–2.2mm specification.</div>
+    <div class="trial-insight"><strong>Key Finding:</strong> 3 prints were dimensionally perfect, passing all FESTO stations. 1 additional print passed with minor variation. Only 1 failure occurred due to a <strong>USB interruption</strong> (not a print quality issue) which was eliminated by switching to cloud printing. Bottom case difference measurement achieved: <strong>1.9mm ✓</strong> — comfortably within the 1.6–2.2mm specification.</div>
     <div class="watermark" style="color:var(--cyan)">ACTIVE</div>
   </div>
 </section>
@@ -908,11 +908,11 @@ tr.hidden-row{display:none}
 <section id="reflection" class="reveal">
   <div class="label-col"><div><div class="sec-tag">05 — Insight</div><div class="sec-big-num">↑</div></div><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Engineering Conclusions</div></div>
   <div class="refl-content"><h2><br><em>Reflection.</em></h2><div class="refl-grid">
-    <div class="refl-card"><div class="refl-card-tag">01 — Printer as Control Point</div><div class="refl-card-title">Equipment selection is a process variable</div><p>Traditional PFMEA treats process capability as fixed — this project showed that printer selection is itself a controllable variable. The Ultimaker consistently failed (RPN 288) while the Bambu P1S passed (RPN 64). Switching printers was the corrective action, not redesigning the CAD.</p></div>
-    <div class="refl-card"><div class="refl-card-tag">02 — Economic Analysis</div><div class="refl-card-title">24/7 vs shift-based operation</div><p>75 printers on an 8-hour shift produces the same as 25 printers running 24/7 — a hardware capital saving of over £50,000. However, 24/7 introduces unattended operation risk (PFMEA 40.01, RPN 144). The remote monitoring system was the enabling corrective action that made 24/7 viable.</p></div>
-    <div class="refl-card"><div class="refl-card-tag">03 — CAD Was Never the Problem</div><div class="refl-card-title">Design validated through process failure</div><p>All 20 Ultimaker prints failed measurement — yet when the same CAD file was printed on the Bambu P1S, 80% passed first time. This confirms the dimensional specification was correct and achievable. PFMEA prevented the team from incorrectly blaming the design file.</p></div>
-    <div class="refl-card"><div class="refl-card-tag">04 — Safety First Priority</div><div class="refl-card-title">RPN 400 — highest risk addressed first</div><p>The highest RPN in the entire analysis wasn't a dimensional issue — it was operator safety (RPN 400, SEV 10). Sharp casing edges identified as a hazard drove an immediate design change to chamfered edges and a mandatory deburring station, reducing RPN to 80.</p></div>
-  </div><div class="conclusion-bar"><div class="conclusion-n">64</div><div class="conclusion-text"><p><strong>Conclusion:</strong> Switching to Bambu P1S reduced the occurrence score from 9 to 2, cutting the primary print RPN from <strong>288 → 64</strong>. For 50,000 units/year, 25 Bambu P1S printers running 24/7 — supported by cloud monitoring, remote camera systems, and fireball suppression — is the recommended production configuration. All safety-class items have been actioned and verified.</p></div></div></div>
+    <div class="refl-card"><div class="refl-card-tag">01 — Printer as Control Point</div><div class="refl-card-title">Equipment selection is a process variable</div><p>Traditional PFMEA treats process capability as fixed; this project showed that printer selection is itself a controllable variable. The Ultimaker consistently failed (RPN 288) while the Bambu P1S passed (RPN 64). Switching printers was the corrective action, not redesigning the CAD.</p></div>
+    <div class="refl-card"><div class="refl-card-tag">02 — Economic Analysis</div><div class="refl-card-title">24/7 vs shift-based operation</div><p>75 printers on an 8-hour shift produces the same as 25 printers running 24/7; a hardware capital saving of over £50,000. However, 24/7 introduces unattended operation risk (PFMEA 40.01, RPN 144). The remote monitoring system was the enabling corrective action that made 24/7 viable.</p></div>
+    <div class="refl-card"><div class="refl-card-tag">03 — CAD Was Never the Problem</div><div class="refl-card-title">Design validated through process failure</div><p>All 20 Ultimaker prints failed measurement; yet when the same CAD file was printed on the Bambu P1S, 80% passed first time. This confirms the dimensional specification was correct and achievable. PFMEA prevented the team from incorrectly blaming the design file.</p></div>
+    <div class="refl-card"><div class="refl-card-tag">04 — Safety First Priority</div><div class="refl-card-title">RPN 400 being highest risk addressed first</div><p>The highest RPN in the entire analysis wasn't a dimensional issue; it was operator safety (RPN 400, SEV 10). Sharp casing edges identified as a hazard drove an immediate design change to chamfered edges and a mandatory deburring station, reducing RPN to 80.</p></div>
+  </div><div class="conclusion-bar"><div class="conclusion-n">64</div><div class="conclusion-text"><p><strong>Conclusion:</strong> Switching to Bambu P1S reduced the occurrence score from 9 to 2, cutting the primary print RPN from <strong>288 → 64</strong>. For 50,000 units/year, 25 Bambu P1S printers running 24/7, supported by cloud monitoring, remote camera systems, and fireball suppression, is the recommended production configuration. All safety-class items have been actioned and verified.</p></div></div></div>
 </section>
 
 <!-- REFERENCES (unchanged) -->
