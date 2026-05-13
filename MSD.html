@@ -232,6 +232,97 @@ input[type=range]::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;
 .sl-item{display:flex;align-items:center;gap:.4rem;font-family:var(--fm);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .sl-box{width:12px;height:12px;border-radius:1px}
 
+/* ===== PROCESS FLOW DETAILED (Section 01.5) ===== */
+.pf-intro{font-size:.82rem;color:var(--muted);font-weight:300;margin-bottom:2rem;line-height:1.7}
+.pf-intro strong{color:var(--white)}
+.pf-intro .t-cyan{color:var(--cyan)}
+.pf-intro .t-amber{color:var(--amber)}
+.pf-intro .t-red{color:var(--red)}
+.pf-canvas{background:var(--navy2);border:1px solid var(--border);padding:2rem 2rem 1.5rem;overflow-x:auto;position:relative}
+.pf-phase{margin-bottom:2.5rem;position:relative}
+.pf-phase:last-child{margin-bottom:0}
+.pf-phase-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;padding:.5rem 1rem;border-left:3px solid var(--border)}
+.pf-phase-header.ph-prep{border-left-color:var(--muted);background:rgba(106,127,154,0.06)}
+.pf-phase-header.ph-print{border-left-color:var(--cyan);background:rgba(0,229,255,0.05)}
+.pf-phase-header.ph-collect{border-left-color:var(--amber);background:rgba(255,179,71,0.05)}
+.pf-phase-header.ph-qc{border-left-color:var(--amber);background:rgba(255,179,71,0.05)}
+.pf-phase-header.ph-festo{border-left-color:var(--cyan);background:rgba(0,229,255,0.04)}
+.pf-phase-header.ph-dispatch{border-left-color:var(--green);background:rgba(0,255,136,0.04)}
+.pf-phase-hnum{font-family:var(--fd);font-size:2rem;line-height:1;width:36px;flex-shrink:0}
+.ph-prep .pf-phase-hnum{color:var(--muted)}
+.ph-print .pf-phase-hnum{color:var(--cyan)}
+.ph-collect .pf-phase-hnum{color:var(--amber)}
+.ph-qc .pf-phase-hnum{color:var(--amber)}
+.ph-festo .pf-phase-hnum{color:var(--cyan)}
+.ph-dispatch .pf-phase-hnum{color:var(--green)}
+.pf-phase-htitle{font-family:var(--fd);font-size:1.1rem;text-transform:uppercase;line-height:1}
+.pf-phase-hdesc{font-family:var(--fm);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.15rem}
+.pf-steps-row{display:flex;align-items:stretch;gap:0;min-width:600px;overflow-x:auto}
+.pf-connector{display:flex;align-items:center;flex-direction:column;justify-content:center;width:32px;flex-shrink:0;position:relative;padding-top:1.5rem}
+.pf-conn-line{width:100%;height:1px;background:rgba(0,229,255,0.25)}
+.pf-conn-head{width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:6px solid rgba(0,229,255,0.4)}
+.pf-conn-label{font-family:var(--fm);font-size:.42rem;color:var(--muted);text-align:center;margin-top:.25rem;white-space:nowrap}
+.pf-step{width:130px;flex-shrink:0;border:1px solid var(--border);padding:.85rem .75rem;background:var(--navy3);transition:border-color .25s,background .25s;position:relative;cursor:default}
+.pf-step:hover{border-color:var(--cyan);background:rgba(0,229,255,0.04)}
+.pf-step.step-manual{border-color:rgba(255,179,71,0.35);background:rgba(255,179,71,0.04)}
+.pf-step.step-manual:hover{border-color:var(--amber)}
+.pf-step.step-bottleneck{border-color:rgba(255,68,68,0.4);background:rgba(255,68,68,0.05)}
+.pf-step.step-bottleneck:hover{border-color:var(--red)}
+.pf-step.step-decision{border-color:rgba(0,255,136,0.3);background:rgba(0,255,136,0.04)}
+.pf-step.step-decision:hover{border-color:var(--green)}
+.pf-step.step-store{border-color:rgba(106,127,154,0.3)}
+.pf-step-type{font-family:var(--fm);font-size:.42rem;letter-spacing:.1em;text-transform:uppercase;padding:.18rem .4rem;border:1px solid currentColor;display:inline-block;margin-bottom:.5rem}
+.type-fab{color:var(--cyan)}
+.type-manual{color:var(--amber)}
+.type-inspect{color:var(--amber)}
+.type-move{color:var(--muted)}
+.type-store{color:var(--muted)}
+.type-decision{color:var(--green)}
+.type-bottleneck{color:var(--red)}
+.pf-step-icon{font-size:1.3rem;margin-bottom:.35rem;display:block}
+.pf-step-title{font-family:var(--fm);font-size:.58rem;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--white);margin-bottom:.3rem;line-height:1.2}
+.pf-step-time{font-family:var(--fd);font-size:1.5rem;line-height:1;color:var(--cyan)}
+.pf-step-time.t-amber{color:var(--amber)}
+.pf-step-time.t-red{color:var(--red)}
+.pf-step-time.t-muted{color:var(--muted);font-size:1rem}
+.pf-step-detail{font-size:.6rem;color:var(--muted);margin-top:.3rem;line-height:1.4;font-weight:300}
+.op-badge{position:absolute;top:-8px;right:-8px;width:18px;height:18px;border-radius:50%;font-family:var(--fm);font-size:.48rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.op-badge.manual{background:var(--amber);color:var(--navy)}
+.op-badge.bottleneck{background:var(--red);color:#fff}
+.pf-branch-wrap{margin-top:1.25rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.pf-branch{padding:.85rem 1rem;border:1px solid var(--border)}
+.pf-branch.pass-branch{border-color:rgba(0,255,136,0.3);background:rgba(0,255,136,0.04)}
+.pf-branch.fail-branch{border-color:rgba(255,68,68,0.25);background:rgba(255,68,68,0.03)}
+.pf-branch-label{font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem}
+.pf-branch.pass-branch .pf-branch-label{color:var(--green)}
+.pf-branch.fail-branch .pf-branch-label{color:var(--red)}
+.pf-branch-title{font-family:var(--fd);font-size:1.2rem;line-height:1;margin-bottom:.2rem}
+.pf-branch.pass-branch .pf-branch-title{color:var(--green)}
+.pf-branch.fail-branch .pf-branch-title{color:var(--red)}
+.pf-branch-desc{font-size:.65rem;color:var(--muted);font-weight:300;line-height:1.5}
+.festo-pipeline{display:flex;align-items:stretch;gap:0;min-width:700px;margin-top:.5rem;overflow-x:auto}
+.festo-station{flex:1;border:1px solid var(--border);padding:.75rem .6rem;background:var(--navy3);text-align:center;position:relative;transition:border-color .2s;cursor:default}
+.festo-station:hover{border-color:var(--cyan);z-index:2}
+.festo-station.fs-manual{border-color:rgba(255,179,71,0.35);background:rgba(255,179,71,0.04)}
+.festo-station.fs-bottleneck{border-color:rgba(255,68,68,0.4);background:rgba(255,68,68,0.05)}
+.festo-station.fs-output{border-color:rgba(0,255,136,0.3);background:rgba(0,255,136,0.04)}
+.fs-num{font-family:var(--fd);font-size:1.5rem;line-height:1}
+.fs-time{font-family:var(--fd);font-size:1.1rem;margin-top:.2rem}
+.fs-name{font-family:var(--fm);font-size:.48rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.25rem}
+.pipeline-note{margin-top:1.25rem;padding:.85rem 1rem;background:rgba(0,229,255,0.05);border-left:2px solid var(--cyan);font-size:.72rem;color:var(--muted);line-height:1.6}
+.pipeline-note strong{color:var(--white)}
+.pipeline-note .t-cyan{color:var(--cyan)}
+.pf-legend{display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border)}
+.pfl{display:flex;align-items:center;gap:.4rem;font-family:var(--fm);font-size:.5rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pfl-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.pf-phase-divider{display:flex;align-items:center;gap:1rem;margin:1.5rem 0}
+.pf-div-line{flex:1;height:1px;background:var(--border)}
+.pf-div-label{font-family:var(--fm);font-size:.48rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.yield-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-top:1.5rem}
+.ys-card{padding:.85rem 1rem;border:1px solid var(--border);background:var(--navy3);text-align:center}
+.ys-val{font-family:var(--fd);font-size:2rem;line-height:1}
+.ys-label{font-family:var(--fm);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
+
 /* FOOTER */
 footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem 4%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2rem}
 .f-logo{font-family:var(--fd);font-size:1.3rem;color:var(--white)}
@@ -272,7 +363,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   <div>
     <div class="kpi-row">
       <div class="kpi"><div class="kpi-val">150s</div><div class="kpi-label">Takt time per pair</div></div>
-    <div class="kpi"><div class="kpi-val">99s</div><div class="kpi-label">FESTO cycle (per batch)</div></div>
+      <div class="kpi"><div class="kpi-val">99s</div><div class="kpi-label">FESTO cycle (per batch)</div></div>
       <div class="kpi"><div class="kpi-val">35s</div><div class="kpi-label">Bottleneck — Stn 5</div></div>
       <div class="kpi"><div class="kpi-val">6</div><div class="kpi-label">Operators total</div></div>
       <div class="kpi"><div class="kpi-val">25</div><div class="kpi-label">Bambu P1S printers</div></div>
@@ -327,35 +418,34 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
         </div>
         <div class="takt-compare" style="margin-top:.75rem">
           <div class="tc-row highlight"><span class="tc-key">Our takt time (24/7 weekdays)</span><span class="tc-val pass">150 seconds</span></div>
-        <div class="tc-row highlight"><span class="tc-key">FESTO total cycle time</span><span class="tc-val pass">99s per batch (16.5s per case)</span></div>
+          <div class="tc-row highlight"><span class="tc-key">FESTO total cycle time</span><span class="tc-val pass">99s per batch (16.5s per case)</span></div>
           <div class="tc-row"><span class="tc-key">Cycle vs takt — buffer</span><span class="tc-val pass">+51s headroom ✓</span></div>
           <div class="tc-row"><span class="tc-key">Single shift takt (480min)</span><span class="tc-val warn">150s — needs 25 printers</span></div>
           <div class="tc-row"><span class="tc-key">Single shift scenario</span><span class="tc-val warn">Would need 75 printers</span></div>
         </div>
       </div>
       <div class="takt-formula">
-  <div class="takt-calc-title">Formula & Worked Example</div>
-  <div class="formula-display">
-    Takt Time = <span class="f-cyan">Available Time per Day</span><br>
-    <span style="font-size:1.5rem;color:var(--border)">────────────────────</span><br>
-    <span class="f-cyan">Customer Demand per Day</span><br><br>
-    <span class="f-muted">= (261 days × 1,440 min × 60s) ÷ 50,000</span><br>
-    <span style="color:var(--cyan);font-size:1.2rem">= 150 seconds per pair</span>
-  </div>
-  <div style="margin-top:.8rem; padding:.5rem .6rem; background:rgba(0,229,255,0.05); border-left:2px solid var(--cyan); font-size:.65rem; color:var(--muted); line-height:1.5">
-    📊 <strong>Good pairs needed per weekday (including 80% yield):</strong><br>
-    Weekdays (24h) + Weekends (8h) → total 7,096 operating hours/year.<br>
-    50,000 good pairs × (6,264 weekday hours ÷ 7,096 total hours) = <strong>~44,150 good pairs from weekdays</strong>.<br>
-    44,150 ÷ 261 weekdays = <strong>≈ 170 good pairs per weekday</strong> (FESTO line must output this many).<br>
-    <span style="color:var(--cyan);">Printers run at 408 seconds interval to compensate for the 80% yield.</span>
-  </div>
-</div>
+        <div class="takt-calc-title">Formula & Worked Example</div>
+        <div class="formula-display">
+          Takt Time = <span class="f-cyan">Available Time per Day</span><br>
+          <span style="font-size:1.5rem;color:var(--border)">────────────────────</span><br>
+          <span class="f-cyan">Customer Demand per Day</span><br><br>
+          <span class="f-muted">= (261 days × 1,440 min × 60s) ÷ 50,000</span><br>
+          <span style="color:var(--cyan);font-size:1.2rem">= 150 seconds per pair</span>
+        </div>
+        <div style="margin-top:.8rem;padding:.5rem .6rem;background:rgba(0,229,255,0.05);border-left:2px solid var(--cyan);font-size:.65rem;color:var(--muted);line-height:1.5">
+          📊 <strong>Good pairs needed per weekday (including 80% yield):</strong><br>
+          Weekdays (24h) + Weekends (8h) → total 7,096 operating hours/year.<br>
+          50,000 good pairs × (6,264 weekday hours ÷ 7,096 total hours) = <strong>~44,150 good pairs from weekdays</strong>.<br>
+          44,150 ÷ 261 weekdays = <strong>≈ 170 good pairs per weekday</strong> (FESTO line must output this many).<br>
+          <span style="color:var(--cyan)">Printers run at 408 seconds interval to compensate for the 80% yield.</span>
+        </div>
         <div class="takt-compare">
           <div class="tc-row"><span class="tc-key">Working days/year</span><span class="tc-val">261 weekdays</span></div>
           <div class="tc-row"><span class="tc-key">Weekend shifts</span><span class="tc-val">104 days × 8h</span></div>
           <div class="tc-row"><span class="tc-key">Annual demand</span><span class="tc-val">50,000 pairs</span></div>
-         <div class="tc-row"><span class="tc-key">Good pairs needed per weekday (incl. 80% yield)</span><span class="tc-val">~170</span></div>
-          <div class="tc-row" style="border-left-color: var(--amber);"><span class="tc-key">(Weekend target)</span><span class="tc-val warn">~56 good pairs per weekend day</span></div>
+          <div class="tc-row"><span class="tc-key">Good pairs needed per weekday (incl. 80% yield)</span><span class="tc-val">~170</span></div>
+          <div class="tc-row" style="border-left-color:var(--amber)"><span class="tc-key">(Weekend target)</span><span class="tc-val warn">~56 good pairs per weekend day</span></div>
           <div class="tc-row highlight"><span class="tc-key">Takt time</span><span class="tc-val pass">150 seconds</span></div>
           <div class="tc-row highlight"><span class="tc-key">Bottleneck (Stn 5)</span><span class="tc-val warn">35s — within takt ✓</span></div>
         </div>
@@ -363,128 +453,433 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
     </div>
   </div>
 </div>
-  <!-- SECTION 1.5: PROCESS FLOW DIAGRAM -->
+
+<!-- SECTION 1.5: PROCESS FLOW DIAGRAM — EXPANDED -->
 <div class="sec-wrap reveal">
   <div class="sec-head">
     <div class="sec-label"><div class="sec-tag">01.5 — Process Flow</div><div class="sec-big-num">PFD</div></div>
-    <div class="sec-title-block"><h2>Process Flow<br><em>Diagram.</em></h2><div style="font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">End‑to‑end material flow</div></div>
+    <div class="sec-title-block">
+      <h2>Process Flow<br><em>Diagram.</em></h2>
+      <div style="font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">End‑to‑end material flow · 6 phases</div>
+    </div>
   </div>
   <div class="sec-body">
-    <div style="font-size:.82rem;color:var(--muted);font-weight:300;margin-bottom:1.5rem;line-height:1.7">
-      The complete ENCLOS3D production flow — from raw PLA filament to finished phone casing dispatch. 
-      <strong>Manual operations</strong> are highlighted in <span style="color:var(--amber)">amber</span>, the <strong>bottleneck station</strong> in <span style="color:var(--red)">red</span>, 
-      and <strong>automated stations</strong> in <span style="color:var(--cyan)">cyan</span>. 
-      The 20% reject loop is shown as a rework path back to the start of printing.
-    </div>
 
-    <!-- Process Flow Diagram as CSS Grid -->
-    <div style="background:var(--navy2); border:1px solid var(--border); padding:2rem; overflow-x:auto">
-      <div style="min-width: 800px;">
+    <p class="pf-intro">
+      Every operation from raw PLA spool to dispatched casing pair — broken into 6 phases.
+      <strong>Printer prep</strong> and <strong>post-print handling</strong> are fully detailed alongside the FESTO line.
+      <span class="t-amber">Manual operations</span> are highlighted in amber, the <span class="t-red">bottleneck station</span> in red,
+      and <span class="t-cyan">automated steps</span> in cyan. The 20% reject rework loop is shown as a return path to Phase B.
+    </p>
+
+    <div class="pf-canvas">
+
+      <!-- PHASE A: PRINTER PREPARATION -->
+      <div class="pf-phase">
+        <div class="pf-phase-header ph-prep">
+          <div class="pf-phase-hnum">A</div>
+          <div>
+            <div class="pf-phase-htitle">Printer Preparation</div>
+            <div class="pf-phase-hdesc">Before each print run — operator tasks per cycle (~15 min total)</div>
+          </div>
+        </div>
+        <div class="pf-steps-row">
+          <div class="pf-step step-manual">
+            <div class="op-badge manual">M</div>
+            <div class="pf-step-type type-manual">Manual</div>
+      
+            <div class="pf-step-title">Filament Spool Check</div>
+            <div class="pf-step-time t-amber">~2min</div>
+            <div class="pf-step-detail">Operator checks remaining PLA weight on each printer. Any spool below 200g is flagged for swap before job start to avoid mid-print failure.</div>
+          </div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step step-manual">
+            <div class="op-badge manual">M</div>
+            <div class="pf-step-type type-manual">Manual</div>
+      
+            <div class="pf-step-title">Filament Load / Swap</div>
+            <div class="pf-step-time t-amber">~3min</div>
+            <div class="pf-step-detail">If required: unload old spool, thread new PLA reel, run AMS purge cycle. Bambu AMS allows tool-free swaps. ~2–3 printers per shift need a swap.</div>
+          </div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step step-manual">
+            <div class="op-badge manual">M</div>
+            <div class="pf-step-type type-manual">Manual</div>
+   
+            <div class="pf-step-title">Build Plate Clean</div>
+            <div class="pf-step-time t-amber">~2min</div>
+            <div class="pf-step-detail">Remove plate, flex to pop off brim fragments. Wipe surface with IPA to remove oils and debris. Re-seat plate before job start.</div>
+          </div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step step-manual">
+            <div class="op-badge manual">M</div>
+            <div class="pf-step-type type-inspect">Inspect</div>
         
-        <!-- Row 1: Material Flow -->
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem">
-          <div style="background:var(--navy3); border:1px solid var(--border); padding:.75rem 1rem; text-align:center; width:120px">
-            <div style="font-family:var(--fm); font-size:.5rem; color:var(--muted)">STEP 1</div>
-            <div style="font-family:var(--fd); font-size:1.1rem; color:var(--cyan)">Filament Store</div>
-            <div style="font-size:.6rem; color:var(--muted)">PLA @ £20/kg</div>
+            <div class="pf-step-title">Plate Condition Check</div>
+            <div class="pf-step-time t-amber">~1min</div>
+            <div class="pf-step-detail">Visual check for scratches, gouges or warped plate. A damaged plate leads to adhesion failure. Plate replaced at first sign of degradation.</div>
           </div>
-          <div style="color:var(--muted)">→</div>
-          <div style="background:var(--navy3); border:1px solid var(--border); padding:.75rem 1rem; text-align:center; width:120px">
-            <div style="font-family:var(--fm); font-size:.5rem; color:var(--muted)">STEP 2</div>
-            <div style="font-family:var(--fd); font-size:1.1rem; color:var(--cyan)">25× Bambu P1S</div>
-            <div style="font-size:.6rem; color:var(--muted)">2.5h print cycle</div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step step-manual">
+            <div class="op-badge manual">M</div>
+            <div class="pf-step-type type-manual">Manual</div>
+         
+            <div class="pf-step-title">Job Load via Bambu Cloud or USB</div>
+            <div class="pf-step-time t-amber">~2min</div>
+            <div class="pf-step-detail">Operator selects locked production profile on Bambu Handy / Cloud app. Same .3mf file used every run or uses an USB.</div>
           </div>
-          <div style="color:var(--muted)">→</div>
-          <div style="background:var(--navy3); border:1px solid var(--border); padding:.75rem 1rem; text-align:center; width:120px">
-            <div style="font-family:var(--fm); font-size:.5rem; color:var(--muted)">STEP 3</div>
-            <div style="font-family:var(--fd); font-size:1.1rem; color:var(--amber)">Visual QC</div>
-            <div style="font-size:.6rem; color:var(--muted)">Operator inspection</div>
-          </div>
-        </div>
-
-        <!-- Decision diamond for QC -->
-        <div style="display:flex; align-items:center; justify-content:center; margin:1rem 0">
-          <div style="background:var(--navy3); border:1px solid var(--border); padding:.75rem 1rem; text-align:center; width:140px; transform:rotate(0deg)">
-            <div style="font-family:var(--fm); font-size:.5rem; color:var(--muted)">DECISION</div>
-            <div style="font-family:var(--fd); font-size:.9rem; color:var(--cyan)">Pass QC?</div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step step-manual">
+            <div class="op-badge manual">M</div>
+            <div class="pf-step-type type-inspect">Inspect</div>
+      
+            <div class="pf-step-title">First Layer Monitor</div>
+            <div class="pf-step-time t-muted">~5min</div>
+            <div class="pf-step-detail">Operator observes first 2–3 layers. Poor adhesion, warping, or stringing = job cancelled immediately before material waste accumulates.</div>
           </div>
         </div>
-
-        <!-- Two branches: Pass (80%) and Fail (20%) -->
-        <div style="display:flex; align-items:flex-start; justify-content:center; gap:2rem; margin-bottom:1rem">
-          <!-- Pass branch -->
-          <div style="flex:1; text-align:center">
-            <div style="color:var(--green); font-family:var(--fm); font-size:.55rem; margin-bottom:.5rem">✓ PASS (80%)</div>
-            <div style="background:rgba(0,255,136,0.05); border:1px solid rgba(0,255,136,0.3); padding:.75rem; border-radius:4px">
-              <div style="font-family:var(--fd); font-size:1rem; color:var(--green)">Continue to FESTO</div>
-            </div>
-          </div>
-          <!-- Fail branch -->
-          <div style="flex:1; text-align:center">
-            <div style="color:var(--red); font-family:var(--fm); font-size:.55rem; margin-bottom:.5rem">✗ FAIL (20%)</div>
-            <div style="background:rgba(255,68,68,0.05); border:1px solid rgba(255,68,68,0.3); padding:.75rem; border-radius:4px">
-              <div style="font-family:var(--fd); font-size:1rem; color:var(--red)">Rework / Reject</div>
-              <div style="font-size:.6rem; color:var(--muted)">Sent back to printing</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Row 2: FESTO Line -->
-        <div style="margin-top:1rem; border-top:1px solid var(--border); padding-top:1rem">
-          <div style="text-align:center; margin-bottom:1rem">
-            <span style="font-family:var(--fm); font-size:.5rem; letter-spacing:.1em; color:var(--cyan)">FESTO CP LAB — 6 STATION ASSEMBLY LINE</span>
-          </div>
-          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.5rem">
-            <div style="background:var(--navy3); border:1px solid var(--border); padding:.5rem .75rem; text-align:center; flex:1">
-              <div style="font-family:var(--fd); font-size:1rem; color:var(--cyan)">S1</div>
-              <div style="font-size:.6rem; color:var(--muted)">Front Magazine</div>
-              <div style="font-size:.55rem; color:var(--cyan)">7s</div>
-            </div>
-            <div style="color:var(--muted)">→</div>
-            <div style="background:var(--navy3); border:1px solid var(--border); padding:.5rem .75rem; text-align:center; flex:1">
-              <div style="font-family:var(--fd); font-size:1rem; color:var(--cyan)">S2</div>
-              <div style="font-size:.6rem; color:var(--muted)">Laser</div>
-              <div style="font-size:.55rem; color:var(--cyan)">8s</div>
-            </div>
-            <div style="color:var(--muted)">→</div>
-            <div style="background:var(--navy3); border:1px solid var(--border); padding:.5rem .75rem; text-align:center; flex:1">
-              <div style="font-family:var(--fd); font-size:1rem; color:var(--amber)">S3</div>
-              <div style="font-size:.6rem; color:var(--muted)">iPick (Manual)</div>
-              <div style="font-size:.55rem; color:var(--amber)">27s</div>
-            </div>
-            <div style="color:var(--muted)">→</div>
-            <div style="background:var(--navy3); border:1px solid var(--border); padding:.5rem .75rem; text-align:center; flex:1">
-              <div style="font-family:var(--fd); font-size:1rem; color:var(--cyan)">S4</div>
-              <div style="font-size:.6rem; color:var(--muted)">Press</div>
-              <div style="font-size:.55rem; color:var(--cyan)">11s</div>
-            </div>
-            <div style="color:var(--muted)">→</div>
-            <div style="background:var(--navy3); border:1px solid var(--border); padding:.5rem .75rem; text-align:center; flex:1; border-color:var(--red)">
-              <div style="font-family:var(--fd); font-size:1rem; color:var(--red)">S5 ⚠</div>
-              <div style="font-size:.6rem; color:var(--muted)">Oven</div>
-              <div style="font-size:.55rem; color:var(--red)">35s</div>
-            </div>
-            <div style="color:var(--muted)">→</div>
-            <div style="background:var(--navy3); border:1px solid var(--border); padding:.5rem .75rem; text-align:center; flex:1">
-              <div style="font-family:var(--fd); font-size:1rem; color:var(--cyan)">S6</div>
-              <div style="font-size:.6rem; color:var(--muted)">Output</div>
-              <div style="font-size:.55rem; color:var(--cyan)">11s</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Final output -->
-        <div style="margin-top:1.5rem; text-align:center">
-          <div style="display:inline-block; background:rgba(0,255,136,0.05); border:1px solid rgba(0,255,136,0.3); padding:.75rem 1.5rem; border-radius:4px">
-            <div style="font-family:var(--fd); font-size:1.2rem; color:var(--green)">✓ Finished Casing Pair</div>
-            <div style="font-size:.6rem; color:var(--muted)">Dispatch to customer</div>
-          </div>
-        </div>
-
       </div>
-    </div>
-  </div>
-</div>
+
+      <div class="pf-phase-divider">
+        <div class="pf-div-line"></div>
+        <div class="pf-div-label">↓ Printers running autonomously — 2.5 hour cycle ↓</div>
+        <div class="pf-div-line"></div>
+      </div>
+
+      <!-- PHASE B: PRINTING -->
+      <div class="pf-phase">
+        <div class="pf-phase-header ph-print">
+          <div class="pf-phase-hnum">B</div>
+          <div>
+            <div class="pf-phase-htitle">3D Printing — Autonomous Operation</div>
+            <div class="pf-phase-hdesc">25 Bambu P1S printers running 24/7 · 2.5h per pair · No operator intervention required</div>
+          </div>
+        </div>
+        <div class="pf-steps-row">
+          <div class="pf-step">
+            <div class="pf-step-type type-fab">Automated</div>
+          
+            <div class="pf-step-title">Bed + Nozzle Preheat</div>
+            <div class="pf-step-time">~4min</div>
+            <div class="pf-step-detail">Bambu P1S heats bed to 55°C and nozzle to 220°C. Auto-calibration runs: vibration compensation, flow rate calibration, bed levelling mesh.</div>
+          </div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step">
+            <div class="pf-step-type type-fab">Automated</div>
+      
+            <div class="pf-step-title">Nozzle Purge Line</div>
+            <div class="pf-step-time">~1min</div>
+            <div class="pf-step-detail">Machine prints a short purge line off the plate edge to prime the nozzle and eliminate residual material or air pockets before the part begins.</div>
+          </div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step">
+            <div class="pf-step-type type-fab">Fabricate</div>
+         
+            <div class="pf-step-title">Print Both Casings</div>
+            <div class="pf-step-time">~2.5h</div>
+            <div class="pf-step-detail">Front and back casing printed together. </div>
+          </div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step">
+            <div class="pf-step-type type-fab">Automated</div>
+     
+            <div class="pf-step-title">Cooldown Cycle</div>
+            <div class="pf-step-time">~5min</div>
+            <div class="pf-step-detail">Printer fans run at max to cool part and plate. Removing parts while PLA is above glass transition (~60°C) risks deforming the casing geometry.</div>
+          </div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step">
+            <div class="pf-step-type type-fab">Automated</div>
+          
+            <div class="pf-step-title">Job Complete Alert</div>
+            <div class="pf-step-time t-muted">Instant</div>
+            <div class="pf-step-detail">Bambu Cloud pushes notification to operator's phone and IoT dashboard flags printer as "Ready to collect". Prevents parts warping on a warm plate.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pf-phase-divider">
+        <div class="pf-div-line"></div>
+        <div class="pf-div-label">↓ Operator collects completed parts ↓</div>
+        <div class="pf-div-line"></div>
+      </div>
+
+      <!-- PHASE C: PART REMOVAL -->
+      <div class="pf-phase">
+        <div class="pf-phase-header ph-collect">
+          <div class="pf-phase-hnum">C</div>
+          <div>
+            <div class="pf-phase-htitle">Part Removal & Post-Processing</div>
+            <div class="pf-phase-hdesc">Operator task — ~3 min per printer · ~3 collection rounds per 8h shift</div>
+          </div>
+        </div>
+        <div class="pf-steps-row">
+          <div class="pf-step step-manual">
+            <div class="op-badge manual">M</div>
+            <div class="pf-step-type type-manual">Manual</div>
+          
+            <div class="pf-step-title">Remove Build Plate</div>
+            <div class="pf-step-time t-amber">~30s</div>
+            <div class="pf-step-detail">Operator lifts PEI spring-steel plate out of printer. Bambu's magnetic bed system allows tool-free removal. Parts left on plate, t removed inside printer to avoid damage.</div>
+          </div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step step-manual">
+            <div class="op-badge manual">M</div>
+            <div class="pf-step-type type-manual">Manual</div>
+        
+            <div class="pf-step-title">Flex Plate & Pop Parts</div>
+            <div class="pf-step-time t-amber">~30s</div>
+            <div class="pf-step-detail">Operator bends the flexible spring-steel plate slightly. PLA parts release cleanly without tools. If they don't release easily,part rejected.</div>
+          </div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step step-manual">
+            <div class="op-badge manual">M</div>
+            <div class="pf-step-type type-manual">Manual</div>
+     
+            <div class="pf-step-title">Brim / Support Removal</div>
+            <div class="pf-step-time t-amber">~1min</div>
+            <div class="pf-step-detail">Brim lines around the casing base are snapped off by hand or with flush cutters. N Edge smoothness checked visually.</div>
+          </div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step step-manual">
+            <div class="op-badge manual">M</div>
+            <div class="pf-step-type type-manual">Manual</div>
+       
+            <div class="pf-step-title">Batch Tag & Log</div>
+            <div class="pf-step-time t-amber">~30s</div>
+            <div class="pf-step-detail">Casing pair assigned a batch ID (printer number + timestamp). ID travels through QC and FESTO for full traceability, linked to the IoT dashboard record.</div>
+          </div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step step-manual">
+            <div class="op-badge manual">M</div>
+            <div class="pf-step-type type-manual">Manual</div>
+       
+            <div class="pf-step-title">Re-seat Plate & Start Next Job</div>
+            <div class="pf-step-time t-amber">~1min</div>
+            <div class="pf-step-detail">Clean plate re-inserted (IPA wipe if needed). Next print job triggered via Bambu Cloud. Printer back printing within 5–6 minutes of job completion.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pf-phase-divider">
+        <div class="pf-div-line"></div>
+        <div class="pf-div-label">↓ Batched parts moved to QC station ↓</div>
+        <div class="pf-div-line"></div>
+      </div>
+
+      <!-- PHASE D: QUALITY CONTROL -->
+      <div class="pf-phase">
+        <div class="pf-phase-header ph-qc">
+          <div class="pf-phase-hnum">D</div>
+          <div>
+            <div class="pf-phase-htitle">Visual Quality Control</div>
+            <div class="pf-phase-hdesc">Operator inspection · ~5 min per batch · 80% pass rate · 20% rework/reject</div>
+          </div>
+        </div>
+        <div class="pf-steps-row">
+          <div class="pf-step step-manual">
+            <div class="op-badge manual">M</div>
+            <div class="pf-step-type type-inspect">Inspect</div>
+    
+            <div class="pf-step-title">Warping Check</div>
+            <div class="pf-step-time t-amber">~1min</div>
+            <div class="pf-step-detail">Casing placed flat on reference surface. Corner lift > 0.5mm = reject. Warping caused by poor bed adhesion, draught, or incorrect bed temp. Most common failure mode.</div>
+          </div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step step-manual">
+            <div class="op-badge manual">M</div>
+            <div class="pf-step-type type-inspect">Inspect</div>
+        
+            <div class="pf-step-title">Surface Quality Check</div>
+            <div class="pf-step-time t-amber">~1min</div>
+            <div class="pf-step-detail">Check for stringing, layer separation, holes, blobs, or under-extrusion. Any visible defect on the outer shell face = reject. Inner face allowed minor imperfections if functional.</div>
+          </div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step step-manual">
+            <div class="op-badge manual">M</div>
+            <div class="pf-step-type type-inspect">Inspect</div>
+    
+            <div class="pf-step-title">Dimensional Spot-Check</div>
+            <div class="pf-step-time t-amber">~1min</div>
+            <div class="pf-step-detail">Calipers used for spot-checks: wall thickness must be 1.6–2.2mm (target 1.9mm for FESTO S2 laser pass). 1-in-10 parts fully checked; remainder visual-only.</div>
+          </div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step step-manual">
+            <div class="op-badge manual">M</div>
+            <div class="pf-step-type type-inspect">Inspect</div>
+        
+            <div class="pf-step-title">Clip Fit Test</div>
+            <div class="pf-step-time t-amber">~1min</div>
+            <div class="pf-step-detail">Front and back hand-pressed together to check clip engagement. Over-tight = elephant foot issue. Too loose = undersized print. Either = reject.</div>
+          </div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step step-decision">
+            <div class="pf-step-type type-decision">Decision</div>
+      
+            <div class="pf-step-title">Pass / Fail Decision</div>
+            <div class="pf-step-time t-muted">Instant</div>
+            <div class="pf-step-detail">Operator makes final pass/fail judgement. Batch ID logged against outcome in IoT system. Pass rate tracked per printer — persistent failures trigger maintenance alert.</div>
+          </div>
+        </div>
+
+        <div class="pf-branch-wrap">
+          <div class="pf-branch pass-branch">
+            <div class="pf-branch-label">✓ Pass — 80% of parts</div>
+            <div class="pf-branch-title">→ FESTO Line</div>
+            <div class="pf-branch-desc">Casing pair with batch ID tag transferred to FESTO CP Lab input magazine. Operator places parts into carrier tray in correct orientation — front casing top, back casing bottom.</div>
+          </div>
+          <div class="pf-branch fail-branch">
+            <div class="pf-branch-label">✗ Fail — 20% of parts</div>
+            <div class="pf-branch-title">→ Reject / Rework</div>
+            <div class="pf-branch-desc">Part binned (PLA is recyclable). Reject reason logged against batch ID. Printer flagged on dashboard. New print job triggered immediately — yield factored into the 25-printer fleet calculation (62,500 prints for 50,000 good pairs).</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pf-phase-divider">
+        <div class="pf-div-line"></div>
+        <div class="pf-div-label">↓ Passed parts loaded into FESTO CP Lab ↓</div>
+        <div class="pf-div-line"></div>
+      </div>
+
+      <!-- PHASE E: FESTO CP LAB -->
+      <div class="pf-phase">
+        <div class="pf-phase-header ph-festo">
+          <div class="pf-phase-hnum">E</div>
+          <div>
+            <div class="pf-phase-htitle">FESTO CP Lab — 6-Station Assembly Line</div>
+            <div class="pf-phase-hdesc">Pipelined flow · New case exits every 16.5s · Total cycle 99s per batch</div>
+          </div>
+        </div>
+        <div class="festo-pipeline">
+          <div class="festo-station">
+            <div class="fs-num" style="color:var(--cyan)">S1</div>
+            <div class="fs-time" style="color:var(--cyan)">7s</div>
+            <div class="fs-name">Front Magazine<br>Part Feed</div>
+          </div>
+          <div style="display:flex;align-items:center;padding:0 4px"><div style="width:20px;height:1px;background:rgba(0,229,255,0.3)"></div><div style="width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:5px solid rgba(0,229,255,0.4)"></div></div>
+          <div class="festo-station">
+            <div class="fs-num" style="color:var(--cyan)">S2</div>
+            <div class="fs-time" style="color:var(--cyan)">8s</div>
+            <div class="fs-name">Laser Measure<br>Wall = 1.9mm ✓</div>
+          </div>
+          <div style="display:flex;align-items:center;padding:0 4px"><div style="width:20px;height:1px;background:rgba(0,229,255,0.3)"></div><div style="width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:5px solid rgba(0,229,255,0.4)"></div></div>
+          <div class="festo-station fs-manual">
+            <div class="op-badge manual">M</div>
+            <div class="fs-num" style="color:var(--amber)">S3</div>
+            <div class="fs-time" style="color:var(--amber)">27s</div>
+            <div class="fs-name">iPick<br>Manual Assembly</div>
+          </div>
+          <div style="display:flex;align-items:center;padding:0 4px"><div style="width:20px;height:1px;background:rgba(0,229,255,0.3)"></div><div style="width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:5px solid rgba(0,229,255,0.4)"></div></div>
+          <div class="festo-station">
+            <div class="fs-num" style="color:var(--cyan)">S4</div>
+            <div class="fs-time" style="color:var(--cyan)">11s</div>
+            <div class="fs-name">Press Fit<br>Automated Clamp</div>
+          </div>
+          <div style="display:flex;align-items:center;padding:0 4px"><div style="width:20px;height:1px;background:rgba(0,229,255,0.3)"></div><div style="width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:5px solid rgba(0,229,255,0.4)"></div></div>
+          <div class="festo-station fs-bottleneck">
+            <div class="op-badge bottleneck">B</div>
+            <div class="fs-num" style="color:var(--red)">S5</div>
+            <div class="fs-time" style="color:var(--red)">35s ⚠</div>
+            <div class="fs-name">Oven<br>Heat Treat · Bottleneck</div>
+          </div>
+          <div style="display:flex;align-items:center;padding:0 4px"><div style="width:20px;height:1px;background:rgba(0,229,255,0.3)"></div><div style="width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:5px solid rgba(0,229,255,0.4)"></div></div>
+          <div class="festo-station fs-output">
+            <div class="fs-num" style="color:var(--green)">S6</div>
+            <div class="fs-time" style="color:var(--green)">11s</div>
+            <div class="fs-name">Final Output<br>Sign-off + UR Robot</div>
+          </div>
+        </div>
+        <div class="pipeline-note">
+          <strong>Pipeline operation:</strong> a completed casing pair exits S6 every <span class="t-cyan">16.5 seconds</span> (99s ÷ 6 stations) — not every 99s. While one case is at S6, the next is at S5, and so on. Throughput = <span class="t-cyan">~218 cases/hour</span> — well above the 150s takt requirement.
+        </div>
+      </div>
+
+      <div class="pf-phase-divider">
+        <div class="pf-div-line"></div>
+        <div class="pf-div-label">↓ UR10e robot collects finished pairs from S6 tray ↓</div>
+        <div class="pf-div-line"></div>
+      </div>
+
+      <!-- PHASE F: DISPATCH -->
+      <div class="pf-phase">
+        <div class="pf-phase-header ph-dispatch">
+          <div class="pf-phase-hnum">F</div>
+          <div>
+            <div class="pf-phase-htitle">Final QC, Packaging & Dispatch</div>
+            <div class="pf-phase-hdesc">Automated UR10e robot + operator pack · Traceability record closed</div>
+          </div>
+        </div>
+        <div class="pf-steps-row">
+          <div class="pf-step">
+            <div class="pf-step-type type-fab">Automated</div>
+      
+            <div class="pf-step-title">UR10e Robot Pick</div>
+            <div class="pf-step-time">8s</div>
+            <div class="pf-step-detail">Universal Robots UR10e picks finished casing from S6 tray and places onto dispatch bay. No human handling — reduces contamination and handling damage.</div>
+          </div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step step-manual">
+            <div class="op-badge manual">M</div>
+            <div class="pf-step-type type-inspect">Inspect</div>
+   
+            <div class="pf-step-title">Final Visual Check</div>
+            <div class="pf-step-time t-amber">~30s</div>
+            <div class="pf-step-detail">Operator spot-checks assembled pairs for clip snap quality, alignment, and surface marks from FESTO assembly. Last human touchpoint before packaging.</div>
+          </div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step step-manual">
+            <div class="op-badge manual">M</div>
+            <div class="pf-step-type type-manual">Manual</div>
+        
+            <div class="pf-step-title">Pack & Label</div>
+            <div class="pf-step-time t-amber">~1min</div>
+            <div class="pf-step-detail">Paired casings placed in retail packaging with batch ID barcode. Packaging scanned to close the traceability record in IoT system. Units moved to finished-goods storage.</div>
+          </div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step step-store">
+            <div class="pf-step-type type-store">Store</div>
+       
+            <div class="pf-step-title">Finished Goods Store</div>
+            <div class="pf-step-time t-muted">—</div>
+            <div class="pf-step-detail">Packed units held in finished-goods area. Daily dispatch to logistics partner. Stock level monitored via IoT — automated reorder trigger if FG drops below 2-day buffer.</div>
+          </div>
+          <div class="pf-connector"><div style="display:flex;align-items:center"><div class="pf-conn-line"></div><div class="pf-conn-head"></div></div></div>
+          <div class="pf-step step-decision" style="border-color:rgba(0,255,136,0.4);background:rgba(0,255,136,0.05)">
+            <div class="pf-step-type type-decision">Output</div>
+         
+            <div class="pf-step-title">Dispatch to Customer</div>
+            <div class="pf-step-time" style="color:var(--green)">Done</div>
+            <div class="pf-step-detail">50,000 good pairs dispatched per year. Full traceability chain: printer serial → batch ID → FESTO station data → final QC → dispatch record.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- YIELD STATS -->
+      <div class="yield-stats">
+        <div class="ys-card"><div class="ys-val" style="color:var(--cyan)">62,500</div><div class="ys-label">Total prints required</div></div>
+        <div class="ys-card"><div class="ys-val" style="color:var(--amber)">12,500</div><div class="ys-label">Expected rejects (20%)</div></div>
+        <div class="ys-card"><div class="ys-val" style="color:var(--green)">50,000</div><div class="ys-label">Good pairs dispatched</div></div>
+        <div class="ys-card"><div class="ys-val" style="color:var(--cyan)">25</div><div class="ys-label">Printers (incl. 15% buffer)</div></div>
+      </div>
+
+      <!-- LEGEND -->
+      <div class="pf-legend">
+        <div class="pfl"><div class="pfl-dot" style="background:var(--cyan)"></div>Automated / Fabrication</div>
+        <div class="pfl"><div class="pfl-dot" style="background:var(--amber)"></div>Manual — operator required</div>
+        <div class="pfl"><div class="pfl-dot" style="background:var(--red)"></div>Bottleneck station</div>
+        <div class="pfl"><div class="pfl-dot" style="background:var(--green)"></div>Decision / Output</div>
+        <div class="pfl"><div class="pfl-dot" style="background:var(--muted)"></div>Move / Store</div>
+        <div class="pfl" style="margin-left:auto">
+          <span style="background:var(--amber);color:var(--navy);font-weight:700;padding:.1rem .3rem;font-size:.5rem">M</span>&nbsp;= manual operator &nbsp;&nbsp;
+          <span style="background:var(--red);color:#fff;font-weight:700;padding:.1rem .3rem;font-size:.5rem">B</span>&nbsp;= bottleneck
+        </div>
+      </div>
+
+    </div><!-- /pf-canvas -->
+  </div><!-- /sec-body -->
+</div><!-- /sec-wrap 01.5 -->
+
 <!-- SECTION 1.6: PRINTER CAPACITY & OPERATING SCENARIOS -->
 <div class="sec-wrap reveal">
   <div class="sec-head">
@@ -494,23 +889,18 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   <div class="sec-body">
     <div style="background:var(--navy2);border:1px solid var(--border);padding:1.5rem">
       <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:1rem">Capacity Analysis — 50,000 phones/year · 2.5h cycle time · 80% yield · Bambu P1S</div>
-  
-  
-
-    <div style="margin-bottom:1rem; padding:.8rem 1rem; background:rgba(0,229,255,0.05); border-left:2px solid var(--cyan); font-size:.7rem; color:var(--muted); line-height:1.5">
-    <strong style="color:var(--cyan)">📐 Where the 25 printers come from (full calculation):</strong><br><br>
-    <strong>1. Annual good pairs needed</strong> = 50,000<br>
-    <strong>2. Required prints (80% yield)</strong> = 50,000 ÷ 0.8 = <strong>62,500 pairs</strong><br>
-    <strong>3. Print cycle per pair</strong> = 2.5 hours → total print hours needed = 62,500 × 2.5 = <strong>156,250 hours</strong><br><br>
-    <strong>4. Operating hours per printer per year:</strong><br>
-    &nbsp;&nbsp;Weekdays: 261 days × 24h = 6,264 hours<br>
-    &nbsp;&nbsp;Weekends: 104 days × 8h = 832 hours<br>
-    &nbsp;&nbsp;<strong>Total = 7,096 hours/year per printer</strong><br><br>
-    <strong>5. Theoretical printers needed</strong> = 156,250 ÷ 7,096 = <strong>22.0 printers</strong><br>
-    <strong>6. Adding 15% buffer</strong> (maintenance, variation) = 22 × 1.15 = <strong>25.3 → 25 printers</strong> ✅
-  </div>
-  
-  
+      <div style="margin-bottom:1rem;padding:.8rem 1rem;background:rgba(0,229,255,0.05);border-left:2px solid var(--cyan);font-size:.7rem;color:var(--muted);line-height:1.5">
+        <strong style="color:var(--cyan)">📐 Where the 25 printers come from (full calculation):</strong><br><br>
+        <strong>1. Annual good pairs needed</strong> = 50,000<br>
+        <strong>2. Required prints (80% yield)</strong> = 50,000 ÷ 0.8 = <strong>62,500 pairs</strong><br>
+        <strong>3. Print cycle per pair</strong> = 2.5 hours → total print hours needed = 62,500 × 2.5 = <strong>156,250 hours</strong><br><br>
+        <strong>4. Operating hours per printer per year:</strong><br>
+        &nbsp;&nbsp;Weekdays: 261 days × 24h = 6,264 hours<br>
+        &nbsp;&nbsp;Weekends: 104 days × 8h = 832 hours<br>
+        &nbsp;&nbsp;<strong>Total = 7,096 hours/year per printer</strong><br><br>
+        <strong>5. Theoretical printers needed</strong> = 156,250 ÷ 7,096 = <strong>22.0 printers</strong><br>
+        <strong>6. Adding 15% buffer</strong> (maintenance, variation) = 22 × 1.15 = <strong>25.3 → 25 printers</strong> ✅
+      </div>
       <div style="overflow-x:auto">
         <table style="width:100%;border-collapse:collapse">
           <thead>
@@ -529,41 +919,41 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
               <td style="text-align:center;padding:.7rem .5rem;font-family:var(--fm);font-size:.7rem;color:var(--muted)">600 ÷ 8 hrs</td>
               <td style="text-align:center;padding:.7rem .5rem;font-family:var(--fd);font-size:1.3rem;color:var(--red)">75 printers</td>
               <td style="text-align:center;padding:.7rem .5rem;font-family:var(--fm);font-size:.7rem;color:var(--white)">50,000 phones</td>
-             </tr>
+            </tr>
             <tr style="border-bottom:1px solid rgba(0,229,255,0.08)">
               <td style="padding:.7rem .5rem;font-size:.75rem;color:var(--white)">16-Hour Shift (two shifts)</td>
               <td style="text-align:center;padding:.7rem .5rem;font-family:var(--fm);font-size:.7rem;color:var(--white)">16h</td>
               <td style="text-align:center;padding:.7rem .5rem;font-family:var(--fm);font-size:.7rem;color:var(--muted)">600 ÷ 16 hrs</td>
               <td style="text-align:center;padding:.7rem .5rem;font-family:var(--fd);font-size:1.3rem;color:var(--amber)">38 printers</td>
               <td style="text-align:center;padding:.7rem .5rem;font-family:var(--fm);font-size:.7rem;color:var(--white)">50,000 phones</td>
-             </tr>
+            </tr>
             <tr style="border-bottom:1px solid rgba(0,229,255,0.08);background:rgba(0,229,255,0.03)">
               <td style="padding:.7rem .5rem;font-size:.75rem;color:var(--cyan)"><strong>★ 24/7 Operation (Recommended)</strong></td>
               <td style="text-align:center;padding:.7rem .5rem;font-family:var(--fm);font-size:.7rem;color:var(--cyan)">24h</td>
               <td style="text-align:center;padding:.7rem .5rem;font-family:var(--fm);font-size:.7rem;color:var(--muted)">600 ÷ 24 hrs</td>
               <td style="text-align:center;padding:.7rem .5rem;font-family:var(--fd);font-size:1.5rem;color:var(--cyan)"><strong>25 printers</strong></td>
               <td style="text-align:center;padding:.7rem .5rem;font-family:var(--fm);font-size:.7rem;color:var(--white)">50,000 phones</td>
-             </tr>
+            </tr>
             <tr style="border-bottom:1px solid rgba(0,229,255,0.08)">
               <td style="padding:.7rem .5rem;font-size:.75rem;color:var(--white)">24/7 + 20% Maintenance Buffer</td>
               <td style="text-align:center;padding:.7rem .5rem;font-family:var(--fm);font-size:.7rem;color:var(--white)">24h</td>
               <td style="text-align:center;padding:.7rem .5rem;font-family:var(--fm);font-size:.7rem;color:var(--muted)">25 × 1.2</td>
-              <td style="text-align:center;padding:.7rem .5rem;font-family:var(--fd);font-size:1.3rem;color:var(--orange)">30 printers</td>
+              <td style="text-align:center;padding:.7rem .5rem;font-family:var(--fd);font-size:1.3rem;color:var(--amber)">30 printers</td>
               <td style="text-align:center;padding:.7rem .5rem;font-family:var(--fm);font-size:.7rem;color:var(--white)">60,000 phones (buffer)</td>
-             </tr>
+            </tr>
           </tbody>
         </table>
       </div>
-
       <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:rgba(0,229,255,0.06);border-left:3px solid var(--cyan)">
         <div style="font-family:var(--fm);font-size:.7rem;color:var(--cyan);margin-bottom:.5rem">→ Recommendation:</div>
         <div style="font-size:.78rem;color:var(--muted);line-height:1.6;font-weight:300">
-          25 Bambu P1S printers running <strong>24/7</strong> is the optimal configuration to meet the <strong>50,000 phones/year</strong> target. This is equivalent to operating <strong>75 printers</strong> on a single 8-hour shift, a capital saving of <strong style="color:var(--cyan)">£50,000+</strong> in printer hardware alone, but requires a robust remote monitoring infrastructure to manage unattended overnight operation (addressed via camera system and cloud dashboard).
+          25 Bambu P1S printers running <strong>24/7</strong> is the optimal configuration to meet the <strong>50,000 phones/year</strong> target. This is equivalent to operating <strong>75 printers</strong> on a single 8-hour shift — a capital saving of <strong style="color:var(--cyan)">£50,000+</strong> in printer hardware alone, but requires a robust remote monitoring infrastructure to manage unattended overnight operation (addressed via camera system and cloud dashboard).
         </div>
       </div>
     </div>
   </div>
 </div>
+
 <!-- SECTION 2: VALUE STREAM MAP -->
 <div class="sec-wrap reveal">
   <div class="sec-head">
@@ -574,107 +964,23 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
     <div style="font-size:.82rem;color:var(--muted);font-weight:300;margin-bottom:1.5rem;line-height:1.7">The value stream traces a casing pair from raw PLA filament through to final FESTO sign-off. <strong style="color:var(--white)">Value-added time</strong> (fabrication, inspection) is separated from <strong style="color:var(--amber)">non-value-added time</strong> (waiting, movement). The goal: maximise flow, eliminate waste.</div>
     <div class="vsm-wrap">
       <div class="vsm">
-        <!-- Filament Store -->
-        <div class="vsm-node">
-          <div class="vsm-box">
-            <div class="vsm-icon"></div>
-            <div class="vsm-title">Filament Store</div>
-            <div class="vsm-time">—</div>
-            <div class="vsm-sublabel">PLA @ £20/kg</div>
-            <div class="vsm-type move">STORE</div>
-          </div>
-        </div>
+        <div class="vsm-node"><div class="vsm-box"><div class="vsm-icon"></div><div class="vsm-title">Filament Store</div><div class="vsm-time">—</div><div class="vsm-sublabel">PLA @ £20/kg</div><div class="vsm-type move">STORE</div></div></div>
         <div class="vsm-arrow"><div style="display:flex;align-items:center"><div class="vsm-arr-line"></div><div class="vsm-arr-head"></div></div><div class="vsm-wait">Load</div></div>
-        <!-- 3D Print -->
-        <div class="vsm-node">
-          <div class="vsm-box">
-            <div class="vsm-icon"></div>
-            <div class="vsm-title">3D Print</div>
-            <div class="vsm-time">2.5h</div>
-            <div class="vsm-sublabel">25× Bambu P1S</div>
-            <div class="vsm-type fab">FABRICATE</div>
-          </div>
-        </div>
+        <div class="vsm-node"><div class="vsm-box"><div class="vsm-icon"></div><div class="vsm-title">3D Print</div><div class="vsm-time">2.5h</div><div class="vsm-sublabel">25× Bambu P1S</div><div class="vsm-type fab">FABRICATE</div></div></div>
         <div class="vsm-arrow"><div style="display:flex;align-items:center"><div class="vsm-arr-line"></div><div class="vsm-arr-head"></div></div><div class="vsm-wait">Collect</div></div>
-        <!-- QC Check -->
-        <div class="vsm-node">
-          <div class="vsm-box manual">
-            <div class="vsm-badge m">M</div>
-            <div class="vsm-icon"> </div>
-            <div class="vsm-title">QC Inspect</div>
-            <div class="vsm-time amber">~5min</div>
-            <div class="vsm-sublabel">Operator visual</div>
-            <div class="vsm-type insp">INSPECT</div>
-          </div>
-        </div>
+        <div class="vsm-node"><div class="vsm-box manual"><div class="vsm-badge m">M</div><div class="vsm-icon"> </div><div class="vsm-title">QC Inspect</div><div class="vsm-time amber">~5min</div><div class="vsm-sublabel">Operator visual</div><div class="vsm-type insp">INSPECT</div></div></div>
         <div class="vsm-arrow"><div style="display:flex;align-items:center"><div class="vsm-arr-line"></div><div class="vsm-arr-head"></div></div><div class="vsm-wait">Pass</div></div>
-        <!-- FESTO S1 -->
-        <div class="vsm-node">
-          <div class="vsm-box">
-            <div class="vsm-icon"></div>
-            <div class="vsm-title">S1 Front Magazine</div>
-            <div class="vsm-time">7s</div>
-            <div class="vsm-sublabel">Dispense</div>
-            <div class="vsm-type insp">FEED</div>
-          </div>
-        </div>
+        <div class="vsm-node"><div class="vsm-box"><div class="vsm-icon"></div><div class="vsm-title">S1 Front Magazine</div><div class="vsm-time">7s</div><div class="vsm-sublabel">Dispense</div><div class="vsm-type insp">FEED</div></div></div>
         <div class="vsm-arrow"><div style="display:flex;align-items:center"><div class="vsm-arr-line"></div><div class="vsm-arr-head"></div></div><div class="vsm-wait">—</div></div>
-        <!-- FESTO S2 -->
-        <div class="vsm-node">
-          <div class="vsm-box">
-            <div class="vsm-icon"></div>
-            <div class="vsm-title">S2 Laser</div>
-            <div class="vsm-time">8s</div>
-            <div class="vsm-sublabel">Wall check</div>
-            <div class="vsm-type insp">INSPECT</div>
-          </div>
-        </div>
+        <div class="vsm-node"><div class="vsm-box"><div class="vsm-icon"></div><div class="vsm-title">S2 Laser</div><div class="vsm-time">8s</div><div class="vsm-sublabel">Wall check</div><div class="vsm-type insp">INSPECT</div></div></div>
         <div class="vsm-arrow"><div style="display:flex;align-items:center"><div class="vsm-arr-line"></div><div class="vsm-arr-head"></div></div><div class="vsm-wait">—</div></div>
-        <!-- FESTO S3 -->
-        <div class="vsm-node">
-          <div class="vsm-box manual">
-            <div class="vsm-badge m">M</div>
-            <div class="vsm-icon"></div>
-            <div class="vsm-title">S3 iPick</div>
-            <div class="vsm-time amber">27s</div>
-            <div class="vsm-sublabel">Manual assembly</div>
-            <div class="vsm-type manual">MANUAL</div>
-          </div>
-        </div>
+        <div class="vsm-node"><div class="vsm-box manual"><div class="vsm-badge m">M</div><div class="vsm-icon"></div><div class="vsm-title">S3 iPick</div><div class="vsm-time amber">27s</div><div class="vsm-sublabel">Manual assembly</div><div class="vsm-type manual">MANUAL</div></div></div>
         <div class="vsm-arrow"><div style="display:flex;align-items:center"><div class="vsm-arr-line"></div><div class="vsm-arr-head"></div></div><div class="vsm-wait">—</div></div>
-        <!-- FESTO S4 -->
-        <div class="vsm-node">
-          <div class="vsm-box">
-            <div class="vsm-icon"></div>
-            <div class="vsm-title">S4 Press</div>
-            <div class="vsm-time">11s</div>
-            <div class="vsm-sublabel">Press fit</div>
-            <div class="vsm-type fab">FABRICATE</div>
-          </div>
-        </div>
+        <div class="vsm-node"><div class="vsm-box"><div class="vsm-icon"></div><div class="vsm-title">S4 Press</div><div class="vsm-time">11s</div><div class="vsm-sublabel">Press fit</div><div class="vsm-type fab">FABRICATE</div></div></div>
         <div class="vsm-arrow"><div style="display:flex;align-items:center"><div class="vsm-arr-line"></div><div class="vsm-arr-head"></div></div><div class="vsm-wait">—</div></div>
-        <!-- FESTO S5 BOTTLENECK -->
-        <div class="vsm-node">
-          <div class="vsm-box bottleneck">
-            <div class="vsm-badge b">B</div>
-            <div class="vsm-icon"></div>
-            <div class="vsm-title">S5 Oven</div>
-            <div class="vsm-time red">35s</div>
-            <div class="vsm-sublabel">⚠ BOTTLENECK</div>
-            <div class="vsm-type fab">FABRICATE</div>
-          </div>
-        </div>
+        <div class="vsm-node"><div class="vsm-box bottleneck"><div class="vsm-badge b">B</div><div class="vsm-icon"></div><div class="vsm-title">S5 Oven</div><div class="vsm-time red">35s</div><div class="vsm-sublabel">⚠ BOTTLENECK</div><div class="vsm-type fab">FABRICATE</div></div></div>
         <div class="vsm-arrow"><div style="display:flex;align-items:center"><div class="vsm-arr-line"></div><div class="vsm-arr-head"></div></div><div class="vsm-wait">—</div></div>
-        <!-- FESTO S6 -->
-        <div class="vsm-node">
-          <div class="vsm-box">
-            <div class="vsm-icon"></div>
-            <div class="vsm-title">S6 Output</div>
-            <div class="vsm-time">11s</div>
-            <div class="vsm-sublabel">Final sign-off</div>
-            <div class="vsm-type insp">INSPECT</div>
-          </div>
-        </div>
+        <div class="vsm-node"><div class="vsm-box"><div class="vsm-icon"></div><div class="vsm-title">S6 Output</div><div class="vsm-time">11s</div><div class="vsm-sublabel">Final sign-off</div><div class="vsm-type insp">INSPECT</div></div></div>
       </div>
     </div>
     <div class="vsm-legend">
@@ -695,7 +1001,6 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
     <div class="sec-title-block"><h2>Station Cycle<br><em>Times.</em></h2><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Click a station to explore</div></div>
   </div>
   <div class="sec-body">
-    <!-- Bar chart -->
     <div style="margin-bottom:1.5rem">
       <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem;display:flex;justify-content:space-between;align-items:center">
         <span>Cycle Time Per Station (seconds)</span>
@@ -716,24 +1021,23 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
     <div style="margin-top:1.5rem;background:var(--navy2);border:1px solid var(--border);padding:1.25rem">
       <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.75rem">Total FESTO CP Lab Summary</div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem">
-       <div style="padding:.9rem;background:var(--navy3);border:1px solid var(--border);text-align:center"><div style="font-family:var(--fd);font-size:2rem;color:var(--cyan)">99s</div><div style="font-family:var(--fm);font-size:.48rem;text-transform:uppercase;color:var(--muted);margin-top:.2rem">Total cycle (per batch)</div></div>
+        <div style="padding:.9rem;background:var(--navy3);border:1px solid var(--border);text-align:center"><div style="font-family:var(--fd);font-size:2rem;color:var(--cyan)">99s</div><div style="font-family:var(--fm);font-size:.48rem;text-transform:uppercase;color:var(--muted);margin-top:.2rem">Total cycle (per batch)</div></div>
         <div style="padding:.9rem;background:var(--navy3);border:1px solid var(--border);text-align:center"><div style="font-family:var(--fd);font-size:2rem;color:var(--red)">35s</div><div style="font-family:var(--fm);font-size:.48rem;text-transform:uppercase;color:var(--muted);margin-top:.2rem">Bottleneck (Stn 5)</div></div>
         <div style="padding:.9rem;background:var(--navy3);border:1px solid var(--border);text-align:center"><div style="font-family:var(--fd);font-size:2rem;color:var(--amber)">2</div><div style="font-family:var(--fm);font-size:.48rem;text-transform:uppercase;color:var(--muted);margin-top:.2rem">Manual stations (S3)</div></div>
         <div style="padding:.9rem;background:rgba(0,255,136,0.05);border:1px solid rgba(0,255,136,0.2);text-align:center"><div style="font-family:var(--fd);font-size:2rem;color:var(--green)">✓</div><div style="font-family:var(--fm);font-size:.48rem;text-transform:uppercase;color:var(--muted);margin-top:.2rem">Within 150s takt</div></div>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:rgba(0,229,255,0.05);border-left:3px solid var(--cyan)">
+      <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:.5rem">⚙️ How the FESTO Line Actually Works — Pipelined Flow</div>
+      <div style="font-size:.75rem;color:var(--muted);line-height:1.6">
+        <strong style="color:var(--white)">Wrong assumption:</strong> One case enters S1, waits for all 6 stations to finish (99s), then the next case enters.<br><br>
+        <strong style="color:var(--white)">Reality:</strong> The FESTO line is a <strong style="color:var(--cyan)">pipeline</strong> — a new case enters S1 <strong style="color:var(--cyan)">every 16.5 seconds</strong> (99s ÷ 6 stations). While Case A is at S6, Case B is at S5, Case C at S4, and so on. This means a completed case exits S6 <strong style="color:var(--cyan)">every 16.5 seconds</strong>, not every 99 seconds. The total line throughput is <strong style="color:var(--cyan)">~218 cases per hour</strong> — far above the 150s takt requirement.<br><br>
+        <strong style="color:var(--white)">Formula:</strong> Throughput time per case = <strong style="color:var(--cyan)">Total cycle time ÷ Number of stations</strong> = 99s ÷ 6 = <strong style="color:var(--cyan)">16.5s per case</strong>
+      </div>
     </div>
   </div>
 </div>
-<!-- PIPELINED FLOW EXPLANATION -->
-<div style="margin-top:1.5rem; padding:1rem 1.25rem; background:rgba(0,229,255,0.05); border-left:3px solid var(--cyan)">
-  <div style="font-family:var(--fm); font-size:.55rem; letter-spacing:.12em; text-transform:uppercase; color:var(--cyan); margin-bottom:.5rem">⚙️ How the FESTO Line Actually Works — Pipelined Flow</div>
-  <div style="font-size:.75rem; color:var(--muted); line-height:1.6">
-    <strong style="color:var(--white)">Wrong assumption:</strong> One case enters S1, waits for all 6 stations to finish (99s), then the next case enters.<br><br>
-    <strong style="color:var(--white)">Reality:</strong> The FESTO line is a <strong style="color:var(--cyan)">pipeline</strong> — a new case enters S1 <strong style="color:var(--cyan)">every 16.5 seconds</strong> (99s ÷ 6 stations). 
-    While Case A is at S6, Case B is at S5, Case C at S4, and so on. This means a completed case exits S6 <strong style="color:var(--cyan)">every 16.5 seconds</strong>, 
-    not every 99 seconds. The total line throughput is <strong style="color:var(--cyan)">~218 cases per hour</strong> — far above the 150s takt requirement.<br><br>
-    <strong style="color:var(--white)">Formula:</strong> Throughput time per case = <strong style="color:var(--cyan)">Total cycle time ÷ Number of stations</strong> = 99s ÷ 6 = <strong style="color:var(--cyan)">16.5s per case</strong>
-  </div>
-</div>
+
 <!-- SECTION 4: MANUFACTURING SEQUENCE CHART -->
 <div class="sec-wrap reveal">
   <div class="sec-head">
@@ -744,47 +1048,39 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
     <div style="font-size:.82rem;color:var(--muted);font-weight:300;margin-bottom:1.5rem;line-height:1.7">Every operation mapped in order: Fabrication (changes state), Move (transport), Inspect, Store, and Manual. Time columns represent proportional duration across the production flow.</div>
     <div class="seq-wrap">
       <div class="seq-chart">
-        <!-- Headers -->
         <div class="seq-header" style="background:var(--navy2)">Operation</div>
         <div class="seq-header">Op 1</div><div class="seq-header">Op 2</div><div class="seq-header">Op 3</div><div class="seq-header">Op 4</div><div class="seq-header">Op 5</div>
         <div class="seq-header">Op 6</div><div class="seq-header">Op 7</div><div class="seq-header">Op 8</div><div class="seq-header">Op 9</div><div class="seq-header">Op 10</div>
-        <!-- Row 1: Filament Load -->
         <div class="seq-label">Filament Load</div>
         <div class="seq-cell"><div class="seq-block move" style="left:4%;right:4%">Move</div></div>
         <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
         <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
-        <!-- Row 2: Bed Prep -->
-        <div class="seq-label">Bed Prep </div>
+        <div class="seq-label">Bed Prep</div>
         <div class="seq-cell"></div>
         <div class="seq-cell"><div class="seq-block manual" style="left:4%;right:4%">Manual</div></div>
         <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
         <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
-        <!-- Row 3: 3D Print -->
         <div class="seq-label">3D Print (2.5h)</div>
         <div class="seq-cell"></div><div class="seq-cell"></div>
         <div class="seq-cell"><div class="seq-block fab" style="left:4%;right:4%">Fab</div></div>
         <div class="seq-cell"><div class="seq-block fab" style="left:4%;right:4%">Fab</div></div>
         <div class="seq-cell"><div class="seq-block fab" style="left:4%;right:4%">Fab</div></div>
         <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
-        <!-- Row 4: Collect & QC -->
         <div class="seq-label">Collect & Visual QC</div>
         <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
         <div class="seq-cell"><div class="seq-block insp" style="left:4%;right:4%">Inspect</div></div>
         <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
-        <!-- Row 5: Move to FESTO -->
         <div class="seq-label">Move to FESTO</div>
         <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
         <div class="seq-cell"></div>
         <div class="seq-cell"><div class="seq-block move" style="left:4%;right:4%">Move</div></div>
         <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
-        <!-- Row 6: FESTO S1–S6 -->
         <div class="seq-label">FESTO S1–S6</div>
         <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
         <div class="seq-cell"></div><div class="seq-cell"></div>
         <div class="seq-cell"><div class="seq-block fab" style="left:4%;right:4%">Fab</div></div>
         <div class="seq-cell"><div class="seq-block insp" style="left:4%;right:4%">Inspect</div></div>
         <div class="seq-cell"></div>
-        <!-- Row 7: Dispatch -->
         <div class="seq-label">Store & Dispatch</div>
         <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
         <div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div><div class="seq-cell"></div>
@@ -854,92 +1150,33 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
         </thead>
         <tbody>
           <tr>
-            <td class="label">3D Printing</td>
-            <td class="val">Bambu P1S</td>
-            <td class="val">25</td>
-            <td class="val">2.5h / pair</td>
-            <td class="val">15% (maintenance)</td>
-            <td class="warn">80% yield</td>
-            <td class="pass">~48,250 pairs</td>
-            <td class="pass">✓ Target met</td>
+            <td class="label">3D Printing</td><td class="val">Bambu P1S</td><td class="val">25</td><td class="val">2.5h / pair</td><td class="val">15% (maintenance)</td><td class="warn">80% yield</td><td class="pass">~48,250 pairs</td><td class="pass">✓ Target met</td>
           </tr>
           <tr>
-            <td class="label">S1 — Front Magazine</td>
-            <td class="val">FESTO CP Lab</td>
-            <td class="val">1</td>
-            <td class="pass">7s</td>
-            <td class="val">Scheduled PM</td>
-            <td class="pass">High</td>
-            <td class="pass">50,000+</td>
-            <td class="pass">✓ Within takt</td>
+            <td class="label">S1 — Front Magazine</td><td class="val">FESTO CP Lab</td><td class="val">1</td><td class="pass">7s</td><td class="val">Scheduled PM</td><td class="pass">High</td><td class="pass">50,000+</td><td class="pass">✓ Within takt</td>
           </tr>
           <tr>
-            <td class="label">S2 — Laser Measure</td>
-            <td class="val">FESTO CP Lab</td>
-            <td class="val">1</td>
-            <td class="pass">8s</td>
-            <td class="val">Scheduled PM</td>
-            <td class="pass">High</td>
-            <td class="pass">50,000+</td>
-            <td class="pass">✓ Within takt</td>
+            <td class="label">S2 — Laser Measure</td><td class="val">FESTO CP Lab</td><td class="val">1</td><td class="pass">8s</td><td class="val">Scheduled PM</td><td class="pass">High</td><td class="pass">50,000+</td><td class="pass">✓ Within takt</td>
           </tr>
           <tr>
-            <td class="label">S3 — iPick (Manual)</td>
-            <td class="val">Operator</td>
-            <td class="val">1 op</td>
-            <td class="warn">27s</td>
-            <td class="val">Breaks (covered)</td>
-            <td class="warn">Operator dep.</td>
-            <td class="warn">~50,000</td>
-            <td class="warn">⚠ Monitor pace</td>
+            <td class="label">S3 — iPick (Manual)</td><td class="val">Operator</td><td class="val">1 op</td><td class="warn">27s</td><td class="val">Breaks (covered)</td><td class="warn">Operator dep.</td><td class="warn">~50,000</td><td class="warn">⚠ Monitor pace</td>
           </tr>
           <tr>
-            <td class="label">S4 — Press Fit</td>
-            <td class="val">FESTO CP Lab</td>
-            <td class="val">1</td>
-            <td class="pass">11s</td>
-            <td class="val">Scheduled PM</td>
-            <td class="pass">High</td>
-            <td class="pass">50,000+</td>
-            <td class="pass">✓ Within takt</td>
+            <td class="label">S4 — Press Fit</td><td class="val">FESTO CP Lab</td><td class="val">1</td><td class="pass">11s</td><td class="val">Scheduled PM</td><td class="pass">High</td><td class="pass">50,000+</td><td class="pass">✓ Within takt</td>
           </tr>
           <tr>
-            <td class="label">S5 — Oven</td>
-            <td class="val">FESTO CP Lab</td>
-            <td class="val">1</td>
-            <td style="color:var(--red);font-family:var(--fm);font-size:.72rem">35s ⚠</td>
-            <td class="val">Heat-up cycle</td>
-            <td class="warn">Bottleneck</td>
-            <td class="warn">~50,000</td>
-            <td style="color:var(--red);font-family:var(--fm);font-size:.65rem">⚠ Bottleneck</td>
+            <td class="label">S5 — Oven</td><td class="val">FESTO CP Lab</td><td class="val">1</td><td style="color:var(--red);font-family:var(--fm);font-size:.72rem">35s ⚠</td><td class="val">Heat-up cycle</td><td class="warn">Bottleneck</td><td class="warn">~50,000</td><td style="color:var(--red);font-family:var(--fm);font-size:.65rem">⚠ Bottleneck</td>
           </tr>
           <tr>
-            <td class="label">S6 — Final Sign-off</td>
-            <td class="val">FESTO CP Lab</td>
-            <td class="val">1</td>
-            <td class="pass">11s</td>
-            <td class="val">Scheduled PM</td>
-            <td class="pass">High</td>
-            <td class="pass">50,000+</td>
-            <td class="pass">✓ Within takt</td>
+            <td class="label">S6 — Final Sign-off</td><td class="val">FESTO CP Lab</td><td class="val">1</td><td class="pass">11s</td><td class="val">Scheduled PM</td><td class="pass">High</td><td class="pass">50,000+</td><td class="pass">✓ Within takt</td>
           </tr>
-                    <tr>
-            <td class="label">UR Robot Dispatch</td>
-            <td class="val">Universal Robots UR10e</td>
-            <td class="val">1</td>
-            <td class="warn">8s</td>
-            <td class="val">Scheduled PM</td>
-            <td class="pass">High</td>
-            <td class="pass">50,000+</td>
-            <td class="warn">⚠ Add cycle time</td>
+          <tr>
+            <td class="label">UR Robot Dispatch</td><td class="val">Universal Robots UR10e</td><td class="val">1</td><td class="warn">8s</td><td class="val">Scheduled PM</td><td class="pass">High</td><td class="pass">50,000+</td><td class="warn">⚠ Add cycle time</td>
           </tr>
           <tr style="background:rgba(0,229,255,0.03)">
             <td class="label" colspan="3"><strong>FESTO Total</strong></td>
-          <td class="pass" style="font-weight:600">99s total (per batch)</td>
-            <td>—</td>
-            <td class="pass">Takt = 150s</td>
-            <td class="pass">50,000 ✓</td>
-            <td class="pass">✓ On schedule</td>
+            <td class="pass" style="font-weight:600">99s total (per batch)</td>
+            <td>—</td><td class="pass">Takt = 150s</td><td class="pass">50,000 ✓</td><td class="pass">✓ On schedule</td>
           </tr>
         </tbody>
       </table>
@@ -961,149 +1198,79 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
     <div style="font-size:.82rem;color:var(--muted);font-weight:300;margin-bottom:1.5rem;line-height:1.7">Cellular layout: 25 printers arranged in a 5×5 grid for efficient operator walking distance. Filament storage adjacent to printers. QC station between printers and FESTO line. Material flows left to right — minimal backtracking, lean movement.</div>
     <div class="layout-wrap">
       <svg class="layout-svg" viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0,229,255,0.05)" stroke-width="0.5"/>
-          </pattern>
-        </defs>
+        <defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0,229,255,0.05)" stroke-width="0.5"/></pattern></defs>
         <rect width="900" height="420" fill="url(#grid)"/>
-
-        <!-- Floor outline -->
         <rect x="10" y="10" width="880" height="400" fill="none" stroke="rgba(0,229,255,0.2)" stroke-width="1.5" stroke-dasharray="6,3"/>
-
-        <!-- FILAMENT STORAGE -->
         <rect x="20" y="20" width="90" height="120" fill="rgba(0,229,255,0.06)" stroke="rgba(0,229,255,0.3)" stroke-width="1"/>
         <text x="65" y="55" fill="rgba(0,229,255,0.7)" font-size="8" font-family="monospace" text-anchor="middle">FILAMENT</text>
         <text x="65" y="68" fill="rgba(0,229,255,0.7)" font-size="8" font-family="monospace" text-anchor="middle">STORAGE</text>
         <text x="65" y="90" fill="rgba(0,229,255,0.4)" font-size="7" font-family="monospace" text-anchor="middle">PLA Spools</text>
         <text x="65" y="103" fill="rgba(0,229,255,0.4)" font-size="7" font-family="monospace" text-anchor="middle">£20/kg</text>
-
-        <!-- 25 PRINTERS — 5x5 grid -->
         <text x="310" y="18" fill="rgba(0,229,255,0.5)" font-size="8" font-family="monospace" text-anchor="middle">25× BAMBU P1S — 5×5 ARRAY</text>
-        <!-- Row 1 -->
-        <rect x="120" y="25" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
-        <text x="146" y="48" fill="#00e5ff" font-size="7" font-family="monospace" text-anchor="middle">P01</text>
-        <text x="146" y="60" fill="rgba(0,229,255,0.5)" font-size="6" font-family="monospace" text-anchor="middle">Bambu</text>
-        <rect x="178" y="25" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
-        <text x="204" y="48" fill="#00e5ff" font-size="7" font-family="monospace" text-anchor="middle">P02</text>
-        <text x="204" y="60" fill="rgba(0,229,255,0.5)" font-size="6" font-family="monospace" text-anchor="middle">Bambu</text>
-        <rect x="236" y="25" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
-        <text x="262" y="48" fill="#00e5ff" font-size="7" font-family="monospace" text-anchor="middle">P03</text>
-        <text x="262" y="60" fill="rgba(0,229,255,0.5)" font-size="6" font-family="monospace" text-anchor="middle">Bambu</text>
-        <rect x="294" y="25" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
-        <text x="320" y="48" fill="#00e5ff" font-size="7" font-family="monospace" text-anchor="middle">P04</text>
-        <text x="320" y="60" fill="rgba(0,229,255,0.5)" font-size="6" font-family="monospace" text-anchor="middle">Bambu</text>
-        <rect x="352" y="25" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
-        <text x="378" y="48" fill="#00e5ff" font-size="7" font-family="monospace" text-anchor="middle">P05</text>
-        <text x="378" y="60" fill="rgba(0,229,255,0.5)" font-size="6" font-family="monospace" text-anchor="middle">Bambu</text>
-        <!-- Row 2 -->
-        <rect x="120" y="83" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
-        <text x="146" y="112" fill="#00e5ff" font-size="7" font-family="monospace" text-anchor="middle">P06–10</text>
+        <rect x="120" y="25" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/><text x="146" y="48" fill="#00e5ff" font-size="7" font-family="monospace" text-anchor="middle">P01</text><text x="146" y="60" fill="rgba(0,229,255,0.5)" font-size="6" font-family="monospace" text-anchor="middle">Bambu</text>
+        <rect x="178" y="25" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/><text x="204" y="48" fill="#00e5ff" font-size="7" font-family="monospace" text-anchor="middle">P02</text><text x="204" y="60" fill="rgba(0,229,255,0.5)" font-size="6" font-family="monospace" text-anchor="middle">Bambu</text>
+        <rect x="236" y="25" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/><text x="262" y="48" fill="#00e5ff" font-size="7" font-family="monospace" text-anchor="middle">P03</text><text x="262" y="60" fill="rgba(0,229,255,0.5)" font-size="6" font-family="monospace" text-anchor="middle">Bambu</text>
+        <rect x="294" y="25" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/><text x="320" y="48" fill="#00e5ff" font-size="7" font-family="monospace" text-anchor="middle">P04</text><text x="320" y="60" fill="rgba(0,229,255,0.5)" font-size="6" font-family="monospace" text-anchor="middle">Bambu</text>
+        <rect x="352" y="25" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/><text x="378" y="48" fill="#00e5ff" font-size="7" font-family="monospace" text-anchor="middle">P05</text><text x="378" y="60" fill="rgba(0,229,255,0.5)" font-size="6" font-family="monospace" text-anchor="middle">Bambu</text>
+        <rect x="120" y="83" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/><text x="146" y="112" fill="#00e5ff" font-size="7" font-family="monospace" text-anchor="middle">P06–10</text>
         <rect x="178" y="83" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
         <rect x="236" y="83" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
         <rect x="294" y="83" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
         <rect x="352" y="83" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
-        <!-- Row 3 -->
-        <rect x="120" y="141" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
-        <text x="146" y="170" fill="#00e5ff" font-size="7" font-family="monospace" text-anchor="middle">P11–15</text>
+        <rect x="120" y="141" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/><text x="146" y="170" fill="#00e5ff" font-size="7" font-family="monospace" text-anchor="middle">P11–15</text>
         <rect x="178" y="141" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
         <rect x="236" y="141" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
         <rect x="294" y="141" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
         <rect x="352" y="141" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
-        <!-- Row 4 -->
-        <rect x="120" y="199" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
-        <text x="146" y="228" fill="#00e5ff" font-size="7" font-family="monospace" text-anchor="middle">P16–20</text>
+        <rect x="120" y="199" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/><text x="146" y="228" fill="#00e5ff" font-size="7" font-family="monospace" text-anchor="middle">P16–20</text>
         <rect x="178" y="199" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
         <rect x="236" y="199" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
         <rect x="294" y="199" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
         <rect x="352" y="199" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
-        <!-- Row 5 -->
-        <rect x="120" y="257" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
-        <text x="146" y="286" fill="#00e5ff" font-size="7" font-family="monospace" text-anchor="middle">P21–25</text>
+        <rect x="120" y="257" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/><text x="146" y="286" fill="#00e5ff" font-size="7" font-family="monospace" text-anchor="middle">P21–25</text>
         <rect x="178" y="257" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
         <rect x="236" y="257" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
         <rect x="294" y="257" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
         <rect x="352" y="257" width="52" height="52" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
-
-        <!-- OPERATOR PATHS -->
-        <path d="M 405 50 L 430 50" stroke="rgba(0,229,255,0.2)" stroke-width="1" stroke-dasharray="3,2" fill="none" marker-end="url(#arr)"/>
-
-        <!-- QC STATION -->
         <rect x="415" y="80" width="80" height="80" fill="rgba(255,179,71,0.08)" stroke="rgba(255,179,71,0.4)" stroke-width="1"/>
         <text x="455" y="116" fill="#ffb347" font-size="8" font-family="monospace" text-anchor="middle">QC</text>
         <text x="455" y="129" fill="#ffb347" font-size="8" font-family="monospace" text-anchor="middle">STATION</text>
         <text x="455" y="146" fill="rgba(255,179,71,0.5)" font-size="7" font-family="monospace" text-anchor="middle">~5 min</text>
-
-        <!-- FLOW ARROW 1 -->
-        <path d="M 415 120 L 410 120 L 410 120" fill="none"/>
-        <line x1="405" y1="120" x2="418" y2="120" stroke="rgba(0,229,255,0.4)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-
-        <!-- MATERIAL FLOW ARROWS -->
+        <line x1="405" y1="120" x2="418" y2="120" stroke="rgba(0,229,255,0.4)" stroke-width="1.5"/>
         <path d="M 500 120 L 520 120" stroke="rgba(0,229,255,0.5)" stroke-width="1.5" fill="none"/>
         <polygon points="520,116 528,120 520,124" fill="rgba(0,229,255,0.5)"/>
         <text x="510" y="112" fill="rgba(0,229,255,0.4)" font-size="7" font-family="monospace" text-anchor="middle">flow</text>
-
-        <!-- FESTO CP LAB -->
         <rect x="530" y="20" width="340" height="300" fill="rgba(0,229,255,0.03)" stroke="rgba(0,229,255,0.2)" stroke-width="1"/>
         <text x="700" y="38" fill="rgba(0,229,255,0.6)" font-size="9" font-family="monospace" text-anchor="middle">FESTO CP LAB</text>
-
-        <!-- S1 -->
         <rect x="545" y="50" width="70" height="55" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
-        <text x="580" y="73" fill="#00e5ff" font-size="8" font-family="monospace" text-anchor="middle">S1</text>
-        <text x="580" y="85" fill="rgba(0,229,255,0.6)" font-size="7" font-family="monospace" text-anchor="middle">Part ID</text>
-        <text x="580" y="97" fill="#00e5ff" font-size="8" font-family="monospace" text-anchor="middle">7s</text>
-        <!-- S2 -->
+        <text x="580" y="73" fill="#00e5ff" font-size="8" font-family="monospace" text-anchor="middle">S1</text><text x="580" y="85" fill="rgba(0,229,255,0.6)" font-size="7" font-family="monospace" text-anchor="middle">Part ID</text><text x="580" y="97" fill="#00e5ff" font-size="8" font-family="monospace" text-anchor="middle">7s</text>
         <rect x="625" y="50" width="70" height="55" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
-        <text x="660" y="73" fill="#00e5ff" font-size="8" font-family="monospace" text-anchor="middle">S2</text>
-        <text x="660" y="85" fill="rgba(0,229,255,0.6)" font-size="7" font-family="monospace" text-anchor="middle">Laser</text>
-        <text x="660" y="97" fill="#00e5ff" font-size="8" font-family="monospace" text-anchor="middle">8s</text>
-        <!-- S3 MANUAL -->
+        <text x="660" y="73" fill="#00e5ff" font-size="8" font-family="monospace" text-anchor="middle">S2</text><text x="660" y="85" fill="rgba(0,229,255,0.6)" font-size="7" font-family="monospace" text-anchor="middle">Laser</text><text x="660" y="97" fill="#00e5ff" font-size="8" font-family="monospace" text-anchor="middle">8s</text>
         <rect x="705" y="50" width="70" height="55" fill="rgba(255,179,71,0.08)" stroke="rgba(255,179,71,0.4)" stroke-width="1"/>
-        <text x="740" y="73" fill="#ffb347" font-size="8" font-family="monospace" text-anchor="middle">S3</text>
-        <text x="740" y="85" fill="rgba(255,179,71,0.6)" font-size="7" font-family="monospace" text-anchor="middle">iPick</text>
-        <text x="740" y="97" fill="#ffb347" font-size="8" font-family="monospace" text-anchor="middle">27s M</text>
-        <!-- S4 -->
+        <text x="740" y="73" fill="#ffb347" font-size="8" font-family="monospace" text-anchor="middle">S3</text><text x="740" y="85" fill="rgba(255,179,71,0.6)" font-size="7" font-family="monospace" text-anchor="middle">iPick</text><text x="740" y="97" fill="#ffb347" font-size="8" font-family="monospace" text-anchor="middle">27s M</text>
         <rect x="785" y="50" width="70" height="55" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
-        <text x="820" y="73" fill="#00e5ff" font-size="8" font-family="monospace" text-anchor="middle">S4</text>
-        <text x="820" y="85" fill="rgba(0,229,255,0.6)" font-size="7" font-family="monospace" text-anchor="middle">Press</text>
-        <text x="820" y="97" fill="#00e5ff" font-size="8" font-family="monospace" text-anchor="middle">11s</text>
-
-        <!-- S5 BOTTLENECK -->
+        <text x="820" y="73" fill="#00e5ff" font-size="8" font-family="monospace" text-anchor="middle">S4</text><text x="820" y="85" fill="rgba(0,229,255,0.6)" font-size="7" font-family="monospace" text-anchor="middle">Press</text><text x="820" y="97" fill="#00e5ff" font-size="8" font-family="monospace" text-anchor="middle">11s</text>
         <rect x="625" y="150" width="110" height="65" fill="rgba(255,68,68,0.08)" stroke="rgba(255,68,68,0.4)" stroke-width="1.5"/>
         <text x="680" y="177" fill="#ff4444" font-size="8" font-family="monospace" text-anchor="middle">S5 — OVEN</text>
         <text x="680" y="191" fill="rgba(255,68,68,0.6)" font-size="7" font-family="monospace" text-anchor="middle">⚠ BOTTLENECK</text>
         <text x="680" y="205" fill="#ff4444" font-size="10" font-family="monospace" text-anchor="middle">35s</text>
-
-        <!-- S6 -->
         <rect x="750" y="150" width="100" height="65" fill="rgba(0,255,136,0.06)" stroke="rgba(0,255,136,0.3)" stroke-width="1"/>
         <text x="800" y="177" fill="#00ff88" font-size="8" font-family="monospace" text-anchor="middle">S6</text>
         <text x="800" y="191" fill="rgba(0,255,136,0.6)" font-size="7" font-family="monospace" text-anchor="middle">Final Output</text>
         <text x="800" y="205" fill="#00ff88" font-size="8" font-family="monospace" text-anchor="middle">11s ✓</text>
-
-        <!-- FLOW ARROWS inside FESTO -->
-        <line x1="615" y1="77" x2="625" y2="77" stroke="rgba(0,229,255,0.4)" stroke-width="1"/>
-        <polygon points="622,73 630,77 622,81" fill="rgba(0,229,255,0.4)"/>
-        <line x1="695" y1="77" x2="705" y2="77" stroke="rgba(0,229,255,0.4)" stroke-width="1"/>
-        <polygon points="702,73 710,77 702,81" fill="rgba(0,229,255,0.4)"/>
-        <line x1="775" y1="77" x2="785" y2="77" stroke="rgba(0,229,255,0.4)" stroke-width="1"/>
-        <polygon points="782,73 790,77 782,81" fill="rgba(0,229,255,0.4)"/>
-
-        <!-- OPERATOR ZONES -->
+        <line x1="615" y1="77" x2="625" y2="77" stroke="rgba(0,229,255,0.4)" stroke-width="1"/><polygon points="622,73 630,77 622,81" fill="rgba(0,229,255,0.4)"/>
+        <line x1="695" y1="77" x2="705" y2="77" stroke="rgba(0,229,255,0.4)" stroke-width="1"/><polygon points="702,73 710,77 702,81" fill="rgba(0,229,255,0.4)"/>
+        <line x1="775" y1="77" x2="785" y2="77" stroke="rgba(0,229,255,0.4)" stroke-width="1"/><polygon points="782,73 790,77 782,81" fill="rgba(0,229,255,0.4)"/>
         <rect x="120" y="330" width="290" height="50" fill="rgba(0,229,255,0.04)" stroke="rgba(0,229,255,0.15)" stroke-width="1" stroke-dasharray="4,2"/>
         <text x="265" y="355" fill="rgba(0,229,255,0.4)" font-size="8" font-family="monospace" text-anchor="middle">OPERATOR ZONE A — Printer Management (2 ops/shift)</text>
         <text x="265" y="370" fill="rgba(0,229,255,0.3)" font-size="7" font-family="monospace" text-anchor="middle">Collect · QC · Filament · Job Start</text>
-
         <rect x="530" y="330" width="340" height="50" fill="rgba(255,179,71,0.03)" stroke="rgba(255,179,71,0.15)" stroke-width="1" stroke-dasharray="4,2"/>
         <text x="700" y="355" fill="rgba(255,179,71,0.4)" font-size="8" font-family="monospace" text-anchor="middle">OPERATOR ZONE B — FESTO Line (1 op at S3)</text>
         <text x="700" y="370" fill="rgba(255,179,71,0.3)" font-size="7" font-family="monospace" text-anchor="middle">Manual iPick assembly · 27s cycle</text>
-
-        <!-- IoT LABEL -->
         <rect x="20" y="170" width="90" height="55" fill="rgba(0,255,136,0.05)" stroke="rgba(0,255,136,0.2)" stroke-width="1"/>
         <text x="65" y="195" fill="#00ff88" font-size="7" font-family="monospace" text-anchor="middle">IoT HUB</text>
         <text x="65" y="207" fill="rgba(0,255,136,0.5)" font-size="6" font-family="monospace" text-anchor="middle">Insights Hub</text>
         <text x="65" y="219" fill="rgba(0,255,136,0.5)" font-size="6" font-family="monospace" text-anchor="middle">+Security</text>
-
-        <!-- SECURITY -->
         <rect x="20" y="240" width="90" height="55" fill="rgba(255,68,68,0.04)" stroke="rgba(255,68,68,0.2)" stroke-width="1"/>
         <text x="65" y="265" fill="#ff4444" font-size="7" font-family="monospace" text-anchor="middle">SECURITY</text>
         <text x="65" y="277" fill="rgba(255,68,68,0.5)" font-size="6" font-family="monospace" text-anchor="middle">Alarm + Fire</text>
@@ -1163,12 +1330,12 @@ calcTakt();
 
 // FESTO STATIONS DATA
 const stations=[
-  {num:'01',title:'Front Magazine',time:7,type:'pass',typeLabel:'Automated',desc:'The front magazine holds stacked cases and dispenses them one by one onto the carrier. Cases are then indexed forward into the assembly line..',chips:['automated','traceability','7s','pass']},
-  {num:'02',title:'Laser Measurement',time:8,type:'pass',typeLabel:'Automated',desc:'Laser measures wall depth. Ultimaker failed consistently at 1.18mm. Bambu P1S passes at 1.9mm, within the 1.6–2.2mm specification. This was the critical data point that drove the platform switch.',chips:['laser','critical spec','8s','pass'],highlight:'Ultimaker: 1.18mm FAIL → Bambu: 1.9mm PASS'},
-  {num:'03',title:'iPick — Manual Assembly',time:27,type:'amber',typeLabel:'Manual',desc:'Operator manually picks and aligns the top and bottom casings before press-fitting. The most labour-intensive station, one operator dedicated to this role. Pace must match the 35s bottleneck upstream.',chips:['manual','operator required','27s','monitor pace']},
+  {num:'01',title:'Front Magazine',time:7,type:'pass',typeLabel:'Automated',desc:'The front magazine holds stacked cases and dispenses them one by one onto the carrier. Cases are then indexed forward into the assembly line.',chips:['automated','traceability','7s','pass']},
+  {num:'02',title:'Laser Measurement',time:8,type:'pass',typeLabel:'Automated',desc:'Laser measures wall depth. Ultimaker failed consistently at 1.18mm. Bambu P1S passes at 1.9mm — within the 1.6–2.2mm specification. This was the critical data point that drove the platform switch.',chips:['laser','critical spec','8s','pass'],highlight:'Ultimaker: 1.18mm FAIL → Bambu: 1.9mm PASS'},
+  {num:'03',title:'iPick — Manual Assembly',time:27,type:'amber',typeLabel:'Manual',desc:'Operator manually picks and aligns the top and bottom casings before press-fitting. The most labour-intensive station — one operator dedicated to this role. Pace must match the 35s bottleneck upstream.',chips:['manual','operator required','27s','monitor pace']},
   {num:'04',title:'Press Fit',time:11,type:'pass',typeLabel:'Automated',desc:'Automated press clamps the two casing halves together. Validates that the mating geometry from the Fusion 360 CAD model translates correctly into a secure, interchangeable assembly.',chips:['automated','press fit','11s','pass']},
-  {num:'05',title:'Oven — Heat Treatment',time:35,type:'red',typeLabel:'Bottleneck',desc:'The oven cycle is the longest single station at 35 seconds, making it the FESTO line bottleneck. However, as the total FESTO cycle (99s) remains within the 150s takt, this does not currently restrict production. At higher volumes, a second oven module would be recommended.',chips:['bottleneck','35s','longest station','within takt']},
-  {num:'06',title:'Final Output & Sign-off',time:11,type:'pass',typeLabel:'Automated',desc:'The gripper picks each finished case from the carrier and places it onto the left or right tray . A UR robot then picks the case from the tray and moves it to the final dispatch area. Pass/fail results are logged against the casing batch ID, the complete traceability record is closed, and all data is fed back to the IoT dashboard.',chips:['automated','final QC','11s','pass']}
+  {num:'05',title:'Oven — Heat Treatment',time:35,type:'red',typeLabel:'Bottleneck',desc:'The oven cycle is the longest single station at 35 seconds — making it the FESTO line bottleneck. However, as the total FESTO cycle (99s) remains within the 150s takt, this does not currently restrict production. At higher volumes, a second oven module would be recommended.',chips:['bottleneck','35s','longest station','within takt']},
+  {num:'06',title:'Final Output & Sign-off',time:11,type:'pass',typeLabel:'Automated',desc:'The gripper picks each finished case from the carrier and places it onto the left or right tray. A UR robot then picks the case from the tray and moves it to the final dispatch area. Pass/fail results are logged against the casing batch ID, the complete traceability record is closed, and all data is fed back to the IoT dashboard.',chips:['automated','final QC','11s','pass']}
 ];
 
 function buildStationBtns(){
@@ -1191,9 +1358,7 @@ function buildStationChart(){
     const barH=Math.round((s.time/maxT)*110);
     col.innerHTML=`<div class="sbc-val ${s.type==='red'?'red':s.type==='amber'?'amber':''}">${s.time}s</div><div class="sbc-bar ${s.type==='red'?'bottleneck':s.type==='amber'?'manual':''}" id="sbar${i}" style="height:0px" onclick="selectStation(${i})"></div><div class="sbc-label">Stn ${s.num}</div>`;
     c.appendChild(col);
-    setTimeout(()=>{
-      document.getElementById('sbar'+i).style.height=barH+'px';
-    },200+i*100);
+    setTimeout(()=>{document.getElementById('sbar'+i).style.height=barH+'px';},200+i*100);
   });
 }
 
@@ -1206,7 +1371,7 @@ function selectStation(idx){
   const barColor=s.type==='red'?'#ff4444':s.type==='amber'?'#ffb347':'var(--cyan)';
   d.innerHTML=`<div class="station-detail active">
     <div class="sd-tag">Station ${s.num} — ${s.typeLabel}</div>
-    <div class="sd-title">${s.title.replace(' —',' —<br><em>').replace('Manual','<em>Manual</em>')}</div>
+    <div class="sd-title">${s.title}</div>
     <div class="sd-time-big ${s.type==='red'?'red':s.type==='amber'?'amber':'cyan'}">${s.time}s</div>
     <div class="sd-time-label">Cycle time · Takt = 150s · ${s.type==='red'?'⚠ Bottleneck':'Within takt ✓'}</div>
     <div class="sd-bar-wrap"><div class="sd-bar" id="sdbar" style="width:0%;background:${barColor}"></div></div>
@@ -1214,7 +1379,7 @@ function selectStation(idx){
     <div class="sd-desc">${s.desc}</div>
     <div class="sd-tags" style="margin-top:.75rem">${s.chips.map(c=>`<div class="sd-chip ${s.type==='red'?'red':s.type==='amber'?'amber':'cyan'}">${c}</div>`).join('')}</div>
   </div>`;
-  setTimeout(()=>{ const b=document.getElementById('sdbar'); if(b) b.style.width=barW+'%'; },100);
+  setTimeout(()=>{const b=document.getElementById('sdbar');if(b)b.style.width=barW+'%';},100);
 }
 
 buildStationBtns();
@@ -1238,11 +1403,7 @@ utils.forEach(u=>{
   ub.appendChild(row);
 });
 const uobs=new IntersectionObserver(e=>e.forEach(x=>{
-  if(x.isIntersecting){
-    x.target.querySelectorAll('.util-fill').forEach(b=>{
-      const w=b.getAttribute('data-w'); setTimeout(()=>b.style.width=w,200);
-    });
-  }
+  if(x.isIntersecting){x.target.querySelectorAll('.util-fill').forEach(b=>{const w=b.getAttribute('data-w');setTimeout(()=>b.style.width=w,200);});}
 }),{threshold:.3});
 uobs.observe(ub);
 </script>
