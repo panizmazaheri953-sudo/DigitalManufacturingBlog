@@ -268,7 +268,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
         <tbody>
           <tr><td class="feature">Tooling Cost</td><td class="con">£10,000–£100,000</td><td class="pro">Zero tooling cost</td><td class="pro">✓ 3D Printing</td></tr>
           <tr class="comp-winner"><td class="feature">Unit Cost at 50K</td><td class="con">Tooling amortised poorly</td><td class="pro">Competitive — material only</td><td class="pro">✓ 3D Printing</td></tr>
-          <tr><td class="feature">Lead Time</td><td class="con">6–14 weeks for tooling</td><td class="pro">Hours from CAD</td><td class="pro">✓ 3D Printing</td></tr>
+          <tr><td class="feature">Lead Time</td><td class="con">6–14 weeks for tooling</td><td class="pro">Hours from CAD</td><td class="pro">✓ 3D Printing
           <tr><td class="feature">Mechanical Properties</td><td class="pro">Consistent baseline</td><td class="pro">Optimisable per Podsiadły et al. (2021)</td><td class="pro">Draw — both adequate</td></tr>
           <tr><td class="feature">Design Flexibility</td><td class="con">Mould locked</td><td class="pro">Change CAD, print tomorrow</td><td class="pro">✓ 3D Printing</td></tr>
         </tbody>
@@ -340,12 +340,12 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   </div>
   <div class="img-caption"><span>✓ VERIFIED</span> — Fixed £69,879 + Variable £134,000 = £203,879 total · £71,121 profit ÷ £275,000 = 25.86%</div>
 </div>
-    <div class="callout amber"><strong>Why not injection moulding for this project?</strong> The decision was not about per-unit cost — it was about <strong>risk elimination</strong>. At 50,000 units, injection moulding would require £25,000–£50,000 upfront before producing a single part. FDM requires zero tooling investment. For a first production run where the client may request design changes, that flexibility is worth the higher per-unit cost. Dizon et al. (2020) explore 3D printed injection moulds for low-volume runs, but for direct production at this scale with iteration uncertainty, FDM printing is the <strong>lower-risk</strong> choice.</div>
+    <div class="callout amber"><strong>Why not injection moulding for this project?</strong> The decision was not about per-unit cost, it was about <strong>risk elimination</strong>. At 50,000 units, injection moulding would require £25,000–£50,000 upfront before producing a single part. FDM requires zero tooling investment. For a first production run where the client may request design changes, that flexibility is worth the higher per-unit cost. Dizon et al. (2020) explore 3D printed injection moulds for low-volume runs, but for direct production at this scale with iteration uncertainty, FDM printing is the <strong>lower-risk</strong> choice.</div>
 </section>
 
 <section id="industry4" class="reveal">
   <div style="display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border)">
-    <div class="label-col"><div><div class="sec-tag">03 — Framework</div><div class="sec-big-num">4.0</div></div><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">The Fourth Industrial Revolution</div></div>
+    <div class="label-col"><div><div class="sec-tag">03-Framework</div><div class="sec-big-num">4.0</div></div><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">The Fourth Industrial Revolution</div></div>
     <div class="sec-body"><h2 class="sec-h2">Pillars of<br><em>Industry 4.0.</em></h2><p class="prose">Jandyal et al. (2022) position 3D printing as a foundational technology for Industry 4.0, alongside cyber-physical systems, IoT, and digital twins. This project implements each pillar:</p></div>
   </div>
   <div class="pillars-grid">
@@ -364,18 +364,55 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   <div class="sec-body">
     <h2 class="sec-h2">Running <em>24/7</em><br>Safely & Intelligently.</h2>
     <p class="prose">To achieve 50,000 units/year from 25 Bambu P1S printers, the system must run unattended overnight and on weekends. This is only possible with Industry 4.0 technologies: sensors, real-time data, cloud monitoring, and predictive maintenance. As Malik et al. (2022) identify, scaling 3D printing to production volumes requires overcoming barriers in automation, data integration, and remote oversight — precisely what our architecture addresses.</p>
-    <div class="callout"><strong>Siemens Insights Hub & Sensor Integration:</strong> Each Bambu P1S reports nozzle temperature, bed temperature, vibration patterns, filament runout, and print progress via Bambu Cloud. Siemens Insights Hub aggregates this data across the 25-printer fleet, providing a single dashboard for real-time monitoring. When anomaly patterns emerge — temperature fluctuations outside ±2°C, belt tension drift, or unexpected vibration — the system triggers alerts before failure occurs (predictive maintenance). Operators can intervene remotely or schedule maintenance during planned downtime, never during active prints.</div>
+    <div class="callout"><strong>Siemens Insights Hub & Sensor Integration:</strong> Each Bambu P1S reports nozzle temperature, bed temperature, vibration patterns, filament runout, and print progress via Bambu Cloud. Siemens Insights Hub aggregates this data across the 25-printer fleet, providing a single dashboard for real-time monitoring. When anomaly patterns emerge, temperature fluctuations outside ±2°C, belt tension drift, or unexpected vibration — the system triggers alerts before failure occurs (predictive maintenance). Operators can intervene remotely or schedule maintenance during planned downtime, never during active prints.</div>
     <div class="data-grid" style="grid-template-columns:repeat(2,1fr)">
       <div class="data-card"><div class="data-number">24/7</div><div class="data-label">Operation Schedule</div><div class="data-source">Weekdays + weekends unattended</div></div>
       <div class="data-card"><div class="data-number">Cloud</div><div class="data-label">Telemetry Platform</div><div class="data-source">Bambu Studio + Siemens Insights Hub</div></div>
     </div>
     <p class="prose"><strong>Predictive maintenance in practice:</strong> Rather than replacing components on a fixed schedule (time-based maintenance), we monitor actual machine health. Nozzle wear is detected through extrusion consistency metrics. Bed adhesion issues are flagged through first-layer camera analysis. This approach, enabled by Industry 4.0 sensor networks, converts unplanned downtime (which stops production) into planned maintenance windows that can be scheduled during low-demand periods. Jandyal et al. (2022) identify predictive maintenance as a core differentiator of Industry 4.0-enabled manufacturing — and this project implements it at fleet scale.</p>
-    <p class="prose">Safety systems are equally critical for unattended operation. Each printer has thermal runaway protection, automatic filament runout detection, and cloud-based alerting. Remote shutdown capability allows operators to stop any printer from anywhere. Combined with site security and alarm monitoring, this enables true 24/7 production with human intervention only when required — not continuously.</p>
+    <p class="prose">Safety systems are equally critical for unattended operation. Each printer has thermal runaway protection, automatic filament runout detection, and cloud-based alerting. Remote shutdown capability allows operators to stop any printer from anywhere. Combined with site security and alarm monitoring, this enables true 24/7 production with human intervention only when required and not continuously.</p>
   </div>
 </section>
+<section id="sustainability" class="sec-shell reveal">
+  <div class="label-col">
+    <div><div class="sec-tag">05 — Strategy</div><div class="sec-big-num">SDG</div></div>
+    <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Global Goals & Lifecycle Design</div>
+  </div>
+  <div class="sec-body">
+    <h2 class="sec-h2">Digital Strategy &<br><em>Sustainable Production.</em></h2>
+    <p class="prose">Digital manufacturing technologies are not just tools for efficiency—they are fundamental enablers of global sustainability initiatives. This project aligns with several UN Sustainable Development Goals (SDGs) and leverages the principles of Industry 4.0 to minimise environmental impact while maximising production output (Jandyal et al., 2022; Malik et al., 2022).</p>
+    
+    <div class="callout"><strong> Alignment with UN Sustainable Development Goals (SDGs):</strong> This project directly contributes to <strong>SDG 9</strong> (Industry, Innovation and Infrastructure) through the adoption of advanced digital manufacturing. It supports <strong>SDG 12</strong> (Responsible Consumption and Production) by integrating a circular economy model for PLA waste. Furthermore, it promotes <strong>SDG 8</strong> (Decent Work and Economic Growth) by demonstrating a scalable, high-value manufacturing model for the UK economy (United Nations, 2015).</div>
 
+    <!-- Pillars Grid for Global Initiatives -->
+    <div class="pillars-grid" style="margin-bottom: 1.5rem;">
+      <div class="pillar"><div class="pillar-num"></div><div class="pillar-title">Made Smarter UK</div><div class="pillar-desc">Our adoption of AI monitoring, IoT, and additive manufacturing aligns with the government-backed <strong>Made Smarter</strong> initiative, which aims to drive productivity, growth, and sustainability in UK manufacturing through industrial digital technologies (IDTs) (Made Smarter UK, 2021; HM Government, 2017).</div></div>
+      <div class="pillar"><div class="pillar-num">🇪🇺</div><div class="pillar-title">EU Green Deal</div><div class="pillar-desc">The project's core technology, FDM printing, is recognised as a near net-zero waste production method, directly supporting the <strong>EU Green Deal's</strong> ambitious circular economy action plan (European Commission, 2019; European Parliament, 2020).</div></div>
+      <div class="pillar"><div class="pillar-num"></div><div class="pillar-title">Digital Product Passports (DPP)</div><div class="pillar-desc">Our concept of material traceability via QR codes is a practical forerunner to <strong>Digital Product Passports</strong>. These passports are emerging as core infrastructure for sustainable manufacturing, enabling lifecycle transparency and circularity, as mandated by new EU regulations (European Commission, 2022; Gotz et al., 2022).</div></div>
+      <div class="pillar"><div class="pillar-num"></div><div class="pillar-title">Circular Economy</div><div class="pillar-desc">Digital technologies like our IoT-enabled tracking system are essential for businesses shifting to a circular model. They provide the data needed to optimise material flows, reduce waste, and unlock environmental and resource sustainability opportunities (Geissdoerfer et al., 2017; Lacy et al., 2020).</div></div>
+    </div>
+
+    <h3 class="sec-h2" style="font-size: 1.8rem; margin-top: 1rem;">Lifecycle & <em>Sustainable Efficiency</em></h3>
+    <p class="prose">The sustainability of this project is considered across the entire product lifecycle, from material sourcing to end-of-life, using digital technologies to optimise each stage (ISO, 2006; Klöpffer, 1997).</p>
+    
+    <!-- Timeline for Lifecycle Stages -->
+    <div style="background: var(--navy2); border: 1px solid var(--border); padding: 1.5rem; margin: 1.5rem 0;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+        <div style="flex: 1; text-align: center; padding: 0.5rem;"><span style="font-family: var(--fd); color: var(--cyan);">1. Material</span><br><span style="font-size: 0.7rem;">PLA is plant-based, reducing fossil fuel dependence (Lunt, 1998). Digital inventory tracking minimises waste (Jandyal et al., 2022).</span></div>
+        <div style="color: var(--muted);">→</div>
+        <div style="flex: 1; text-align: center; padding: 0.5rem;"><span style="font-family: var(--fd); color: var(--cyan);">2. Production</span><br><span style="font-size: 0.7rem;">FDM printing is a near net-zero waste process (Podsiadły et al., 2021). AI and IoT tools optimise energy use and detect failures, preventing material waste (Malik et al., 2022).</span></div>
+        <div style="color: var(--muted);">→</div>
+        <div style="flex: 1; text-align: center; padding: 0.5rem;"><span style="font-family: var(--fd); color: var(--cyan);">3. Use Phase</span><br><span style="font-size: 0.7rem;">Through our digital twin, we can monitor product performance and predict maintenance, extending product lifespan and reducing downtime (Glaessgen and Stargel, 2012; Malik et al., 2022).</span></div>
+        <div style="color: var(--muted);">→</div>
+        <div style="flex: 1; text-align: center; padding: 0.5rem;"><span style="font-family: var(--fd); color: var(--cyan);">4. End-of-Life</span><br><span style="font-size: 0.7rem;">PLA casings are recyclable (Niaounakis, 2015). The digital product record (QR code) can be used to sort materials for closed-loop recycling (European Commission, 2022).</span></div>
+      </div>
+    </div>
+
+    <div class="callout green"><strong> Sustainability by the Numbers:</strong> AI-powered failure detection and automated part removal in FDM printing can reduce total process energy usage by up to 25% for small parts and save tonnes of CO₂ equivalent by preventing failed prints (Wohlers Associates, 2022; Faludi et al., 2015). These are the kinds of efficiencies our digital-first strategy aims to capture.</div>
+  </div>
+</section>
 <section id="disruptive" class="sec-shell reveal">
-  <div class="label-col"><div><div class="sec-tag">05 — Theory</div><div class="sec-big-num">DI</div></div><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Christensen's Framework</div></div>
+  <div class="label-col"><div><div class="sec-tag">06 — Theory</div><div class="sec-big-num">DI</div></div><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Christensen's Framework</div></div>
   <div class="sec-body">
     <h2 class="sec-h2">Disruptive<br><em>Innovation.</em></h2>
     <p class="prose">Clayton Christensen's theory of disruptive innovation describes how new technologies enter markets at the low end before improving until they displace the mainstream. 3D printing follows this arc exactly: from hobbyist machines to production-ready systems like the Bambu P1S.</p>
@@ -386,7 +423,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
 
 <section id="roadmap" class="reveal">
   <div style="display:grid;grid-template-columns:260px 1fr;border-bottom:1px solid var(--border)">
-    <div class="label-col"><div><div class="sec-tag">06 — Solution</div><div class="sec-big-num">9W</div></div><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">How We Solved It</div></div>
+    <div class="label-col"><div><div class="sec-tag">07 — Solution</div><div class="sec-big-num">9W</div></div><div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">How We Solved It</div></div>
     <div class="sec-body"><h2 class="sec-h2">Our Solution<br><em>Roadmap.</em></h2><p class="prose">From client brief to validated, scalable 50,000-unit production system in 9 weeks — a structured, data-driven process.</p></div>
   </div>
   <div class="timeline-visual">
@@ -401,7 +438,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
 
 <section id="references" class="sec-shell reveal">
   <div class="label-col">
-    <div><div class="sec-tag">07 — Sources</div><div class="sec-big-num">REF</div></div>
+    <div><div class="sec-tag">08 — Sources</div><div class="sec-big-num">REF</div></div>
     <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)"></div>
   </div>
   <div class="sec-body">
@@ -413,6 +450,37 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
       <div class="ref-item"><strong>Malik, A., Ul Haq, M.I., Raina, A. and Gupta, K. (2022)</strong> ‘3D printing towards implementing Industry 4.0: sustainability aspects, barriers and challenges’, <em>Industrial Robot</em>, 49(3), pp. 491–511. <a href="https://doi.org/10.1108/IR-10-2021-0247" target="_blank" style="color:var(--cyan);">↗ doi.org</a></div>
       <div class="ref-item"><strong>Podsiadły, B., Skalski, A., Rozpiórski, W. and Słoma, M. (2021)</strong> ‘Are We Able to Print Components as Strong as Injection Molded?Comparing the Properties of 3D Printed and Injection Molded Components Made from ABS Thermoplastic’, <em>Applied Sciences</em>, 11(15), p. 6946. <a href="https://doi.org/10.3390/app11156946" target="_blank" style="color:var(--cyan);">↗ doi.org</a></div>
       <div class="ref-item"><strong>Schwab, K. (2016)</strong> ‘The Fourth Industrial Revolution: what it means and how to respond’, <em>World Economic Forum</em>, 14 January. <a href="https://ideas.repec.org/h/elg/eechap/21349_2.html" target="_blank" style="color:var(--cyan);">↗ Read Article</a></div>
+      <div class="ref-item"><strong>European Commission (2019)</strong> 'The European Green Deal', <em>COM(2019) 640 final</em>, Brussels: European Commission. <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=COM%3A2019%3A640%3AFIN" target="_blank" style="color:var(--cyan);">↗ Link</a></div>
+
+<div class="ref-item"><strong>European Commission (2022)</strong> 'Proposal for a Regulation on Ecodesign for Sustainable Products', <em>COM(2022) 142 final</em>, Brussels: European Commission. <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A52022PC0142" target="_blank" style="color:var(--cyan);">↗ Link</a></div>
+
+<div class="ref-item"><strong>European Parliament (2020)</strong> 'Circular economy action plan', <em>Resolution of 10 February 2021 on the New Circular Economy Action Plan</em>, Strasbourg: European Parliament. <a href="https://www.europarl.europa.eu/doceo/document/TA-9-2021-0040_EN.html" target="_blank" style="color:var(--cyan);">↗ Link</a></div>
+
+<div class="ref-item"><strong>Faludi, J., Bayley, C., Bhogal, S. and Iribarne, M. (2015)</strong> 'Comparing environmental impacts of additive manufacturing vs. traditional machining', <em>Journal of Industrial Ecology</em>, 19(6), pp. 970–982. <a href="https://doi.org/10.1111/jiec.12329" target="_blank" style="color:var(--cyan);">↗ doi.org</a></div>
+
+<div class="ref-item"><strong>Geissdoerfer, M., Savaget, P., Bocken, N.M.P. and Hultink, E.J. (2017)</strong> 'The Circular Economy – A new sustainability paradigm?', <em>Journal of Cleaner Production</em>, 143, pp. 757–768. <a href="https://doi.org/10.1016/j.jclepro.2016.12.048" target="_blank" style="color:var(--cyan);">↗ doi.org</a></div>
+
+<div class="ref-item"><strong>Glaessgen, E.H. and Stargel, D.S. (2012)</strong> 'The digital twin paradigm for future NASA and US Air Force vehicles', <em>53rd AIAA/ASME/ASCE/AHS/ASC Structures, Structural Dynamics and Materials Conference</em>, Honolulu, Hawaii, 23–26 April. <a href="https://doi.org/10.2514/6.2012-1818" target="_blank" style="color:var(--cyan);">↗ doi.org</a></div>
+
+<div class="ref-item"><strong>Gotz, T., Berg, H., Jansen, M. and Adisorn, T. (2022)</strong> 'Digital product passport: The ticket to achieving a circular economy?', <em>Wuppertal Institut für Klima, Umwelt, Energie</em>, Policy Paper. <a href="https://epub.wupperinst.org/frontdoor/deliver/index/docId/7886/file/7886_Digital_Product_Passport.pdf" target="_blank" style="color:var(--cyan);"></a></div>
+
+
+
+<div class="ref-item"><strong>ISO (2006)</strong> 'ISO 14040:2006 Environmental management — Life cycle assessment — Principles and framework', Geneva: International Organization for Standardization.</div>
+
+<div class="ref-item"><strong>Klöpffer, W. (1997)</strong> 'Life cycle assessment: From the beginning to the current state', <em>Environmental Science and Pollution Research</em>, 4(4), pp. 223–228. <a href="https://doi.org/10.1007/BF02986351" target="_blank" style="color:var(--cyan);">↗ doi.org</a></div>
+
+<div class="ref-item"><strong>Lacy, P., Long, J. and Spindler, W. (2020)</strong> 'The Circular Economy Handbook: Realizing the Circular Advantage', London: Palgrave Macmillan.</div>
+
+<div class="ref-item"><strong>Lunt, J. (1998)</strong> 'Large-scale production, properties and commercial applications of polylactic acid polymers', <em>Polymer Degradation and Stability</em>, 59(1–3), pp. 145–152. <a href="https://doi.org/10.1016/S0141-3910(97)00148-1" target="_blank" style="color:var(--cyan);">↗ doi.org</a></div>
+
+<div class="ref-item"><strong>Made Smarter UK (2021)</strong> 'Annual Review 2021: Digital adoption in North West manufacturing', Preston: Made Smarter UK. <a href="https://www.madesmarter.uk/resources" target="_blank" style="color:var(--cyan);">↗ Link</a></div>
+
+<div class="ref-item"><strong>Niaounakis, M. (2015)</strong> 'Biopolymers: Reuse, Recycling, and Disposal', Norwich, NY: William Andrew Publishing.</div>
+
+<div class="ref-item"><strong>United Nations (2015)</strong> 'Transforming our world: the 2030 Agenda for Sustainable Development', <em>A/RES/70/1</em>, New York: United Nations. <a href="https://sdgs.un.org/2030agenda" target="_blank" style="color:var(--cyan);">↗ Link</a></div>
+
+<div class="ref-item"><strong>Wohlers Associates (2022)</strong> 'Wohlers Report 2022: 3D Printing and Additive Manufacturing State of the Industry', Fort Collins, CO: Wohlers Associates.</div>
     </div>
   </div>
 </section>
