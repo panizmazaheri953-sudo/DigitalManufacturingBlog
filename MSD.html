@@ -466,7 +466,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   <div class="sec-body">
 
     <p class="pf-intro">
-      Every operation from raw PLA spool to dispatched casing pair — broken into 6 phases.
+      Every operation from raw PLA spool to dispatched casing pair, broken into 6 phases.
       <strong>Printer prep</strong> and <strong>post-print handling</strong> are fully detailed alongside the FESTO line.
       <span class="t-amber">Manual operations</span> are highlighted in amber, the <span class="t-red">bottleneck station</span> in red,
       and <span class="t-cyan">automated steps</span> in cyan. The 20% reject rework loop is shown as a return path to Phase B.
@@ -947,7 +947,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
       <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:rgba(0,229,255,0.06);border-left:3px solid var(--cyan)">
         <div style="font-family:var(--fm);font-size:.7rem;color:var(--cyan);margin-bottom:.5rem">→ Recommendation:</div>
         <div style="font-size:.78rem;color:var(--muted);line-height:1.6;font-weight:300">
-          25 Bambu P1S printers running <strong>24/7</strong> is the optimal configuration to meet the <strong>50,000 phones/year</strong> target. This is equivalent to operating <strong>75 printers</strong> on a single 8-hour shift — a capital saving of <strong style="color:var(--cyan)">£50,000+</strong> in printer hardware alone, but requires a robust remote monitoring infrastructure to manage unattended overnight operation (addressed via camera system and cloud dashboard).
+          25 Bambu P1S printers running <strong>24/7</strong> is the optimal configuration to meet the <strong>50,000 phones/year</strong> target. This is equivalent to operating <strong>75 printers</strong> on a single 8-hour shift leading a capital saving of <strong style="color:var(--cyan)">£50,000+</strong> in printer hardware alone, but requires a robust remote monitoring infrastructure to manage unattended overnight operation (addressed via camera system and cloud dashboard).
         </div>
       </div>
     </div>
@@ -1035,7 +1035,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
       <div style="font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:.5rem">⚙️ How the FESTO Line Actually Works — Pipelined Flow</div>
       <div style="font-size:.75rem;color:var(--muted);line-height:1.6">
         <strong style="color:var(--white)">Wrong assumption:</strong> One case enters S1, waits for all 6 stations to finish (99s), then the next case enters.<br><br>
-        <strong style="color:var(--white)">Reality:</strong> The FESTO line is a <strong style="color:var(--cyan)">pipeline</strong> — a new case enters S1 <strong style="color:var(--cyan)">every 16.5 seconds</strong> (99s ÷ 6 stations). While Case A is at S6, Case B is at S5, Case C at S4, and so on. This means a completed case exits S6 <strong style="color:var(--cyan)">every 16.5 seconds</strong>, not every 99 seconds. The total line throughput is <strong style="color:var(--cyan)">~218 cases per hour</strong> — far above the 150s takt requirement.<br><br>
+        <strong style="color:var(--white)">Reality:</strong> The FESTO line is a <strong style="color:var(--cyan)">pipeline</strong> — a new case enters S1 <strong style="color:var(--cyan)">every 16.5 seconds</strong> (99s ÷ 6 stations). While Case A is at S6, Case B is at S5, Case C at S4, and so on. This means a completed case exits S6 <strong style="color:var(--cyan)">every 16.5 seconds</strong>, not every 99 seconds. The total line throughput is <strong style="color:var(--cyan)">~218 cases per hour</strong>, far above the 150s takt requirement.<br><br>
         <strong style="color:var(--white)">Formula:</strong> Throughput time per case = <strong style="color:var(--cyan)">Total cycle time ÷ Number of stations</strong> = 99s ÷ 6 = <strong style="color:var(--cyan)">16.5s per case</strong>
       </div>
     </div>
@@ -1058,7 +1058,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
         <div class="shift-row"><div class="shift-icon">☀️</div><div class="shift-info"><div class="shift-name">Afternoon Shift</div><div class="shift-detail">14:00–22:00 · Mon–Fri</div></div><div class="shift-ops">2</div></div>
         <div class="shift-row"><div class="shift-icon">🌙</div><div class="shift-info"><div class="shift-name">Night Shift</div><div class="shift-detail">22:00–06:00 · Mon–Fri only</div></div><div class="shift-ops">2</div></div>
         <div style="margin-top:1rem;padding:.75rem;background:var(--navy3);border:1px solid var(--border);font-size:.72rem;color:var(--muted);line-height:1.6;font-weight:300">
-          <strong style="color:var(--white)">Why 2 per shift?</strong> Each operator can realistically manage 12–13 printers — collecting prints every 2.5h, cleaning beds, changing filament, starting new jobs, and visual QC. 25 printers requires 2 operators. IoT alarms and Bambu Cloud handle monitoring; engineers are alerted if anything fails overnight.
+          <strong style="color:var(--white)">Why 2 per shift?</strong> Each operator can realistically manage 12–13 printers, collecting prints every 2.5h, cleaning beds, changing filament, starting new jobs, and visual QC. 25 printers requires 2 operators. IoT alarms and Bambu Cloud handle monitoring; engineers are alerted if anything fails overnight.
         </div>
       </div>
       <div class="op-card">
